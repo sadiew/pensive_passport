@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+    <h1>PensivePassport</h1>
+    <div class="container">
+        <div class="row spacer">
+        </div>   
+        <form action="/comparison-form">
+            <div class="row">
+                <label>Departure City
+                    <input type="text" name="departure-city" class="form-group">
+                </label>
+            </div>
+            <div class="row"> 
+                <div class="col-xs-5 form-group">
+                <label>Destination #1
+                    <input type="text" name="destination-1" class="form-group">
+                </label>
+                </div>
+                <div class="col-xs-2"><h2>vs.</h2></div>
+                <div class="col-xs-5 form-group">
+                <label>Destination #2
+                    <input type="text" name="destination-2">
+                </label>
+                </div>
+                
+                <div class="col-xs-12">
+                    <input type="submit" value="Decide!">
+                </div>
+            </div>
+        </form>       
+    </div>
+{% endblock %}

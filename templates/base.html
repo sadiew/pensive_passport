@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PensivePassport</title>
+</head>
+
+<body>
+
+	<div class="navbar navbar-inverse navbar-static-top">
+	    <div class="container">
+
+	        <div class="navbar-header">
+	            <a class="navbar-brand" href="/">PensivePassport</a>
+	        </div>
+
+	        <div class="navbar-collapse collapse">
+	            <ul class="nav navbar-nav navbar-right">
+	                <li>
+	                    <a href="/cart">
+	                        My Trips
+	                    </a>
+	                </li>
+	                <li><a href="/login">Log In</a></li>
+	            </ul>
+	        </div>
+
+	    </div>
+	</div>
+
+	<div class="container">
+
+	  <!-- Show flashed messages -->
+	  {% with messages = get_flashed_messages() %}
+	      {% for message in messages %}
+	          <div class="alert alert-warning">{{ message }}</div>
+	      {% endfor %}
+	  {% endwith %}
+
+	  <!-- This is where the main content goes. -->
+	  {% block body %}
+	      BODY OF PAGE GOES HERE VIA INHERITANCE
+	  {% endblock %}
+
+	</div>
+
+	</body>
+	</html>

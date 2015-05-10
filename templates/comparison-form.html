@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+    <img src="{{flickr_image_1}}" style="width:300px">
+    <img src="{{flickr_image_2}}" style="width:300px">
+
+
+    <form action="/results" method="POST">
+        <h4>Select your respective airports.</h4>
+        <label>{{city1.name}}
+            <select name="airport-1">
+                {% for airport in city1.airports %}
+                    <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <label>{{city2.name}}
+            <select name="airport-1">
+                {% for airport in city2.airports %}
+                    <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <div class="row">
+            <h4>Select your travel dates:</h4> 
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label>Departure Date</label>
+                <input type="text" name="depart-date">
+            </div>
+             <div class="form-group">
+                <label>Return Date</label>
+                <input type="text" name="return-date">
+            </div>
+        </div>
+    	<h4>Rank these criteria on a scale of 1-3 in order of importance.</h4>
+    	<div class="form-group">
+    		<label>Cost of Living</label>
+            <input type="text" name="cost-of-living">
+        	
+    	</div>
+    	<div class="form-group">
+    		<label>Quality of Food</label>
+            <input type="text" name="food">
+    	</div>
+    	   <div class="form-group">
+    		<label>Weather</label>
+            <input type="text" name="weather">
+    	</div>
+        <input type="submit" value="Tell me where to go!">
+    </form>
+
+
+{% endblock %}
