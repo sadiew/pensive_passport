@@ -20,6 +20,12 @@ class City(db.Model):
 
         return "<City city_id=%s email=%s>" % (self.city_name, self.country_name)
 
+    def get_flickr_photos(self):
+        pass
+
+    def get_weather_data(self):
+        pass
+
 
 class Airport(db.Model):
     """Destination city."""
@@ -48,7 +54,8 @@ class Airport(db.Model):
         
         photos = flickr.photos_search(
                                     tags=self.city.name.lower(), 
-                                    lat=self.latitude, lon=self.longitude, 
+                                    lat=self.latitude, 
+                                    lon=self.longitude, 
                                     radius='20',
                                     sort='interestingness-desc', 
                                     geo_context=2, 

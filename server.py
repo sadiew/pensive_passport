@@ -2,6 +2,7 @@ from model import City, Airport, connect_to_db, db
 from flask import Flask, request, render_template, redirect, jsonify, session, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
+from flights_api import get_flight_data
 
 #import flickr
 
@@ -21,7 +22,7 @@ def show_destination_form():
 	return render_template("destination_form.html")
 
 
-@app.route('/comparison-form')
+@app.route('/preference_form')
 def gather_info():
     """Return results from homepage."""
 
@@ -29,8 +30,10 @@ def gather_info():
     destination_1 = request.args.get('destination-1')
     destination_2 = request.args.get('destination-2')
 
+    departure_city = City.query.filter_by(name=departure_city).first()
     city1 = City.query.filter_by(name=destination_1).first()
     city2 = City.query.filter_by(name=destination_2).first()
+
 
     flickr_images_1= city1.airports[0].get_flickr_photos()
     flickr_images_2= city2.airports[0].get_flickr_photos()
@@ -45,7 +48,8 @@ def gather_info():
     else:
     	flickr_image_2 = 'http://gigabiting.com/wp-content/uploads/2010/08/WorldTravelerSign.jpg'
 
-    return render_template('comparison-form.html', 
+    return render_template('preference_form.html',
+                            departure_city=departure_city, 
     						city1=city1, 
     						city2=city2,
     						flickr_image_1=flickr_image_1,
@@ -53,18 +57,23 @@ def gather_info():
 
 @app.route('/results', methods=['POST'])
 def show_results():
-	# depart_date = request.args.form('depart-date')
- #    return_date = request.args.form('return-date')
-	# food_weighting = request.args.form['food_weight']
-	# cost_of_living_weighting = request.args.form['col_weight']
-	# weather_weighting = request.args.form['weather_weighting']
-	# wow_factor_1 = request.args.form['wow_factor_1']
-	# wow_factor_2 = request.args.form['wow_factor_2']
+    depart_date = request.form['depart-date']
+    return_date = request.form['return-date']
+    departure_airport_code = request.form['departure-airport']
+    airport_code_1 = request.form['airport-1']
+    airport_code_2 = request.form['airport-2']
+    food_weighting = request.form['food']
+    cost_of_living_weighting = request.form['cost-of-living']
+    weather_weighting = request.form['weather']
+    wow_factor_1 = request.form['wow-factor-1']
+    wow_factor_2 = request.form['wow-factor-2']
 
-	#run algorithm, which runs each of the api calls as well.
-	#final_destination = determine_destination()
+    get_flight_data(departure_airport_code, airport_code_1, depart_date, return_date)
 
-	return "results page"
+    #run algorithm, which runs each of the api calls as well.
+    #final_destination = determine_destination()
+
+    return "results page"
 
 
 if __name__ == "__main__":
