@@ -2,7 +2,7 @@ from model import City, Airport, connect_to_db, db
 from flask import Flask, request, render_template, redirect, jsonify, session, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
-from flights_api import get_flight_data
+from trip import Trip
 
 #import flickr
 
@@ -23,7 +23,7 @@ def show_destination_form():
 
 
 @app.route('/preference_form')
-def gather_info():
+def gather_destinations():
     """Return results from homepage."""
 
     departure_city = request.args.get('departure-city')
@@ -34,47 +34,54 @@ def gather_info():
     city1 = City.query.filter_by(name=destination_1).first()
     city2 = City.query.filter_by(name=destination_2).first()
 
-
-    flickr_images_1= city1.airports[0].get_flickr_photos()
-    flickr_images_2= city2.airports[0].get_flickr_photos()
-
-    if flickr_images_1:
-    	flickr_image_1 = flickr_images_1[0]
+    if city1.city_images:
+        image_1 = city1.city_images[0].image_url
     else:
-    	flickr_image_1 = 'http://gigabiting.com/wp-content/uploads/2010/08/WorldTravelerSign.jpg'
+        flickr_images_1= city1.airports[0].get_flickr_photos()
+        
+        if flickr_images_1:
+            image_1 = flickr_images_1[0]
+        else:
+            image_1 = 'http://gigabiting.com/wp-content/uploads/2010/08/WorldTravelerSign.jpg'
 
-    if flickr_images_2:
-    	flickr_image_2 = flickr_images_2[0]
+    if city2.city_images:
+        image_2 = city2.city_images[0].image_url
     else:
-    	flickr_image_2 = 'http://gigabiting.com/wp-content/uploads/2010/08/WorldTravelerSign.jpg'
+        flickr_images_2= city2.airports[0].get_flickr_photos()
+        
+        if flickr_images_2:
+            image_2 = flickr_images_2[0]
+        else:
+            image_2 = 'http://gigabiting.com/wp-content/uploads/2010/08/WorldTravelerSign.jpg'
 
     return render_template('preference_form.html',
                             departure_city=departure_city, 
     						city1=city1, 
     						city2=city2,
-    						flickr_image_1=flickr_image_1,
-    						flickr_image_2=flickr_image_2)
+    						image_1=image_1,
+    						image_2=image_2)
 
 @app.route('/results', methods=['POST'])
 def show_results():
     depart_date = request.form['depart-date']
     return_date = request.form['return-date']
-    departure_airport_code = request.form['departure-airport']
-    airport_code_1 = request.form['airport-1']
-    airport_code_2 = request.form['airport-2']
+    origin = request.form['departure-airport']
     food_weighting = request.form['food']
     cost_of_living_weighting = request.form['cost-of-living']
     weather_weighting = request.form['weather']
     wow_factor_1 = request.form['wow-factor-1']
     wow_factor_2 = request.form['wow-factor-2']
 
-    get_flight_data(departure_airport_code, airport_code_1, depart_date, return_date)
+    airport_1 = Airport.query.filter_by(airport_code=request.form['airport-1']).first()
+    airport_2 = Airport.query.filter_by(airport_code=request.form['airport-2']).first()
 
-    #run algorithm, which runs each of the api calls as well.
-    #final_destination = determine_destination()
+    trip1 = Trip(origin, airport_1.airport_code, depart_date, return_date)
+    trip2 = Trip(origin, airport_2.airport_code, depart_date, return_date)
 
+    trip1.weather = trip1.get_weather_data(airport_1.latitude, airport_1.longitude)
+    trip2.weather = trip2.get_weather_data(airport_2.latitude, airport_2.longitude)
+    
     return "results page"
-
 
 if __name__ == "__main__":
     app.debug = True

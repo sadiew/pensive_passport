@@ -20,11 +20,17 @@ class City(db.Model):
 
         return "<City city_id=%s email=%s>" % (self.city_name, self.country_name)
 
-    def get_flickr_photos(self):
-        pass
 
-    def get_weather_data(self):
-        pass
+class CityImages(db.Model):
+    """Image for potential destination city"""
+    __tablename__ = "city_images"
+
+    image_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    city_id = db.Column(db.Integer, db.ForeignKey('cities.city_id'))
+    image_url = db.Column(db.Text)
+
+    city = db.relationship("City",
+                           backref=db.backref("city_images", order_by=image_id))
 
 
 class Airport(db.Model):
