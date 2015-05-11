@@ -2,8 +2,8 @@ import json, requests, os
 from datetime import datetime, timedelta
 
 class Trip(object):
-	def __init__(self, origin, destination, depart_date, return_date):
-		self.name = ''
+	def __init__(self, name, origin, destination, depart_date, return_date):
+		self.name = name
 		self.origin = origin
 		self.destination = destination
 		self.depart_date = depart_date
@@ -15,7 +15,7 @@ class Trip(object):
 		self.wow_factor = 5
 
 	def __repr__(self):
-		return "<Trip=%s>" % (self.destination)
+		return "<Trip origin=%s, destination=%s-%s>" % (self.origin, self.name, self.destination)
 
 	def get_flight_data(self):
 	    api_key = os.environ['QPX_KEY']

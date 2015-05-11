@@ -17,7 +17,6 @@ class City(db.Model):
     col_index = db.Column(db.Integer)
 
     def __repr__(self):
-
         return "<City city_id=%s email=%s>" % (self.city_name, self.country_name)
 
 

@@ -14,7 +14,8 @@ def load_cities():
             city = City(city_id=city_data[0], 
                         name=city_data[1], 
                         state=city_data[2], 
-                        country=city_data[3])
+                        country=city_data[3],
+                        col_index=city_data[4])
             db.session.add(city)
         db.session.commit()
 

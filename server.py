@@ -75,13 +75,19 @@ def show_results():
     airport_1 = Airport.query.filter_by(airport_code=request.form['airport-1']).first()
     airport_2 = Airport.query.filter_by(airport_code=request.form['airport-2']).first()
 
-    trip1 = Trip(origin, airport_1.airport_code, depart_date, return_date)
-    trip2 = Trip(origin, airport_2.airport_code, depart_date, return_date)
+    trip1 = Trip(airport_1.city.name, origin, airport_1.airport_code, depart_date, return_date)
+    trip2 = Trip(airport_2.city.name, origin, airport_2.airport_code, depart_date, return_date)
+
+    trip1.wow_factor = wow_factor_1
+    trip2.wow_factor = wow_factor_2
+    trip1.cost_of_living = airport_1.city.col_index
+    trip2.cost_of_living = airport_2.city.col_index
 
     trip1.weather = trip1.get_weather_data(airport_1.latitude, airport_1.longitude)
     trip2.weather = trip2.get_weather_data(airport_2.latitude, airport_2.longitude)
     
-    return "results page"
+    return render_template("results.html",
+                            trip1=trip1, trip2=trip2)
 
 if __name__ == "__main__":
     app.debug = True
