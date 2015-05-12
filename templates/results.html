@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h2>PensivePassport has determined that you should travel to:</h2>
+<h3>XXXX</h3>
+<table border="1">
+    <thead>
+        <tr>
+            <th colspan="3">The Underlying Data</th>
+        </tr> 
+        <tr>
+            <th>Variable</th>
+            <th>{{ trip1.name }}</th>
+            <th>{{ trip2.name }}</th>
+        </tr>
+    </thead>   
+    <tbody>
+        <tr>
+            <td>Flight</td>
+            <td>${{ '%.0f' %trip1.flights['total_fare'] }}</td>
+            <td>${{ '%.0f' %trip2.flights['total_fare'] }}</td>
+        </tr>
+        <tr>
+            <td>Weather</td>
+            <td>{{ trip1.weather }} F</td>
+            <td>{{ trip2.weather }} F</td>
+        </tr>
+        <tr>
+            <td>Food</td>
+            <td>TBD</td>
+            <td>TBD</td>
+        </tr>
+        <tr>
+            <td>Cost of Living</td>
+            <td>{{ trip1.cost_of_living }}</td>
+            <td>{{ trip2.cost_of_living }}</td>
+        </tr>    
+        <tr>
+            <td>Desirability</td>
+            <td>{{ trip1.wow_factor }}</td>
+            <td>{{ trip2.wow_factor }}</td>
+        </tr>    
+    </tbody>
+</table>
+
+{% endblock %}

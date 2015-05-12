@@ -58,13 +58,13 @@ class Airport(db.Model):
         flickr = flickrapi.FlickrAPI(api_key, api_secret, cache=True)
         
         photos = flickr.photos_search(
-                                    tags=self.city.name.lower(), 
+                                    tags=self.city.name+','+self.city.country, 
                                     lat=self.latitude, 
                                     lon=self.longitude, 
                                     radius='20',
                                     sort='interestingness-desc', 
                                     geo_context=2, 
-                                    per_page=3)[0]
+                                    per_page=1)[0]
 
         url_list = []
         for photo in photos:

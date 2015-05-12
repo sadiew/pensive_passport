@@ -77,6 +77,7 @@ def show_results():
 
     trip1 = Trip(airport_1.city.name, origin, airport_1.airport_code, depart_date, return_date)
     trip2 = Trip(airport_2.city.name, origin, airport_2.airport_code, depart_date, return_date)
+    print trip1.flights
 
     trip1.wow_factor = wow_factor_1
     trip2.wow_factor = wow_factor_2

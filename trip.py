@@ -53,9 +53,9 @@ class Trip(object):
 
 	    total_fare = float(first_option['saleTotal'][3:])
 	    to_duration = round(float(first_option['slice'][0]['duration'])/60,2)
-	    to_stops = len(first_option['slice'][0]['segment'][0]['leg']) - 1
+	    to_stops = len(first_option['slice'][0]['segment']) - 1
 	    from_duration = round(float(first_option['slice'][1]['duration'])/60,2)
-	    from_stops = len(first_option['slice'][1]['segment'][0]['leg']) - 1
+	    from_stops = len(first_option['slice'][1]['segment']) - 1
 
 	    return {'total_fare': total_fare, 
 	            'to_data': (to_stops, to_duration), 
