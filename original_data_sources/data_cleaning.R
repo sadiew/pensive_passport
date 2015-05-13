@@ -76,7 +76,8 @@ airports <- airports %>%
 #Restaurant data
 restaurants <- read.csv('~/Desktop/sw_project/original_data_sources/michelin_star_restaurants.csv')
 restaurants <- restaurants %>% 
-  left_join(cities, by = c('city', 'country'))
+  left_join(cities, by = c('city', 'country')) %>%
+  filter(!is.na(city_id))
 restaurants <- mutate(restaurants, restaurant_id=rownames(restaurants)) %>% 
   select(restaurant_id, name, city_id, stars)
 

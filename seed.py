@@ -1,4 +1,4 @@
-from model import City, Airport, connect_to_db, db
+from model import City, Airport, Restaurant, connect_to_db, db
 from server import app
 from datetime import datetime
 import codecs
@@ -56,5 +56,6 @@ def load_restaurants():
 
 if __name__ == "__main__":
     connect_to_db(app)
-    load_airports()
     load_cities()
+    load_airports()
+    load_restaurants()

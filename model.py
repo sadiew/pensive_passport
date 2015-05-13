@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-#import flickrapi, os
+import flickr, psycopg2
 
 db = SQLAlchemy()
 
@@ -18,6 +18,22 @@ class City(db.Model):
 
     def __repr__(self):
         return "<City city_id=%s country=%s>" % (self.name, self.country)
+
+    def get_photo(self):
+        if self.city_images:
+            image_url = self.city_images[0].image_url
+            print "Image was in DB."
+        else:
+            flickr_images = flickr.get_flickr_photos(self.airports[0])
+            if flickr_images:
+                image = CityImage(city_id=self.city_id, image_url=flickr_images[0])
+                image_url = image.image_url
+                print "Got image from Flickr. Image url: ", flickr_images
+                db.session.add(image)
+                db.session.commit()
+            else:
+                image_url = 'http://www.posterparty.com/images/photography-paris-france-famous-sights-collage-poster-GB0404.jpg'
+        self.photo = image_url
 
 
 class CityImage(db.Model):
@@ -38,7 +54,7 @@ class Airport(db.Model):
     __tablename__ = "airports"
 
     airport_id = db.Column(db.Integer, primary_key=True)
-    airport_code = db.Column(db.String(5), nullable=False)
+    airport_code = db.Column(db.String(10), nullable=False)
     name = db.Column(db.String(64), nullable=False)
     city_id = db.Column(db.Integer, db.ForeignKey('cities.city_id'))
     latitude = db.Column(db.Float, nullable=False)
@@ -58,7 +74,7 @@ class Restaurant(db.Model):
     __tablename__ = "restaurants"
 
     restaurant_id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64), nullable=False)
+    name = db.Column(db.String(100), nullable=False)
     city_id = db.Column(db.Integer, db.ForeignKey('cities.city_id'))
     stars = db.Column(db.Integer, nullable=False)
 
@@ -74,14 +90,14 @@ def connect_to_db(app):
     """Connect the database to our Flask app."""
 
     # Configure to use our SQLite database
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sw_project.db'
+    #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sw_project.db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/pensive_passport'
+    app.config['SQLALCHEMY_ECHO'] = True
     db.app = app
     db.init_app(app)
 
 
 if __name__ == "__main__":
-    # As a convenience, if we run this module interactively, it will leave
-    # you in a state of being able to work with the database directly.
 
     from server import app
     connect_to_db(app)

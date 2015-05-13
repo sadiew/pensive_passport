@@ -17,13 +17,13 @@ def index():
     """Show index page."""
     return render_template("index.html")
 
-@app.route('/destinaton_form')
+@app.route('/destinaton-form')
 def show_destination_form():
 	"""Display initial destination form."""
 	return render_template("destination_form.html")
 
-@app.route('/preference_form')
-def gather_destinations():
+@app.route('/preference-form')
+def gather_perferences():
     """Return results from homepage."""
 
     departure_city = request.args.get('departure-city')
@@ -34,17 +34,10 @@ def gather_destinations():
     city1 = City.query.filter_by(name=destination_1[0], country=destination_1[1]).first()
     city2 = City.query.filter_by(name=destination_2[0], country=destination_2[1]).first()
 
+    # assert city1 is not None, "No such city"
     cities = [city1, city2]
     for city in cities:
-        if city.city_images:
-            image = city.city_images[0].image_url
-        else:
-            flickr_images = flickr.get_flickr_photos(city.airports[0])
-            if flickr_images:
-                image = CityImage(city_id=city.city_id, image_url=flickr_images[0])
-                db.session.add(image)
-
-    db.session.commit()            
+        city.get_photo()           
 
     return render_template('preference_form.html',
                             departure_city=departure_city, 
@@ -65,12 +58,17 @@ def show_results():
     airport_1 = Airport.query.filter_by(airport_code=request.form['airport-1']).first()
     airport_2 = Airport.query.filter_by(airport_code=request.form['airport-2']).first()
 
+    restaurants_1 = airport_1.city.restaurants
+    restaurants_2 = airport_2.city.restaurants
+
     trip1 = Trip(airport_1.city.name, origin, airport_1.airport_code, depart_date, return_date)
     trip2 = Trip(airport_2.city.name, origin, airport_2.airport_code, depart_date, return_date)
 
     trip1.wow_factor = wow_factor_1
     trip1.cost_of_living = airport_1.city.col_index
     trip1.weather = trip1.get_weather_data(airport_1.latitude, airport_1.longitude)
+    trip1.food = {'restaurants':len(restaurants_1), 
+                  'stars': sum(restaurant.stars for restaurant in restaurants_1)}
 
     trip2.wow_factor = wow_factor_2   
     trip2.cost_of_living = airport_2.city.col_index   

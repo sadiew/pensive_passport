@@ -13,7 +13,8 @@ def get_flickr_photos(airport):
                                 radius='20',
                                 sort='interestingness-desc', 
                                 geo_context=2, 
-                                per_page=1)[0]
+                                per_page=2)[0]
+
 
     url_list = []
     for photo in photos:
@@ -21,4 +22,5 @@ def get_flickr_photos(airport):
         for i in range(len(photo_sizes)):
             if photo_sizes[i].attrib['label'] == 'Original':
                 url_list.append(photo_sizes[i].attrib['source'])
+
     return url_list

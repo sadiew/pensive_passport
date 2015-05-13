@@ -1,6 +1,9 @@
 import json, requests, os
 from datetime import datetime, timedelta
 
+FLIGHT_URL = "https://www.googleapis.com/qpxExpress/v1/trips/search?key="
+WEATHER_URL = 'http://api.worldweatheronline.com/premium/v1/past-weather.ashx?key='
+
 class Trip(object):
 	def __init__(self, name, origin, destination, depart_date, return_date):
 		self.name = name
@@ -10,8 +13,8 @@ class Trip(object):
 		self.return_date = return_date
 		self.weather = {}
 		self.flights = self.get_flight_data()
-		self.cost_of_living = 50
-		self.food = {'restaurants': 25, 'michelin_stars': 2}
+		self.cost_of_living = 46
+		self.food = {'restaurants': 25, 'stars': 2}
 		self.wow_factor = 5
 
 	def __repr__(self):
@@ -20,6 +23,7 @@ class Trip(object):
 	def get_flight_data(self):
 	    api_key = os.environ['QPX_KEY']
 	    url = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=" + api_key
+	    #url = FLIGHT_URL + api_key
 	    headers = {'content-type': 'application/json'}
 
 	    #round trip api call
@@ -49,13 +53,21 @@ class Trip(object):
 
 	    response = requests.post(url, data=json.dumps(params), headers=headers)
 	    data = response.json()
+	    print data
 	    first_option = data['trips']['tripOption'][0]
 
-	    total_fare = float(first_option['saleTotal'][3:])
-	    to_duration = round(float(first_option['slice'][0]['duration'])/60,2)
-	    to_stops = len(first_option['slice'][0]['segment']) - 1
-	    from_duration = round(float(first_option['slice'][1]['duration'])/60,2)
-	    from_stops = len(first_option['slice'][1]['segment']) - 1
+	    raw_fare = first_option['saleTotal'][3:]
+	    total_fare = float(raw_fare)
+	    
+	    raw_to_duration = first_option['slice'][0]['duration']
+	    to_duration = round(float(raw_to_duration)/60,2)
+	    to_segments = first_option['slice'][0]['segment']
+	    to_stops = len(to_segments) - 1
+	    
+	    raw_from_duration = first_option['slice'][1]['duration']
+	    from_duration = round(float(raw_from_duration)/60,2)
+	    from_segments = first_option['slice'][1]['segment']
+	    from_stops = len(from_segments) - 1
 
 	    return {'total_fare': total_fare, 
 	            'to_data': (to_stops, to_duration), 
@@ -64,11 +76,10 @@ class Trip(object):
 	def get_weather_data(self, latitude, longitude):
 		api_key = os.environ['WEATHER_KEY']
 		date_last_year = datetime.strftime(datetime.strptime(self.depart_date, '%Y-%m-%d') - timedelta(days=365), '%Y-%m-%d')
-		r=requests.get(
-		'http://api.worldweatheronline.com/premium/v1/past-weather.ashx?key=%s&q=%s&cc=no&date=%s&format=json' 
-		%(api_key, str(latitude) + ',' + str(longitude), date_last_year))
+		response=requests.get(WEATHER_URL+'%s&q=%s,%s&cc=no&date=%s&format=json' 
+						%(api_key, latitude, longitude, date_last_year))
 
-		python_dict = json.loads(r.text)
+		python_dict = json.loads(response.text)
 
 		high_temp = python_dict['data']['weather'][0]['maxtempF']
 		low_temp = python_dict['data']['weather'][0]['mintempF']
