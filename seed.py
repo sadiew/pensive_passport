@@ -4,7 +4,7 @@ from datetime import datetime
 import codecs
 
 def load_cities():
-    """Load users from u.user into database."""
+    """Load cities into database."""
 
     with codecs.open('./seed_data/cities.txt', encoding='utf-8') as source_file:
         source_file.readline()
@@ -20,12 +20,11 @@ def load_cities():
         db.session.commit()
 
 def load_airports():
-    """Load movies from u.item into database."""
+    """Load airports into database."""
     
     with codecs.open('./seed_data/airports.txt', encoding='utf-8') as source_file:
         source_file.readline()
         for line in source_file:
-            print line
             airport_data = line.rstrip().split('\t')
 
             airport = Airport(airport_id=airport_data[0],
@@ -39,7 +38,21 @@ def load_airports():
         db.session.commit()
 
 def load_restaurants():
-    pass
+    """Load restaurants into database."""
+
+    with codecs.open('./seed_data/restaurants.txt', encoding='utf-8') as source_file:
+        source_file.readline()
+        for line in source_file:
+            restaurant_data = line.rstrip().split('\t')
+
+            restaurant = Restaurant(restaurant_id=restaurant_data[0],
+                        name=restaurant_data[1],
+                        city_id=restaurant_data[2], 
+                        stars=restaurant_data[3])
+            
+            db.session.add(restaurant)
+        db.session.commit()
+
 
 if __name__ == "__main__":
     connect_to_db(app)

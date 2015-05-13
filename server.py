@@ -1,8 +1,9 @@
-from model import City, Airport, connect_to_db, db
+from model import City, Airport, CityImage, connect_to_db, db
 from flask import Flask, request, render_template, redirect, jsonify, session, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
 from trip import Trip
+import flickr
 
 #import flickr
 
@@ -21,45 +22,34 @@ def show_destination_form():
 	"""Display initial destination form."""
 	return render_template("destination_form.html")
 
-
 @app.route('/preference_form')
 def gather_destinations():
     """Return results from homepage."""
 
     departure_city = request.args.get('departure-city')
-    destination_1 = request.args.get('destination-1')
-    destination_2 = request.args.get('destination-2')
+    destination_1 = request.args.get('destination-1').split(', ')
+    destination_2 = request.args.get('destination-2').split(', ')
 
     departure_city = City.query.filter_by(name=departure_city).first()
-    city1 = City.query.filter_by(name=destination_1).first()
-    city2 = City.query.filter_by(name=destination_2).first()
+    city1 = City.query.filter_by(name=destination_1[0], country=destination_1[1]).first()
+    city2 = City.query.filter_by(name=destination_2[0], country=destination_2[1]).first()
 
-    if city1.city_images:
-        image_1 = city1.city_images[0].image_url
-    else:
-        flickr_images_1= city1.airports[0].get_flickr_photos()
-        
-        if flickr_images_1:
-            image_1 = flickr_images_1[0]
+    cities = [city1, city2]
+    for city in cities:
+        if city.city_images:
+            image = city.city_images[0].image_url
         else:
-            image_1 = 'http://gigabiting.com/wp-content/uploads/2010/08/WorldTravelerSign.jpg'
+            flickr_images = flickr.get_flickr_photos(city.airports[0])
+            if flickr_images:
+                image = CityImage(city_id=city.city_id, image_url=flickr_images[0])
+                db.session.add(image)
 
-    if city2.city_images:
-        image_2 = city2.city_images[0].image_url
-    else:
-        flickr_images_2= city2.airports[0].get_flickr_photos()
-        
-        if flickr_images_2:
-            image_2 = flickr_images_2[0]
-        else:
-            image_2 = 'http://gigabiting.com/wp-content/uploads/2010/08/WorldTravelerSign.jpg'
+    db.session.commit()            
 
     return render_template('preference_form.html',
                             departure_city=departure_city, 
     						city1=city1, 
-    						city2=city2,
-    						image_1=image_1,
-    						image_2=image_2)
+    						city2=city2)
 
 @app.route('/results', methods=['POST'])
 def show_results():
@@ -77,18 +67,18 @@ def show_results():
 
     trip1 = Trip(airport_1.city.name, origin, airport_1.airport_code, depart_date, return_date)
     trip2 = Trip(airport_2.city.name, origin, airport_2.airport_code, depart_date, return_date)
-    print trip1.flights
 
     trip1.wow_factor = wow_factor_1
-    trip2.wow_factor = wow_factor_2
     trip1.cost_of_living = airport_1.city.col_index
-    trip2.cost_of_living = airport_2.city.col_index
-
     trip1.weather = trip1.get_weather_data(airport_1.latitude, airport_1.longitude)
+
+    trip2.wow_factor = wow_factor_2   
+    trip2.cost_of_living = airport_2.city.col_index   
     trip2.weather = trip2.get_weather_data(airport_2.latitude, airport_2.longitude)
     
     return render_template("results.html",
-                            trip1=trip1, trip2=trip2)
+                            trip1=trip1, 
+                            trip2=trip2)
 
 if __name__ == "__main__":
     app.debug = True

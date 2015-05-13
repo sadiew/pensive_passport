@@ -56,6 +56,7 @@ airports <- airports %>%
   arrange(country, city) %>%
   left_join(us_airports_by_state, by=c('airport_code', 'country'))
 airports$state[is.na(airports$state)] = ''
+airports$state[airports$city=='New York'] = 'NY'
 
 #City Data - seeded from Airports above, joined to cost of living data
 cities <- airports %>%
@@ -72,6 +73,14 @@ airports <- airports %>%
   left_join(cities, by = c('city', 'state', 'country')) %>%
   select(airport_id, airport_code, name, city_id, name, latitude, longitude)
 
+#Restaurant data
+restaurants <- read.csv('~/Desktop/sw_project/original_data_sources/michelin_star_restaurants.csv')
+restaurants <- restaurants %>% 
+  left_join(cities, by = c('city', 'country'))
+restaurants <- mutate(restaurants, restaurant_id=rownames(restaurants)) %>% 
+  select(restaurant_id, name, city_id, stars)
+
 #Create csv files
 write.csv(airports, '~/Desktop/sw_project/original_data_sources/airports_model.csv', row.names=FALSE)
 write.csv(cities, '~/Desktop/sw_project/original_data_sources/cities_model.csv', row.names=FALSE)
+write.csv(restaurants, '~/Desktop/sw_project/original_data_sources/restaurants_model.csv', row.names=FALSE)

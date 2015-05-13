@@ -8,7 +8,7 @@ class Trip(object):
 		self.destination = destination
 		self.depart_date = depart_date
 		self.return_date = return_date
-		self.weather = 0
+		self.weather = {}
 		self.flights = self.get_flight_data()
 		self.cost_of_living = 50
 		self.food = {'restaurants': 25, 'michelin_stars': 2}
@@ -69,7 +69,12 @@ class Trip(object):
 		%(api_key, str(latitude) + ',' + str(longitude), date_last_year))
 
 		python_dict = json.loads(r.text)
+
 		high_temp = python_dict['data']['weather'][0]['maxtempF']
-		return high_temp
+		low_temp = python_dict['data']['weather'][0]['mintempF']
+		return {'high': high_temp, 'low': low_temp}
+
+	def determine_destination(self, user_prefernces={}):
+		pass
 
 		

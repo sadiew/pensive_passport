@@ -1,0 +1,269 @@
+restaurant_id	name	city_id	stars
+1	All Spice	4326	1
+2	Ame	4326	1
+3	Auberge du Soleil	4326	1
+4	Aziza	4326	1
+5	Bouchon	4326	1
+6	Boulevard	4326	1
+7	Campton Place	4326	1
+8	Chez TJ	4326	1
+9	Commis	4326	1
+10	Farmhouse Inn & Restaurant	4326	1
+11	Gary Danko	4326	1
+12	Keiko ˆ Nob Hill	4326	1
+13	Kusakabe	4326	1
+14	La Folie	4326	1
+15	La Toque	4326	1
+16	Luce	4326	1
+17	Madera	4326	1
+18	Madrona Manor	4326	1
+19	Maruya	4326	1
+20	Michael Mina	4326	1
+21	Plumed Horse	4326	1
+22	Solbar	4326	1
+23	Sons & Daughters	4326	1
+24	SPQR	4326	1
+25	Spruce	4326	1
+26	State Bird Provisions	4326	1
+27	Terra	4326	1
+28	Terrapin Creek	4326	1
+29	Village Pub (The)	4326	1
+30	Wakuriya	4326	1
+31	Acquerello	4326	2
+32	Atelier Crenn	4326	2
+33	BaumŽ	4326	2
+34	Coi	4326	2
+35	Manresa	4326	2
+36	Quince	4326	2
+37	Benu	4326	3
+38	French Laundry (The)	4326	3
+39	Restaurant at Meadowood (The)	4326	3
+40	Saison	4326	3
+41	Ai Fiori	4157	1
+42	Aldea	4157	1
+43	Andanada	4157	1
+44	Aureole	4157	1
+45	Babbo	4157	1
+46	B‰tard	4157	1
+47	Betony	4157	1
+48	Blue Hill	4157	1
+49	Bouley	4157	1
+50	The Breslin	4157	1
+51	Brushstroke	4157	1
+52	CafŽ Boulud	4157	1
+53	CafŽ China	4157	1
+54	Carbone	4157	1
+55	Casa Enr’que	4157	1
+56	Casa Mono	4157	1
+57	Caviar Russe	4157	1
+58	Danny Brown Wine Bar & Kitchen	4157	1
+59	Delaware and Hudson	4157	1
+60	Del Posto	4157	1
+61	Dovetail	4157	1
+62	15 East	4157	1
+63	Gotham Bar and Grill	4157	1
+64	Gramercy Tavern	4157	1
+65	Hakkasan	4157	1
+66	Jewel Bako	4157	1
+67	Juni	4157	1
+68	Junoon	4157	1
+69	Kajitsu	4157	1
+70	Kyo Ya	4157	1
+71	La Vara	4157	1
+72	Lincoln	4157	1
+73	Luksus at T¿rst	4157	1
+74	Meadowsweet	4157	1
+75	Minetta Tavern	4157	1
+76	The Modern	4157	1
+77	The Musket Room	4157	1
+78	M. Wells Steakhouse	4157	1
+79	NoMad	4157	1
+80	Peter Luger	4157	1
+81	Picholine	4157	1
+82	Piora	4157	1
+83	Pok Pok Ny	4157	1
+84	Public	4157	1
+85	The River CafŽ	4157	1
+86	Rosanjin	4157	1
+87	SeŠsonal	4157	1
+88	Spotted Pig	4157	1
+89	Sushi Azabu	4157	1
+90	Sushi of Gari	4157	1
+91	Take Root	4157	1
+92	Telepan	4157	1
+93	Tori Shin	4157	1
+94	Torrisi Italian Specialties	4157	1
+95	Tulsi	4157	1
+96	WallsŽ	4157	1
+97	Zabb Elee	4157	1
+98	ZZÕs Clam Bar	4157	1
+99	Aquavit	4157	2
+100	atera	4157	2
+101	Blanca	4157	2
+102	Daniel	4157	2
+103	Ichimura	4157	2
+104	Jungsik	4157	2
+105	Marea	4157	2
+106	Momofuku Ko	4157	2
+107	Soto	4157	2
+108	ChefÕs Table at Brooklyn Fare	4157	3
+109	Eleven Madison Park	4157	3
+110	Jean-Georges	4157	3
+111	Le Bernardin	4157	3
+112	Masa	4157	3
+113	Per Se	4157	3
+114	Alain Ducasse at The Dorchester	3468	3
+115	The Fat Duck	3468	3
+116	Gordon Ramsay Royal	3468	3
+117	Waterside Inn in Bray	3468	3
+118	LeÊChampignon Sauvage	NA	2
+119	l'Enclume in Cartmel	NA	2
+120	Gidleigh Park	NA	2
+121	Hand and Flowers	NA	2
+122	LeÊManoir aux Quat'Saisons	NA	2
+123	Michael Wignall at The Latymer	NA	2
+124	Midsummer House	3437	2
+125	RestaurantÊNathan Outlaw	NA	2
+126	RestaurantÊSat Bains	3484	2
+127	Whatley Manor (The Dining Room)	NA	2
+128	Helene Darroze	3468	2
+129	Dinner by Heston Blumenthal	3468	2
+130	LeÊGavroche	3468	2
+131	TheÊGreenhouse	3468	2
+132	Hibiscus	3468	2
+133	TheÊLedbury	3468	2
+134	Marcus	3468	2
+135	Sketch	3468	2
+136	TheÊSquare	3468	2
+137	Alyn Williams at the Westbury - Alyn WilliamsÊ@chefalynÊandÊ@Alyn_Williams	3468	1
+138	Amaya	3468	1
+139	Ametsa with Arzak Instruction	3468	1
+140	Angler at the South Place Hotel	3468	1
+141	Arbutus	3468	1
+142	l'Autre Pied	3468	1
+143	Barrafina (Soho)	3468	1
+144	Benares	3468	1
+145	Brasserie Chavot	3468	1
+146	Chez Bruce	3468	1
+147	City Social	3468	1
+148	TheÊClove Club	3468	1
+149	Dabbous	3468	1
+150	Fera at Claridge's	3468	1
+151	Galvin at Windows	3468	1
+152	Galvin La Chapelle	3468	1
+153	ClubÊGascon	3468	1
+154	TheÊGlass House	3468	1
+155	Gymkhana	3468	1
+156	Hakkasan Hanway Place	3468	1
+157	Hakkasan Mayfair	3468	1
+158	TheÊHarwood Arms	3468	1
+159	Hedone	3468	1
+160	HKK	3468	1
+161	StÊJohn Restaurant	3468	1
+162	Kai Mayfair	3468	1
+163	Kitchen Table at Bubbledogs	3468	1
+164	Kitchen W8	3468	1
+165	Launceston Place	3468	1
+166	Lima	3468	1
+167	Locanda Locatelli	3468	1
+168	Maze	3468	1
+169	Murano	3468	1
+170	Outlaw's at the Capital Hotel	3468	1
+171	Petrus	3468	1
+172	Pied ˆ Terre	3468	1
+173	Pollen Street Social	3468	1
+174	Quilon	3468	1
+175	L'Atelier de JoelÊRobuchon	3468	1
+176	TheÊRiver CafŽ	3468	1
+177	Seven Park Place (St James Hotel and Club)	3468	1
+178	Social Eating House	3468	1
+179	RestaurantÊStory	3468	1
+180	Tamarind	3468	1
+181	Texture	3468	1
+182	Trishna	3468	1
+183	LaÊTrompette	3468	1
+184	Umu	3468	1
+185	Wild Honey	3468	1
+186	Yauatcha	3468	1
+187	La Pergola	2012	3
+188	Il Pagliaccio	2012	2
+189	Oliver Glowig	2012	2
+190	Aroma	2012	1
+191	AllÕOro	2012	1
+192	Antonello Colonna	2012	1
+193	Acquolina Hostaria	2012	1
+194	Enotecca la Torre	2012	1
+195	Glass Hostaria	2012	1
+196	Giuda Ballerino	2012	1
+197	Il Convivio-Troiani	2012	1
+198	Imˆgo	2012	1
+199	La Terrazza dellÕEden	2012	1
+200	Metamorfosi	2012	1
+201	Pipero al Rex	2012	1
+202	Stazione di Posta	2012	1
+203	Il Falconiere	NA	1
+204	Enoteca Pinchiorri	NA	3
+205	Ora DÕAria	NA	1
+206	Il Palagio	NA	1
+207	La Bottega del Buon Caff	NA	1
+208	Winter Garden By Caino	NA	1
+209	Le Tre Lune	NA	1
+210	La Torre	NA	1
+211	Osteria di Passignano	NA	1
+212	Trattoria Toscana-Tenuta la Badiola	NA	1
+213	Bracali	NA	2
+214	Caino	NA	2
+215	Il Pellicano	NA	1
+216	AllÕAcquacotta	NA	1
+217	Silene	NA	1
+218	La Pineta	NA	1
+219	Bistrot	NA	1
+220	Lorenzo	NA	1
+221	La Magnolia	NA	1
+222	Butterfly	NA	1
+223	LÕImbuto	NA	1
+224	Piccolo Principe	NA	2
+225	Romano	NA	1
+226	Lunasia	NA	1
+227	Atman	NA	1
+228	Il Colombaio	NA	1
+229	La Bottega del 30	NA	1
+230	I Salotti	NA	1
+231	Arnolfo	NA	2
+232	Castello di Fighine	NA	1
+233	Costes	1705	1
+234	Tanti	1705	1
+235	Onyx	1705	1
+236	Borkonyha	1705	1
+237	Topaz	3358	1
+238	Aqua	3358	3
+239	Restaurant AOC	1195	2
+240	Noma	1195	2
+241	Restaurant Geranium	1195	2
+242	Den Rode Cottage	1195	1
+243	Formel B Restaurant	1195	1
+244	Gronbech & Churchill	1195	1
+245	Kadeau	1195	1
+246	Kiin Kiin	1195	1
+247	Kokkeriet	1195	1
+248	Restaurant Era Ora	1195	1
+249	Sollerod Kro	1195	1
+250	Marchal	1195	1
+251	Clou	1195	1
+252	Studio	1195	1
+253	Relae	1195	1
+254	Ciel Bleu	2471	2
+255	Bord'Eau	2471	2
+256	&samhoud places	2471	2
+257	Librijes Zusje	2471	2
+258	La Rive	2471	1
+259	Lastage	2471	1
+260	Restaurant Vermeer	2471	1
+261	Vinkeles	2471	1
+262	Yamazato	2471	1
+263	Le Restaurant	2471	1
+264	Bridges	2471	1
+265	RON Gastrobar	2471	1
+266	Sazanka	2471	1
+267	Sinne	2471	1
+268	Ron Blaauw	2471	1

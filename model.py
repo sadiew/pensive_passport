@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-import flickrapi, os
+#import flickrapi, os
 
 db = SQLAlchemy()
 
@@ -17,10 +17,10 @@ class City(db.Model):
     col_index = db.Column(db.Integer)
 
     def __repr__(self):
-        return "<City city_id=%s email=%s>" % (self.city_name, self.country_name)
+        return "<City city_id=%s country=%s>" % (self.name, self.country)
 
 
-class CityImages(db.Model):
+class CityImage(db.Model):
     """Image for potential destination city"""
     __tablename__ = "city_images"
 
@@ -52,27 +52,22 @@ class Airport(db.Model):
 
         return "<Airport airport_code=%s name=%s>" % (self.airport_code, self.name)
 
-    def get_flickr_photos(self):
-        api_key = os.environ['FLICKR_KEY']
-        api_secret = os.environ['FLICKR_SECRET']
-        flickr = flickrapi.FlickrAPI(api_key, api_secret, cache=True)
-        
-        photos = flickr.photos_search(
-                                    tags=self.city.name+','+self.city.country, 
-                                    lat=self.latitude, 
-                                    lon=self.longitude, 
-                                    radius='20',
-                                    sort='interestingness-desc', 
-                                    geo_context=2, 
-                                    per_page=1)[0]
+class Restaurant(db.Model):
+    """Michelin star restuarant"""
 
-        url_list = []
-        for photo in photos:
-            photo_sizes = flickr.photos_getSizes(photo_id=photo.attrib['id'])[0]
-            for i in range(len(photo_sizes)):
-                if photo_sizes[i].attrib['label'] == 'Original':
-                    url_list.append(photo_sizes[i].attrib['source'])
-        return url_list
+    __tablename__ = "restaurants"
+
+    restaurant_id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), nullable=False)
+    city_id = db.Column(db.Integer, db.ForeignKey('cities.city_id'))
+    stars = db.Column(db.Integer, nullable=False)
+
+    city = db.relationship("City",
+                           backref=db.backref("restaurants", order_by=restaurant_id))
+
+    def __repr__(self):
+
+        return "<Restaurant name=%s city_id=%s>" % (self.name, self.city_id)
 
 # Helper functions
 def connect_to_db(app):
