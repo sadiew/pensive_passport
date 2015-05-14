@@ -2,7 +2,7 @@
 
 {% block body %}
 <h2>PensivePassport has determined that you should travel to:</h2>
-<h3>XXXX</h3>
+<h3>{{ winner }}</h3>
 <table border="1">
     <thead>
         <tr>
@@ -27,8 +27,8 @@
         </tr>
         <tr>
             <td>Food</td>
-            <td>{{ trip1.food['restaurants'] }} rest. / {{ trip1.food['stars'] }} *</td>
-            <td>{{ trip2.food['restaurants'] }} rest. / {{ trip2.food['stars'] }} *</td>
+            <td>{{ trip1.food[0] }} rest. / {{ trip1.food[1] }} *</td>
+            <td>{{ trip2.food[0] }} rest. / {{ trip2.food[1] }} *</td>
         </tr>
         <tr>
             <td>Cost of Living</td>

@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 
 FLIGHT_URL = "https://www.googleapis.com/qpxExpress/v1/trips/search?key="
 WEATHER_URL = 'http://api.worldweatheronline.com/premium/v1/past-weather.ashx?key='
+DEFAULT_IMAGE_URL = 'http://www.posterparty.com/images/photography-paris-france-famous-sights-collage-poster-GB0404.jpg'
 
 db = SQLAlchemy()
 
@@ -26,6 +27,7 @@ class City(db.Model):
         return "<City city_id=%s country=%s>" % (self.name, self.country)
 
     def get_photo(self):
+        """Check to see if photo for city is cached in DB; if not, call Flickr API for new photo."""
         if self.city_images:
             image_url = self.city_images[0].image_url
             print "Image was in DB."
@@ -34,11 +36,10 @@ class City(db.Model):
             if flickr_images:
                 image = CityImage(city_id=self.city_id, image_url=flickr_images[0])
                 image_url = image.image_url
-                print "Got image from Flickr. Image url: ", flickr_images
                 db.session.add(image)
                 db.session.commit()
             else:
-                image_url = 'http://www.posterparty.com/images/photography-paris-france-famous-sights-collage-poster-GB0404.jpg'
+                image_url = DEFAULT_IMAGE_URL
         self.photo = image_url
 
 
@@ -101,13 +102,14 @@ class Trip(object):
         self.weather = {}
         self.flights = self.get_flight_data()
         self.cost_of_living = 46
-        self.food = {'restaurants': 25, 'stars': 2}
+        self.food = (0,0)
         self.wow_factor = 5
 
     def __repr__(self):
         return "<Trip origin=%s, destination=%s-%s>" % (self.origin, self.name, self.destination)
 
     def get_flight_data(self):
+        """Call Google Flights API and store flight info in flights attribute."""
         api_key = os.environ['QPX_KEY']
         url = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=" + api_key
         #url = FLIGHT_URL + api_key
@@ -165,6 +167,8 @@ class Trip(object):
         #         'from_data': (1, 12)}
 
     def get_weather_data(self, latitude, longitude):
+        """Call weather API and grab historical weather data for respective destination."""
+        
         api_key = os.environ['WEATHER_KEY']
         date_last_year = datetime.strftime(datetime.strptime(self.depart_date, '%Y-%m-%d') - timedelta(days=365), '%Y-%m-%d')
         response=requests.get(WEATHER_URL+'%s&q=%s,%s&cc=no&date=%s&format=json' 
@@ -176,8 +180,54 @@ class Trip(object):
         low_temp = python_dict['data']['weather'][0]['mintempF']
         return {'high': high_temp, 'low': low_temp}
 
-    def determine_destination(self, user_prefernces={}):
-        pass
+    def determine_destination(self, trip2, user_preferences):
+        """Determine ideal destination for user based on preferences."""
+        
+        #unpack user weightings
+        cost_weight, food_weight, weather_weight = user_preferences
+        cost_weight, food_weight, weather_weight = float(cost_weight), float(food_weight), float(weather_weight)
+        total_weight = cost_weight + food_weight + weather_weight
+        print "Total weight: %s, cost_weight: %s, food_weight: %s, weather_weight: %s" %(total_weight,cost_weight, food_weight, weather_weight)
+        
+        #flight cost delta --> neg is better
+        flight_delta = (self.flights['total_fare'] - trip2.flights['total_fare'])/self.flights['total_fare']
+
+        #cost of living delta --> neg is better
+        col_delta = (self.cost_of_living - trip2.cost_of_living)/self.cost_of_living
+
+        #weather delta --> neg is better
+        IDEAL_TEMP = 70
+        trip1_abs_delta = abs(int(self.weather['high']) - IDEAL_TEMP)
+        trip2_abs_delta = abs(int(trip2.weather['high']) - IDEAL_TEMP)
+        weather_delta = (trip1_abs_delta - trip2_abs_delta)/trip1_abs_delta
+
+        #food_delta --> pos is better
+        michelin_star_delta = (self.food[1] - trip2.food[1])/self.food[1]
+
+        #wow_factor_delta
+        wow_factor_delta = (self.wow_factor - trip2.wow_factor)/self.wow_factor
+
+        
+        final_score = ((food_weight/total_weight)*michelin_star_delta -
+                        (cost_weight*0.5/total_weight)*col_delta -
+                        (cost_weight*0.5/total_weight)*flight_delta - 
+                        (weather_weight/total_weight)*weather_delta)
+
+        #calculate "scores"
+        if final_score > 0 and wow_factor_delta >= 0:
+            return self.name
+        elif final_score < 0 and wow_factor_delta <= 0:
+            return trip2.name
+        elif final_score > 0 and wow_factor_delta < 0:
+            if abs(final_score) > abs(wow_factor_delta):
+                return self.name
+            else:
+                return trip2.name
+        elif final_score < 0 and wow_factor_delta > 0:
+            if abs(wow_factor_delta) > abs(final_score):
+                return self.name
+            else:
+                return trip2.name    
 
 # Helper functions
 def connect_to_db(app):

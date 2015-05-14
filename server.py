@@ -1,8 +1,7 @@
-from model import City, Airport, CityImage, Trip, connect_to_db, db
+from model import City, Airport, CityImage, Restaurant, Trip, connect_to_db, db
 from flask import Flask, request, render_template, redirect, jsonify, session, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
-#from trip import Trip
 import flickr
 
 
@@ -23,7 +22,7 @@ def show_destination_form():
 
 @app.route('/preference-form')
 def gather_perferences():
-    """Return results from homepage."""
+    """Gather user preferences."""
 
     departure_city = request.args.get('departure-city')
     destination_1 = request.args.get('destination-1').split(', ')
@@ -45,12 +44,13 @@ def gather_perferences():
 
 @app.route('/results', methods=['POST'])
 def show_results():
+    """Display destination decision to user along with underlying data."""
     depart_date = request.form['depart-date']
     return_date = request.form['return-date']
     origin = request.form['departure-airport']
-    user_preferences = {'food_weighting': request.form['food'],
-                        'cost_of_living_weighting': request.form['cost-of-living'],
-                        'weather_weighting': request.form['weather']}
+    user_preferences = [request.form['cost'],
+                        request.form['food'],
+                        request.form['weather']]
 
     airport_1 = Airport.query.filter_by(airport_code=request.form['airport-1']).first()
     airport_2 = Airport.query.filter_by(airport_code=request.form['airport-2']).first()
@@ -59,8 +59,8 @@ def show_results():
     trip2 = Trip(airport_2.city.name, origin, airport_2.airport_code, depart_date, return_date)
 
     #wow-factor
-    trip1.wow_factor = request.form['wow-factor-1']
-    trip2.wow_factor = request.form['wow-factor-2']
+    trip1.wow_factor = int(request.form['wow-factor-1'])
+    trip2.wow_factor = int(request.form['wow-factor-2'])
 
     #cost of living
     trip1.cost_of_living = airport_1.city.col_index
@@ -70,22 +70,23 @@ def show_results():
     trip1.weather = trip1.get_weather_data(airport_1.latitude, airport_1.longitude)      
     trip2.weather = trip2.get_weather_data(airport_2.latitude, airport_2.longitude)
 
-    # db.session.query(Restaurant.name, Restaurant.chef_name).filter_by('paris').one()   ==> (1000, 2000)
     #food
-    #restaurants_1 = airport_1.city.restaurants
-    trip1.food = {'restaurants':len(restaurants_1), 
-                  'stars': sum(restaurant.stars for restaurant in restaurants_1)}
-    #restaurants_2 = airport_2.city.restaurants
-    trip2.food = {'restaurants':len(restaurants_2), 
-                  'stars': sum(restaurant.stars for restaurant in restaurants_2)}
+    trip1.food = db.session.query(db.func.count(Restaurant.restaurant_id), 
+                                db.func.sum(Restaurant.stars)).filter_by(city_id=airport_1.city_id).one()   
+
+    trip2.food = db.session.query(db.func.count(Restaurant.restaurant_id), 
+                                db.func.sum(Restaurant.stars)).filter_by(city_id=airport_2.city_id).one()
+
+    winner = trip1.determine_destination(trip2, user_preferences)    
     
     return render_template("results.html",
                             trip1=trip1, 
                             trip2=trip2,
-                            user_preferences=user_preferences)
+                            winner=winner)
 
 @app.route('/city-list')
 def get_cities():
+    """Get list of cities for typeahead pre-population."""
     cities = db.session.query(City.name, City.country).all()
     cities_list = [city + ', ' + country for city, country in cities]
 
