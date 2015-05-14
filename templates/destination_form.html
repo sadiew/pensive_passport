@@ -8,21 +8,32 @@
         </div>   
         <form action="/preference-form">
             <div class="row">
-                <label>Departure City
+                <label>Departure City</label>
                     <input type="text" name="departure-city" class="form-group">
-                </label>
             </div>
             <div class="row"> 
                 <div class="col-xs-5 form-group">
-                <label>Destination #1
-                    <input type="text" name="destination-1" class="form-group">
-                </label>
+                    <div class="typeahead-container">
+                        <div class="typeahead-field">
+             
+                            <span class="typeahead-query">
+                                <label>Destination #1</label>
+                                    <input type="search" name="destination-1" class="form-group typeahead" autocomplete="off">
+                                
+                            </span>
+                 
+                        </div>
+                    </div>
+                
                 </div>
-                <div class="col-xs-2"><h2>vs.</h2></div>
+
+                <div class="col-xs-2">
+                    <h2>vs.</h2>
+                </div>
+
                 <div class="col-xs-5 form-group">
-                <label>Destination #2
-                    <input type="text" name="destination-2">
-                </label>
+                    <label>Destination #2</label>
+                        <input type="text" name="destination-2">
                 </div>
                 
                 <div class="col-xs-12">

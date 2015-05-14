@@ -1,6 +1,12 @@
 from flask_sqlalchemy import SQLAlchemy
 import flickr, psycopg2
 
+import json, requests, os
+from datetime import datetime, timedelta
+
+FLIGHT_URL = "https://www.googleapis.com/qpxExpress/v1/trips/search?key="
+WEATHER_URL = 'http://api.worldweatheronline.com/premium/v1/past-weather.ashx?key='
+
 db = SQLAlchemy()
 
 # Model definitions
@@ -85,14 +91,100 @@ class Restaurant(db.Model):
 
         return "<Restaurant name=%s city_id=%s>" % (self.name, self.city_id)
 
+class Trip(object):
+    def __init__(self, name, origin, destination, depart_date, return_date):
+        self.name = name
+        self.origin = origin
+        self.destination = destination
+        self.depart_date = depart_date
+        self.return_date = return_date
+        self.weather = {}
+        self.flights = self.get_flight_data()
+        self.cost_of_living = 46
+        self.food = {'restaurants': 25, 'stars': 2}
+        self.wow_factor = 5
+
+    def __repr__(self):
+        return "<Trip origin=%s, destination=%s-%s>" % (self.origin, self.name, self.destination)
+
+    def get_flight_data(self):
+        api_key = os.environ['QPX_KEY']
+        url = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=" + api_key
+        #url = FLIGHT_URL + api_key
+        headers = {'content-type': 'application/json'}
+
+        #round trip api call
+        params = {
+          "request": {
+            "slice": [
+              {
+                "origin": self.origin,
+                "destination": self.destination,
+                "date": self.depart_date,
+                "maxStops":2
+              },
+              {
+                "origin": self.destination,
+                "destination": self.origin,
+                "date": self.return_date,
+                "maxStops":2
+              }
+            ],
+            "passengers": {
+              "adultCount": 1
+            },
+            "solutions": 2,
+            "refundable": False
+          }
+        }
+
+        response = requests.post(url, data=json.dumps(params), headers=headers)
+        data = response.json()
+
+        first_option = data['trips']['tripOption'][0]
+
+        raw_fare = first_option['saleTotal'][3:]
+        total_fare = float(raw_fare)
+        
+        to_minutes = first_option['slice'][0]['duration']
+        to_hours = round(float(to_minutes)/60,2)
+        to_segments = first_option['slice'][0]['segment']
+        to_stops = len(to_segments) - 1
+        
+        from_minutes = first_option['slice'][1]['duration']
+        from_hours = round(float(from_minutes)/60,2)
+        from_segments = first_option['slice'][1]['segment']
+        from_stops = len(from_segments) - 1
+
+        return {'total_fare': total_fare, 
+                'to_data': (to_stops, to_hours), 
+                'from_data': (from_stops, from_hours)}
+
+        # return {'total_fare': 1000, 
+        #         'to_data': (1, 10), 
+        #         'from_data': (1, 12)}
+
+    def get_weather_data(self, latitude, longitude):
+        api_key = os.environ['WEATHER_KEY']
+        date_last_year = datetime.strftime(datetime.strptime(self.depart_date, '%Y-%m-%d') - timedelta(days=365), '%Y-%m-%d')
+        response=requests.get(WEATHER_URL+'%s&q=%s,%s&cc=no&date=%s&format=json' 
+                        %(api_key, latitude, longitude, date_last_year))
+
+        python_dict = json.loads(response.text)
+
+        high_temp = python_dict['data']['weather'][0]['maxtempF']
+        low_temp = python_dict['data']['weather'][0]['mintempF']
+        return {'high': high_temp, 'low': low_temp}
+
+    def determine_destination(self, user_prefernces={}):
+        pass
+
 # Helper functions
 def connect_to_db(app):
     """Connect the database to our Flask app."""
 
-    # Configure to use our SQLite database
-    #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sw_project.db'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/pensive_passport'
-    app.config['SQLALCHEMY_ECHO'] = True
+    #app.config['SQLALCHEMY_ECHO'] = True
     db.app = app
     db.init_app(app)
 
