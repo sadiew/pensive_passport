@@ -24,11 +24,11 @@ def show_destination_form():
 def gather_perferences():
     """Gather user preferences."""
 
-    departure_city = request.args.get('departure-city')
+    departure_city = request.args.get('departure-city').split(', ')
     destination_1 = request.args.get('destination-1').split(', ')
     destination_2 = request.args.get('destination-2').split(', ')
 
-    departure_city = City.query.filter_by(name=departure_city).first()
+    departure_city = City.query.filter_by(name=departure_city[0], country=departure_city[1]).first()
     city1 = City.query.filter_by(name=destination_1[0], country=destination_1[1]).first()
     city2 = City.query.filter_by(name=destination_2[0], country=destination_2[1]).first()
 
@@ -77,7 +77,7 @@ def show_results():
     trip2.food = db.session.query(db.func.count(Restaurant.restaurant_id), 
                                 db.func.sum(Restaurant.stars)).filter_by(city_id=airport_2.city_id).one()
 
-    winner = trip1.determine_destination(trip2, user_preferences)    
+    winner = trip1.determine_destination(trip2, user_preferences)   
     
     return render_template("results.html",
                             trip1=trip1, 
