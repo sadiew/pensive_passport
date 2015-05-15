@@ -32,7 +32,7 @@ class City(db.Model):
             image_url = self.city_images[0].image_url
             print "Image was in DB."
         else:
-            flickr_images = flickr.get_flickr_photos(self.airports[0])
+            flickr_images = flickr.get_flickr_photos(self)
             if flickr_images:
                 image = CityImage(city_id=self.city_id, image_url=flickr_images[0])
                 image_url = image.image_url

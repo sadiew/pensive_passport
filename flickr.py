@@ -1,15 +1,13 @@
 import flickrapi, os
 
 
-def get_flickr_photos(airport):
+def get_flickr_photos(city):
     api_key = os.environ['FLICKR_KEY']
     api_secret = os.environ['FLICKR_SECRET']
     flickr = flickrapi.FlickrAPI(api_key, api_secret, cache=True)
     
     photos = flickr.photos_search(
-                                tags=airport.city.name+','+airport.city.country, 
-                                #lat=airport.latitude, 
-                                #lon=airport.longitude, 
+                                tags=city.name+','+city.country,  
                                 radius='20',
                                 sort='interestingness-desc', 
                                 geo_context=2, 
