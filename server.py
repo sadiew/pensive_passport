@@ -23,7 +23,7 @@ def gather_perferences():
     destination_1 = request.args.get('destination-1').split(', ')
     destination_2 = request.args.get('destination-2').split(', ')
 
-    departure_city = City.query.filter_by(name=departure_city[0], country=departure_city[1]).first()
+    departure_city = City.query.filter_by(name=departure_city[0], state=departure_city[1]).first()
     city1 = City.query.filter_by(name=destination_1[0], country=destination_1[1]).first()
     city2 = City.query.filter_by(name=destination_2[0], country=destination_2[1]).first()
 
@@ -79,13 +79,21 @@ def show_results():
                             trip2=trip2,
                             winner=winner)
 
-@app.route('/city-list')
+@app.route('/intl-city-list')
 def get_cities():
     """Get list of cities for typeahead pre-population."""
     cities = db.session.query(City.name, City.country).all()
     cities_list = [city + ', ' + country for city, country in cities]
 
     return jsonify({'cities': cities_list})
+
+@app.route('/us-city-list')
+def get_us_cities():
+    """Get list of cities for typeahead pre-population."""
+    us_cities = db.session.query(City.name, City.state).filter_by(country="United States").all()
+    us_cities_list = [city + ', ' + state for city, state in us_cities]
+
+    return jsonify({'us_cities': us_cities_list})
 
 if __name__ == "__main__":
     app.debug = True

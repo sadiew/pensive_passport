@@ -1,13 +1,5 @@
-
-
 $( document ).ready(function() {
-    $.getJSON('/city-list', function(result) {
-
-    	$('#typeahead_departure_city').typeahead({
-	    	source: {
-	    		data: result.cities
-	    	}	    
-		});
+    $.getJSON('/intl-city-list', function(result) {
 
     	$('#typeahead_city1').typeahead({
 	    	source: {
@@ -21,6 +13,15 @@ $( document ).ready(function() {
 	    	}	    
 		});
 
+
+    });
+
+    $.getJSON('/us-city-list', function(result) {
+    	$('#typeahead_departure_city').typeahead({
+	    	source: {
+	    		data: result.us_cities
+	    	}	    
+		});
 
     });
     
