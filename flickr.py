@@ -8,13 +8,12 @@ def get_flickr_photos(airport):
     
     photos = flickr.photos_search(
                                 tags=airport.city.name+','+airport.city.country, 
-                                lat=airport.latitude, 
-                                lon=airport.longitude, 
+                                #lat=airport.latitude, 
+                                #lon=airport.longitude, 
                                 radius='20',
                                 sort='interestingness-desc', 
                                 geo_context=2, 
                                 per_page=2)[0]
-
 
     url_list = []
     for photo in photos:
