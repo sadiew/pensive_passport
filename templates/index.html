@@ -2,11 +2,79 @@
 
 {% block body %}
 <h1>PensivePassport</h1>
-<p>Having trouble deciding where to take your next trip?</p>
-<p>Let PensivePassport analyze the data and help you figure it out!</p>
 
-<form action='/destinaton-form'>
+<form action='' id="explore">
     <input type="submit" value="Explore">
 </form>
+
+<div class="container">
+        <div class="row spacer">
+        </div>   
+        <form action="/preference-form" id="destination-form">
+            <div class="row">
+                <div class="typeahead-container">
+                    <div class="typeahead-field" style="width:15%">
+         
+                        <span class="typeahead-query">
+                            <label>Departure City</label>
+                                <input id="typeahead_departure_city" type="search" name="departure-city" class="form-group" autocomplete="off">
+                        </span>
+             
+                    </div>
+                </div>
+            </div>
+            <div class="row"> 
+                <div class="col-xs-5 form-group">
+                    <div class="typeahead-container">
+                        <div class="typeahead-field" style="width:15%">
+             
+                            <span class="typeahead-query">
+                                <label>Destination #1</label>
+                                    <input id="typeahead_city1" type="search" name="destination-1" class="form-group" autocomplete="off">
+                            </span>
+                 
+                        </div>
+                    </div>
+                
+                </div>
+
+                <div class="col-xs-2">
+                    <h2>vs.</h2>
+                </div>
+
+                <div class="col-xs-5 form-group">
+                    <div class="typeahead-container">
+                        <div class="typeahead-field" style="width:15%">
+             
+                            <span class="typeahead-query">
+                                <label>Destination #2</label>
+                                    <input id="typeahead_city2" type="search" name="destination-2" class="form-group" autocomplete="off">
+                            </span>
+                 
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="col-xs-12">
+                    <input type="submit" value="Decide!">
+                </div>
+            </div>
+        </form>       
+    </div>
+<script >
+$(document).ready(function(){
+	$('#destination-form').hide();
+
+ });
+
+function showForm(evt) {
+  	evt.preventDefault();
+    $('#destination-form').show();
+    $('#explore').hide();
+  }
+
+$('#explore').on('submit', showForm);
+</script>
 
 {% endblock %}

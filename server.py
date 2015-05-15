@@ -15,11 +15,6 @@ def index():
     """Show index page."""
     return render_template("index.html")
 
-@app.route('/destinaton-form')
-def show_destination_form():
-	"""Display initial destination form."""
-	return render_template("destination_form.html")
-
 @app.route('/preference-form')
 def gather_perferences():
     """Gather user preferences."""
