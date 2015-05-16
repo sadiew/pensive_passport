@@ -8,73 +8,58 @@
 </form>
 
 <div class="container">
-        <div class="row spacer">
-        </div>   
+    <div class="row spacer">
+    </div>   
         <form action="/preference-form" id="destination-form">
-            <div class="row">
-                <div class="typeahead-container">
-                    <div class="typeahead-field" style="width:15%">
-         
-                        <span class="typeahead-query">
-                            <label>Departure City</label>
-                                <input id="typeahead_departure_city" type="search" name="departure-city" class="form-group" autocomplete="off">
-                        </span>
-             
-                    </div>
+        <div class="row">
+            <div class="typeahead-container">
+                <div class="typeahead-field" style="width:15%">        
+                    <span class="typeahead-query">
+                        <label>Departure City</label>
+                            <input id="typeahead-departure-city" type="search" name="departure-city" class="form-group" autocomplete="off" required>
+                    </span>             
                 </div>
             </div>
-            <div class="row"> 
-                <div class="col-xs-5 form-group">
-                    <div class="typeahead-container">
-                        <div class="typeahead-field" style="width:15%">
-             
-                            <span class="typeahead-query">
-                                <label>Destination #1</label>
-                                    <input id="typeahead_city1" type="search" name="destination-1" class="form-group" autocomplete="off">
-                            </span>
-                 
-                        </div>
-                    </div>
-                
-                </div>
-
-                <div class="col-xs-2">
-                    <h2>vs.</h2>
-                </div>
-
-                <div class="col-xs-5 form-group">
-                    <div class="typeahead-container">
-                        <div class="typeahead-field" style="width:15%">
-             
-                            <span class="typeahead-query">
-                                <label>Destination #2</label>
-                                    <input id="typeahead_city2" type="search" name="destination-2" class="form-group" autocomplete="off">
-                            </span>
-                 
-                        </div>
-                    </div>
-
-                </div>
-                
-                <div class="col-xs-12">
-                    <input type="submit" value="Decide!">
+        </div>
+        <div class="row"> 
+            <div class="typeahead-container">
+                <div class="typeahead-field" style="width:15%">         
+                    <span class="typeahead-query">
+                        <label>Destination #1</label>
+                            <input id="typeahead-city1" type="search" name="destination-1" class="form-group" autocomplete="off" required>
+                    </span>            
                 </div>
             </div>
-        </form>       
-    </div>
+            <div class="typeahead-container">
+                <div class="typeahead-field" style="width:15%">
+     
+                    <span class="typeahead-query">
+                        <label>Destination #2</label>
+                            <input id="typeahead-city2" type="search" name="destination-2" class="form-group" autocomplete="off" required>
+                    </span>            
+                </div>
+            </div>                
+            <div>
+                <input type="submit" value="Decide!">
+            </div>
+        </div>
+    </form>       
+</div>
+
+{% block extra_js %}
 <script >
-$(document).ready(function(){
-	$('#destination-form').hide();
+    $(document).ready(function(){
+        $('#destination-form').hide();
 
- });
+     });
 
-function showForm(evt) {
-  	evt.preventDefault();
-    $('#destination-form').show();
-    $('#explore').hide();
-  }
+    function showForm(evt) {
+        evt.preventDefault();
+        $('#destination-form').show();
+        $('#explore').hide();
+      }
 
-$('#explore').on('submit', showForm);
+    $('#explore').on('submit', showForm);
 </script>
-
+{% endblock %}
 {% endblock %}

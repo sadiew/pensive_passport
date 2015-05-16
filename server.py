@@ -2,7 +2,7 @@ from model import City, Airport, CityImage, Restaurant, Trip, connect_to_db, db
 from flask import Flask, request, render_template, redirect, jsonify, session, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
-import flickr
+import flickr, google_places
 
 
 app = Flask(__name__)
@@ -50,8 +50,8 @@ def show_results():
     airport_1 = Airport.query.filter_by(airport_code=request.form['airport-1']).first()
     airport_2 = Airport.query.filter_by(airport_code=request.form['airport-2']).first()
 
-    trip1 = Trip(airport_1.city.name, origin, airport_1.airport_code, depart_date, return_date)
-    trip2 = Trip(airport_2.city.name, origin, airport_2.airport_code, depart_date, return_date)
+    trip1 = Trip(airport_1.city.name, airport_1.city.country, origin, airport_1.airport_code, depart_date, return_date)
+    trip2 = Trip(airport_2.city.name, airport_2.city.country, origin, airport_2.airport_code, depart_date, return_date)
 
     #wow-factor
     trip1.wow_factor = int(request.form['wow-factor-1'])
@@ -82,7 +82,7 @@ def show_results():
 @app.route('/intl-city-list')
 def get_cities():
     """Get list of cities for typeahead pre-population."""
-    cities = db.session.query(City.name, City.country).all()
+    cities = db.session.query(City.name, City.country).filter(City.country!="United States").all()
     cities_list = [city + ', ' + country for city, country in cities]
 
     return jsonify({'cities': cities_list})
@@ -90,10 +90,35 @@ def get_cities():
 @app.route('/us-city-list')
 def get_us_cities():
     """Get list of cities for typeahead pre-population."""
-    us_cities = db.session.query(City.name, City.state).filter_by(country="United States").all()
+    us_cities = db.session.query(City.name, City.state).filter(City.country=="United States", City.state!="").all()
     us_cities_list = [city + ', ' + state for city, state in us_cities]
 
     return jsonify({'us_cities': us_cities_list})
+
+@app.route('/get-restaurants', methods=['POST'])
+def get_restaurants():
+    print "I GOT HERE."
+    city = request.form.get('city')
+    country = request.form.get('country')
+    restaurants = google_places.get_places(city, country, place_type ='restaurant')
+    return jsonify(restaurants)
+
+@app.route('/get-museums', methods=['POST'])
+def get_museums():
+    print "I GOT HERE."
+    city = request.form.get('city')
+    country = request.form.get('country')
+    museums = google_places.get_places(city, country, place_type ='museum')
+    return jsonify(museums)
+
+@app.route('/get-parks', methods=['POST'])
+def get_parks():
+    print "I GOT HERE."
+    city = request.form.get('city')
+    country = request.form.get('country')
+    parks = google_places.get_places(city, country, place_type ='park')
+    return jsonify(parks)
+
 
 if __name__ == "__main__":
     app.debug = True

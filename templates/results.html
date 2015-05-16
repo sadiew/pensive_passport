@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<h2>PensivePassport has determined that you should travel to:</h2>
-<h3>{{ winner }}</h3>
+<h3>And the winner is....</h3>
+<h1>{{ winner.name }}, {{winner.country}}</h1>
+<div></div>
+<div></div>
 <table border="1">
     <thead>
         <tr>
@@ -42,5 +44,56 @@
         </tr>    
     </tbody>
 </table>
+
+<p>
+<button id="get-places-button">Explore {{ winner.name }} </button>
+</p>
+<div class="row">
+    <div class="col-xs-4">
+        <div id="restaurant-info"></div>
+    </div>
+    <div class="col-xs-4">
+        <div id="museum-info"></div>
+    </div>
+    <div class="col-xs-4">
+        <div id="park-info"></div>
+    </div>
+</div>
+
+<script>
+    
+    function getPlaces(evt) {
+        $.post( "/get-restaurants",
+            { city: '{{winner.name}}', country: '{{winner.country}}'},
+            function (result) {
+                $('#restaurant-info').append("<h3>Restaurants</h3>");
+                for (item in result) {
+                    $('#restaurant-info').append("<p><a href=" + result[item] + ">" + item + "</a></p>");
+                    };
+                }
+          );
+        $.post( "/get-museums",
+            { city: '{{winner.name}}', country: '{{winner.country}}'},
+            function (result) { 
+            $('#museum-info').append("<h3>Museums</h3>");
+                for (item in result) {
+                    $('#museum-info').append("<p><a href=" + result[item] + ">" + item + "</a></p>");
+                    };
+                }
+          );
+        $.post( "/get-parks",
+            { city: '{{winner.name}}', country: '{{winner.country}}'},
+            function (result) { 
+            $('#park-info').append("<h3>Parks</h3>");
+                for (item in result) {
+                    $('#park-info').append("<p><a href=" + result[item] + ">" + item + "</a></p>");
+                    };
+                }
+          );
+
+    };
+
+    $('#get-places-button').on('click', getPlaces);
+</script>
 
 {% endblock %}

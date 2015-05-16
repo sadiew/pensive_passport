@@ -93,8 +93,9 @@ class Restaurant(db.Model):
         return "<Restaurant name=%s city_id=%s>" % (self.name, self.city_id)
 
 class Trip(object):
-    def __init__(self, name, origin, destination, depart_date, return_date):
+    def __init__(self, name, country, origin, destination, depart_date, return_date):
         self.name = name
+        self.country = country
         self.origin = origin
         self.destination = destination
         self.depart_date = depart_date
@@ -109,62 +110,62 @@ class Trip(object):
         return "<Trip origin=%s, destination=%s-%s>" % (self.origin, self.name, self.destination)
 
     def get_flight_data(self):
-        """Call Google Flights API and store flight info in flights attribute."""
-        api_key = os.environ['QPX_KEY']
-        url = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=" + api_key
-        #url = FLIGHT_URL + api_key
-        headers = {'content-type': 'application/json'}
+        # """Call Google Flights API and store flight info in flights attribute."""
+        # api_key = os.environ['QPX_KEY']
+        # url = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=" + api_key
+        # #url = FLIGHT_URL + api_key
+        # headers = {'content-type': 'application/json'}
 
-        #round trip api call
-        params = {
-          "request": {
-            "slice": [
-              {
-                "origin": self.origin,
-                "destination": self.destination,
-                "date": self.depart_date,
-                "maxStops":2
-              },
-              {
-                "origin": self.destination,
-                "destination": self.origin,
-                "date": self.return_date,
-                "maxStops":2
-              }
-            ],
-            "passengers": {
-              "adultCount": 1
-            },
-            "solutions": 2,
-            "refundable": False
-          }
-        }
+        # #round trip api call
+        # params = {
+        #   "request": {
+        #     "slice": [
+        #       {
+        #         "origin": self.origin,
+        #         "destination": self.destination,
+        #         "date": self.depart_date,
+        #         "maxStops":2
+        #       },
+        #       {
+        #         "origin": self.destination,
+        #         "destination": self.origin,
+        #         "date": self.return_date,
+        #         "maxStops":2
+        #       }
+        #     ],
+        #     "passengers": {
+        #       "adultCount": 1
+        #     },
+        #     "solutions": 2,
+        #     "refundable": False
+        #   }
+        # }
 
-        response = requests.post(url, data=json.dumps(params), headers=headers)
-        data = response.json()
+        # response = requests.post(url, data=json.dumps(params), headers=headers)
+        # data = response.json()
 
-        first_option = data['trips']['tripOption'][0]
+        # first_option = data['trips']['tripOption'][0]
 
-        raw_fare = first_option['saleTotal'][3:]
-        total_fare = float(raw_fare)
+        # raw_fare = first_option['saleTotal'][3:]
+        # total_fare = float(raw_fare)
         
-        to_minutes = first_option['slice'][0]['duration']
-        to_hours = round(float(to_minutes)/60,2)
-        to_segments = first_option['slice'][0]['segment']
-        to_stops = len(to_segments) - 1
+        # to_minutes = first_option['slice'][0]['duration']
+        # to_hours = round(float(to_minutes)/60,2)
+        # to_segments = first_option['slice'][0]['segment']
+        # to_stops = len(to_segments) - 1
         
-        from_minutes = first_option['slice'][1]['duration']
-        from_hours = round(float(from_minutes)/60,2)
-        from_segments = first_option['slice'][1]['segment']
-        from_stops = len(from_segments) - 1
+        # from_minutes = first_option['slice'][1]['duration']
+        # from_hours = round(float(from_minutes)/60,2)
+        # from_segments = first_option['slice'][1]['segment']
+        # from_stops = len(from_segments) - 1
 
-        return {'total_fare': total_fare, 
-                'to_data': (to_stops, to_hours), 
-                'from_data': (from_stops, from_hours)}
+        # return {'total_fare': total_fare, 
+        #         'to_data': (to_stops, to_hours), 
+        #         'from_data': (from_stops, from_hours)}
 
-        # return {'total_fare': 1000, 
-        #         'to_data': (1, 10), 
-        #         'from_data': (1, 12)}
+        return {'total_fare': 1000, 
+                'to_data': (1, 10), 
+                'from_data': (1, 12)}
 
     def get_weather_data(self, latitude, longitude):
         """Call weather API and grab historical weather data for respective destination."""
@@ -202,7 +203,10 @@ class Trip(object):
         weather_delta = (trip1_abs_delta - trip2_abs_delta)/trip1_abs_delta
 
         #food_delta --> pos is better
-        michelin_star_delta = (self.food[1] - trip2.food[1])/self.food[1]
+        try:
+            michelin_star_delta = (self.food[1] - trip2.food[1])/self.food[1]
+        except:
+            michelin_star_delta = 0
 
         #wow_factor_delta
         wow_factor_delta = (self.wow_factor - trip2.wow_factor)/self.wow_factor
@@ -215,19 +219,19 @@ class Trip(object):
 
         #calculate "scores"
         if final_score > 0 and wow_factor_delta >= 0:
-            return self.name
+            return self
         elif final_score < 0 and wow_factor_delta <= 0:
-            return trip2.name
+            return trip2
         elif final_score > 0 and wow_factor_delta < 0:
             if abs(final_score) > abs(wow_factor_delta):
-                return self.name
+                return self
             else:
-                return trip2.name
+                return trip2
         elif final_score < 0 and wow_factor_delta > 0:
             if abs(wow_factor_delta) > abs(final_score):
-                return self.name
+                return self
             else:
-                return trip2.name    
+                return trip2    
 
 # Helper functions
 def connect_to_db(app):

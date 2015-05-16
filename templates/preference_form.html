@@ -2,8 +2,8 @@
 
 {% block body %}
 
-    <img src="{{ city1.photo }}" style="width:300px">
-    <img src="{{ city2.photo }}" style="width:300px">
+    <img src="{{ city1.photo }}" style="width:400px">
+    <img src="{{ city2.photo }}" style="width:400px">
 
     <form action="/results" method="POST">
         <h4>Select your respective airports:</h4>
@@ -29,38 +29,44 @@
             </select>
         </label>
         <h4>Select your travel dates:</h4> 
-        <div class="row">
             <div class="form-group">
                 <label>Departure Date</label>
                 
                 <input name="depart-date" min="2015-06-01" max="2015-12-31" type="date">
             </div>
-             <div class="form-group">
+            <div class="form-group">
                 <label>Return Date</label>
                 <input name="return-date" min="2015-06-01" max="2015-12-31" type="date">
             </div>
-        </div>
-    	<h4>Indicate the importance of each of the following factors:</h4>
-    	<div class="form-group">
-    		<label>Cost</label>
-            <input type="range" min="0" max="5" step="1" name="cost">
-        	
-    	</div>
-    	<div class="form-group">
-    		<label>Quality of Food</label>
-            <input type="range" min="0" max="5" step="1" name="food">
-    	</div>
-    	   <div class="form-group">
-    		<label>Weather</label>
-            <input type="range" min="0" max="5" step="1" name="weather">
-    	</div>
-        <h4>Give a "wow factor" score to each destination:</h4>
-        <div class="form-group">
-            <label>{{city1.name}}</label>
-                <input type="range" min="1" max="10" step="1"  name="wow-factor-1">
-            <label>{{city2.name}}</label> 
-                <input type="range" min="1" max="10" step="1" name="wow-factor-2">                   
-            <input type="submit" value="Tell me where to go!">
+        <div class="row">
+            <div class="col-xs-6">
+                <h4>Indicate the importance of each factor:</h4>
+                <div class="form-group" style="width:300px">
+                    <label>Cost</label>
+                    <input type="range" min="0" max="5" step="1" name="cost">
+                    
+                </div>
+                <div class="form-group" style="width:300px">
+                    <label>Quality of Food</label>
+                    <input type="range" min="0" max="5" step="1" name="food">
+                </div>
+                   <div class="form-group" style="width:300px">
+                    <label>Weather</label>
+                    <input type="range" min="0" max="5" step="1" name="weather">
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <h4>Indicate a "wow factor" for each place:</h4>
+                <div class="form-group" style="width:300px">
+                    <label>{{city1.name}}</label>
+                        <input type="range" min="1" max="10" step="1"  name="wow-factor-1">
+                </div>
+                <div class="form-group" style="width:300px">
+                    <label>{{city2.name}}</label> 
+                        <input type="range" min="1" max="10" step="1" name="wow-factor-2">                   
+                    <input type="submit" value="Tell me where to go!">
+                </div>
+            </div>
         </div>
     </form>
 

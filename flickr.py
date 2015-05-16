@@ -6,8 +6,12 @@ def get_flickr_photos(city):
     api_secret = os.environ['FLICKR_SECRET']
     flickr = flickrapi.FlickrAPI(api_key, api_secret, cache=True)
     
+    print city.name+','+city.country
     photos = flickr.photos_search(
-                                tags=city.name+','+city.country,  
+                                tags=city.name+','+city.country,
+                                #text=city.name,
+                                tag_mode=all,
+                                has_geo='true',  
                                 radius='20',
                                 sort='interestingness-desc', 
                                 geo_context=2, 
