@@ -1,117 +1,117 @@
 "restaurant_id","name","city_id","stars"
-"1","All Spice","4326",1
-"2","Ame","4326",1
-"3","Auberge du Soleil","4326",1
-"4","Aziza","4326",1
-"5","Bouchon","4326",1
-"6","Boulevard","4326",1
-"7","Campton Place","4326",1
-"8","Chez TJ","4326",1
-"9","Commis","4326",1
-"10","Farmhouse Inn & Restaurant","4326",1
-"11","Gary Danko","4326",1
-"12","Keiko ˆ Nob Hill","4326",1
-"13","Kusakabe","4326",1
-"14","La Folie","4326",1
-"15","La Toque","4326",1
-"16","Luce","4326",1
-"17","Madera","4326",1
-"18","Madrona Manor","4326",1
-"19","Maruya","4326",1
-"20","Michael Mina","4326",1
-"21","Plumed Horse","4326",1
-"22","Solbar","4326",1
-"23","Sons & Daughters","4326",1
-"24","SPQR","4326",1
-"25","Spruce","4326",1
-"26","State Bird Provisions","4326",1
-"27","Terra","4326",1
-"28","Terrapin Creek","4326",1
-"29","Village Pub (The)","4326",1
-"30","Wakuriya","4326",1
-"31","Acquerello","4326",2
-"32","Atelier Crenn","4326",2
-"33","Baum_","4326",2
-"34","Coi","4326",2
-"35","Manresa","4326",2
-"36","Quince","4326",2
-"37","Benu","4326",3
-"38","French Laundry (The)","4326",3
-"39","Restaurant at Meadowood (The)","4326",3
-"40","Saison","4326",3
-"41","Ai Fiori","4157",1
-"42","Aldea","4157",1
-"43","Andanada","4157",1
-"44","Aureole","4157",1
-"45","Babbo","4157",1
-"46","B‰tard","4157",1
-"47","Betony","4157",1
-"48","Blue Hill","4157",1
-"49","Bouley","4157",1
-"50","The Breslin","4157",1
-"51","Brushstroke","4157",1
-"52","Caf_ Boulud","4157",1
-"53","Caf_ China","4157",1
-"54","Carbone","4157",1
-"55","Casa Enr’que","4157",1
-"56","Casa Mono","4157",1
-"57","Caviar Russe","4157",1
-"58","Danny Brown Wine Bar & Kitchen","4157",1
-"59","Delaware and Hudson","4157",1
-"60","Del Posto","4157",1
-"61","Dovetail","4157",1
-"62","15 East","4157",1
-"63","Gotham Bar and Grill","4157",1
-"64","Gramercy Tavern","4157",1
-"65","Hakkasan","4157",1
-"66","Jewel Bako","4157",1
-"67","Juni","4157",1
-"68","Junoon","4157",1
-"69","Kajitsu","4157",1
-"70","Kyo Ya","4157",1
-"71","La Vara","4157",1
-"72","Lincoln","4157",1
-"73","Luksus at T¿rst","4157",1
-"74","Meadowsweet","4157",1
-"75","Minetta Tavern","4157",1
-"76","The Modern","4157",1
-"77","The Musket Room","4157",1
-"78","M. Wells Steakhouse","4157",1
-"79","NoMad","4157",1
-"80","Peter Luger","4157",1
-"81","Picholine","4157",1
-"82","Piora","4157",1
-"83","Pok Pok Ny","4157",1
-"84","Public","4157",1
-"85","The River Caf_","4157",1
-"86","Rosanjin","4157",1
-"87","Se_sonal","4157",1
-"88","Spotted Pig","4157",1
-"89","Sushi Azabu","4157",1
-"90","Sushi of Gari","4157",1
-"91","Take Root","4157",1
-"92","Telepan","4157",1
-"93","Tori Shin","4157",1
-"94","Torrisi Italian Specialties","4157",1
-"95","Tulsi","4157",1
-"96","Walls_","4157",1
-"97","Zabb Elee","4157",1
-"98","ZZÕs Clam Bar","4157",1
-"99","Aquavit","4157",2
-"100","atera","4157",2
-"101","Blanca","4157",2
-"102","Daniel","4157",2
-"103","Ichimura","4157",2
-"104","Jungsik","4157",2
-"105","Marea","4157",2
-"106","Momofuku Ko","4157",2
-"107","Soto","4157",2
-"108","ChefÕs Table at Brooklyn Fare","4157",3
-"109","Eleven Madison Park","4157",3
-"110","Jean-Georges","4157",3
-"111","Le Bernardin","4157",3
-"112","Masa","4157",3
-"113","Per Se","4157",3
+"1","All Spice","4325",1
+"2","Ame","4325",1
+"3","Auberge du Soleil","4325",1
+"4","Aziza","4325",1
+"5","Bouchon","4325",1
+"6","Boulevard","4325",1
+"7","Campton Place","4325",1
+"8","Chez TJ","4325",1
+"9","Commis","4325",1
+"10","Farmhouse Inn & Restaurant","4325",1
+"11","Gary Danko","4325",1
+"12","Keiko ˆ Nob Hill","4325",1
+"13","Kusakabe","4325",1
+"14","La Folie","4325",1
+"15","La Toque","4325",1
+"16","Luce","4325",1
+"17","Madera","4325",1
+"18","Madrona Manor","4325",1
+"19","Maruya","4325",1
+"20","Michael Mina","4325",1
+"21","Plumed Horse","4325",1
+"22","Solbar","4325",1
+"23","Sons & Daughters","4325",1
+"24","SPQR","4325",1
+"25","Spruce","4325",1
+"26","State Bird Provisions","4325",1
+"27","Terra","4325",1
+"28","Terrapin Creek","4325",1
+"29","Village Pub (The)","4325",1
+"30","Wakuriya","4325",1
+"31","Acquerello","4325",2
+"32","Atelier Crenn","4325",2
+"33","Baum_","4325",2
+"34","Coi","4325",2
+"35","Manresa","4325",2
+"36","Quince","4325",2
+"37","Benu","4325",3
+"38","French Laundry (The)","4325",3
+"39","Restaurant at Meadowood (The)","4325",3
+"40","Saison","4325",3
+"41","Ai Fiori","4156",1
+"42","Aldea","4156",1
+"43","Andanada","4156",1
+"44","Aureole","4156",1
+"45","Babbo","4156",1
+"46","B‰tard","4156",1
+"47","Betony","4156",1
+"48","Blue Hill","4156",1
+"49","Bouley","4156",1
+"50","The Breslin","4156",1
+"51","Brushstroke","4156",1
+"52","Caf_ Boulud","4156",1
+"53","Caf_ China","4156",1
+"54","Carbone","4156",1
+"55","Casa Enr’que","4156",1
+"56","Casa Mono","4156",1
+"57","Caviar Russe","4156",1
+"58","Danny Brown Wine Bar & Kitchen","4156",1
+"59","Delaware and Hudson","4156",1
+"60","Del Posto","4156",1
+"61","Dovetail","4156",1
+"62","15 East","4156",1
+"63","Gotham Bar and Grill","4156",1
+"64","Gramercy Tavern","4156",1
+"65","Hakkasan","4156",1
+"66","Jewel Bako","4156",1
+"67","Juni","4156",1
+"68","Junoon","4156",1
+"69","Kajitsu","4156",1
+"70","Kyo Ya","4156",1
+"71","La Vara","4156",1
+"72","Lincoln","4156",1
+"73","Luksus at T¿rst","4156",1
+"74","Meadowsweet","4156",1
+"75","Minetta Tavern","4156",1
+"76","The Modern","4156",1
+"77","The Musket Room","4156",1
+"78","M. Wells Steakhouse","4156",1
+"79","NoMad","4156",1
+"80","Peter Luger","4156",1
+"81","Picholine","4156",1
+"82","Piora","4156",1
+"83","Pok Pok Ny","4156",1
+"84","Public","4156",1
+"85","The River Caf_","4156",1
+"86","Rosanjin","4156",1
+"87","Se_sonal","4156",1
+"88","Spotted Pig","4156",1
+"89","Sushi Azabu","4156",1
+"90","Sushi of Gari","4156",1
+"91","Take Root","4156",1
+"92","Telepan","4156",1
+"93","Tori Shin","4156",1
+"94","Torrisi Italian Specialties","4156",1
+"95","Tulsi","4156",1
+"96","Walls_","4156",1
+"97","Zabb Elee","4156",1
+"98","ZZÕs Clam Bar","4156",1
+"99","Aquavit","4156",2
+"100","atera","4156",2
+"101","Blanca","4156",2
+"102","Daniel","4156",2
+"103","Ichimura","4156",2
+"104","Jungsik","4156",2
+"105","Marea","4156",2
+"106","Momofuku Ko","4156",2
+"107","Soto","4156",2
+"108","ChefÕs Table at Brooklyn Fare","4156",3
+"109","Eleven Madison Park","4156",3
+"110","Jean-Georges","4156",3
+"111","Le Bernardin","4156",3
+"112","Masa","4156",3
+"113","Per Se","4156",3
 "114","Alain Ducasse at The Dorchester","3468",3
 "115","The Fat Duck","3468",3
 "116","Gordon Ramsay Royal","3468",3
@@ -193,122 +193,127 @@
 "192","Metamorfosi","2012",1
 "193","Pipero al Rex","2012",1
 "194","Stazione di Posta","2012",1
-"195","Costes","1705",1
-"196","Tanti","1705",1
-"197","Onyx","1705",1
-"198","Borkonyha","1705",1
-"199","Topaz","3358",1
-"200","Aqua","3358",3
-"201","Restaurant AOC","1195",2
-"202","Noma","1195",2
-"203","Restaurant Geranium","1195",2
-"204","Den Rode Cottage","1195",1
-"205","Formel B Restaurant","1195",1
-"206","Gronbech & Churchill","1195",1
-"207","Kadeau","1195",1
-"208","Kiin Kiin","1195",1
-"209","Kokkeriet","1195",1
-"210","Restaurant Era Ora","1195",1
-"211","Sollerod Kro","1195",1
-"212","Marchal","1195",1
-"213","Clou","1195",1
-"214","Studio","1195",1
-"215","Relae","1195",1
-"216","Ciel Bleu","2471",2
-"217","Bord'Eau","2471",2
-"218","&samhoud places","2471",2
-"219","Librijes Zusje","2471",2
-"220","La Rive","2471",1
-"221","Lastage","2471",1
-"222","Restaurant Vermeer","2471",1
-"223","Vinkeles","2471",1
-"224","Yamazato","2471",1
-"225","Le Restaurant","2471",1
-"226","Bridges","2471",1
-"227","RON Gastrobar","2471",1
-"228","Sazanka","2471",1
-"229","Sinne","2471",1
-"230","Ron Blaauw","2471",1
-"231","L'Arpège","1417",3
-"232","L'Astrance","1417",3
-"233","Le Pavilion Ledoyen","1417",3
-"234","Epicure (Hôtel Le Bristol Paris)","1417",3
-"235","Restaurant Guy Savoy","1417",3
-"236","L'Ambroisie","1417",3
-"237","Ledoyen","1417",3
-"238","Le Meurice","1417",3
-"239","Pierre Gagnaire","1417",3
-"240","Le Pré Catelan","1417",3
-"241","Carré des Feuillants","1417",2
-"242","L'Espadon - Hôtel Ritz","1417",2
-"243","Le Grand Véfour","1417",2
-"244","Le Relais Louis XIII","1417",2
-"245","Jean-François Piège - Hôtel Thoumieux","1417",2
-"246","L'Atelier","1417",2
-"247","Apicius","1417",2
-"248","Le Cinq - Hôtel George V","1417",2
-"249","Lasserre","1417",2
-"250","Senderens","1417",2
-"251","Taillevent","1417",2
-"252","La Table","1417",2
-"253","Bigarrade","1417",2
-"254","Michel Rostang","1417",2
-"255","Le Baudelaire","1417",1
-"256","La Dame de Pic","1417",1
-"257","Jin","1417",1
-"258","Kei","1417",1
-"259","Yam'Tcha","1417",1
-"260","Le Celadon","1417",1
-"261","Goust","1417",1
-"262","Pur'","1417",1
-"263","Benoit","1417",1
-"264","Le Sergent Recruteur","1417",1
-"265","Itineraires","1417",1
-"266","Sola","1417",1
-"267","La Tour d'Argent","1417",1
-"268","La Truffiere","1417",1
-"269","Helene Darroze","1417",1
-"270","Paris","1417",1
-"271","Le Restaurant","1417",1
-"272","Ze Kitchen Galerie","1417",1
-"273","Aida","1417",1
-"274","Auguste","1417",1
-"275","ES","1417",1
-"276","Les Fables de la Fontaine","1417",1
-"277","Gaya Rive Gauche par Pierre Gagnaire","1417",1
-"278","Il Vino d'Enrico Bernardo","1417",1
-"279","Le Jules Verne","1417",1
-"280","Le Violon d'Ingres","1417",1
-"281","Apicius","1417",1
-"282","L'Arome","1417",1
-"283","114, Faubourg","1417",1
-"284","Le Chiberta","1417",1
-"285","La Cuisine au Royal Monceau","1417",1
-"286","Le Diane","1417",1
-"287","Dominique Bouchet","1417",1
-"288","Il Carpaccio","1417",1
-"289","Laurent","1417",1
-"290","Okuda","1417",1
-"291","La Scene","1417",1
-"292","La Table du Lancaster","1417",1
-"293","Le 39V","1417",1
-"294","Jean","1417",1
-"295","Qui Plume La Lune","1417",1
-"296","Septime","1417",1
-"297","Au Trou Gascon","1417",1
-"298","Cobea","1417",1
-"299","Le Quinzieme - Cyril Lignac","1417",1
-"300","Antoine","1417",1
-"301","etc…","1417",1
-"302","La Grande Cascade","1417",1
-"303","Hiramatsu","1417",1
-"304","Le Pergolese","1417",1
-"305","Relais d'Auteuil","1417",1
-"306","St-James Paris","1417",1
-"307","Shang Palace","1417",1
-"308","Les Tablettes de Jean Louis Nomicos","1417",1
-"309","Agape","1417",1
-"310","La Fourchette du Printemps","1417",1
-"311","Frederic Simonin","1417",1
-"312","Jacques Faussat - La Braisiere","1417",1
-"313","Rech","1417",1
+"195","Enoteca Pinchiorri","1984",3
+"196","Ora DÕAria","1984",1
+"197","Il Palagio","1984",1
+"198","La Bottega del Buon Caffè","1984",1
+"199","Winter Garden By Caino","1984",1
+"200","Costes","1705",1
+"201","Tanti","1705",1
+"202","Onyx","1705",1
+"203","Borkonyha","1705",1
+"204","Topaz","3358",1
+"205","Aqua","3358",3
+"206","Restaurant AOC","1195",2
+"207","Noma","1195",2
+"208","Restaurant Geranium","1195",2
+"209","Den Rode Cottage","1195",1
+"210","Formel B Restaurant","1195",1
+"211","Gronbech & Churchill","1195",1
+"212","Kadeau","1195",1
+"213","Kiin Kiin","1195",1
+"214","Kokkeriet","1195",1
+"215","Restaurant Era Ora","1195",1
+"216","Sollerod Kro","1195",1
+"217","Marchal","1195",1
+"218","Clou","1195",1
+"219","Studio","1195",1
+"220","Relae","1195",1
+"221","Ciel Bleu","2471",2
+"222","Bord'Eau","2471",2
+"223","&samhoud places","2471",2
+"224","Librijes Zusje","2471",2
+"225","La Rive","2471",1
+"226","Lastage","2471",1
+"227","Restaurant Vermeer","2471",1
+"228","Vinkeles","2471",1
+"229","Yamazato","2471",1
+"230","Le Restaurant","2471",1
+"231","Bridges","2471",1
+"232","RON Gastrobar","2471",1
+"233","Sazanka","2471",1
+"234","Sinne","2471",1
+"235","Ron Blaauw","2471",1
+"236","L'Arpège","1417",3
+"237","L'Astrance","1417",3
+"238","Le Pavilion Ledoyen","1417",3
+"239","Epicure (Hôtel Le Bristol Paris)","1417",3
+"240","Restaurant Guy Savoy","1417",3
+"241","L'Ambroisie","1417",3
+"242","Ledoyen","1417",3
+"243","Le Meurice","1417",3
+"244","Pierre Gagnaire","1417",3
+"245","Le Pré Catelan","1417",3
+"246","Carré des Feuillants","1417",2
+"247","L'Espadon - Hôtel Ritz","1417",2
+"248","Le Grand Véfour","1417",2
+"249","Le Relais Louis XIII","1417",2
+"250","Jean-François Piège - Hôtel Thoumieux","1417",2
+"251","L'Atelier","1417",2
+"252","Apicius","1417",2
+"253","Le Cinq - Hôtel George V","1417",2
+"254","Lasserre","1417",2
+"255","Senderens","1417",2
+"256","Taillevent","1417",2
+"257","La Table","1417",2
+"258","Bigarrade","1417",2
+"259","Michel Rostang","1417",2
+"260","Le Baudelaire","1417",1
+"261","La Dame de Pic","1417",1
+"262","Jin","1417",1
+"263","Kei","1417",1
+"264","Yam'Tcha","1417",1
+"265","Le Celadon","1417",1
+"266","Goust","1417",1
+"267","Pur'","1417",1
+"268","Benoit","1417",1
+"269","Le Sergent Recruteur","1417",1
+"270","Itineraires","1417",1
+"271","Sola","1417",1
+"272","La Tour d'Argent","1417",1
+"273","La Truffiere","1417",1
+"274","Helene Darroze","1417",1
+"275","Paris","1417",1
+"276","Le Restaurant","1417",1
+"277","Ze Kitchen Galerie","1417",1
+"278","Aida","1417",1
+"279","Auguste","1417",1
+"280","ES","1417",1
+"281","Les Fables de la Fontaine","1417",1
+"282","Gaya Rive Gauche par Pierre Gagnaire","1417",1
+"283","Il Vino d'Enrico Bernardo","1417",1
+"284","Le Jules Verne","1417",1
+"285","Le Violon d'Ingres","1417",1
+"286","Apicius","1417",1
+"287","L'Arome","1417",1
+"288","114, Faubourg","1417",1
+"289","Le Chiberta","1417",1
+"290","La Cuisine au Royal Monceau","1417",1
+"291","Le Diane","1417",1
+"292","Dominique Bouchet","1417",1
+"293","Il Carpaccio","1417",1
+"294","Laurent","1417",1
+"295","Okuda","1417",1
+"296","La Scene","1417",1
+"297","La Table du Lancaster","1417",1
+"298","Le 39V","1417",1
+"299","Jean","1417",1
+"300","Qui Plume La Lune","1417",1
+"301","Septime","1417",1
+"302","Au Trou Gascon","1417",1
+"303","Cobea","1417",1
+"304","Le Quinzieme - Cyril Lignac","1417",1
+"305","Antoine","1417",1
+"306","etc…","1417",1
+"307","La Grande Cascade","1417",1
+"308","Hiramatsu","1417",1
+"309","Le Pergolese","1417",1
+"310","Relais d'Auteuil","1417",1
+"311","St-James Paris","1417",1
+"312","Shang Palace","1417",1
+"313","Les Tablettes de Jean Louis Nomicos","1417",1
+"314","Agape","1417",1
+"315","La Fourchette du Printemps","1417",1
+"316","Frederic Simonin","1417",1
+"317","Jacques Faussat - La Braisiere","1417",1
+"318","Rech","1417",1

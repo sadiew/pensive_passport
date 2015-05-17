@@ -3795,1020 +3795,1020 @@ airport_id	airport_code	name	city_id	latitude	longitude
 5968	VAK	Chevak Airport	3671	61.53	-165.58
 3804	CYS	Cheyenne Rgnl Jerry Olson Fld	3672	41.16	-104.81
 3747	MDW	Chicago Midway Intl	3673	41.79	-87.75
-3818	UGN	Waukegan Rgnl	3674	42.42	-87.87
+3818	UGN	Waukegan Rgnl	3673	42.42	-87.87
 3830	ORD	Chicago Ohare Intl	3673	41.98	-87.9
-7936	PWK	Chicago Executive	3675	42.11	-87.9
-3710	CIC	Chico Muni	3676	39.8	-121.86
-3828	CEF	Westover Arb Metropolitan	3677	42.19	-72.53
-3537	CDS	Childress Muni	3678	34.43	-100.29
-3490	NID	China Lake Naws	3679	35.69	-117.69
-7091	CHU	Chuathbaluk Airport	3680	61.58	-159.22
-3488	CVG	Cincinnati Northern Kentucky Intl	3681	39.05	-84.67
-3681	LUK	Cincinnati Muni Lunken Fld	3681	39.1	-84.42
-7236	IRC	Circle City Airport	3682	65.83	-144.08
-5730	CKB	Harrison Marion Regional Airport	3683	39.3	-80.23
-3418	Z84	Clear	3684	64.3	-149.12
-3486	CLE	Cleveland Hopkins Intl	3685	41.41	-81.85
-3834	CVS	Cannon Afb	3686	34.38	-103.32
-4223	CVN	Clovis Muni	3686	34.43	-103.08
-3623	COF	Patrick Afb	3687	28.23	-80.61
-4344	COD	Yellowstone Rgnl	3688	44.52	-109.02
-3854	CDB	Cold Bay	3689	55.21	-162.73
-7204	PML	Port Moller Airport	3690	56.01	-160.56
-3715	CLL	Easterwood Fld	3691	30.59	-96.36
-3561	CAE	Columbia Metropolitan	3692	33.94	-81.12
-3868	CBM	Columbus Afb	3693	33.64	-88.44
-3819	COS	City Of Colorado Springs Muni	3694	38.81	-104.7
-3719	COU	Columbia Rgnl	3695	38.82	-92.22
-3674	LCK	Rickenbacker Intl	3696	39.81	-82.93
-3759	CMH	Port Columbus Intl	3696	40	-82.89
-4255	CSG	Columbus Metropolitan Airport	3697	32.52	-84.94
-7511	OSU	Ohio State University Airport	3696	40.08	-83.07
-4273	GTR	Golden Triangle Regional Airport	3698	33.45	-88.59
-7888	CCR	Buchanan Field Airport	3699	37.99	-122.06
-3619	CXO	Lone Star Executive	3700	30.35	-95.41
-8117	CKF	Crisp County Cordele Airport	3701	31.99	-83.77
-3610	CDV	Merle K Mudhole Smith	3702	60.49	-145.48
-3744	CRP	Corpus Christi Intl	3703	27.77	-97.5
-7023	NGP	Corpus Christi NAS	3704	27.69	-97.29
-4338	CEZ	Cortez Muni	3705	37.3	-108.63
-3844	COT	Cotulla Lasalle Co	3706	28.46	-99.22
-5727	CEC	Del Norte County Airport	3707	41.78	-124.24
-3555	CEW	Bob Sikes	3708	30.78	-86.52
-3470	CTB	Cut Bank Muni	3709	48.61	-112.38
-3482	DHT	Dalhart Muni	3710	36.02	-102.55
-3502	DAL	Dallas Love Fld	3711	32.85	-96.85
-8188	RBD	Dallas Executive Airport	3712	32.68	-96.87
-7935	TKI	Collin County Regional Airport at Mc Kinney	3713	33.18	-96.59
-3670	DFW	Dallas Fort Worth Intl	3714	32.9	-97.04
-8299	DNN	Dalton Municipal Airport	3715	34.72	-84.87
-8286	DXR	Danbury Municipal Airport	3716	41.37	-73.48
-8313	UDG	Darlington County Jetport	3717	34.45	-79.89
-7651	DWA	Yolo County Airport	3718	38.58	-121.86
-3627	DAY	James M Cox Dayton Intl	3719	39.9	-84.22
-3763	FFO	Wright Patterson Afb	3720	39.83	-84.05
-7776	MGY	Dayton-Wright Brothers Airport	3720	39.59	-84.22
-3950	DAB	Daytona Beach Intl	3721	29.18	-81.06
-3620	SCC	Deadhorse	3722	70.19	-148.47
-4042	DEC	Decatur	3723	39.83	-88.87
-6755	DEE	Deering Airport	3724	66.07	-162.77
-3483	DLF	Laughlin Afb	3725	29.36	-100.78
-3792	DRT	Del Rio Intl	3726	29.37	-100.93
-7716	4U9	Dell Flight Strip	3727	44.74	-112.72
-7581	DTA	Delta Municipal Airport	3728	39.38	-112.51
-3475	BIG	Allen Aaf	3729	63.99	-145.72
-3751	DEN	Denver Intl	3730	39.86	-104.67
-4222	APA	Centennial	3731	39.57	-104.85
-3786	DRI	Beauregard Rgnl	3732	30.83	-93.34
-3729	DSM	Des Moines Intl	3733	41.53	-93.66
-7514	DTS	Destin	3734	30.4	-86.47
-3645	DTW	Detroit Metro Wayne Co	3735	42.21	-83.35
-3737	DET	Coleman A Young Muni	3735	42.41	-83.01
-3809	YIP	Willow Run	3736	42.24	-83.53
-7063	DVL	Devils Lake Regional Airport	3737	48.11	-98.91
-7064	DIK	Dickinson Theodore Roosevelt Regional Airport	3738	46.8	-102.8
-3460	DLG	Dillingham	3739	59.04	-158.51
-3583	HDH	Dillingham	3740	21.58	-158.2
-5733	DDC	Dodge City Regional Airport	3741	37.76	-99.97
-3739	DHN	Dothan Rgnl	3742	31.32	-85.45
-3474	DUG	Bisbee Douglas Intl	3743	31.47	-109.6
-7588	DGL	Douglas Municipal Airport	3743	31.34	-109.51
-8273	DQH	Douglas Municipal Airport	3743	31.48	-82.86
-3487	DOV	Dover Afb	3744	39.13	-75.47
-5734	DUJ	DuBois Regional Airport	3745	41.18	-78.9
-4388	DBQ	Dubuque Rgnl	3746	42.4	-90.71
-3598	DLH	Duluth Intl	3747	46.84	-92.19
-7880	DUC	Halliburton Field Airport	3748	34.47	-97.96
-3713	DRO	Durango La Plata Co	3749	37.15	-107.75
-7106	EAA	Eagle Airport	3750	64.78	-141.15
-7019	EGV	Eagle River	3751	45.93	-89.27
-8343	57C	East Troy Municipal Airport	3752	42.8	-88.37
-7870	ESN	Easton-Newnam Field Airport	3753	38.8	-76.07
-7083	ESD	Orcas Island Airport	3754	48.71	-122.91
-5735	EAU	Chippewa Valley Regional Airport	3755	44.87	-91.48
-3512	EDW	Edwards Afb	3756	34.91	-117.88
-7093	EEK	Eek Airport	3757	60.21	-162.04
-7154	EGX	Egegik Airport	3758	58.19	-157.38
-7693	SEE	Gillespie	3759	32.83	-116.97
-3758	NJK	El Centro Naf	3760	32.83	-115.67
-3696	ELD	South Arkansas Rgnl At Goodwin Fld	3761	33.22	-92.81
-3559	ELP	El Paso Intl	3762	31.81	-106.38
-3595	BIF	Biggs Aaf	3763	31.85	-106.38
-7136	ELV	Elfin Cove Seaplane Base	3764	58.2	-136.35
-7184	ELI	Elim Airport	3765	64.61	-162.27
-3526	ECG	Elizabeth City Cgas Rgnl	3766	36.26	-76.17
-3779	EKN	Elkins Randolph Co Jennings Randolph	3767	38.89	-79.86
-5736	EKO	Elko Regional Airport	3768	40.82	-115.79
-3946	ELM	Elmira Corning Rgnl	3769	42.16	-76.89
-7016	LYU	Ely Municipal	3770	47.82	-91.83
-7075	ELY	Ely Airport	3771	39.3	-114.84
-7087	EMK	Emmonak Airport	3772	62.79	-164.49
-3510	END	Vance Afb	3773	36.34	-97.92
-4276	ERI	Erie Intl Tom Ridge Fld	3774	42.08	-80.18
-6800	ESC	Delta County Airport	3775	45.72	-87.09
-4099	EUG	Mahlon Sweet Fld	3776	44.12	-123.21
-4018	EVV	Evansville Regional	3777	38.04	-87.53
-3822	PAE	Snohomish Co	3778	47.91	-122.28
-4257	FNL	Fort Collins Loveland Muni	3779	40.45	-105.01
-3649	EIL	Eielson Afb	3780	64.67	-147.1
-3832	FAI	Fairbanks Intl	3781	64.82	-147.86
-3449	SUU	Travis Afb	3782	38.26	-121.93
-3741	NFL	Fallon Nas	3783	39.42	-118.7
-3725	FMH	Otis Angb	3784	41.66	-70.52
-7202	KFP	False Pass Airport	3785	54.85	-163.41
-4292	FAR	Hector International Airport	3786	46.92	-96.82
-3743	FMN	Four Corners Rgnl	3787	36.74	-108.23
-3481	POB	Pope Afb	3788	35.17	-79.01
-3760	FYV	Drake Fld	3789	36.01	-94.17
-5738	FAY	Fayetteville Regional Grannis Field	3790	34.99	-78.88
-7778	FDY	Findlay Airport	3791	41.01	-83.67
-8290	FIT	Fitchburg Municipal Airport	3792	42.55	-71.76
-8063	FZG	Fitzgerald Municipal Airport	3793	31.68	-83.27
-8182	XFL	Flagler County Airport	3794	29.28	-81.12
-4261	FLG	Flagstaff Pulliam Airport	3795	35.14	-111.67
-4089	FNT	Bishop International	3796	42.97	-83.74
-3879	FLO	Florence Rgnl	3797	34.19	-79.72
-3539	LSF	Lawson Aaf	3798	32.34	-84.99
-3503	FCS	Butts Aaf	3799	38.68	-104.76
-3841	FOD	Fort Dodge Rgnl	3800	42.55	-94.19
-3556	GTB	Wheeler Sack Aaf	3801	44.06	-75.72
-3518	FAF	Felker Aaf	3802	37.13	-76.61
-3677	HLR	Hood Aaf	3803	31.14	-97.71
-3601	FHU	Sierra Vista Muni Libby Aaf	3804	31.59	-110.34
-3435	BYS	Bicycle Lake Aaf	3805	35.28	-116.63
-3706	FTK	Godman Aaf	3806	37.91	-85.97
-3464	FXE	Fort Lauderdale Executive	3807	26.2	-80.17
-3533	FLL	Fort Lauderdale Hollywood Intl	3808	26.07	-80.15
-3800	FLV	Sherman Aaf	3809	39.37	-94.91
-3665	TBN	Waynesville Rgnl Arpt At Forney Fld	3810	37.74	-92.14
-3530	GRF	Gray Aaf	3811	47.08	-122.58
-3489	FME	Tipton	3812	39.09	-76.76
-3549	FMY	Page Fld	3813	26.59	-81.86
-3793	RSW	Southwest Florida Intl	3814	26.54	-81.76
-3433	OAR	Marina Muni	3815	36.68	-121.76
-8274	FRP	St Lucie County International Airport	3816	27.5	-80.37
-3648	POE	Polk Aaf	3817	31.04	-93.19
-3422	FRN	Bryant Ahp	3818	61.27	-149.65
-3541	FRI	Marshall Aaf	3819	39.06	-96.76
-3761	FSI	Henry Post Aaf	3820	34.65	-98.4
-3437	FSM	Fort Smith Rgnl	3821	35.34	-94.37
-4224	FST	Fort Stockton Pecos Co	3822	30.92	-102.92
-3412	K03	Wainwright As	3823	70.61	-159.86
-3882	FBK	Ladd Aaf	3823	64.84	-147.61
-4041	FWA	Fort Wayne	3824	40.98	-85.2
-4383	SMD	Smith Fld	3825	41.14	-85.15
-3723	FTW	Fort Worth Meacham Intl	3826	32.82	-97.36
-8342	AFW	Fort Worth Alliance Airport	3827	32.99	-97.32
-3420	FYU	Fort Yukon	3828	66.57	-145.25
-4058	FKL	Franklin	3829	41.38	-79.86
-7058	WFK	Northern Aroostook Regional Airport	3830	47.29	-68.31
-3687	FAT	Fresno Yosemite Intl	3831	36.78	-119.72
-7082	FRD	Friday Harbor Airport	3832	48.52	-123.02
-6481	FUL	Fullerton Municipal Airport	3833	33.52	-117.58
-7140	FNR	Funter Bay Seaplane Base	3834	58.25	-134.9
-8295	GAD	Northeast Alabama Regional Airport	3835	33.97	-86.09
-3472	GNV	Gainesville Rgnl	3836	29.69	-82.27
-8308	GVL	Lee Gilmer Memorial Airport	3837	34.27	-83.83
-8143	GAI	Montgomery County Airpark	3838	39.1	-77.1
-3764	GAL	Edward G Pitka Sr	3839	64.74	-156.94
-4340	GUP	Gallup Muni	3840	35.51	-108.79
-3581	GLS	Scholes Intl At Galveston	3841	29.27	-94.86
-6715	GAM	Gambell Airport	3842	63.77	-171.73
-3497	GCK	Garden City Rgnl	3843	37.93	-100.72
-6956	GYY	Gary Chicago International Airport	3844	41.62	-87.41
-7011	GED	Sussex Co	3845	38.69	-75.36
-7983	E63	Gila Bend Municipal Airport	3846	32.96	-112.67
-4296	GCC	Gillette-Campbell County Airport	3847	44.35	-105.54
-5739	GGW	Wokal Field Glasgow International Airport	3848	48.21	-106.61
-7070	GDV	Dawson Community Airport	3849	47.14	-104.81
-3640	GSB	Seymour Johnson Afb	3850	35.34	-77.96
-7185	GLV	Golovin Airport	3851	64.55	-163.01
-4343	GLD	Renner Fld	3852	39.37	-101.7
-4219	GCN	Grand Canyon National Park Airport	3853	35.95	-112.15
-3442	GFK	Grand Forks Intl	3854	47.95	-97.18
-5740	GRI	Central Nebraska Regional Airport	3855	40.97	-98.31
-4063	GJT	Grand Junction Regional	3856	39.12	-108.53
-6849	GRM	Grand Marais Cook County Airport	3857	47.84	-90.38
-3685	GRR	Gerald R Ford Intl	3858	42.88	-85.52
-7017	GPZ	Grand Rapids Itasca County	3859	47.21	-93.51
-3605	MWH	Grant Co Intl	3860	47.21	-119.32
-3439	GNT	Grants Milan Muni	3861	35.17	-107.9
-7013	GBN	Great Bend Municipal	3862	38.34	-98.86
-3880	GTF	Great Falls Intl	3863	47.48	-111.37
-3653	GRB	Austin Straubel Intl	3864	44.49	-88.13
-4008	GSO	Piedmont Triad	3865	36.1	-79.94
-3735	GVT	Majors	3866	33.07	-96.07
-4034	GSP	Greenville-Spartanburg International	3867	34.9	-82.22
-6130	GLH	Mid Delta Regional Airport	3868	33.48	-90.99
-6959	PGV	Pitt-Greenville Airport	3869	35.64	-77.39
-3588	GWO	Greenwood Leflore	3870	33.49	-90.08
-4270	GON	Groton New London	3871	41.33	-72.05
-4038	GPT	Gulfport-Biloxi	3872	30.41	-89.07
-3837	GKN	Gulkana	3873	62.15	-145.46
-7051	GUC	Gunnison - Crested Butte	3874	38.53	-106.93
-5960	GST	Gustavus Airport	3875	58.43	-135.71
-6739	HGR	Hagerstown Regional Richard A Henson Field	3876	39.71	-77.73
-6494	SUN	Friedman Mem	3877	43.5	-114.3
-5963	HNS	Haines Airport	3878	59.24	-135.52
-3866	LFI	Langley Afb	3879	37.08	-76.36
-3445	HNM	Hana	3880	20.8	-156.01
-5732	CMX	Houghton County Memorial Airport	3881	47.17	-88.49
-3560	HRL	Valley Intl	3882	26.23	-97.65
-3542	MDT	Harrisburg Intl	3883	40.19	-76.76
-8284	CXY	Capital City Airport	3884	40.22	-76.85
-3461	HRO	Boone Co	3885	36.26	-93.15
-3780	HFD	Hartford Brainard	3886	41.74	-72.65
-5759	PIB	Hattiesburg Laurel Regional Airport	3887	31.47	-89.34
-3604	HVR	Havre City Co	3888	48.54	-109.76
-3508	HHR	Jack Northrop Fld Hawthorne Muni	3889	33.92	-118.34
-4339	HDN	Yampa Valley	3890	40.48	-107.22
-7014	HYS	Hays Regional Airport	3891	38.84	-99.27
-7242	HKB	Healy River Airport	3892	63.87	-148.97
-3504	HLN	Helena Rgnl	3893	46.61	-111.98
-7999	HSH	Henderson Executive Airport	3894	35.97	-115.13
-3650	HIB	Chisholm Hibbing	3895	47.39	-92.84
-3547	HKY	Hickory Rgnl	3896	35.74	-81.39
-8122	HIO	Portland Hillsboro	3897	45.54	-122.95
-3415	ITO	Hilo Intl	3898	19.72	-155.05
-7002	HHH	Hilton Head	3899	32.22	-80.75
-8314	HXD	Hilton Head Airport	3900	32.22	-80.7
-3850	HBR	Hobart Muni	3901	34.99	-99.05
-3749	HOB	Lea Co Rgnl	3902	32.69	-103.22
-7721	BIV	Tulip City Airport	3903	42.74	-86.11
-3468	HWO	North Perry	3904	26	-80.24
-5962	HCR	Holy Cross Airport	3905	62.19	-159.78
-3664	HOM	Homer	3906	59.65	-151.48
-3798	HST	Homestead Arb	3907	25.49	-80.38
-8042	HDO	Hondo Municipal Airport	3908	29.36	-99.18
-3728	HNL	Honolulu Intl	3909	21.32	-157.92
-7142	HNH	Hoonah Airport	3910	58.1	-135.41
-6716	HPB	Hooper Bay Airport	3911	61.52	-166.15
-3519	HOP	Campbell Aaf	3912	36.67	-87.5
-5741	HOT	Memorial Field	3913	34.48	-93.1
-3668	HTL	Roscommon Co	3914	44.36	-84.67
-3509	HUL	Houlton Intl	3915	46.12	-67.79
-3550	IAH	George Bush Intcntl Houston	3916	29.98	-95.34
-3566	HOU	William P Hobby	3916	29.65	-95.28
-3572	EFD	Ellington Fld	3916	29.61	-95.16
-4065	DWH	David Wayne Hooks Field	3917	30.06	-95.55
-4226	IWS	West Houston	3917	29.82	-95.67
-7107	HUS	Hughes Airport	3918	66.04	-154.26
-3441	SVN	Hunter Aaf	3919	32.01	-81.15
-5742	HTS	Tri State Milton J Ferguson Field	3920	38.37	-82.56
-4113	HSV	Huntsville International Airport-Carl T Jones Field	3921	34.64	-86.78
-3491	HON	Huron Rgnl	3922	44.39	-98.23
-7108	HSL	Huslia Airport	3923	65.7	-156.35
-7035	HUT	Hutchinson Municipal Airport	3924	38.07	-97.86
-7148	HYG	Hydaburg Seaplane Base	3925	55.21	-132.83
-4100	IDA	Idaho Falls Rgnl	3926	43.51	-112.07
-6763	IGG	Igiugig Airport	3927	59.32	-155.9
-3429	ILI	Iliamna	3928	59.75	-154.91
-3689	IPL	Imperial Co	3929	32.83	-115.58
-3419	UTO	Indian Mountain Lrrs	3930	65.99	-153.7
-3496	INS	Creech Afb	3931	36.59	-115.67
-3585	IND	Indianapolis Intl	3932	39.72	-86.29
-3535	INL	Falls Intl	3933	48.57	-93.4
-7120	IYK	Inyokern Airport	3934	35.66	-117.83
-6837	IMT	Ford Airport	3935	45.82	-88.11
-3857	ISP	Long Island Mac Arthur	3936	40.8	-73.1
-3947	ITH	Ithaca Tompkins Rgnl	3937	42.49	-76.46
-4027	JAC	Jackson Hole Airport	3938	43.61	-110.74
-3580	JAN	Jackson Evers Intl	3939	32.31	-90.08
-3704	MKL	Mc Kellar Sipes Rgnl	3940	35.6	-88.92
-3479	LRF	Little Rock Afb	3941	34.92	-92.15
-3703	NIP	Jacksonville Nas	3941	30.24	-81.68
-3712	JAX	Jacksonville Intl	3942	30.49	-81.69
-7496	NZC	Cecil Field	3941	30.22	-81.88
-4386	OAJ	Albert J Ellis	3943	34.83	-77.61
-5745	JMS	Jamestown Regional Airport	3944	46.93	-98.68
-7059	JHW	Chautauqua County-Jamestown	3945	42.15	-79.26
-7840	JVL	Southern Wisconsin Regional Airport	3946	42.62	-89.04
-6447	JEF	Jefferson City Memorial Airport	3947	38.59	-92.16
-4169	JST	John Murtha Johnstown-Cambria County Airport	3948	40.32	-78.83
-3591	JBR	Jonesboro Muni	3949	35.83	-90.65
-4354	JLN	Joplin Rgnl	3950	37.15	-94.5
-3492	JNU	Juneau Intl	3951	58.35	-134.58
-3456	OGG	Kahului	3952	20.9	-156.43
-7991	AIZ	Lee C Fine Memorial Airport	3953	38.1	-92.55
-7143	AFE	Kake Airport	3954	56.96	-133.91
-4039	AZO	Kalamazoo	3955	42.23	-85.55
-4127	FCA	Glacier Park Intl	3956	48.31	-114.26
-5964	KLG	Kalskag Airport	3957	61.54	-160.34
-6717	KAL	Kaltag Airport	3958	64.32	-158.74
-3545	MUE	Waimea Kohala	3959	20	-155.67
-3835	NGF	Kaneohe Bay Mcaf	3960	21.45	-157.77
-3639	IKK	Greater Kankakee	3961	41.07	-87.85
-3458	MCI	Kansas City Intl	3962	39.3	-94.71
-4293	MKC	Downtown	3962	39.13	-94.6
-7161	KYK	Karuluk Airport	3963	57.57	-154.45
-7094	KUK	Kasigluk Airport	3964	60.87	-162.52
-6129	EAR	Kearney Municipal Airport	3965	40.73	-99.01
-7938	KLS	Kelso Longview	3966	46.12	-122.9
-3628	ENA	Kenai Muni	3967	60.57	-151.25
-3869	TMB	Kendall Tamiami Executive	3968	25.65	-80.43
-7009	ERV	Kerrville Municipal Airport	3969	29.98	-99.09
-3808	KTN	Ketchikan Intl	3970	55.36	-131.71
-3746	NQX	Key West Nas	3971	24.58	-81.69
-3875	EYW	Key West Intl	3972	24.56	-81.76
-7179	IAN	Bob Baker Memorial Airport	3973	66.98	-160.44
-7523	FFA	First Flight Airport	3974	36.02	-75.67
-3775	GRK	Robert Gray Aaf	3975	31.07	-97.83
-6765	KVC	King Cove Airport	3976	55.12	-162.27
-3794	AKN	King Salmon	3977	58.68	-156.65
-6132	IGM	Kingman Airport	3978	35.26	-113.94
-3540	NQI	Kingsville Nas	3979	27.51	-97.81
-7522	ISO	Kinston Regional Jetport	3980	35.33	-77.61
-7201	KPN	Kipnuk Airport	3981	59.93	-164.03
-5744	IRK	Kirksville Regional Airport	3982	40.09	-92.54
-3529	IKR	Albuquerque Intl Sunport	3983	35.04	-106.61
-6993	ISM	Kissimmee Gateway Airport	3984	28.29	-81.44
-6719	KVL	Kivalina Airport	3985	67.74	-164.56
-5750	LMT	Klamath Falls Airport	3986	42.16	-121.73
-7205	KLW	Klawock Airport	3987	55.58	-133.08
-7244	AQC	Klawock Seaplane Base	3987	55.55	-133.1
-3586	SZL	Whiteman Afb	3988	38.73	-93.55
-3676	TYS	Mc Ghee Tyson	3989	35.81	-83.99
-8296	DKX	Knoxville Downtown Island Airport	3990	35.96	-83.87
-7180	OBU	Kobuk Airport	3991	66.91	-156.9
-3531	ADQ	Kodiak	3992	57.75	-152.49
-7101	KGK	Koliganek Airport	3993	59.73	-157.26
-3514	KOA	Kona Intl At Keahole	3994	19.74	-156.05
-7213	KKH	Kongiganak Airport	3995	59.96	-162.88
-7207	KOT	Kotlik Airport	3996	63.03	-163.53
-3693	OTZ	Ralph Wien Mem	3997	66.88	-162.6
-7190	KKA	Koyuk Alfred Adams Airport	3998	64.94	-161.15
-7208	KYU	Koyukuk Airport	3999	64.88	-157.73
-7089	UUK	Ugnu-Kuparuk Airport	4000	70.33	-149.6
-7095	KWT	Kwethluk Airport	4001	60.79	-161.44
-7096	KWK	Kwigillingok Airport	4002	59.88	-163.17
-4227	LHX	La Junta Muni	4003	38.05	-103.51
-4044	LSE	LaCrosse Municipal	4004	43.88	-91.26
-3493	LFT	Lafayette Rgnl	4005	30.21	-91.99
-8302	LGC	LaGrange-Callaway Airport	4006	33.01	-85.07
-3796	JHM	Kapalua	4007	20.96	-156.67
-3513	LCH	Lake Charles Rgnl	4008	30.13	-93.22
-6994	LCQ	Lake City Municipal Airport	4009	30.18	-82.58
-7586	HII	Lake Havasu City Airport	4010	34.57	-114.36
-7245	MHM	Minchumina Airport	4011	63.89	-152.3
-3812	NEL	Lakehurst Naes	4012	40.03	-74.35
-7732	LAL	Lakeland Linder Regional Airport	4013	27.99	-82.02
-4342	LAA	Lamar Muni	4014	38.07	-102.69
-3851	LNY	Lanai	4015	20.79	-156.95
-5751	LNS	Lancaster Airport	4016	40.12	-76.3
-3544	LAN	Capital City	4017	42.78	-84.59
-5746	LAR	Laramie Regional Airport	4018	41.31	-105.67
-3691	LRD	Laredo Intl	4019	27.54	-99.46
-7162	KLN	Larsen Bay Airport	4020	57.53	-153.98
-4228	LRU	Las Cruces Intl	4021	32.29	-106.92
-3814	LSV	Nellis Afb	4022	36.24	-115.03
-3877	LAS	Mc Carran Intl	4023	36.08	-115.15
-4225	LVS	Las Vegas Muni	4022	35.65	-105.14
-5747	LBE	Arnold Palmer Regional Airport	4024	40.28	-79.4
-8288	LWM	Lawrence Municipal Airport	4025	42.72	-71.12
-8366	LWC	Lawrence Municipal	4025	39.01	-95.22
-7847	LZU	Gwinnett County Airport-Briscoe Field	4026	33.98	-83.96
-4256	LAW	Lawton-Fort Sill Regional Airport	4027	34.57	-98.42
-5749	LEB	Lebanon Municipal Airport	4028	43.63	-72.3
-3516	NLC	Lemoore Nas	4029	36.33	-119.95
-6958	LWB	Greenbrier Valley Airport	4030	37.86	-80.4
-3945	LWS	Lewiston Nez Perce Co	4031	46.37	-117.02
-5752	LWT	Lewistown Municipal Airport	4032	47.05	-109.47
-4017	LEX	Blue Grass	4033	38.04	-84.61
-4341	LBL	Liberal Muni	4034	37.04	-100.96
-3602	LIH	Lihue	4035	21.98	-159.34
-3543	LNK	Lincoln	4036	40.85	-96.76
-3660	LIT	Adams Fld	4037	34.73	-92.22
-7629	LVK	Livermore Municipal	4038	37.41	-121.49
-7717	LVM	Mission Field Airport	4039	45.7	-110.45
-7886	LOT	Lewis University Airport	4040	41.61	-88.08
-6998	LGU	Logan-Cache	4041	41.79	-111.85
-3810	VBG	Vandenberg Afb	4042	34.74	-120.58
-3582	LGB	Long Beach	4043	33.82	-118.15
-3465	GGG	East Texas Rgnl	4044	32.38	-94.71
-6136	LPS	Lopez Island Airport	4045	48.48	-122.94
-7584	LAM	Los Alamos Airport	4046	35.88	-106.27
-3484	LAX	Los Angeles Intl	4047	33.94	-118.41
-8220	WHP	Whiteman Airport	4048	34.26	-118.41
-3471	ARA	Acadiana Rgnl	4049	30.04	-91.88
-3600	LOU	Bowman Fld	4050	38.23	-85.66
-4014	SDF	Louisville International Airport	4051	38.17	-85.74
-3829	LBB	Lubbock Preston Smith Intl	4052	33.66	-101.82
-3651	LFK	Angelina Co	4053	31.23	-94.75
-5753	LYH	Lynchburg Regional Preston Glenn Field	4054	37.33	-79.2
-3883	MMV	Mc Minnville Muni	4055	45.19	-123.14
-3618	MNM	Menominee Marinette Twin Co	4056	45.13	-87.64
-3754	MCN	Middle Georgia Rgnl	4057	32.69	-83.65
-3884	WRB	Robins Afb	4058	32.64	-83.59
-8221	MAE	Madera Municipal Airport	4059	36.99	-120.11
-3459	MSN	Dane Co Rgnl Truax Fld	4060	43.14	-89.34
-7000	MLD	Malad City	4061	42.17	-112.29
-7081	MMH	Mammoth Yosemite Airport	4062	37.62	-118.84
-4011	MHT	Manchester Regional Airport	4063	42.93	-71.44
-4050	MHK	Manhattan Reigonal	4064	39.14	-96.67
-7054	MBL	Manistee County-Blacker Airport	4065	44.27	-86.25
-7246	MLY	Manley Hot Springs Airport	4066	65	-150.64
-7103	KMO	Manokotak Airport	4067	58.99	-159.05
-4254	MFD	Mansfield Lahm Regional	4068	40.82	-82.52
-7069	MTH	Florida Keys Marathon Airport	4069	24.73	-81.05
-3666	MGE	Dobbins Arb	4070	33.92	-84.52
-6825	MWA	Williamson Country Regional Airport	4071	37.75	-89.01
-7630	MPI	MariposaYosemite	4072	37.3	-120.02
-6838	MQT	Sawyer International Airport	4073	46.35	-87.4
-7097	MLL	Marshall Don Hunter Sr. Airport	4074	61.86	-162.03
-8285	GHG	Marshfield Municipal Airport	4075	42.1	-70.67
-7415	MRB	Eastern WV Regional Airport	4076	39.24	-77.59
-3507	HRT	Hurlburt Fld	4077	30.43	-86.69
-3638	BAB	Beale Afb	4078	39.14	-121.44
-6500	MCW	Mason City Municipal	4079	43.22	-93.41
-3546	MSS	Massena Intl Richards Fld	4080	44.94	-74.85
-3629	MLC	Mc Alester Rgnl	4081	34.88	-95.78
-3826	MFE	Mc Allen Miller Intl	4082	26.18	-98.24
-7079	MYL	McCall Municipal Airport	4083	44.89	-116.1
-7068	MCK	McCook Regional Airport	4084	40.21	-100.59
-5965	MCG	McGrath Airport	4085	62.95	-155.61
-8050	MCL	McKinley National Park Airport	4086	63.73	-148.91
-4101	MFR	Rogue Valley Intl Medford	4087	42.37	-122.87
-6720	MYU	Mekoryuk Airport	4088	60.37	-166.27
-3671	MLB	Melbourne Intl	4089	28.1	-80.65
-3473	MEM	Memphis Intl	4090	35.04	-89.98
-3683	MER	Castle	4091	37.38	-120.57
-7122	MCE	Merced Municipal Airport	4092	37.28	-120.51
-3847	NMM	Meridian Nas	4093	32.55	-88.56
-4335	MEI	Key Field	4094	32.33	-88.75
-6505	AZA	Phoenix-Mesa Gateway	4095	33.31	-111.66
-7146	MTM	Metlakatla Seaplane Base	4096	55.13	-131.58
-3576	MIA	Miami Intl	4097	25.79	-80.29
-3721	TNT	Dade Collier Training And Transition	4098	25.86	-80.9
-3791	OPF	Opa Locka	4098	25.91	-80.28
-6844	MGC	Michigan City Municipal Airport	4099	41.7	-86.82
-3652	MAF	Midland Intl	4100	31.94	-102.2
-5755	MLS	Frank Wiley Field	4101	46.43	-105.89
-8303	MLJ	Baldwin County Airport	4102	33.15	-83.24
-3778	NQA	Millington Rgnl Jetport	4103	35.36	-89.87
-3551	MLT	Millinocket Muni	4104	45.65	-68.69
-3679	MIV	Millville Muni	4105	39.37	-75.07
-3444	NSE	Whiting Fld Nas North	4106	30.72	-87.02
-3717	MKE	General Mitchell Intl	4107	42.95	-87.9
-7839	MWC	Lawrence J Timmerman Airport	4108	43.11	-88.03
-3766	MWL	Mineral Wells	4109	32.78	-98.06
-3858	MSP	Minneapolis St Paul Intl	4110	44.88	-93.22
-7020	ARV	Lakeland	4111	45.93	-89.73
-3498	MOT	Minot Intl	4112	48.26	-101.28
-3637	MIB	Minot Afb	4113	48.42	-101.36
-3505	NKX	Miramar Mcas	4114	32.87	-117.14
-4216	MSO	Missoula Intl	4115	46.92	-114.09
-7074	CNY	Canyonlands Field	4116	38.76	-109.75
-3452	BFM	Mobile Downtown	4117	30.63	-88.07
-3782	MOB	Mobile Rgnl	4118	30.69	-88.24
-3816	MOD	Modesto City Co Harry Sham	4119	37.63	-120.95
-7026	MHV	Mojave	4120	35.06	-118.15
-4072	MLI	Quad City Intl	4121	41.45	-90.51
-3705	MKK	Molokai	4122	21.15	-157.1
-5989	LUP	Kalaupapa Airport	4123	21.21	-156.97
-3732	MLU	Monroe Rgnl	4124	32.51	-92.04
-3948	MRY	Monterey Peninsula	4125	36.59	-121.84
-3500	MXF	Maxwell Afb	4126	32.38	-86.37
-8283	MGJ	Orange County Airport	4126	41.51	-74.26
-4115	MGM	Montgomery Regional Airport 	4127	32.3	-86.39
-3606	MPV	Edward F Knapp State	4128	44.2	-72.56
-6880	MTJ	Montrose Regional Airport	4129	38.51	-107.89
-8319	MRN	Foothills Regional Airport	4130	35.82	-81.61
-4284	MGW	Morgantown Muni Walter L Bill Hart Fld	4131	39.64	-79.92
-7657	MMU	Morristown Municipal Airport	4132	40.8	-74.41
-8187	MVL	Morrisville Stowe State Airport	4133	44.53	-72.61
-3742	MTC	Selfridge Angb	4134	42.61	-82.84
-3823	MUO	Mountain Home Afb	4135	43.04	-115.87
-3783	NUQ	Moffett Federal Afld	4136	37.42	-122.05
-5966	MOU	Mountain Village Airport	4137	62.1	-163.68
-3795	MUI	Muir Aaf	4138	40.43	-76.57
-7769	F70	French Valley Airport	4139	33.57	-117.13
-5756	MSL	Northwest Alabama Regional Airport	4140	34.75	-87.61
-5754	MKG	Muskegon County Airport	4141	43.17	-86.24
-3534	MKO	Davis Fld	4142	35.66	-95.37
-3515	MYR	Myrtle Beach Intl	4143	33.68	-78.93
-3517	ACK	Nantucket Mem	4144	41.25	-70.06
-7658	APC	Napa County Airport	4145	38.21	-122.28
-4012	APF	Naples Muni	4146	26.15	-81.78
-8287	ASH	Boire Field Airport	4147	42.78	-71.51
-3690	BNA	Nashville Intl	4148	36.12	-86.68
-7203	NLG	Nelson Lagoon	4149	56.01	-161.16
-5737	EWB	New Bedford Regional Airport	4150	41.68	-70.96
-3730	EWN	Craven Co Rgnl	4151	35.07	-77.04
-4006	HVN	Tweed-New Haven Airport	4152	41.26	-72.89
-3768	NBG	New Orleans Nas Jrb	4153	29.83	-90.03
-3861	MSY	Louis Armstrong New Orleans Intl	4154	29.99	-90.26
-8312	PHD	Harry Clever Field Airport	4155	40.47	-81.42
-6764	KNW	New Stuyahok Airport	4156	59.45	-157.33
-3697	LGA	La Guardia	4157	40.78	-73.87
-3797	JFK	John F Kennedy Intl	4157	40.64	-73.78
-3993	JRB	Wall Street Heliport	4157	40.7	-74.01
-4032	TSS	East 34th Street Heliport	4157	40.74	-73.97
-7729	JRA	West 30th St. Heliport	4157	40.75	-74.01
-7767	IDL	Idlewild Intl	4157	40.64	-73.78
-3494	EWR	Newark Liberty Intl	4158	40.69	-74.17
-3661	SWF	Stewart Intl	4159	41.5	-74.1
-7086	ONP	Newport Municipal Airport	4160	44.58	-124.06
-3633	PHF	Newport News Williamsburg Intl	4161	37.13	-76.49
-3630	IAG	Niagara Falls Intl	4162	43.11	-78.95
-8199	NME	Nightmute Airport	4163	60.47	-164.7
-7214	NIB	Nikolai Airport	4164	63.01	-154.38
-7196	IKO	Nikolski Air Station	4165	52.94	-168.85
-6725	WTK	Noatak Airport	4166	67.57	-162.97
-3788	OLS	Nogales Intl	4167	31.42	-110.85
-3615	OME	Nome	4168	64.51	-165.45
-7210	NNL	Nondalton Airport	4169	59.97	-154.85
-7181	ORV	Robert Curtis Memorial Airport	4170	66.82	-161.02
-3611	ORF	Norfolk Intl	4171	36.89	-76.2
-3827	NGU	Norfolk Ns	4172	36.94	-76.29
-5757	OTH	Southwest Oregon Regional Airport	4173	43.42	-124.25
-8278	OQU	Quonset State Airport	4174	41.6	-71.41
-5748	LBF	North Platte Regional Airport Lee Bird Field	4175	41.13	-100.68
-3568	ORT	Northway	4176	62.96	-141.93
-8280	OWD	Norwood Memorial Airport	4177	42.19	-71.17
-7092	NUI	Nuiqsut Airport	4178	70.21	-151.01
-7111	NUL	Nulato Airport	4179	64.73	-158.07
-7015	SUS	Spirit Of St Louis	4180	38.66	-90.65
-3453	OAK	Metropolitan Oakland Intl	4181	37.72	-122.22
-7889	OCA	Key Largo	4182	25.33	-80.27
-3870	NTU	Oceana Nas	4183	36.82	-76.03
-3614	HIF	Hill Afb	4184	41.12	-111.97
-3724	OGS	Ogdensburg Intl	4185	44.68	-75.47
-3525	TIK	Tinker Afb	4186	35.41	-97.39
-3863	OKC	Will Rogers World	4187	35.39	-97.6
-7869	JCI	New Century AirCenter Airport	4188	38.83	-94.89
-7817	OLV	Olive Branch Muni	4189	34.88	-89.78
-7650	OLM	Olympia Regional Airpor	4190	46.97	-122.9
-3454	OMA	Eppley Afld	4191	41.3	-95.89
-3836	OFF	Offutt Afb	4192	41.12	-95.91
-3734	ONT	Ontario Intl	4193	34.06	-117.6
-3532	UPP	Upolu	4194	20.27	-155.86
-3416	ORL	Executive	4195	28.55	-81.33
-3878	MCO	Orlando Intl	4196	28.43	-81.31
-8118	OMN	Ormond Beach municipal Airport	4197	29.18	-81.06
-3432	OSC	Oscoda Wurtsmith	4198	44.45	-83.39
-6909	OSH	Wittman Regional Airport	4199	44.02	-88.55
-5758	OWB	Owensboro Daviess County Airport	4200	37.74	-87.17
-8289	OXC	Waterbury-Oxford Airport	4201	41.48	-73.14
-6961	OXR	Oxnard - Ventura County	4202	34.2	-119.21
-4231	OZA	Ozona Muni	4203	30.74	-101.2
-4117	PAH	Barkley Regional Airport	4204	37.06	-88.77
-4124	PGA	Page Municipal Airport	4205	36.93	-111.45
-3522	PSX	Palacios Muni	4206	28.73	-96.25
-3839	PSP	Palm Springs Intl	4207	33.83	-116.51
-7646	TRM	Jacqueline Cochran Regional Airport	4208	33.63	-116.16
-7648	UDD	Bermuda Dunes Airport	4208	33.75	-116.27
-3756	PMD	Palmdale Rgnl Usaf Plt 42	4209	34.63	-118.08
-3569	PAQ	Palmer Muni	4210	61.59	-149.09
-3669	PAM	Tyndall Afb	4211	30.07	-85.58
-4073	PFN	Panama City Bay Co Intl	4212	30.21	-85.68
-7669	ECP	Panama City-NW Florida Bea.	4211	30.34	-85.8
-4114	PKB	Mid-Ohio Valley Regional Airport	4213	39.35	-81.44
-6133	PSC	Tri Cities Airport	4214	46.26	-119.12
-3521	NHK	Patuxent River Nas	4215	38.29	-76.41
-5762	PLN	Pellston Regional Airport of Emmet County Airport	4216	45.57	-84.8
-3647	PMB	Pembina Muni	4217	48.94	-97.24
-6883	PDT	Eastern Oregon Regional Airport	4218	45.7	-118.84
-3563	NPA	Pensacola Nas	4219	30.35	-87.32
-3564	PNS	Pensacola Rgnl	4220	30.47	-87.19
-4046	PIA	Peoria Regional	4221	40.66	-89.69
-7157	KPV	Perryville Airport	4222	55.91	-159.16
-3871	GUS	Grissom Arb	4223	40.65	-86.15
-4147	PSG	Petersburg James A. Johnson	4224	56.8	-132.95
-3750	PNE	Northeast Philadelphia	4225	40.08	-75.01
-3752	PHL	Philadelphia Intl	4226	39.87	-75.24
-3462	PHX	Phoenix Sky Harbor Intl	4227	33.43	-112.01
-3506	LUF	Luke Afb	4228	33.53	-112.38
-8030	DVT	Deer Valley Municipal Airport	4229	33.41	112.46
-5761	PIR	Pierre Regional Airport	4230	44.38	-100.29
-8320	PBX	Pike County Airport - Hatcher Field	4231	37.56	-82.57
-7158	PIP	Pilot Point Airport	4232	57.59	-157.57
-3443	PBF	Grider Fld	4233	34.17	-91.94
-8305	PIM	Harris County Airport	4234	32.84	-84.88
-7495	AGC	Allegheny County Airport	4235	40.35	-79.93
-3570	PIT	Pittsburgh Intl	4236	40.49	-80.23
-3771	PBG	Plattsburgh Intl	4237	44.65	-73.47
-8277	PYM	Plymouth Municipal Airport	4238	41.91	-70.73
-5760	PIH	Pocatello Regional Airport	4239	42.91	-112.6
-3428	PBV	St George	4240	56.58	-169.66
-6721	PHO	Point Hope Airport	4241	68.35	-166.8
-3414	PIZ	Point Lay Lrrs	4242	69.73	-163.01
-3511	NTD	Point Mugu Nas	4243	34.12	-119.12
-6864	1RL	Point Roberts Airpark	4244	48.98	-123.08
-8379	PMP	Pompano Beach Airpark	4245	26.25	-80.11
-3440	PNC	Ponca City Rgnl	4246	36.73	-97.1
-3455	NOW	Port Angeles Cgas	4247	48.14	-123.41
-5731	CLM	William R Fairchild International Airport	4248	48.12	-123.5
-6736	KPC	Port Clarence Coast Guard Station	4249	65.25	-166.86
-7775	PCW	Erie-Ottawa Regional Airport	4250	41.52	-82.87
-6766	PTH	Port Heiden Airport	4251	56.96	-158.63
-3557	PHN	St Clair Co Intl	4252	42.91	-82.53
-3430	PTU	Platinum	4253	59.01	-161.82
-4066	S46	Port O\\'Connor Airfield	4254	28.43	-96.44
-3720	PDX	Portland Intl	4255	45.59	-122.6
-3862	PWM	Portland Intl Jetport	4256	43.65	-70.31
-5763	PSM	Pease International Tradeport	4257	43.08	-70.82
-3446	PRC	Ernest A Love Fld	4258	34.65	-112.42
-3528	PQI	Northern Maine Rgnl At Presque Isle	4259	46.69	-68.04
-7583	PUC	Carbon County Regional-Buck Davis Field	4260	39.61	-110.75
-3762	PNM	Princeton Muni	4261	45.56	-93.61
-8052	PPC	Prospect Creek Airport	4262	66.81	-150.64
-3641	PVD	Theodore Francis Green State	4263	41.73	-71.42
-6456	PVC	Provincetown Muni	4264	42.07	-70.22
-7579	PVU	Provo Municipal Airport	4265	40.22	-111.72
-3527	PUB	Pueblo Mem	4266	38.29	-104.5
-3944	PUW	Pullman-Moscow Rgnl	4267	46.74	-117.11
-7056	PGD	Charlotte County-Punta Gorda Airport	4268	26.92	-81.99
-3833	NYG	Quantico Mcaf	4269	38.5	-77.31
-5774	UIN	Quincy Regional Baldwin Field	4270	39.94	-91.19
-7206	KWN	Quinhagak Airport	4271	59.76	-161.85
-3626	RDU	Raleigh Durham Intl	4272	35.88	-78.79
-3643	RIU	Rancho Murieta	4273	38.49	-121.1
-3625	RCA	Ellsworth Afb	4274	44.15	-103.1
-4087	RAP	Rapid City Regional Airport	4275	44.05	-103.06
-7986	RWL	Rawlins Municipal Airport-Harvey Field	4276	41.81	-107.2
-5764	RDG	Reading Regional Carl A Spaatz Field	4277	40.38	-75.97
-3565	RDR	Grand Forks Afb	4278	47.96	-97.4
-4098	RDD	Redding Muni	4279	40.51	-122.29
-4103	RDM	Roberts Fld	4280	44.25	-121.15
-3480	HUA	Redstone Aaf	4281	34.68	-86.68
-3807	RNO	Reno Tahoe Intl	4282	39.5	-119.77
-5765	RHI	Rhinelander Oneida County Airport	4283	45.63	-89.47
-7582	RIF	Richfield Minicipal Airport	4284	38.74	-112.1
-3608	RIC	Richmond Intl	4285	37.51	-77.32
-7777	RID	Richmond Municipal Airport	4286	39.76	-84.84
-4253	CGF	Cuyahoga County	4287	41.57	-81.49
-7652	RIL	Garfield County Regional Airport	4288	39.53	-107.73
-3799	RAL	Riverside Muni	4289	33.95	-117.45
-3815	RIV	March Arb	4289	33.88	-117.26
-6881	RIW	Riverton Regional	4290	43.06	-108.46
-4016	ROA	Roanoke Regional	4291	37.33	-79.98
-3501	RBM	Robinson Aaf	4292	34.85	-92.3
-3622	ROC	Greater Rochester Intl	4293	43.12	-77.67
-4048	RST	Rochester	4294	43.91	-92.5
-7494	RKH	Rock Hill York Co Bryant Airport	4295	34.99	-81.06
-5766	RKS	Rock Springs Sweetwater County Airport	4296	41.59	-109.06
-4028	RFD	Chicago Rockford International Airport 	4297	42.2	-89.1
-4026	RKD	Knox County Regional Airport	4298	44.06	-69.1
-8077	RKP	Aransas County Airport	4299	28.09	-97.04
-7690	RWI	Rocky Mount Wilson Regional Airport	4300	35.86	-77.89
-3450	RME	Griffiss Afld	4301	43.23	-75.41
-8294	RMG	Richard B Russell Airport	4302	34.35	-85.16
-7042	STJ	Rosecrans Mem	4303	39.77	-94.91
-3736	ROW	Roswell Intl Air Center	4304	33.3	-104.53
-6722	RBY	Ruby Airport	4305	64.73	-155.47
-7077	SRR	Sierra Blanca Regional Airport	4306	33.46	-105.53
-7098	RSH	Russian Mission Airport	4307	61.77	-161.32
-5767	RUT	Rutland State Airport	4308	43.53	-72.95
-3434	MHR	Sacramento Mather	4309	38.55	-121.3
-3663	SAC	Sacramento Executive	4309	38.51	-121.49
-3684	MCC	Mc Clellan Afld	4310	38.67	-121.4
-3817	SMF	Sacramento Intl	4310	38.7	-121.59
-4128	MBS	Mbs Intl	4311	43.53	-84.08
-4271	STC	Saint Cloud Regional Airport	4312	45.55	-94.06
-4064	SGU	St George Muni	4313	37.09	-113.59
-7826	SLE	McNary Field	4314	44.91	-123
-5771	SLN	Salina Municipal Airport	4315	38.79	-97.65
-3642	SBY	Salisbury Ocean City Wicomico Rgnl	4316	38.34	-75.51
-7080	SMN	Lemhi County Airport	4317	45.12	-113.88
-3536	SLC	Salt Lake City Intl	4318	40.79	-111.98
-3708	SJT	San Angelo Rgnl Mathis Fld	4319	31.36	-100.5
-3621	SAT	San Antonio Intl	4320	29.53	-98.47
-3727	SKF	Lackland Afb Kelly Fld Annex	4321	29.38	-98.58
-3757	RND	Randolph Afb	4321	29.53	-98.28
-7670	SBD	San Bernardino International Airport	4322	34.1	-117.23
-7683	SQL	San Carlos Airport	4323	37.51	-122.25
-3594	NZY	North Island Nas	4324	32.7	-117.22
-3731	SAN	San Diego Intl	4325	32.73	-117.19
-7659	SDM	Brown Field Municipal Airport	4324	32.57	-116.98
-8345	MYF	Montgomery Field	4324	32.48	117.76
-3469	SFO	San Francisco Intl	4326	37.62	-122.37
-3748	SJC	Norman Y Mineta San Jose Intl	4327	37.36	-121.93
-3616	SPB	Scappoose Industrial Airpark	4328	45.77	-122.86
-5768	SBP	San Luis County Regional Airport	4329	35.24	-120.64
-6742	SDP	Sand Point Airport	4330	55.31	-160.52
-3821	SKY	Griffing Sandusky	4331	41.43	-82.65
-4167	SFB	Orlando Sanford Intl	4332	28.78	-81.24
-3702	INJ	Hillsboro Muni	4333	32.08	-97.1
-3867	SNA	John Wayne Arpt Orange Co	4334	33.68	-117.87
-4298	NZJ	El Toro	4333	33.68	-117.73
-3657	SBO	Emanuel Co	4335	32.61	-82.37
-3949	SBA	Santa Barbara Muni	4336	34.43	-119.84
-3784	SAF	Santa Fe Muni	4337	35.62	-106.09
-5772	SMX	Santa Maria Pub Cpt G Allan Hancock Airport	4338	34.9	-120.46
-7647	SMO	Santa Monica Municipal Airport	4339	34.02	-118.45
-6992	STS	Charles M Schulz Sonoma Co	4340	38.51	-122.81
-5770	SLK	Adirondack Regional Airport	4341	44.39	-74.21
-4067	SRQ	Sarasota Bradenton Intl	4342	27.4	-82.55
-7653	SAA	Shively Field Airport	4343	41.44	-106.82
-5729	CIU	Chippewa County International Airport	4344	46.25	-84.47
-3613	SAV	Savannah Hilton Head Intl	4345	32.13	-81.2
-6724	SVA	Savoonga Airport	4346	63.69	-170.49
-7209	SCM	Scammon Bay Airport	4347	61.85	-165.57
-6968	SCH	Stratton ANGB - Schenectady County Airpor	4348	42.85	-73.93
-5723	BFF	Western Nebraska Regional Airport	4349	41.87	-103.6
-7649	ZSY	Scottsdale Airport	4350	33.62	-111.91
-4286	AVP	Wilkes Barre Scranton Intl	4351	41.34	-75.72
-3577	SEA	Seattle Tacoma Intl	4352	47.45	-122.31
-3726	BFI	Boeing Fld King Co Intl	4352	47.53	-122.3
-6457	LKE	Kenmore Air Harbor Seaplane Base	4353	47.63	-122.34
-4280	SDX	Sedona	4354	34.85	-111.79
-7182	WLK	Selawik Airport	4355	66.6	-159.99
-3874	SEM	Craig Fld	4356	32.34	-86.99
-7090	SHX	Shageluk Airport	4357	62.69	-159.57
-7192	SKK	Shaktoolik Airport	4358	64.37	-161.22
-3813	SYA	Eareckson As	4359	52.71	174.11
-5769	SHR	Sheridan County Airport	4360	44.77	-106.98
-6723	SHH	Shishmaref Airport	4361	66.25	-166.09
-7078	SOW	Show Low Regional Airport	4362	34.27	-110.01
-3609	SHV	Shreveport Rgnl	4363	32.45	-93.83
-3842	BAD	Barksdale Afb	4364	32.5	-93.66
-7117	SHG	Shungnak Airport	4365	66.89	-157.16
-7065	SDY	Sidney-Richland Municipal Airport	4366	47.71	-104.19
-6135	SVC	Grant County Airport	4367	32.64	-108.16
-8219	SPZ	Silver Springs Airport	4368	39.4	-119.25
-3753	SUX	Sioux Gateway Col Bud Day Fld	4369	42.4	-96.38
-4009	FSD	Sioux Falls	4370	43.58	-96.74
-3856	SIT	Sitka Rocky Gutierrez	4371	57.05	-135.36
-5961	SGY	Skagway Airport	4372	59.46	-135.32
-7240	SLQ	Sleetmute Airport	4373	61.7	-157.17
-3781	SFZ	North Central State	4374	41.92	-71.49
-7061	SME	Lake Cumberland Regional Airport	4375	37.05	-84.62
-4359	SBN	South Bend Rgnl	4376	41.71	-86.32
-4262	TVL	Lake Tahoe Airport	4377	38.89	-120
-7159	WSN	South Naknek Airport	4378	58.7	-157
-3421	SVW	Sparrevohn Lrrs	4379	61.1	-155.57
-7809	SPF	Black Hills Airport-Clyde Ice Field	4380	44.48	-103.79
-6446	SPW	Spencer Muni	4381	43.17	-95.2
-3467	GEG	Spokane Intl	4382	47.62	-117.53
-3667	SKA	Fairchild Afb	4383	47.62	-117.66
-3716	SFF	Felts Fld	4383	47.68	-117.32
-4336	SPI	Abraham Lincoln Capital	4384	39.84	-89.68
-4348	SGF	Springfield Branson Natl	4385	37.25	-93.39
-7908	SGH	Springfield-Beckly Municipal Airport	4386	39.84	-83.84
-6718	KSM	St Marys Airport	4387	62.06	-163.3
-6989	UST	St. Augustine Airport	4388	29.96	-81.34
-3678	STL	Lambert St Louis Intl	4389	38.75	-90.37
-7191	SMK	St. Michael Airport	4390	63.49	-162.11
-3426	SNP	St Paul Island	4391	57.17	-170.22
-3548	SPG	Albert Whitted	4392	27.77	-82.63
-3617	PIE	St Petersburg Clearwater Intl	4393	27.91	-82.69
-4318	SCE	University Park Airport	4394	40.85	-77.85
-7580	SBS	Steamboat Springs Airport-Bob Adams Field	4395	40.52	-106.87
-7985	STK	Sterling Municipal Airport	4396	40.62	-103.26
-3805	SCK	Stockton Metropolitan	4397	37.89	-121.24
-3579	BDR	Igor I Sikorsky Mem	4398	41.16	-73.13
-7656	SUA	Witham Field Airport	4399	27.18	-80.22
-4220	SGR	Sugar Land Regional Airport	4400	29.62	-95.66
-3733	SSC	Shaw Afb	4401	33.97	-80.47
-8298	JYL	Plantation Airpark	4402	32.65	-81.6
-3745	SYR	Syracuse Hancock Intl	4403	43.11	-76.11
-3672	TCM	Mc Chord Afb	4404	47.14	-122.48
-4004	TKA	Talkeetna	4405	62.32	-150.09
-3698	TLH	Tallahassee Rgnl	4406	30.4	-84.35
-3646	TPA	Tampa Intl	4407	27.98	-82.53
-3789	MCF	Macdill Afb	4408	27.85	-82.52
-3423	TLJ	Tatalina Lrrs	4409	62.89	-155.98
-8276	TAN	Taunton Municipal Airport - King Field	4410	41.87	-71.02
-7186	TLA	Teller Airport	4411	65.24	-166.34
-4084	TEX	Telluride	4412	37.95	-107.91
-4230	TPL	Draughon Miller Central Texas Rgnl	4413	31.15	-97.41
-3603	HUF	Terre Haute Intl Hulman Fld	4414	39.45	-87.31
-3624	TEB	Teterboro	4415	40.85	-74.06
-3770	TXK	Texarkana Rgnl Webb Fld	4416	33.45	-93.99
-7018	TVF	Thief River Falls	4417	48.07	-96.19
-7998	TVI	Thomasville Regional Airport	4418	30.9	-83.88
-8005	TMA	Henry Tift Myers Airport	4419	31.43	-83.49
-7194	TNC	Tin City LRRS Airport	4420	65.56	-167.92
-8322	TOC	Toccoa RG Letourneau Field Airport	4421	34.59	-83.3
-6767	TOG	Togiak Airport	4422	59.05	-160.4
-7235	6K8	Tok Junction Airport	4423	63.33	-142.95
-8200	OOK	Toksook Bay Airport	4424	60.54	-165.09
-4040	TOL	Toledo	4425	41.59	-83.81
-3592	TNX	Tonopah Test Range	4426	37.8	-116.78
-3843	FOE	Forbes Fld	4427	38.95	-95.66
-7925	TOP	Philip Billard Muni	4428	39.07	-95.62
-7053	TOA	Zamperini Field Airport	4429	33.8	-118.34
-4023	TVC	Cherry Capital Airport	4430	44.74	-85.58
-3447	TTN	Trenton Mercer	4431	40.28	-74.81
-8121	TTD	Portland Troutdale	4432	45.55	-122.4
-7702	...	Truckee-Tahoe Airport	4433	39.32	-120.14
-3755	TCS	Truth Or Consequences Muni	4434	33.24	-107.27
-3562	DMA	Davis Monthan Afb	4435	32.17	-110.88
-3636	TUS	Tucson Intl	4436	32.12	-110.94
-7979	AVW	Marana Regional	4435	32.41	-111.22
-3773	TCC	Tucumcari Muni	4437	35.18	-103.6
-3855	TUL	Tulsa Intl	4438	36.2	-95.89
-7849	RVS	Richard Lloyd Jones Jr Airport	4439	36.04	-95.98
-7827	UTM	Tunica Municipal Airport	4440	34.68	-90.35
-5773	TUP	Tupelo Regional Airport	4441	34.27	-88.77
-4387	TCL	Tuscaloosa Rgnl	4442	33.22	-87.61
-3436	NXP	Twentynine Palms Eaf	4443	34.3	-116.16
-4263	TWF	Magic Valley Regional Airport	4444	42.48	-114.49
-3848	TYR	Tyler Pounds Rgnl	4445	32.35	-95.4
-7088	UNK	Unalakleet Airport	4446	63.89	-160.8
-3860	DUT	Unalaska	4447	53.9	-166.54
-7885	UVA	Garner Field	4448	29.22	-99.75
-4250	EGE	Eagle Co Rgnl	4449	39.64	-106.92
-3865	VDZ	Valdez Pioneer Fld	4450	61.13	-146.25
-3575	VAD	Moody Afb	4451	30.97	-83.19
-5776	VLD	Valdosta Regional Airport	4452	30.78	-83.28
-3873	VPS	Eglin Afb	4453	30.48	-86.53
-4071	VNY	Van Nuys	4454	34.21	-118.49
-7114	VEE	Venetie Airport	4455	67.01	-146.37
-7076	VEL	Vernal Regional Airport	4456	40.44	-109.51
-3688	VRB	Vero Beach Muni	4457	27.66	-80.42
-5775	VCT	Victoria Regional Airport	4458	28.85	-96.92
-3554	VCV	Southern California Logistics	4459	34.6	-117.38
-4265	MVY	Martha\\'s Vineyard	4460	41.39	-70.62
-7121	VIS	Visalia Municipal Airport	4461	36.32	-119.39
-3476	CNW	Tstc Waco	4462	31.64	-97.07
-3700	ACT	Waco Rgnl	4463	31.61	-97.23
-6415	WKL	Waikoloa Heliport	4464	19.91	-155.86
-7220	AIN	Wainwright Airport	4465	70.64	-159.99
-7187	WAA	Wales Airport	4466	65.62	-168.09
-5719	ALW	Walla Walla Regional Airport	4467	46.09	-118.29
-3801	WAL	Wallops Flight Facility	4468	37.94	-75.47
-3520	DCA	Ronald Reagan Washington Natl	4469	38.85	-77.04
-3714	IAD	Washington Dulles Intl	4469	38.94	-77.46
-4045	CWA	Central Wisconsin	4470	44.77	-89.65
-5718	ALO	Waterloo Regional Airport	4471	42.56	-92.4
-3838	ART	Watertown Intl	4472	43.99	-76.02
-5721	ATY	Watertown Regional Airport	4473	44.91	-97.15
-8367	EGT	Wellington Municipal	4474	37.39	-97.42
-6916	EAT	Pangborn Field	4475	47.4	-120.21
-3451	ENV	Wendover	4476	40.72	-114.03
-3699	DPA	Dupage	4477	41.91	-88.25
-3590	FOK	Francis S Gabreski	4478	40.84	-72.63
-3593	LNA	Palm Beach Co Park	4479	26.59	-80.09
-3722	PBI	Palm Beach Intl	4480	26.68	-80.1
-7072	WYS	Yellowstone Airport	4481	44.69	-111.12
-8281	BAF	Barnes Municipal	4482	42.16	-72.72
-7062	SHD	Shenandoah Valley Regional Airport	4483	38.26	-78.9
-3499	HHI	Wheeler Aaf	4484	21.48	-158.04
-3573	NUW	Whidbey Island Nas	4485	48.35	-122.66
-7188	WMO	White Mountain Airport	4486	64.69	-163.41
-3589	HPN	Westchester Co	4487	41.07	-73.71
-3853	WSD	Condron Aaf	4488	32.34	-106.4
-3457	ICT	Wichita Mid Continent	4489	37.65	-97.43
-3767	IAB	Mc Connell Afb	4490	37.62	-97.27
-3680	SPS	Sheppard Afb Wichita Falls Muni	4491	33.99	-98.49
-3740	WWD	Cape May Co	4492	39.01	-74.91
-3584	IPT	Williamsport Rgnl	4493	41.24	-76.92
-8282	IJD	Windham Airport	4494	41.74	-72.18
-3659	ISN	Sloulin Fld Intl	4495	48.18	-103.64
-3803	NXX	Willow Grove Nas Jrb	4496	40.2	-75.15
-3845	ILM	Wilmington Intl	4497	34.27	-77.9
-3859	ILG	New Castle	4498	39.68	-75.61
-7978	ILN	Wilmington Airborne Airpark	4499	39.43	-83.79
-8297	WDR	Barrow County Airport	4500	33.98	-83.67
-3825	BDL	Bradley Intl	4501	41.94	-72.68
-3686	INK	Winkler Co	4502	31.78	-103.2
-7587	INW	Winslow-Lindbergh Regional Airport	4503	35.02	-110.72
-3553	INT	Smith Reynolds	4504	36.13	-80.22
-7071	OLF	LM Clayton Airport	4505	48.09	-105.58
-6426	ORH	Worcester Regional Airport	4506	42.27	-71.88
-5777	WRL	Worland Municipal Airport	4507	43.97	-107.95
-5969	WRG	Wrangell Airport	4508	56.48	-132.37
-3655	WRI	Mc Guire Afb	4509	40.02	-74.59
-7198	CYT	Yakataga Airport	4510	60.08	-142.49
-5779	YKM	Yakima Air Terminal McAllister Field	4511	46.57	-120.54
-6803	YAK	Yakutat	4512	59.3	-139.39
-3881	YNG	Youngstown Warren Rgnl	4513	41.26	-80.68
-7875	MYV	Yuba County Airport	4514	39.06	-121.34
-3596	YUM	Yuma Mcas Yuma Intl	4515	32.66	-114.61
-3776	ZUN	Black Rock	4516	35.08	-108.79
-7123	CYR	Laguna de Los Patos International Airport	4517	-34.46	-57.77
-6070	MDO	El Jaguel / Punta del Este Airport	4518	-34.92	-54.92
-2816	MVD	Carrasco Intl	4519	-34.84	-56.03
-6777	PDP	Capitan Corbeta C A Curbelo International Airport	4520	-34.86	-55.09
-8236	RVY	Rivera International Airport	4521	-30.97	-55.48
-2817	STY	Nueva Hesperides Intl	4522	-31.44	-57.99
-6148	AZN	Andizhan Airport	4523	40.73	72.29
-2980	BHK	Bukhara	4524	39.77	64.48
-6149	FEG	Fergana Airport	4525	40.36	71.75
-6153	KSQ	Karshi Khanabad Airport	4526	38.83	65.92
-6150	NMA	Namangan Airport	4527	40.98	71.56
-6485	NVI	Navoi Airport	4528	40.12	65.17
-6151	NCU	Nukus Airport	4529	42.49	59.62
-2981	SKD	Samarkand	4530	39.7	66.98
-2983	TAS	Yuzhny	4531	41.26	69.28
-6154	TMJ	Termez Airport	4532	37.29	67.31
-6152	UGC	Urgench Airport	4533	41.58	60.64
-6754	AFS	Sugraly Airport	4534	41.61	64.23
-5893	MTV	Mota Lava Airport	4535	-13.67	167.71
-5910	ULB	UlÌ©i Airport	4536	-16.33	168.28
-5914	AUY	Anelghowhat Airport	4537	-20.25	169.77
-5915	AWD	Aniwa Airport	4538	-19.24	169.6
-5897	CCV	Craig Cove Airport	4539	-16.27	167.92
-5916	DLY	Dillon's Bay Airport	4540	-18.77	169
-5917	FTA	Futuna Airport	4541	-19.52	170.23
-5906	ZGU	Gaua Island Airport	4542	-14.22	167.59
-5918	IPA	Ipota Airport	4543	-18.88	169.31
-5901	LPM	Lamap Airport	4544	-16.45	167.82
-5902	LNB	Lamen Bay Airport	4545	-16.58	168.16
-5895	TOH	Torres Airstrip	4546	-13.33	166.64
-5898	LOD	Longana Airport	4547	-15.31	167.97
-5904	LNE	Lonorore Airport	4548	-15.87	168.17
-5903	MWF	Naone Airport	4549	-15	168.08
-5912	SWJ	Southwest Bay Airport	4550	-16.5	167.44
-5905	NUS	Norsup Airport	4551	-16.08	167.4
-5913	OLZ	North West Santo Airport	4552	-14.88	166.56
-5900	PBJ	Tavie Airport	4553	-16.44	168.26
-5899	SSR	Sara Airport	4554	-15.47	168.15
-1997	VLI	Port Vila Bauerfield	4555	-17.7	168.32
-5907	RCL	Redcliffe Airport	4556	-15.47	167.84
-5896	EAE	Sangafa Airport	4557	-17.09	168.34
-5908	SON	Santo Pekoa International Airport	4558	-15.51	167.22
-5894	SLH	Sola Airport	4559	-13.85	167.54
-5909	TGH	Tongoa Island Airport	4560	-16.89	168.55
-5911	VLS	Valesdir Airport	4561	-16.8	168.18
-6771	WLH	Walaha Airport	4562	-15.41	167.69
-2818	AGV	Oswaldo Guevara Mujica	4563	9.55	-69.24
-2819	AAO	Anaco	4564	9.43	-64.47
-2821	BLA	General Jose Antonio Anzoategui Intl	4565	10.11	-64.69
-2822	BNS	Barinas	4566	8.62	-70.22
-2824	BRM	Barquisimeto Intl	4567	10.04	-69.36
-2830	CAJ	Canaima	4568	6.23	-62.85
-2851	CCS	Simon Bolivar Intl	4569	10.6	-66.99
-2832	CUP	General Jose Francisco Bermudez	4570	10.66	-63.26
-2826	CBL	Ciudad Bolivar	4571	8.12	-63.54
-2833	CZE	Jose Leonardo Chirinos	4572	11.41	-69.68
-2835	CUM	Antonio Jose De Sucre	4573	10.45	-64.13
-6072	VIG	Juan Pablo PÌ©rez Alfonso Airport	4574	8.62	-71.67
-2841	GUQ	Guanare	4575	9.03	-69.76
-2856	PZO	General Manuel Carlos Piar	4576	8.29	-62.76
-2840	GUI	Guiria	4577	10.57	-62.31
-2846	LFR	La Fria	4578	8.24	-72.27
-6420	LRV	Gran Roque Airport	4579	11.95	-66.67
-2848	MAR	La Chinita Intl	4580	10.56	-71.73
-6071	MYC	Escuela Mariscal Sucre Airport	4581	10.25	-67.65
-2852	MUN	Maturin	4582	9.75	-63.15
-2849	MRD	Alberto Carnevalli	4583	8.58	-71.16
-2844	LSP	Josefa Camejo	4584	11.78	-70.15
-2850	PMV	Del Caribe Intl Gen Santiago Marino	4585	10.91	-63.97
-2853	PYH	Casique Aramare	4586	5.62	-67.61
-2854	PBL	General Bartolome Salom Intl	4587	10.48	-68.07
-2858	SVZ	San Antonio Del Tachira	4588	7.84	-72.44
-2862	SFH	Sub Teniente Nestor Arias	4589	10.28	-68.76
-2863	SFD	San Fernando De Apure	4590	7.88	-67.44
-2864	SOM	San Tome	4591	8.95	-64.15
-2865	STB	Santa Barbara Del Zulia	4592	8.97	-71.94
-2861	STD	Mayor Buenaventura Vivas	4593	7.57	-72.04
-2866	TUV	Tucupita	4594	9.09	-62.09
-2868	VLN	Arturo Michelena Intl	4595	10.15	-67.93
-2870	VLV	Dr Antonio Nicolas Briceno	4596	9.34	-70.58
-2871	VDP	Valle De La Pascua	4597	9.22	-65.99
-6187	BMV	Buon Ma Thuot Airport	4598	12.67	108.12
-4156	CAH	Ca Mau	4599	9.19	105.17
-6191	VCA	TrÌÊ NÌ_c Airport	4600	10.09	105.71
-4157	VCL	Chu Lai	4601	15.41	108.71
-6190	VCS	Co Ong Airport	4602	8.73	106.63
-4153	DLI	Dalat	4603	11.75	108.37
-3196	DAD	Danang Intl	4604	16.04	108.2
-6192	DIN	Dien Bien Phu Airport	4605	21.4	103.01
-6188	HPH	Cat Bi International Airport	4606	20.82	106.72
-3199	HAN	Noibai Intl	4607	21.22	105.81
-3205	SGN	Tansonnhat Intl	4608	10.82	106.65
-6189	CXR	Cam Ranh Airport	4609	12	109.22
-3200	NHA	Nhatrang	4610	12.23	109.19
-7700	PHA	Phan Rang Airport	4611	11.63	108.95
-6193	UIH	Phu Cat Airport	4612	13.95	109.04
-6194	PXU	Pleiku Airport	4613	14	108.02
-4155	VKG	Rach Gia	4614	9.95	105.13
-7701	SQH	Na-San Airport	4615	21.22	104.03
-4158	TBB	Dong Tac	4616	13.05	109.33
-6195	VII	Vinh Airport	4617	18.74	105.67
-2884	STX	Henry E Rohlsen	4618	17.7	-64.8
-2883	STT	Cyril E King	4619	18.34	-64.97
-7674	AWK	Wake Island Afld	4620	19.28	166.64
-5885	FUT	Pointe Vele Airport	4621	-14.31	-178.07
-1968	WLS	Wallis	4622	-13.24	-176.2
-5670	VIL	Dakhla Airport	4623	23.72	-15.93
-5672	EUN	Hassan I Airport	4624	27.15	-13.22
-5669	SMW	Smara Airport	4625	26.73	-11.68
-3977	ADE	Aden Intl	4626	12.83	45.03
-3979	AAY	Al Ghaidah Intl	4627	16.19	52.17
-3978	AXK	Ataq	4628	14.55	46.83
-3982	BHN	Beihan	4629	14.78	45.72
-3976	HOD	Hodeidah Intl	4630	14.75	42.98
-3974	RIY	Riyan	4631	14.66	49.38
-3980	SAH	Sanaa Intl	4632	15.48	44.22
-5954	GXF	Sayun International Airport	4633	15.97	48.79
-3984	SCT	Socotra Intl	4634	12.63	53.91
-3975	TAI	Taiz Intl	4635	13.69	44.14
-5612	CIP	Chipata Airport	4636	-13.56	32.59
-7830	ZKB	Kasaba Bay Airport	4637	-8.53	30.66
-906	LVI	Livingstone	4638	-17.82	25.82
-907	LUN	Lusaka Intl	4639	-15.33	28.45
-908	MFU	Mfuwe	4640	-13.26	31.94
-910	NLA	Ndola	4641	-13	28.66
-5613	SLI	Solwesi Airport	4642	-12.17	26.37
-911	KIW	Southdowns	4643	-12.9	28.15
-1001	BUQ	J M Nkomo Intl	4644	-20.02	28.62
-1003	BFO	Buffalo Range	4645	-21.01	31.58
-1011	GWE	Gweru Thornhill	4646	-19.44	29.86
-1005	HRE	Harare Intl	4647	-17.93	31.09
-1012	WKM	Hwange National Park	4648	-18.63	27.02
-1006	KAB	Kariba Intl	4649	-16.52	28.88
-1009	MVZ	Masvingo Intl	4650	-20.06	30.86
-1004	VFA	Victoria Falls Intl	4651	-18.1	25.84
+7936	PWK	Chicago Executive	3674	42.11	-87.9
+3710	CIC	Chico Muni	3675	39.8	-121.86
+3828	CEF	Westover Arb Metropolitan	3676	42.19	-72.53
+3537	CDS	Childress Muni	3677	34.43	-100.29
+3490	NID	China Lake Naws	3678	35.69	-117.69
+7091	CHU	Chuathbaluk Airport	3679	61.58	-159.22
+3488	CVG	Cincinnati Northern Kentucky Intl	3680	39.05	-84.67
+3681	LUK	Cincinnati Muni Lunken Fld	3680	39.1	-84.42
+7236	IRC	Circle City Airport	3681	65.83	-144.08
+5730	CKB	Harrison Marion Regional Airport	3682	39.3	-80.23
+3418	Z84	Clear	3683	64.3	-149.12
+3486	CLE	Cleveland Hopkins Intl	3684	41.41	-81.85
+3834	CVS	Cannon Afb	3685	34.38	-103.32
+4223	CVN	Clovis Muni	3685	34.43	-103.08
+3623	COF	Patrick Afb	3686	28.23	-80.61
+4344	COD	Yellowstone Rgnl	3687	44.52	-109.02
+3854	CDB	Cold Bay	3688	55.21	-162.73
+7204	PML	Port Moller Airport	3689	56.01	-160.56
+3715	CLL	Easterwood Fld	3690	30.59	-96.36
+3561	CAE	Columbia Metropolitan	3691	33.94	-81.12
+3868	CBM	Columbus Afb	3692	33.64	-88.44
+3819	COS	City Of Colorado Springs Muni	3693	38.81	-104.7
+3719	COU	Columbia Rgnl	3694	38.82	-92.22
+3674	LCK	Rickenbacker Intl	3695	39.81	-82.93
+3759	CMH	Port Columbus Intl	3695	40	-82.89
+4255	CSG	Columbus Metropolitan Airport	3696	32.52	-84.94
+7511	OSU	Ohio State University Airport	3695	40.08	-83.07
+4273	GTR	Golden Triangle Regional Airport	3697	33.45	-88.59
+7888	CCR	Buchanan Field Airport	3698	37.99	-122.06
+3619	CXO	Lone Star Executive	3699	30.35	-95.41
+8117	CKF	Crisp County Cordele Airport	3700	31.99	-83.77
+3610	CDV	Merle K Mudhole Smith	3701	60.49	-145.48
+3744	CRP	Corpus Christi Intl	3702	27.77	-97.5
+7023	NGP	Corpus Christi NAS	3703	27.69	-97.29
+4338	CEZ	Cortez Muni	3704	37.3	-108.63
+3844	COT	Cotulla Lasalle Co	3705	28.46	-99.22
+5727	CEC	Del Norte County Airport	3706	41.78	-124.24
+3555	CEW	Bob Sikes	3707	30.78	-86.52
+3470	CTB	Cut Bank Muni	3708	48.61	-112.38
+3482	DHT	Dalhart Muni	3709	36.02	-102.55
+3502	DAL	Dallas Love Fld	3710	32.85	-96.85
+8188	RBD	Dallas Executive Airport	3711	32.68	-96.87
+7935	TKI	Collin County Regional Airport at Mc Kinney	3712	33.18	-96.59
+3670	DFW	Dallas Fort Worth Intl	3713	32.9	-97.04
+8299	DNN	Dalton Municipal Airport	3714	34.72	-84.87
+8286	DXR	Danbury Municipal Airport	3715	41.37	-73.48
+8313	UDG	Darlington County Jetport	3716	34.45	-79.89
+7651	DWA	Yolo County Airport	3717	38.58	-121.86
+3627	DAY	James M Cox Dayton Intl	3718	39.9	-84.22
+3763	FFO	Wright Patterson Afb	3719	39.83	-84.05
+7776	MGY	Dayton-Wright Brothers Airport	3719	39.59	-84.22
+3950	DAB	Daytona Beach Intl	3720	29.18	-81.06
+3620	SCC	Deadhorse	3721	70.19	-148.47
+4042	DEC	Decatur	3722	39.83	-88.87
+6755	DEE	Deering Airport	3723	66.07	-162.77
+3483	DLF	Laughlin Afb	3724	29.36	-100.78
+3792	DRT	Del Rio Intl	3725	29.37	-100.93
+7716	4U9	Dell Flight Strip	3726	44.74	-112.72
+7581	DTA	Delta Municipal Airport	3727	39.38	-112.51
+3475	BIG	Allen Aaf	3728	63.99	-145.72
+3751	DEN	Denver Intl	3729	39.86	-104.67
+4222	APA	Centennial	3730	39.57	-104.85
+3786	DRI	Beauregard Rgnl	3731	30.83	-93.34
+3729	DSM	Des Moines Intl	3732	41.53	-93.66
+7514	DTS	Destin	3733	30.4	-86.47
+3645	DTW	Detroit Metro Wayne Co	3734	42.21	-83.35
+3737	DET	Coleman A Young Muni	3734	42.41	-83.01
+3809	YIP	Willow Run	3735	42.24	-83.53
+7063	DVL	Devils Lake Regional Airport	3736	48.11	-98.91
+7064	DIK	Dickinson Theodore Roosevelt Regional Airport	3737	46.8	-102.8
+3460	DLG	Dillingham	3738	59.04	-158.51
+3583	HDH	Dillingham	3739	21.58	-158.2
+5733	DDC	Dodge City Regional Airport	3740	37.76	-99.97
+3739	DHN	Dothan Rgnl	3741	31.32	-85.45
+3474	DUG	Bisbee Douglas Intl	3742	31.47	-109.6
+7588	DGL	Douglas Municipal Airport	3742	31.34	-109.51
+8273	DQH	Douglas Municipal Airport	3742	31.48	-82.86
+3487	DOV	Dover Afb	3743	39.13	-75.47
+5734	DUJ	DuBois Regional Airport	3744	41.18	-78.9
+4388	DBQ	Dubuque Rgnl	3745	42.4	-90.71
+3598	DLH	Duluth Intl	3746	46.84	-92.19
+7880	DUC	Halliburton Field Airport	3747	34.47	-97.96
+3713	DRO	Durango La Plata Co	3748	37.15	-107.75
+7106	EAA	Eagle Airport	3749	64.78	-141.15
+7019	EGV	Eagle River	3750	45.93	-89.27
+8343	57C	East Troy Municipal Airport	3751	42.8	-88.37
+7870	ESN	Easton-Newnam Field Airport	3752	38.8	-76.07
+7083	ESD	Orcas Island Airport	3753	48.71	-122.91
+5735	EAU	Chippewa Valley Regional Airport	3754	44.87	-91.48
+3512	EDW	Edwards Afb	3755	34.91	-117.88
+7093	EEK	Eek Airport	3756	60.21	-162.04
+7154	EGX	Egegik Airport	3757	58.19	-157.38
+7693	SEE	Gillespie	3758	32.83	-116.97
+3758	NJK	El Centro Naf	3759	32.83	-115.67
+3696	ELD	South Arkansas Rgnl At Goodwin Fld	3760	33.22	-92.81
+3559	ELP	El Paso Intl	3761	31.81	-106.38
+3595	BIF	Biggs Aaf	3762	31.85	-106.38
+7136	ELV	Elfin Cove Seaplane Base	3763	58.2	-136.35
+7184	ELI	Elim Airport	3764	64.61	-162.27
+3526	ECG	Elizabeth City Cgas Rgnl	3765	36.26	-76.17
+3779	EKN	Elkins Randolph Co Jennings Randolph	3766	38.89	-79.86
+5736	EKO	Elko Regional Airport	3767	40.82	-115.79
+3946	ELM	Elmira Corning Rgnl	3768	42.16	-76.89
+7016	LYU	Ely Municipal	3769	47.82	-91.83
+7075	ELY	Ely Airport	3770	39.3	-114.84
+7087	EMK	Emmonak Airport	3771	62.79	-164.49
+3510	END	Vance Afb	3772	36.34	-97.92
+4276	ERI	Erie Intl Tom Ridge Fld	3773	42.08	-80.18
+6800	ESC	Delta County Airport	3774	45.72	-87.09
+4099	EUG	Mahlon Sweet Fld	3775	44.12	-123.21
+4018	EVV	Evansville Regional	3776	38.04	-87.53
+3822	PAE	Snohomish Co	3777	47.91	-122.28
+4257	FNL	Fort Collins Loveland Muni	3778	40.45	-105.01
+3649	EIL	Eielson Afb	3779	64.67	-147.1
+3832	FAI	Fairbanks Intl	3780	64.82	-147.86
+3449	SUU	Travis Afb	3781	38.26	-121.93
+3741	NFL	Fallon Nas	3782	39.42	-118.7
+3725	FMH	Otis Angb	3783	41.66	-70.52
+7202	KFP	False Pass Airport	3784	54.85	-163.41
+4292	FAR	Hector International Airport	3785	46.92	-96.82
+3743	FMN	Four Corners Rgnl	3786	36.74	-108.23
+3481	POB	Pope Afb	3787	35.17	-79.01
+3760	FYV	Drake Fld	3788	36.01	-94.17
+5738	FAY	Fayetteville Regional Grannis Field	3789	34.99	-78.88
+7778	FDY	Findlay Airport	3790	41.01	-83.67
+8290	FIT	Fitchburg Municipal Airport	3791	42.55	-71.76
+8063	FZG	Fitzgerald Municipal Airport	3792	31.68	-83.27
+8182	XFL	Flagler County Airport	3793	29.28	-81.12
+4261	FLG	Flagstaff Pulliam Airport	3794	35.14	-111.67
+4089	FNT	Bishop International	3795	42.97	-83.74
+3879	FLO	Florence Rgnl	3796	34.19	-79.72
+3539	LSF	Lawson Aaf	3797	32.34	-84.99
+3503	FCS	Butts Aaf	3798	38.68	-104.76
+3841	FOD	Fort Dodge Rgnl	3799	42.55	-94.19
+3556	GTB	Wheeler Sack Aaf	3800	44.06	-75.72
+3518	FAF	Felker Aaf	3801	37.13	-76.61
+3677	HLR	Hood Aaf	3802	31.14	-97.71
+3601	FHU	Sierra Vista Muni Libby Aaf	3803	31.59	-110.34
+3435	BYS	Bicycle Lake Aaf	3804	35.28	-116.63
+3706	FTK	Godman Aaf	3805	37.91	-85.97
+3464	FXE	Fort Lauderdale Executive	3806	26.2	-80.17
+3533	FLL	Fort Lauderdale Hollywood Intl	3807	26.07	-80.15
+3800	FLV	Sherman Aaf	3808	39.37	-94.91
+3665	TBN	Waynesville Rgnl Arpt At Forney Fld	3809	37.74	-92.14
+3530	GRF	Gray Aaf	3810	47.08	-122.58
+3489	FME	Tipton	3811	39.09	-76.76
+3549	FMY	Page Fld	3812	26.59	-81.86
+3793	RSW	Southwest Florida Intl	3813	26.54	-81.76
+3433	OAR	Marina Muni	3814	36.68	-121.76
+8274	FRP	St Lucie County International Airport	3815	27.5	-80.37
+3648	POE	Polk Aaf	3816	31.04	-93.19
+3422	FRN	Bryant Ahp	3817	61.27	-149.65
+3541	FRI	Marshall Aaf	3818	39.06	-96.76
+3761	FSI	Henry Post Aaf	3819	34.65	-98.4
+3437	FSM	Fort Smith Rgnl	3820	35.34	-94.37
+4224	FST	Fort Stockton Pecos Co	3821	30.92	-102.92
+3412	K03	Wainwright As	3822	70.61	-159.86
+3882	FBK	Ladd Aaf	3822	64.84	-147.61
+4041	FWA	Fort Wayne	3823	40.98	-85.2
+4383	SMD	Smith Fld	3824	41.14	-85.15
+3723	FTW	Fort Worth Meacham Intl	3825	32.82	-97.36
+8342	AFW	Fort Worth Alliance Airport	3826	32.99	-97.32
+3420	FYU	Fort Yukon	3827	66.57	-145.25
+4058	FKL	Franklin	3828	41.38	-79.86
+7058	WFK	Northern Aroostook Regional Airport	3829	47.29	-68.31
+3687	FAT	Fresno Yosemite Intl	3830	36.78	-119.72
+7082	FRD	Friday Harbor Airport	3831	48.52	-123.02
+6481	FUL	Fullerton Municipal Airport	3832	33.52	-117.58
+7140	FNR	Funter Bay Seaplane Base	3833	58.25	-134.9
+8295	GAD	Northeast Alabama Regional Airport	3834	33.97	-86.09
+3472	GNV	Gainesville Rgnl	3835	29.69	-82.27
+8308	GVL	Lee Gilmer Memorial Airport	3836	34.27	-83.83
+8143	GAI	Montgomery County Airpark	3837	39.1	-77.1
+3764	GAL	Edward G Pitka Sr	3838	64.74	-156.94
+4340	GUP	Gallup Muni	3839	35.51	-108.79
+3581	GLS	Scholes Intl At Galveston	3840	29.27	-94.86
+6715	GAM	Gambell Airport	3841	63.77	-171.73
+3497	GCK	Garden City Rgnl	3842	37.93	-100.72
+6956	GYY	Gary Chicago International Airport	3843	41.62	-87.41
+7011	GED	Sussex Co	3844	38.69	-75.36
+7983	E63	Gila Bend Municipal Airport	3845	32.96	-112.67
+4296	GCC	Gillette-Campbell County Airport	3846	44.35	-105.54
+5739	GGW	Wokal Field Glasgow International Airport	3847	48.21	-106.61
+7070	GDV	Dawson Community Airport	3848	47.14	-104.81
+3640	GSB	Seymour Johnson Afb	3849	35.34	-77.96
+7185	GLV	Golovin Airport	3850	64.55	-163.01
+4343	GLD	Renner Fld	3851	39.37	-101.7
+4219	GCN	Grand Canyon National Park Airport	3852	35.95	-112.15
+3442	GFK	Grand Forks Intl	3853	47.95	-97.18
+5740	GRI	Central Nebraska Regional Airport	3854	40.97	-98.31
+4063	GJT	Grand Junction Regional	3855	39.12	-108.53
+6849	GRM	Grand Marais Cook County Airport	3856	47.84	-90.38
+3685	GRR	Gerald R Ford Intl	3857	42.88	-85.52
+7017	GPZ	Grand Rapids Itasca County	3858	47.21	-93.51
+3605	MWH	Grant Co Intl	3859	47.21	-119.32
+3439	GNT	Grants Milan Muni	3860	35.17	-107.9
+7013	GBN	Great Bend Municipal	3861	38.34	-98.86
+3880	GTF	Great Falls Intl	3862	47.48	-111.37
+3653	GRB	Austin Straubel Intl	3863	44.49	-88.13
+4008	GSO	Piedmont Triad	3864	36.1	-79.94
+3735	GVT	Majors	3865	33.07	-96.07
+4034	GSP	Greenville-Spartanburg International	3866	34.9	-82.22
+6130	GLH	Mid Delta Regional Airport	3867	33.48	-90.99
+6959	PGV	Pitt-Greenville Airport	3868	35.64	-77.39
+3588	GWO	Greenwood Leflore	3869	33.49	-90.08
+4270	GON	Groton New London	3870	41.33	-72.05
+4038	GPT	Gulfport-Biloxi	3871	30.41	-89.07
+3837	GKN	Gulkana	3872	62.15	-145.46
+7051	GUC	Gunnison - Crested Butte	3873	38.53	-106.93
+5960	GST	Gustavus Airport	3874	58.43	-135.71
+6739	HGR	Hagerstown Regional Richard A Henson Field	3875	39.71	-77.73
+6494	SUN	Friedman Mem	3876	43.5	-114.3
+5963	HNS	Haines Airport	3877	59.24	-135.52
+3866	LFI	Langley Afb	3878	37.08	-76.36
+3445	HNM	Hana	3879	20.8	-156.01
+5732	CMX	Houghton County Memorial Airport	3880	47.17	-88.49
+3560	HRL	Valley Intl	3881	26.23	-97.65
+3542	MDT	Harrisburg Intl	3882	40.19	-76.76
+8284	CXY	Capital City Airport	3883	40.22	-76.85
+3461	HRO	Boone Co	3884	36.26	-93.15
+3780	HFD	Hartford Brainard	3885	41.74	-72.65
+5759	PIB	Hattiesburg Laurel Regional Airport	3886	31.47	-89.34
+3604	HVR	Havre City Co	3887	48.54	-109.76
+3508	HHR	Jack Northrop Fld Hawthorne Muni	3888	33.92	-118.34
+4339	HDN	Yampa Valley	3889	40.48	-107.22
+7014	HYS	Hays Regional Airport	3890	38.84	-99.27
+7242	HKB	Healy River Airport	3891	63.87	-148.97
+3504	HLN	Helena Rgnl	3892	46.61	-111.98
+7999	HSH	Henderson Executive Airport	3893	35.97	-115.13
+3650	HIB	Chisholm Hibbing	3894	47.39	-92.84
+3547	HKY	Hickory Rgnl	3895	35.74	-81.39
+8122	HIO	Portland Hillsboro	3896	45.54	-122.95
+3415	ITO	Hilo Intl	3897	19.72	-155.05
+7002	HHH	Hilton Head	3898	32.22	-80.75
+8314	HXD	Hilton Head Airport	3899	32.22	-80.7
+3850	HBR	Hobart Muni	3900	34.99	-99.05
+3749	HOB	Lea Co Rgnl	3901	32.69	-103.22
+7721	BIV	Tulip City Airport	3902	42.74	-86.11
+3468	HWO	North Perry	3903	26	-80.24
+5962	HCR	Holy Cross Airport	3904	62.19	-159.78
+3664	HOM	Homer	3905	59.65	-151.48
+3798	HST	Homestead Arb	3906	25.49	-80.38
+8042	HDO	Hondo Municipal Airport	3907	29.36	-99.18
+3728	HNL	Honolulu Intl	3908	21.32	-157.92
+7142	HNH	Hoonah Airport	3909	58.1	-135.41
+6716	HPB	Hooper Bay Airport	3910	61.52	-166.15
+3519	HOP	Campbell Aaf	3911	36.67	-87.5
+5741	HOT	Memorial Field	3912	34.48	-93.1
+3668	HTL	Roscommon Co	3913	44.36	-84.67
+3509	HUL	Houlton Intl	3914	46.12	-67.79
+3550	IAH	George Bush Intcntl Houston	3915	29.98	-95.34
+3566	HOU	William P Hobby	3915	29.65	-95.28
+3572	EFD	Ellington Fld	3915	29.61	-95.16
+4065	DWH	David Wayne Hooks Field	3916	30.06	-95.55
+4226	IWS	West Houston	3916	29.82	-95.67
+7107	HUS	Hughes Airport	3917	66.04	-154.26
+3441	SVN	Hunter Aaf	3918	32.01	-81.15
+5742	HTS	Tri State Milton J Ferguson Field	3919	38.37	-82.56
+4113	HSV	Huntsville International Airport-Carl T Jones Field	3920	34.64	-86.78
+3491	HON	Huron Rgnl	3921	44.39	-98.23
+7108	HSL	Huslia Airport	3922	65.7	-156.35
+7035	HUT	Hutchinson Municipal Airport	3923	38.07	-97.86
+7148	HYG	Hydaburg Seaplane Base	3924	55.21	-132.83
+4100	IDA	Idaho Falls Rgnl	3925	43.51	-112.07
+6763	IGG	Igiugig Airport	3926	59.32	-155.9
+3429	ILI	Iliamna	3927	59.75	-154.91
+3689	IPL	Imperial Co	3928	32.83	-115.58
+3419	UTO	Indian Mountain Lrrs	3929	65.99	-153.7
+3496	INS	Creech Afb	3930	36.59	-115.67
+3585	IND	Indianapolis Intl	3931	39.72	-86.29
+3535	INL	Falls Intl	3932	48.57	-93.4
+7120	IYK	Inyokern Airport	3933	35.66	-117.83
+6837	IMT	Ford Airport	3934	45.82	-88.11
+3857	ISP	Long Island Mac Arthur	3935	40.8	-73.1
+3947	ITH	Ithaca Tompkins Rgnl	3936	42.49	-76.46
+4027	JAC	Jackson Hole Airport	3937	43.61	-110.74
+3580	JAN	Jackson Evers Intl	3938	32.31	-90.08
+3704	MKL	Mc Kellar Sipes Rgnl	3939	35.6	-88.92
+3479	LRF	Little Rock Afb	3940	34.92	-92.15
+3703	NIP	Jacksonville Nas	3940	30.24	-81.68
+3712	JAX	Jacksonville Intl	3941	30.49	-81.69
+7496	NZC	Cecil Field	3940	30.22	-81.88
+4386	OAJ	Albert J Ellis	3942	34.83	-77.61
+5745	JMS	Jamestown Regional Airport	3943	46.93	-98.68
+7059	JHW	Chautauqua County-Jamestown	3944	42.15	-79.26
+7840	JVL	Southern Wisconsin Regional Airport	3945	42.62	-89.04
+6447	JEF	Jefferson City Memorial Airport	3946	38.59	-92.16
+4169	JST	John Murtha Johnstown-Cambria County Airport	3947	40.32	-78.83
+3591	JBR	Jonesboro Muni	3948	35.83	-90.65
+4354	JLN	Joplin Rgnl	3949	37.15	-94.5
+3492	JNU	Juneau Intl	3950	58.35	-134.58
+3456	OGG	Kahului	3951	20.9	-156.43
+7991	AIZ	Lee C Fine Memorial Airport	3952	38.1	-92.55
+7143	AFE	Kake Airport	3953	56.96	-133.91
+4039	AZO	Kalamazoo	3954	42.23	-85.55
+4127	FCA	Glacier Park Intl	3955	48.31	-114.26
+5964	KLG	Kalskag Airport	3956	61.54	-160.34
+6717	KAL	Kaltag Airport	3957	64.32	-158.74
+3545	MUE	Waimea Kohala	3958	20	-155.67
+3835	NGF	Kaneohe Bay Mcaf	3959	21.45	-157.77
+3639	IKK	Greater Kankakee	3960	41.07	-87.85
+3458	MCI	Kansas City Intl	3961	39.3	-94.71
+4293	MKC	Downtown	3961	39.13	-94.6
+7161	KYK	Karuluk Airport	3962	57.57	-154.45
+7094	KUK	Kasigluk Airport	3963	60.87	-162.52
+6129	EAR	Kearney Municipal Airport	3964	40.73	-99.01
+7938	KLS	Kelso Longview	3965	46.12	-122.9
+3628	ENA	Kenai Muni	3966	60.57	-151.25
+3869	TMB	Kendall Tamiami Executive	3967	25.65	-80.43
+7009	ERV	Kerrville Municipal Airport	3968	29.98	-99.09
+3808	KTN	Ketchikan Intl	3969	55.36	-131.71
+3746	NQX	Key West Nas	3970	24.58	-81.69
+3875	EYW	Key West Intl	3971	24.56	-81.76
+7179	IAN	Bob Baker Memorial Airport	3972	66.98	-160.44
+7523	FFA	First Flight Airport	3973	36.02	-75.67
+3775	GRK	Robert Gray Aaf	3974	31.07	-97.83
+6765	KVC	King Cove Airport	3975	55.12	-162.27
+3794	AKN	King Salmon	3976	58.68	-156.65
+6132	IGM	Kingman Airport	3977	35.26	-113.94
+3540	NQI	Kingsville Nas	3978	27.51	-97.81
+7522	ISO	Kinston Regional Jetport	3979	35.33	-77.61
+7201	KPN	Kipnuk Airport	3980	59.93	-164.03
+5744	IRK	Kirksville Regional Airport	3981	40.09	-92.54
+3529	IKR	Albuquerque Intl Sunport	3982	35.04	-106.61
+6993	ISM	Kissimmee Gateway Airport	3983	28.29	-81.44
+6719	KVL	Kivalina Airport	3984	67.74	-164.56
+5750	LMT	Klamath Falls Airport	3985	42.16	-121.73
+7205	KLW	Klawock Airport	3986	55.58	-133.08
+7244	AQC	Klawock Seaplane Base	3986	55.55	-133.1
+3586	SZL	Whiteman Afb	3987	38.73	-93.55
+3676	TYS	Mc Ghee Tyson	3988	35.81	-83.99
+8296	DKX	Knoxville Downtown Island Airport	3989	35.96	-83.87
+7180	OBU	Kobuk Airport	3990	66.91	-156.9
+3531	ADQ	Kodiak	3991	57.75	-152.49
+7101	KGK	Koliganek Airport	3992	59.73	-157.26
+3514	KOA	Kona Intl At Keahole	3993	19.74	-156.05
+7213	KKH	Kongiganak Airport	3994	59.96	-162.88
+7207	KOT	Kotlik Airport	3995	63.03	-163.53
+3693	OTZ	Ralph Wien Mem	3996	66.88	-162.6
+7190	KKA	Koyuk Alfred Adams Airport	3997	64.94	-161.15
+7208	KYU	Koyukuk Airport	3998	64.88	-157.73
+7089	UUK	Ugnu-Kuparuk Airport	3999	70.33	-149.6
+7095	KWT	Kwethluk Airport	4000	60.79	-161.44
+7096	KWK	Kwigillingok Airport	4001	59.88	-163.17
+4227	LHX	La Junta Muni	4002	38.05	-103.51
+4044	LSE	LaCrosse Municipal	4003	43.88	-91.26
+3493	LFT	Lafayette Rgnl	4004	30.21	-91.99
+8302	LGC	LaGrange-Callaway Airport	4005	33.01	-85.07
+3796	JHM	Kapalua	4006	20.96	-156.67
+3513	LCH	Lake Charles Rgnl	4007	30.13	-93.22
+6994	LCQ	Lake City Municipal Airport	4008	30.18	-82.58
+7586	HII	Lake Havasu City Airport	4009	34.57	-114.36
+7245	MHM	Minchumina Airport	4010	63.89	-152.3
+3812	NEL	Lakehurst Naes	4011	40.03	-74.35
+7732	LAL	Lakeland Linder Regional Airport	4012	27.99	-82.02
+4342	LAA	Lamar Muni	4013	38.07	-102.69
+3851	LNY	Lanai	4014	20.79	-156.95
+5751	LNS	Lancaster Airport	4015	40.12	-76.3
+3544	LAN	Capital City	4016	42.78	-84.59
+5746	LAR	Laramie Regional Airport	4017	41.31	-105.67
+3691	LRD	Laredo Intl	4018	27.54	-99.46
+7162	KLN	Larsen Bay Airport	4019	57.53	-153.98
+4228	LRU	Las Cruces Intl	4020	32.29	-106.92
+3814	LSV	Nellis Afb	4021	36.24	-115.03
+3877	LAS	Mc Carran Intl	4022	36.08	-115.15
+4225	LVS	Las Vegas Muni	4021	35.65	-105.14
+5747	LBE	Arnold Palmer Regional Airport	4023	40.28	-79.4
+8288	LWM	Lawrence Municipal Airport	4024	42.72	-71.12
+8366	LWC	Lawrence Municipal	4024	39.01	-95.22
+7847	LZU	Gwinnett County Airport-Briscoe Field	4025	33.98	-83.96
+4256	LAW	Lawton-Fort Sill Regional Airport	4026	34.57	-98.42
+5749	LEB	Lebanon Municipal Airport	4027	43.63	-72.3
+3516	NLC	Lemoore Nas	4028	36.33	-119.95
+6958	LWB	Greenbrier Valley Airport	4029	37.86	-80.4
+3945	LWS	Lewiston Nez Perce Co	4030	46.37	-117.02
+5752	LWT	Lewistown Municipal Airport	4031	47.05	-109.47
+4017	LEX	Blue Grass	4032	38.04	-84.61
+4341	LBL	Liberal Muni	4033	37.04	-100.96
+3602	LIH	Lihue	4034	21.98	-159.34
+3543	LNK	Lincoln	4035	40.85	-96.76
+3660	LIT	Adams Fld	4036	34.73	-92.22
+7629	LVK	Livermore Municipal	4037	37.41	-121.49
+7717	LVM	Mission Field Airport	4038	45.7	-110.45
+7886	LOT	Lewis University Airport	4039	41.61	-88.08
+6998	LGU	Logan-Cache	4040	41.79	-111.85
+3810	VBG	Vandenberg Afb	4041	34.74	-120.58
+3582	LGB	Long Beach	4042	33.82	-118.15
+3465	GGG	East Texas Rgnl	4043	32.38	-94.71
+6136	LPS	Lopez Island Airport	4044	48.48	-122.94
+7584	LAM	Los Alamos Airport	4045	35.88	-106.27
+3484	LAX	Los Angeles Intl	4046	33.94	-118.41
+8220	WHP	Whiteman Airport	4047	34.26	-118.41
+3471	ARA	Acadiana Rgnl	4048	30.04	-91.88
+3600	LOU	Bowman Fld	4049	38.23	-85.66
+4014	SDF	Louisville International Airport	4050	38.17	-85.74
+3829	LBB	Lubbock Preston Smith Intl	4051	33.66	-101.82
+3651	LFK	Angelina Co	4052	31.23	-94.75
+5753	LYH	Lynchburg Regional Preston Glenn Field	4053	37.33	-79.2
+3883	MMV	Mc Minnville Muni	4054	45.19	-123.14
+3618	MNM	Menominee Marinette Twin Co	4055	45.13	-87.64
+3754	MCN	Middle Georgia Rgnl	4056	32.69	-83.65
+3884	WRB	Robins Afb	4057	32.64	-83.59
+8221	MAE	Madera Municipal Airport	4058	36.99	-120.11
+3459	MSN	Dane Co Rgnl Truax Fld	4059	43.14	-89.34
+7000	MLD	Malad City	4060	42.17	-112.29
+7081	MMH	Mammoth Yosemite Airport	4061	37.62	-118.84
+4011	MHT	Manchester Regional Airport	4062	42.93	-71.44
+4050	MHK	Manhattan Reigonal	4063	39.14	-96.67
+7054	MBL	Manistee County-Blacker Airport	4064	44.27	-86.25
+7246	MLY	Manley Hot Springs Airport	4065	65	-150.64
+7103	KMO	Manokotak Airport	4066	58.99	-159.05
+4254	MFD	Mansfield Lahm Regional	4067	40.82	-82.52
+7069	MTH	Florida Keys Marathon Airport	4068	24.73	-81.05
+3666	MGE	Dobbins Arb	4069	33.92	-84.52
+6825	MWA	Williamson Country Regional Airport	4070	37.75	-89.01
+7630	MPI	MariposaYosemite	4071	37.3	-120.02
+6838	MQT	Sawyer International Airport	4072	46.35	-87.4
+7097	MLL	Marshall Don Hunter Sr. Airport	4073	61.86	-162.03
+8285	GHG	Marshfield Municipal Airport	4074	42.1	-70.67
+7415	MRB	Eastern WV Regional Airport	4075	39.24	-77.59
+3507	HRT	Hurlburt Fld	4076	30.43	-86.69
+3638	BAB	Beale Afb	4077	39.14	-121.44
+6500	MCW	Mason City Municipal	4078	43.22	-93.41
+3546	MSS	Massena Intl Richards Fld	4079	44.94	-74.85
+3629	MLC	Mc Alester Rgnl	4080	34.88	-95.78
+3826	MFE	Mc Allen Miller Intl	4081	26.18	-98.24
+7079	MYL	McCall Municipal Airport	4082	44.89	-116.1
+7068	MCK	McCook Regional Airport	4083	40.21	-100.59
+5965	MCG	McGrath Airport	4084	62.95	-155.61
+8050	MCL	McKinley National Park Airport	4085	63.73	-148.91
+4101	MFR	Rogue Valley Intl Medford	4086	42.37	-122.87
+6720	MYU	Mekoryuk Airport	4087	60.37	-166.27
+3671	MLB	Melbourne Intl	4088	28.1	-80.65
+3473	MEM	Memphis Intl	4089	35.04	-89.98
+3683	MER	Castle	4090	37.38	-120.57
+7122	MCE	Merced Municipal Airport	4091	37.28	-120.51
+3847	NMM	Meridian Nas	4092	32.55	-88.56
+4335	MEI	Key Field	4093	32.33	-88.75
+6505	AZA	Phoenix-Mesa Gateway	4094	33.31	-111.66
+7146	MTM	Metlakatla Seaplane Base	4095	55.13	-131.58
+3576	MIA	Miami Intl	4096	25.79	-80.29
+3721	TNT	Dade Collier Training And Transition	4097	25.86	-80.9
+3791	OPF	Opa Locka	4097	25.91	-80.28
+6844	MGC	Michigan City Municipal Airport	4098	41.7	-86.82
+3652	MAF	Midland Intl	4099	31.94	-102.2
+5755	MLS	Frank Wiley Field	4100	46.43	-105.89
+8303	MLJ	Baldwin County Airport	4101	33.15	-83.24
+3778	NQA	Millington Rgnl Jetport	4102	35.36	-89.87
+3551	MLT	Millinocket Muni	4103	45.65	-68.69
+3679	MIV	Millville Muni	4104	39.37	-75.07
+3444	NSE	Whiting Fld Nas North	4105	30.72	-87.02
+3717	MKE	General Mitchell Intl	4106	42.95	-87.9
+7839	MWC	Lawrence J Timmerman Airport	4107	43.11	-88.03
+3766	MWL	Mineral Wells	4108	32.78	-98.06
+3858	MSP	Minneapolis St Paul Intl	4109	44.88	-93.22
+7020	ARV	Lakeland	4110	45.93	-89.73
+3498	MOT	Minot Intl	4111	48.26	-101.28
+3637	MIB	Minot Afb	4112	48.42	-101.36
+3505	NKX	Miramar Mcas	4113	32.87	-117.14
+4216	MSO	Missoula Intl	4114	46.92	-114.09
+7074	CNY	Canyonlands Field	4115	38.76	-109.75
+3452	BFM	Mobile Downtown	4116	30.63	-88.07
+3782	MOB	Mobile Rgnl	4117	30.69	-88.24
+3816	MOD	Modesto City Co Harry Sham	4118	37.63	-120.95
+7026	MHV	Mojave	4119	35.06	-118.15
+4072	MLI	Quad City Intl	4120	41.45	-90.51
+3705	MKK	Molokai	4121	21.15	-157.1
+5989	LUP	Kalaupapa Airport	4122	21.21	-156.97
+3732	MLU	Monroe Rgnl	4123	32.51	-92.04
+3948	MRY	Monterey Peninsula	4124	36.59	-121.84
+3500	MXF	Maxwell Afb	4125	32.38	-86.37
+8283	MGJ	Orange County Airport	4125	41.51	-74.26
+4115	MGM	Montgomery Regional Airport 	4126	32.3	-86.39
+3606	MPV	Edward F Knapp State	4127	44.2	-72.56
+6880	MTJ	Montrose Regional Airport	4128	38.51	-107.89
+8319	MRN	Foothills Regional Airport	4129	35.82	-81.61
+4284	MGW	Morgantown Muni Walter L Bill Hart Fld	4130	39.64	-79.92
+7657	MMU	Morristown Municipal Airport	4131	40.8	-74.41
+8187	MVL	Morrisville Stowe State Airport	4132	44.53	-72.61
+3742	MTC	Selfridge Angb	4133	42.61	-82.84
+3823	MUO	Mountain Home Afb	4134	43.04	-115.87
+3783	NUQ	Moffett Federal Afld	4135	37.42	-122.05
+5966	MOU	Mountain Village Airport	4136	62.1	-163.68
+3795	MUI	Muir Aaf	4137	40.43	-76.57
+7769	F70	French Valley Airport	4138	33.57	-117.13
+5756	MSL	Northwest Alabama Regional Airport	4139	34.75	-87.61
+5754	MKG	Muskegon County Airport	4140	43.17	-86.24
+3534	MKO	Davis Fld	4141	35.66	-95.37
+3515	MYR	Myrtle Beach Intl	4142	33.68	-78.93
+3517	ACK	Nantucket Mem	4143	41.25	-70.06
+7658	APC	Napa County Airport	4144	38.21	-122.28
+4012	APF	Naples Muni	4145	26.15	-81.78
+8287	ASH	Boire Field Airport	4146	42.78	-71.51
+3690	BNA	Nashville Intl	4147	36.12	-86.68
+7203	NLG	Nelson Lagoon	4148	56.01	-161.16
+5737	EWB	New Bedford Regional Airport	4149	41.68	-70.96
+3730	EWN	Craven Co Rgnl	4150	35.07	-77.04
+4006	HVN	Tweed-New Haven Airport	4151	41.26	-72.89
+3768	NBG	New Orleans Nas Jrb	4152	29.83	-90.03
+3861	MSY	Louis Armstrong New Orleans Intl	4153	29.99	-90.26
+8312	PHD	Harry Clever Field Airport	4154	40.47	-81.42
+6764	KNW	New Stuyahok Airport	4155	59.45	-157.33
+3697	LGA	La Guardia	4156	40.78	-73.87
+3797	JFK	John F Kennedy Intl	4156	40.64	-73.78
+3993	JRB	Wall Street Heliport	4156	40.7	-74.01
+4032	TSS	East 34th Street Heliport	4156	40.74	-73.97
+7729	JRA	West 30th St. Heliport	4156	40.75	-74.01
+7767	IDL	Idlewild Intl	4156	40.64	-73.78
+3494	EWR	Newark Liberty Intl	4157	40.69	-74.17
+3661	SWF	Stewart Intl	4158	41.5	-74.1
+7086	ONP	Newport Municipal Airport	4159	44.58	-124.06
+3633	PHF	Newport News Williamsburg Intl	4160	37.13	-76.49
+3630	IAG	Niagara Falls Intl	4161	43.11	-78.95
+8199	NME	Nightmute Airport	4162	60.47	-164.7
+7214	NIB	Nikolai Airport	4163	63.01	-154.38
+7196	IKO	Nikolski Air Station	4164	52.94	-168.85
+6725	WTK	Noatak Airport	4165	67.57	-162.97
+3788	OLS	Nogales Intl	4166	31.42	-110.85
+3615	OME	Nome	4167	64.51	-165.45
+7210	NNL	Nondalton Airport	4168	59.97	-154.85
+7181	ORV	Robert Curtis Memorial Airport	4169	66.82	-161.02
+3611	ORF	Norfolk Intl	4170	36.89	-76.2
+3827	NGU	Norfolk Ns	4171	36.94	-76.29
+5757	OTH	Southwest Oregon Regional Airport	4172	43.42	-124.25
+8278	OQU	Quonset State Airport	4173	41.6	-71.41
+5748	LBF	North Platte Regional Airport Lee Bird Field	4174	41.13	-100.68
+3568	ORT	Northway	4175	62.96	-141.93
+8280	OWD	Norwood Memorial Airport	4176	42.19	-71.17
+7092	NUI	Nuiqsut Airport	4177	70.21	-151.01
+7111	NUL	Nulato Airport	4178	64.73	-158.07
+7015	SUS	Spirit Of St Louis	4179	38.66	-90.65
+3453	OAK	Metropolitan Oakland Intl	4180	37.72	-122.22
+7889	OCA	Key Largo	4181	25.33	-80.27
+3870	NTU	Oceana Nas	4182	36.82	-76.03
+3614	HIF	Hill Afb	4183	41.12	-111.97
+3724	OGS	Ogdensburg Intl	4184	44.68	-75.47
+3525	TIK	Tinker Afb	4185	35.41	-97.39
+3863	OKC	Will Rogers World	4186	35.39	-97.6
+7869	JCI	New Century AirCenter Airport	4187	38.83	-94.89
+7817	OLV	Olive Branch Muni	4188	34.88	-89.78
+7650	OLM	Olympia Regional Airpor	4189	46.97	-122.9
+3454	OMA	Eppley Afld	4190	41.3	-95.89
+3836	OFF	Offutt Afb	4191	41.12	-95.91
+3734	ONT	Ontario Intl	4192	34.06	-117.6
+3532	UPP	Upolu	4193	20.27	-155.86
+3416	ORL	Executive	4194	28.55	-81.33
+3878	MCO	Orlando Intl	4195	28.43	-81.31
+8118	OMN	Ormond Beach municipal Airport	4196	29.18	-81.06
+3432	OSC	Oscoda Wurtsmith	4197	44.45	-83.39
+6909	OSH	Wittman Regional Airport	4198	44.02	-88.55
+5758	OWB	Owensboro Daviess County Airport	4199	37.74	-87.17
+8289	OXC	Waterbury-Oxford Airport	4200	41.48	-73.14
+6961	OXR	Oxnard - Ventura County	4201	34.2	-119.21
+4231	OZA	Ozona Muni	4202	30.74	-101.2
+4117	PAH	Barkley Regional Airport	4203	37.06	-88.77
+4124	PGA	Page Municipal Airport	4204	36.93	-111.45
+3522	PSX	Palacios Muni	4205	28.73	-96.25
+3839	PSP	Palm Springs Intl	4206	33.83	-116.51
+7646	TRM	Jacqueline Cochran Regional Airport	4207	33.63	-116.16
+7648	UDD	Bermuda Dunes Airport	4207	33.75	-116.27
+3756	PMD	Palmdale Rgnl Usaf Plt 42	4208	34.63	-118.08
+3569	PAQ	Palmer Muni	4209	61.59	-149.09
+3669	PAM	Tyndall Afb	4210	30.07	-85.58
+4073	PFN	Panama City Bay Co Intl	4211	30.21	-85.68
+7669	ECP	Panama City-NW Florida Bea.	4210	30.34	-85.8
+4114	PKB	Mid-Ohio Valley Regional Airport	4212	39.35	-81.44
+6133	PSC	Tri Cities Airport	4213	46.26	-119.12
+3521	NHK	Patuxent River Nas	4214	38.29	-76.41
+5762	PLN	Pellston Regional Airport of Emmet County Airport	4215	45.57	-84.8
+3647	PMB	Pembina Muni	4216	48.94	-97.24
+6883	PDT	Eastern Oregon Regional Airport	4217	45.7	-118.84
+3563	NPA	Pensacola Nas	4218	30.35	-87.32
+3564	PNS	Pensacola Rgnl	4219	30.47	-87.19
+4046	PIA	Peoria Regional	4220	40.66	-89.69
+7157	KPV	Perryville Airport	4221	55.91	-159.16
+3871	GUS	Grissom Arb	4222	40.65	-86.15
+4147	PSG	Petersburg James A. Johnson	4223	56.8	-132.95
+3750	PNE	Northeast Philadelphia	4224	40.08	-75.01
+3752	PHL	Philadelphia Intl	4225	39.87	-75.24
+3462	PHX	Phoenix Sky Harbor Intl	4226	33.43	-112.01
+3506	LUF	Luke Afb	4227	33.53	-112.38
+8030	DVT	Deer Valley Municipal Airport	4228	33.41	112.46
+5761	PIR	Pierre Regional Airport	4229	44.38	-100.29
+8320	PBX	Pike County Airport - Hatcher Field	4230	37.56	-82.57
+7158	PIP	Pilot Point Airport	4231	57.59	-157.57
+3443	PBF	Grider Fld	4232	34.17	-91.94
+8305	PIM	Harris County Airport	4233	32.84	-84.88
+7495	AGC	Allegheny County Airport	4234	40.35	-79.93
+3570	PIT	Pittsburgh Intl	4235	40.49	-80.23
+3771	PBG	Plattsburgh Intl	4236	44.65	-73.47
+8277	PYM	Plymouth Municipal Airport	4237	41.91	-70.73
+5760	PIH	Pocatello Regional Airport	4238	42.91	-112.6
+3428	PBV	St George	4239	56.58	-169.66
+6721	PHO	Point Hope Airport	4240	68.35	-166.8
+3414	PIZ	Point Lay Lrrs	4241	69.73	-163.01
+3511	NTD	Point Mugu Nas	4242	34.12	-119.12
+6864	1RL	Point Roberts Airpark	4243	48.98	-123.08
+8379	PMP	Pompano Beach Airpark	4244	26.25	-80.11
+3440	PNC	Ponca City Rgnl	4245	36.73	-97.1
+3455	NOW	Port Angeles Cgas	4246	48.14	-123.41
+5731	CLM	William R Fairchild International Airport	4247	48.12	-123.5
+6736	KPC	Port Clarence Coast Guard Station	4248	65.25	-166.86
+7775	PCW	Erie-Ottawa Regional Airport	4249	41.52	-82.87
+6766	PTH	Port Heiden Airport	4250	56.96	-158.63
+3557	PHN	St Clair Co Intl	4251	42.91	-82.53
+3430	PTU	Platinum	4252	59.01	-161.82
+4066	S46	Port O\\'Connor Airfield	4253	28.43	-96.44
+3720	PDX	Portland Intl	4254	45.59	-122.6
+3862	PWM	Portland Intl Jetport	4255	43.65	-70.31
+5763	PSM	Pease International Tradeport	4256	43.08	-70.82
+3446	PRC	Ernest A Love Fld	4257	34.65	-112.42
+3528	PQI	Northern Maine Rgnl At Presque Isle	4258	46.69	-68.04
+7583	PUC	Carbon County Regional-Buck Davis Field	4259	39.61	-110.75
+3762	PNM	Princeton Muni	4260	45.56	-93.61
+8052	PPC	Prospect Creek Airport	4261	66.81	-150.64
+3641	PVD	Theodore Francis Green State	4262	41.73	-71.42
+6456	PVC	Provincetown Muni	4263	42.07	-70.22
+7579	PVU	Provo Municipal Airport	4264	40.22	-111.72
+3527	PUB	Pueblo Mem	4265	38.29	-104.5
+3944	PUW	Pullman-Moscow Rgnl	4266	46.74	-117.11
+7056	PGD	Charlotte County-Punta Gorda Airport	4267	26.92	-81.99
+3833	NYG	Quantico Mcaf	4268	38.5	-77.31
+5774	UIN	Quincy Regional Baldwin Field	4269	39.94	-91.19
+7206	KWN	Quinhagak Airport	4270	59.76	-161.85
+3626	RDU	Raleigh Durham Intl	4271	35.88	-78.79
+3643	RIU	Rancho Murieta	4272	38.49	-121.1
+3625	RCA	Ellsworth Afb	4273	44.15	-103.1
+4087	RAP	Rapid City Regional Airport	4274	44.05	-103.06
+7986	RWL	Rawlins Municipal Airport-Harvey Field	4275	41.81	-107.2
+5764	RDG	Reading Regional Carl A Spaatz Field	4276	40.38	-75.97
+3565	RDR	Grand Forks Afb	4277	47.96	-97.4
+4098	RDD	Redding Muni	4278	40.51	-122.29
+4103	RDM	Roberts Fld	4279	44.25	-121.15
+3480	HUA	Redstone Aaf	4280	34.68	-86.68
+3807	RNO	Reno Tahoe Intl	4281	39.5	-119.77
+5765	RHI	Rhinelander Oneida County Airport	4282	45.63	-89.47
+7582	RIF	Richfield Minicipal Airport	4283	38.74	-112.1
+3608	RIC	Richmond Intl	4284	37.51	-77.32
+7777	RID	Richmond Municipal Airport	4285	39.76	-84.84
+4253	CGF	Cuyahoga County	4286	41.57	-81.49
+7652	RIL	Garfield County Regional Airport	4287	39.53	-107.73
+3799	RAL	Riverside Muni	4288	33.95	-117.45
+3815	RIV	March Arb	4288	33.88	-117.26
+6881	RIW	Riverton Regional	4289	43.06	-108.46
+4016	ROA	Roanoke Regional	4290	37.33	-79.98
+3501	RBM	Robinson Aaf	4291	34.85	-92.3
+3622	ROC	Greater Rochester Intl	4292	43.12	-77.67
+4048	RST	Rochester	4293	43.91	-92.5
+7494	RKH	Rock Hill York Co Bryant Airport	4294	34.99	-81.06
+5766	RKS	Rock Springs Sweetwater County Airport	4295	41.59	-109.06
+4028	RFD	Chicago Rockford International Airport 	4296	42.2	-89.1
+4026	RKD	Knox County Regional Airport	4297	44.06	-69.1
+8077	RKP	Aransas County Airport	4298	28.09	-97.04
+7690	RWI	Rocky Mount Wilson Regional Airport	4299	35.86	-77.89
+3450	RME	Griffiss Afld	4300	43.23	-75.41
+8294	RMG	Richard B Russell Airport	4301	34.35	-85.16
+7042	STJ	Rosecrans Mem	4302	39.77	-94.91
+3736	ROW	Roswell Intl Air Center	4303	33.3	-104.53
+6722	RBY	Ruby Airport	4304	64.73	-155.47
+7077	SRR	Sierra Blanca Regional Airport	4305	33.46	-105.53
+7098	RSH	Russian Mission Airport	4306	61.77	-161.32
+5767	RUT	Rutland State Airport	4307	43.53	-72.95
+3434	MHR	Sacramento Mather	4308	38.55	-121.3
+3663	SAC	Sacramento Executive	4308	38.51	-121.49
+3684	MCC	Mc Clellan Afld	4309	38.67	-121.4
+3817	SMF	Sacramento Intl	4309	38.7	-121.59
+4128	MBS	Mbs Intl	4310	43.53	-84.08
+4271	STC	Saint Cloud Regional Airport	4311	45.55	-94.06
+4064	SGU	St George Muni	4312	37.09	-113.59
+7826	SLE	McNary Field	4313	44.91	-123
+5771	SLN	Salina Municipal Airport	4314	38.79	-97.65
+3642	SBY	Salisbury Ocean City Wicomico Rgnl	4315	38.34	-75.51
+7080	SMN	Lemhi County Airport	4316	45.12	-113.88
+3536	SLC	Salt Lake City Intl	4317	40.79	-111.98
+3708	SJT	San Angelo Rgnl Mathis Fld	4318	31.36	-100.5
+3621	SAT	San Antonio Intl	4319	29.53	-98.47
+3727	SKF	Lackland Afb Kelly Fld Annex	4320	29.38	-98.58
+3757	RND	Randolph Afb	4320	29.53	-98.28
+7670	SBD	San Bernardino International Airport	4321	34.1	-117.23
+7683	SQL	San Carlos Airport	4322	37.51	-122.25
+3594	NZY	North Island Nas	4323	32.7	-117.22
+3731	SAN	San Diego Intl	4324	32.73	-117.19
+7659	SDM	Brown Field Municipal Airport	4323	32.57	-116.98
+8345	MYF	Montgomery Field	4323	32.48	117.76
+3469	SFO	San Francisco Intl	4325	37.62	-122.37
+3748	SJC	Norman Y Mineta San Jose Intl	4326	37.36	-121.93
+3616	SPB	Scappoose Industrial Airpark	4327	45.77	-122.86
+5768	SBP	San Luis County Regional Airport	4328	35.24	-120.64
+6742	SDP	Sand Point Airport	4329	55.31	-160.52
+3821	SKY	Griffing Sandusky	4330	41.43	-82.65
+4167	SFB	Orlando Sanford Intl	4331	28.78	-81.24
+3702	INJ	Hillsboro Muni	4332	32.08	-97.1
+3867	SNA	John Wayne Arpt Orange Co	4333	33.68	-117.87
+4298	NZJ	El Toro	4332	33.68	-117.73
+3657	SBO	Emanuel Co	4334	32.61	-82.37
+3949	SBA	Santa Barbara Muni	4335	34.43	-119.84
+3784	SAF	Santa Fe Muni	4336	35.62	-106.09
+5772	SMX	Santa Maria Pub Cpt G Allan Hancock Airport	4337	34.9	-120.46
+7647	SMO	Santa Monica Municipal Airport	4338	34.02	-118.45
+6992	STS	Charles M Schulz Sonoma Co	4339	38.51	-122.81
+5770	SLK	Adirondack Regional Airport	4340	44.39	-74.21
+4067	SRQ	Sarasota Bradenton Intl	4341	27.4	-82.55
+7653	SAA	Shively Field Airport	4342	41.44	-106.82
+5729	CIU	Chippewa County International Airport	4343	46.25	-84.47
+3613	SAV	Savannah Hilton Head Intl	4344	32.13	-81.2
+6724	SVA	Savoonga Airport	4345	63.69	-170.49
+7209	SCM	Scammon Bay Airport	4346	61.85	-165.57
+6968	SCH	Stratton ANGB - Schenectady County Airpor	4347	42.85	-73.93
+5723	BFF	Western Nebraska Regional Airport	4348	41.87	-103.6
+7649	ZSY	Scottsdale Airport	4349	33.62	-111.91
+4286	AVP	Wilkes Barre Scranton Intl	4350	41.34	-75.72
+3577	SEA	Seattle Tacoma Intl	4351	47.45	-122.31
+3726	BFI	Boeing Fld King Co Intl	4351	47.53	-122.3
+6457	LKE	Kenmore Air Harbor Seaplane Base	4352	47.63	-122.34
+4280	SDX	Sedona	4353	34.85	-111.79
+7182	WLK	Selawik Airport	4354	66.6	-159.99
+3874	SEM	Craig Fld	4355	32.34	-86.99
+7090	SHX	Shageluk Airport	4356	62.69	-159.57
+7192	SKK	Shaktoolik Airport	4357	64.37	-161.22
+3813	SYA	Eareckson As	4358	52.71	174.11
+5769	SHR	Sheridan County Airport	4359	44.77	-106.98
+6723	SHH	Shishmaref Airport	4360	66.25	-166.09
+7078	SOW	Show Low Regional Airport	4361	34.27	-110.01
+3609	SHV	Shreveport Rgnl	4362	32.45	-93.83
+3842	BAD	Barksdale Afb	4363	32.5	-93.66
+7117	SHG	Shungnak Airport	4364	66.89	-157.16
+7065	SDY	Sidney-Richland Municipal Airport	4365	47.71	-104.19
+6135	SVC	Grant County Airport	4366	32.64	-108.16
+8219	SPZ	Silver Springs Airport	4367	39.4	-119.25
+3753	SUX	Sioux Gateway Col Bud Day Fld	4368	42.4	-96.38
+4009	FSD	Sioux Falls	4369	43.58	-96.74
+3856	SIT	Sitka Rocky Gutierrez	4370	57.05	-135.36
+5961	SGY	Skagway Airport	4371	59.46	-135.32
+7240	SLQ	Sleetmute Airport	4372	61.7	-157.17
+3781	SFZ	North Central State	4373	41.92	-71.49
+7061	SME	Lake Cumberland Regional Airport	4374	37.05	-84.62
+4359	SBN	South Bend Rgnl	4375	41.71	-86.32
+4262	TVL	Lake Tahoe Airport	4376	38.89	-120
+7159	WSN	South Naknek Airport	4377	58.7	-157
+3421	SVW	Sparrevohn Lrrs	4378	61.1	-155.57
+7809	SPF	Black Hills Airport-Clyde Ice Field	4379	44.48	-103.79
+6446	SPW	Spencer Muni	4380	43.17	-95.2
+3467	GEG	Spokane Intl	4381	47.62	-117.53
+3667	SKA	Fairchild Afb	4382	47.62	-117.66
+3716	SFF	Felts Fld	4382	47.68	-117.32
+4336	SPI	Abraham Lincoln Capital	4383	39.84	-89.68
+4348	SGF	Springfield Branson Natl	4384	37.25	-93.39
+7908	SGH	Springfield-Beckly Municipal Airport	4385	39.84	-83.84
+6718	KSM	St Marys Airport	4386	62.06	-163.3
+6989	UST	St. Augustine Airport	4387	29.96	-81.34
+3678	STL	Lambert St Louis Intl	4388	38.75	-90.37
+7191	SMK	St. Michael Airport	4389	63.49	-162.11
+3426	SNP	St Paul Island	4390	57.17	-170.22
+3548	SPG	Albert Whitted	4391	27.77	-82.63
+3617	PIE	St Petersburg Clearwater Intl	4392	27.91	-82.69
+4318	SCE	University Park Airport	4393	40.85	-77.85
+7580	SBS	Steamboat Springs Airport-Bob Adams Field	4394	40.52	-106.87
+7985	STK	Sterling Municipal Airport	4395	40.62	-103.26
+3805	SCK	Stockton Metropolitan	4396	37.89	-121.24
+3579	BDR	Igor I Sikorsky Mem	4397	41.16	-73.13
+7656	SUA	Witham Field Airport	4398	27.18	-80.22
+4220	SGR	Sugar Land Regional Airport	4399	29.62	-95.66
+3733	SSC	Shaw Afb	4400	33.97	-80.47
+8298	JYL	Plantation Airpark	4401	32.65	-81.6
+3745	SYR	Syracuse Hancock Intl	4402	43.11	-76.11
+3672	TCM	Mc Chord Afb	4403	47.14	-122.48
+4004	TKA	Talkeetna	4404	62.32	-150.09
+3698	TLH	Tallahassee Rgnl	4405	30.4	-84.35
+3646	TPA	Tampa Intl	4406	27.98	-82.53
+3789	MCF	Macdill Afb	4407	27.85	-82.52
+3423	TLJ	Tatalina Lrrs	4408	62.89	-155.98
+8276	TAN	Taunton Municipal Airport - King Field	4409	41.87	-71.02
+7186	TLA	Teller Airport	4410	65.24	-166.34
+4084	TEX	Telluride	4411	37.95	-107.91
+4230	TPL	Draughon Miller Central Texas Rgnl	4412	31.15	-97.41
+3603	HUF	Terre Haute Intl Hulman Fld	4413	39.45	-87.31
+3624	TEB	Teterboro	4414	40.85	-74.06
+3770	TXK	Texarkana Rgnl Webb Fld	4415	33.45	-93.99
+7018	TVF	Thief River Falls	4416	48.07	-96.19
+7998	TVI	Thomasville Regional Airport	4417	30.9	-83.88
+8005	TMA	Henry Tift Myers Airport	4418	31.43	-83.49
+7194	TNC	Tin City LRRS Airport	4419	65.56	-167.92
+8322	TOC	Toccoa RG Letourneau Field Airport	4420	34.59	-83.3
+6767	TOG	Togiak Airport	4421	59.05	-160.4
+7235	6K8	Tok Junction Airport	4422	63.33	-142.95
+8200	OOK	Toksook Bay Airport	4423	60.54	-165.09
+4040	TOL	Toledo	4424	41.59	-83.81
+3592	TNX	Tonopah Test Range	4425	37.8	-116.78
+3843	FOE	Forbes Fld	4426	38.95	-95.66
+7925	TOP	Philip Billard Muni	4427	39.07	-95.62
+7053	TOA	Zamperini Field Airport	4428	33.8	-118.34
+4023	TVC	Cherry Capital Airport	4429	44.74	-85.58
+3447	TTN	Trenton Mercer	4430	40.28	-74.81
+8121	TTD	Portland Troutdale	4431	45.55	-122.4
+7702	...	Truckee-Tahoe Airport	4432	39.32	-120.14
+3755	TCS	Truth Or Consequences Muni	4433	33.24	-107.27
+3562	DMA	Davis Monthan Afb	4434	32.17	-110.88
+3636	TUS	Tucson Intl	4435	32.12	-110.94
+7979	AVW	Marana Regional	4434	32.41	-111.22
+3773	TCC	Tucumcari Muni	4436	35.18	-103.6
+3855	TUL	Tulsa Intl	4437	36.2	-95.89
+7849	RVS	Richard Lloyd Jones Jr Airport	4438	36.04	-95.98
+7827	UTM	Tunica Municipal Airport	4439	34.68	-90.35
+5773	TUP	Tupelo Regional Airport	4440	34.27	-88.77
+4387	TCL	Tuscaloosa Rgnl	4441	33.22	-87.61
+3436	NXP	Twentynine Palms Eaf	4442	34.3	-116.16
+4263	TWF	Magic Valley Regional Airport	4443	42.48	-114.49
+3848	TYR	Tyler Pounds Rgnl	4444	32.35	-95.4
+7088	UNK	Unalakleet Airport	4445	63.89	-160.8
+3860	DUT	Unalaska	4446	53.9	-166.54
+7885	UVA	Garner Field	4447	29.22	-99.75
+4250	EGE	Eagle Co Rgnl	4448	39.64	-106.92
+3865	VDZ	Valdez Pioneer Fld	4449	61.13	-146.25
+3575	VAD	Moody Afb	4450	30.97	-83.19
+5776	VLD	Valdosta Regional Airport	4451	30.78	-83.28
+3873	VPS	Eglin Afb	4452	30.48	-86.53
+4071	VNY	Van Nuys	4453	34.21	-118.49
+7114	VEE	Venetie Airport	4454	67.01	-146.37
+7076	VEL	Vernal Regional Airport	4455	40.44	-109.51
+3688	VRB	Vero Beach Muni	4456	27.66	-80.42
+5775	VCT	Victoria Regional Airport	4457	28.85	-96.92
+3554	VCV	Southern California Logistics	4458	34.6	-117.38
+4265	MVY	Martha\\'s Vineyard	4459	41.39	-70.62
+7121	VIS	Visalia Municipal Airport	4460	36.32	-119.39
+3476	CNW	Tstc Waco	4461	31.64	-97.07
+3700	ACT	Waco Rgnl	4462	31.61	-97.23
+6415	WKL	Waikoloa Heliport	4463	19.91	-155.86
+7220	AIN	Wainwright Airport	4464	70.64	-159.99
+7187	WAA	Wales Airport	4465	65.62	-168.09
+5719	ALW	Walla Walla Regional Airport	4466	46.09	-118.29
+3801	WAL	Wallops Flight Facility	4467	37.94	-75.47
+3520	DCA	Ronald Reagan Washington Natl	4468	38.85	-77.04
+3714	IAD	Washington Dulles Intl	4468	38.94	-77.46
+4045	CWA	Central Wisconsin	4469	44.77	-89.65
+5718	ALO	Waterloo Regional Airport	4470	42.56	-92.4
+3838	ART	Watertown Intl	4471	43.99	-76.02
+5721	ATY	Watertown Regional Airport	4472	44.91	-97.15
+8367	EGT	Wellington Municipal	4473	37.39	-97.42
+6916	EAT	Pangborn Field	4474	47.4	-120.21
+3451	ENV	Wendover	4475	40.72	-114.03
+3699	DPA	Dupage	4476	41.91	-88.25
+3590	FOK	Francis S Gabreski	4477	40.84	-72.63
+3593	LNA	Palm Beach Co Park	4478	26.59	-80.09
+3722	PBI	Palm Beach Intl	4479	26.68	-80.1
+7072	WYS	Yellowstone Airport	4480	44.69	-111.12
+8281	BAF	Barnes Municipal	4481	42.16	-72.72
+7062	SHD	Shenandoah Valley Regional Airport	4482	38.26	-78.9
+3499	HHI	Wheeler Aaf	4483	21.48	-158.04
+3573	NUW	Whidbey Island Nas	4484	48.35	-122.66
+7188	WMO	White Mountain Airport	4485	64.69	-163.41
+3589	HPN	Westchester Co	4486	41.07	-73.71
+3853	WSD	Condron Aaf	4487	32.34	-106.4
+3457	ICT	Wichita Mid Continent	4488	37.65	-97.43
+3767	IAB	Mc Connell Afb	4489	37.62	-97.27
+3680	SPS	Sheppard Afb Wichita Falls Muni	4490	33.99	-98.49
+3740	WWD	Cape May Co	4491	39.01	-74.91
+3584	IPT	Williamsport Rgnl	4492	41.24	-76.92
+8282	IJD	Windham Airport	4493	41.74	-72.18
+3659	ISN	Sloulin Fld Intl	4494	48.18	-103.64
+3803	NXX	Willow Grove Nas Jrb	4495	40.2	-75.15
+3845	ILM	Wilmington Intl	4496	34.27	-77.9
+3859	ILG	New Castle	4497	39.68	-75.61
+7978	ILN	Wilmington Airborne Airpark	4498	39.43	-83.79
+8297	WDR	Barrow County Airport	4499	33.98	-83.67
+3825	BDL	Bradley Intl	4500	41.94	-72.68
+3686	INK	Winkler Co	4501	31.78	-103.2
+7587	INW	Winslow-Lindbergh Regional Airport	4502	35.02	-110.72
+3553	INT	Smith Reynolds	4503	36.13	-80.22
+7071	OLF	LM Clayton Airport	4504	48.09	-105.58
+6426	ORH	Worcester Regional Airport	4505	42.27	-71.88
+5777	WRL	Worland Municipal Airport	4506	43.97	-107.95
+5969	WRG	Wrangell Airport	4507	56.48	-132.37
+3655	WRI	Mc Guire Afb	4508	40.02	-74.59
+7198	CYT	Yakataga Airport	4509	60.08	-142.49
+5779	YKM	Yakima Air Terminal McAllister Field	4510	46.57	-120.54
+6803	YAK	Yakutat	4511	59.3	-139.39
+3881	YNG	Youngstown Warren Rgnl	4512	41.26	-80.68
+7875	MYV	Yuba County Airport	4513	39.06	-121.34
+3596	YUM	Yuma Mcas Yuma Intl	4514	32.66	-114.61
+3776	ZUN	Black Rock	4515	35.08	-108.79
+7123	CYR	Laguna de Los Patos International Airport	4516	-34.46	-57.77
+6070	MDO	El Jaguel / Punta del Este Airport	4517	-34.92	-54.92
+2816	MVD	Carrasco Intl	4518	-34.84	-56.03
+6777	PDP	Capitan Corbeta C A Curbelo International Airport	4519	-34.86	-55.09
+8236	RVY	Rivera International Airport	4520	-30.97	-55.48
+2817	STY	Nueva Hesperides Intl	4521	-31.44	-57.99
+6148	AZN	Andizhan Airport	4522	40.73	72.29
+2980	BHK	Bukhara	4523	39.77	64.48
+6149	FEG	Fergana Airport	4524	40.36	71.75
+6153	KSQ	Karshi Khanabad Airport	4525	38.83	65.92
+6150	NMA	Namangan Airport	4526	40.98	71.56
+6485	NVI	Navoi Airport	4527	40.12	65.17
+6151	NCU	Nukus Airport	4528	42.49	59.62
+2981	SKD	Samarkand	4529	39.7	66.98
+2983	TAS	Yuzhny	4530	41.26	69.28
+6154	TMJ	Termez Airport	4531	37.29	67.31
+6152	UGC	Urgench Airport	4532	41.58	60.64
+6754	AFS	Sugraly Airport	4533	41.61	64.23
+5893	MTV	Mota Lava Airport	4534	-13.67	167.71
+5910	ULB	UlÌ©i Airport	4535	-16.33	168.28
+5914	AUY	Anelghowhat Airport	4536	-20.25	169.77
+5915	AWD	Aniwa Airport	4537	-19.24	169.6
+5897	CCV	Craig Cove Airport	4538	-16.27	167.92
+5916	DLY	Dillon's Bay Airport	4539	-18.77	169
+5917	FTA	Futuna Airport	4540	-19.52	170.23
+5906	ZGU	Gaua Island Airport	4541	-14.22	167.59
+5918	IPA	Ipota Airport	4542	-18.88	169.31
+5901	LPM	Lamap Airport	4543	-16.45	167.82
+5902	LNB	Lamen Bay Airport	4544	-16.58	168.16
+5895	TOH	Torres Airstrip	4545	-13.33	166.64
+5898	LOD	Longana Airport	4546	-15.31	167.97
+5904	LNE	Lonorore Airport	4547	-15.87	168.17
+5903	MWF	Naone Airport	4548	-15	168.08
+5912	SWJ	Southwest Bay Airport	4549	-16.5	167.44
+5905	NUS	Norsup Airport	4550	-16.08	167.4
+5913	OLZ	North West Santo Airport	4551	-14.88	166.56
+5900	PBJ	Tavie Airport	4552	-16.44	168.26
+5899	SSR	Sara Airport	4553	-15.47	168.15
+1997	VLI	Port Vila Bauerfield	4554	-17.7	168.32
+5907	RCL	Redcliffe Airport	4555	-15.47	167.84
+5896	EAE	Sangafa Airport	4556	-17.09	168.34
+5908	SON	Santo Pekoa International Airport	4557	-15.51	167.22
+5894	SLH	Sola Airport	4558	-13.85	167.54
+5909	TGH	Tongoa Island Airport	4559	-16.89	168.55
+5911	VLS	Valesdir Airport	4560	-16.8	168.18
+6771	WLH	Walaha Airport	4561	-15.41	167.69
+2818	AGV	Oswaldo Guevara Mujica	4562	9.55	-69.24
+2819	AAO	Anaco	4563	9.43	-64.47
+2821	BLA	General Jose Antonio Anzoategui Intl	4564	10.11	-64.69
+2822	BNS	Barinas	4565	8.62	-70.22
+2824	BRM	Barquisimeto Intl	4566	10.04	-69.36
+2830	CAJ	Canaima	4567	6.23	-62.85
+2851	CCS	Simon Bolivar Intl	4568	10.6	-66.99
+2832	CUP	General Jose Francisco Bermudez	4569	10.66	-63.26
+2826	CBL	Ciudad Bolivar	4570	8.12	-63.54
+2833	CZE	Jose Leonardo Chirinos	4571	11.41	-69.68
+2835	CUM	Antonio Jose De Sucre	4572	10.45	-64.13
+6072	VIG	Juan Pablo PÌ©rez Alfonso Airport	4573	8.62	-71.67
+2841	GUQ	Guanare	4574	9.03	-69.76
+2856	PZO	General Manuel Carlos Piar	4575	8.29	-62.76
+2840	GUI	Guiria	4576	10.57	-62.31
+2846	LFR	La Fria	4577	8.24	-72.27
+6420	LRV	Gran Roque Airport	4578	11.95	-66.67
+2848	MAR	La Chinita Intl	4579	10.56	-71.73
+6071	MYC	Escuela Mariscal Sucre Airport	4580	10.25	-67.65
+2852	MUN	Maturin	4581	9.75	-63.15
+2849	MRD	Alberto Carnevalli	4582	8.58	-71.16
+2844	LSP	Josefa Camejo	4583	11.78	-70.15
+2850	PMV	Del Caribe Intl Gen Santiago Marino	4584	10.91	-63.97
+2853	PYH	Casique Aramare	4585	5.62	-67.61
+2854	PBL	General Bartolome Salom Intl	4586	10.48	-68.07
+2858	SVZ	San Antonio Del Tachira	4587	7.84	-72.44
+2862	SFH	Sub Teniente Nestor Arias	4588	10.28	-68.76
+2863	SFD	San Fernando De Apure	4589	7.88	-67.44
+2864	SOM	San Tome	4590	8.95	-64.15
+2865	STB	Santa Barbara Del Zulia	4591	8.97	-71.94
+2861	STD	Mayor Buenaventura Vivas	4592	7.57	-72.04
+2866	TUV	Tucupita	4593	9.09	-62.09
+2868	VLN	Arturo Michelena Intl	4594	10.15	-67.93
+2870	VLV	Dr Antonio Nicolas Briceno	4595	9.34	-70.58
+2871	VDP	Valle De La Pascua	4596	9.22	-65.99
+6187	BMV	Buon Ma Thuot Airport	4597	12.67	108.12
+4156	CAH	Ca Mau	4598	9.19	105.17
+6191	VCA	TrÌÊ NÌ_c Airport	4599	10.09	105.71
+4157	VCL	Chu Lai	4600	15.41	108.71
+6190	VCS	Co Ong Airport	4601	8.73	106.63
+4153	DLI	Dalat	4602	11.75	108.37
+3196	DAD	Danang Intl	4603	16.04	108.2
+6192	DIN	Dien Bien Phu Airport	4604	21.4	103.01
+6188	HPH	Cat Bi International Airport	4605	20.82	106.72
+3199	HAN	Noibai Intl	4606	21.22	105.81
+3205	SGN	Tansonnhat Intl	4607	10.82	106.65
+6189	CXR	Cam Ranh Airport	4608	12	109.22
+3200	NHA	Nhatrang	4609	12.23	109.19
+7700	PHA	Phan Rang Airport	4610	11.63	108.95
+6193	UIH	Phu Cat Airport	4611	13.95	109.04
+6194	PXU	Pleiku Airport	4612	14	108.02
+4155	VKG	Rach Gia	4613	9.95	105.13
+7701	SQH	Na-San Airport	4614	21.22	104.03
+4158	TBB	Dong Tac	4615	13.05	109.33
+6195	VII	Vinh Airport	4616	18.74	105.67
+2884	STX	Henry E Rohlsen	4617	17.7	-64.8
+2883	STT	Cyril E King	4618	18.34	-64.97
+7674	AWK	Wake Island Afld	4619	19.28	166.64
+5885	FUT	Pointe Vele Airport	4620	-14.31	-178.07
+1968	WLS	Wallis	4621	-13.24	-176.2
+5670	VIL	Dakhla Airport	4622	23.72	-15.93
+5672	EUN	Hassan I Airport	4623	27.15	-13.22
+5669	SMW	Smara Airport	4624	26.73	-11.68
+3977	ADE	Aden Intl	4625	12.83	45.03
+3979	AAY	Al Ghaidah Intl	4626	16.19	52.17
+3978	AXK	Ataq	4627	14.55	46.83
+3982	BHN	Beihan	4628	14.78	45.72
+3976	HOD	Hodeidah Intl	4629	14.75	42.98
+3974	RIY	Riyan	4630	14.66	49.38
+3980	SAH	Sanaa Intl	4631	15.48	44.22
+5954	GXF	Sayun International Airport	4632	15.97	48.79
+3984	SCT	Socotra Intl	4633	12.63	53.91
+3975	TAI	Taiz Intl	4634	13.69	44.14
+5612	CIP	Chipata Airport	4635	-13.56	32.59
+7830	ZKB	Kasaba Bay Airport	4636	-8.53	30.66
+906	LVI	Livingstone	4637	-17.82	25.82
+907	LUN	Lusaka Intl	4638	-15.33	28.45
+908	MFU	Mfuwe	4639	-13.26	31.94
+910	NLA	Ndola	4640	-13	28.66
+5613	SLI	Solwesi Airport	4641	-12.17	26.37
+911	KIW	Southdowns	4642	-12.9	28.15
+1001	BUQ	J M Nkomo Intl	4643	-20.02	28.62
+1003	BFO	Buffalo Range	4644	-21.01	31.58
+1011	GWE	Gweru Thornhill	4645	-19.44	29.86
+1005	HRE	Harare Intl	4646	-17.93	31.09
+1012	WKM	Hwange National Park	4647	-18.63	27.02
+1006	KAB	Kariba Intl	4648	-16.52	28.88
+1009	MVZ	Masvingo Intl	4649	-20.06	30.86
+1004	VFA	Victoria Falls Intl	4650	-18.1	25.84

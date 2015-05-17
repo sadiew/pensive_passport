@@ -57,6 +57,8 @@ airports <- airports %>%
   left_join(us_airports_by_state, by=c('airport_code', 'country'))
 airports$state[is.na(airports$state)] = ''
 airports$state[airports$city=='New York'] = 'NY'
+airports$city[airports$city=='Firenze'] = 'Florence'
+airports$state[airports$city=='Chicago'] = 'IL'
 
 #City Data - seeded from Airports above, joined to cost of living data
 cities <- airports %>%

@@ -50,9 +50,6 @@ def show_results():
 
     trip1.wow_factor = int(request.form['wow-factor-1'])
     trip2.wow_factor = int(request.form['wow-factor-2'])
-   
-    trip1.get_city_data()
-    trip2.get_city_data()
 
     winner = trip1.determine_destination(trip2, user_preferences)   
     

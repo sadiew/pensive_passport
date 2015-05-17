@@ -8,8 +8,6 @@ DEFAULT_IMAGE_URL = 'http://www.posterparty.com/images/photography-paris-france-
 
 db = SQLAlchemy()
 
-# Model definitions
-
 class City(db.Model):
     """Destination city."""
 
@@ -90,6 +88,22 @@ class Restaurant(db.Model):
 
         return "<Restaurant name=%s city_id=%s>" % (self.name, self.city_id)
 
+class Place(db.Model):
+    __tablename__ = "places"
+
+    place_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    city_id = db.Column(db.Integer, db.ForeignKey('cities.city_id'))
+    place_type = db.Column(db.String(10), nullable=False)
+
+    city = db.relationship("City",
+                           backref=db.backref("places", order_by=place_id))
+
+    def __repr__(self):
+
+        return "<Place name=%s city_id=%s>" % (self.name, self.city_id)
+
+
 class Trip(object):
     def __init__(self, origin, destination, depart_date, return_date):
         self.origin = origin
@@ -98,9 +112,7 @@ class Trip(object):
         self.return_date = return_date
         self.weather = self.get_weather_data()
         self.flights = self.get_flight_data()
-        self.cost_of_living = 46
-        self.food = (0,0)
-        self.wow_factor = 5
+        self.get_city_data()
 
     def __repr__(self):
         return "<Trip origin=%s, destination=%s-%s>" % (self.origin, self.name, self.destination)
