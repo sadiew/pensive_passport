@@ -1,6 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 
-import json, requests, os, psycopg2
+import json, requests, os, psycopg2, random
 from datetime import datetime, timedelta
 import flickr, google_flights, weather
 
@@ -161,7 +161,6 @@ class Trip(object):
         cost_weight, food_weight, weather_weight = user_preferences
         cost_weight, food_weight, weather_weight = float(cost_weight), float(food_weight), float(weather_weight)
         total_weight = cost_weight + food_weight + weather_weight
-        print "Total weight: %s, cost_weight: %s, food_weight: %s, weather_weight: %s" %(total_weight,cost_weight, food_weight, weather_weight)
         
         #flight cost delta --> neg is better
         flight_delta = (self.flights['total_fare'] - trip2.flights['total_fare'])/self.flights['total_fare']
@@ -196,15 +195,17 @@ class Trip(object):
         elif final_score < 0 and wow_factor_delta <= 0:
             return trip2
         elif final_score > 0 and wow_factor_delta < 0:
-            if abs(final_score) > abs(wow_factor_delta):
+            if final_score > abs(wow_factor_delta):
                 return self
             else:
                 return trip2
         elif final_score < 0 and wow_factor_delta > 0:
-            if abs(wow_factor_delta) > abs(final_score):
+            if wow_factor_delta > abs(final_score):
                 return self
             else:
-                return trip2    
+                return trip2
+        else:
+            return random.choice([self, trip2])    
 
 # Helper functions
 def connect_to_db(app):
