@@ -91,7 +91,7 @@ class Restaurant(db.Model):
 class Place(db.Model):
     __tablename__ = "places"
 
-    place_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    place_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     city_id = db.Column(db.Integer, db.ForeignKey('cities.city_id'))
     place_type = db.Column(db.String(10), nullable=False)

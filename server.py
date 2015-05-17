@@ -78,6 +78,7 @@ def get_us_cities():
 def get_restaurants():
     city = request.form.get('city')
     country = request.form.get('country')
+    
     restaurants = google_places.get_places(city, country, place_type ='restaurant')
     return jsonify(restaurants)
 
