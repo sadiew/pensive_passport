@@ -6,6 +6,7 @@ def get_places(city, country, place_type):
 	google_places = GooglePlaces(api_key)
 	query_result = google_places.nearby_search(
         location=city+','+country, keyword=place_type,
+        #types=['restaurant', 'museum', 'park'],
         radius=20000)
 
 	places = {}

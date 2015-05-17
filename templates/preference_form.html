@@ -9,7 +9,7 @@
         <h4>Select your respective airports:</h4>
         <label>Home
             <select name="departure-airport">
-                {% for airport in departure_city.airports %}
+                {% for airport in origin_city.airports %}
                     <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
                 {% endfor %}
             </select>

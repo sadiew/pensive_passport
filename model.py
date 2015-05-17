@@ -1,11 +1,9 @@
 from flask_sqlalchemy import SQLAlchemy
-import flickr, psycopg2
 
-import json, requests, os
+import json, requests, os, psycopg2
 from datetime import datetime, timedelta
+import flickr, google_flights, weather
 
-FLIGHT_URL = "https://www.googleapis.com/qpxExpress/v1/trips/search?key="
-WEATHER_URL = 'http://api.worldweatheronline.com/premium/v1/past-weather.ashx?key='
 DEFAULT_IMAGE_URL = 'http://www.posterparty.com/images/photography-paris-france-famous-sights-collage-poster-GB0404.jpg'
 
 db = SQLAlchemy()
@@ -93,14 +91,12 @@ class Restaurant(db.Model):
         return "<Restaurant name=%s city_id=%s>" % (self.name, self.city_id)
 
 class Trip(object):
-    def __init__(self, name, country, origin, destination, depart_date, return_date):
-        self.name = name
-        self.country = country
+    def __init__(self, origin, destination, depart_date, return_date):
         self.origin = origin
         self.destination = destination
         self.depart_date = depart_date
         self.return_date = return_date
-        self.weather = {}
+        self.weather = self.get_weather_data()
         self.flights = self.get_flight_data()
         self.cost_of_living = 46
         self.food = (0,0)
@@ -109,77 +105,42 @@ class Trip(object):
     def __repr__(self):
         return "<Trip origin=%s, destination=%s-%s>" % (self.origin, self.name, self.destination)
 
+    def get_city_data(self):
+        airport = Airport.query.filter_by(airport_code=self.destination).first()
+        city_id = airport.city.city_id
+        self.name = airport.city.name
+        self.country = airport.city.country
+        self.cost_of_living = airport.city.col_index
+        self.food = db.session.query(db.func.count(Restaurant.restaurant_id), 
+                                db.func.sum(Restaurant.stars)).filter_by(city_id=city_id).one()
+
     def get_flight_data(self):
-        # """Call Google Flights API and store flight info in flights attribute."""
-        # api_key = os.environ['QPX_KEY']
-        # url = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=" + api_key
-        # #url = FLIGHT_URL + api_key
-        # headers = {'content-type': 'application/json'}
+        """Call Google Flights API and store flight info in flights attribute."""
 
-        # #round trip api call
-        # params = {
-        #   "request": {
-        #     "slice": [
-        #       {
-        #         "origin": self.origin,
-        #         "destination": self.destination,
-        #         "date": self.depart_date,
-        #         "maxStops":2
-        #       },
-        #       {
-        #         "origin": self.destination,
-        #         "destination": self.origin,
-        #         "date": self.return_date,
-        #         "maxStops":2
-        #       }
-        #     ],
-        #     "passengers": {
-        #       "adultCount": 1
-        #     },
-        #     "solutions": 2,
-        #     "refundable": False
-        #   }
-        # }
+        try:
+            flights = google_flights.get_flights(self.origin, self.destination, self.depart_date, self.return_date)
+            return flights
 
-        # response = requests.post(url, data=json.dumps(params), headers=headers)
-        # data = response.json()
-
-        # first_option = data['trips']['tripOption'][0]
-
-        # raw_fare = first_option['saleTotal'][3:]
-        # total_fare = float(raw_fare)
-        
-        # to_minutes = first_option['slice'][0]['duration']
-        # to_hours = round(float(to_minutes)/60,2)
-        # to_segments = first_option['slice'][0]['segment']
-        # to_stops = len(to_segments) - 1
-        
-        # from_minutes = first_option['slice'][1]['duration']
-        # from_hours = round(float(from_minutes)/60,2)
-        # from_segments = first_option['slice'][1]['segment']
-        # from_stops = len(from_segments) - 1
-
-        # return {'total_fare': total_fare, 
-        #         'to_data': (to_stops, to_hours), 
-        #         'from_data': (from_stops, from_hours)}
-
-        return {'total_fare': 1000, 
+        except:
+            flash('Unable to get flight info for %s at this time. Default values assigned.' %(self.name))
+            return {'total_fare': 1000, 
                 'to_data': (1, 10), 
                 'from_data': (1, 12)}
 
-    def get_weather_data(self, latitude, longitude):
+    def get_weather_data(self):
         """Call weather API and grab historical weather data for respective destination."""
-        
-        api_key = os.environ['WEATHER_KEY']
         date_last_year = datetime.strftime(datetime.strptime(self.depart_date, '%Y-%m-%d') - timedelta(days=365), '%Y-%m-%d')
-        response=requests.get(WEATHER_URL+'%s&q=%s,%s&cc=no&date=%s&format=json' 
-                        %(api_key, latitude, longitude, date_last_year))
+        airport = Airport.query.filter_by(airport_code=self.destination).first()
+        latitude = airport.latitude
+        longitude = airport.longitude
 
-        python_dict = json.loads(response.text)
-
-        high_temp = python_dict['data']['weather'][0]['maxtempF']
-        low_temp = python_dict['data']['weather'][0]['mintempF']
-        return {'high': high_temp, 'low': low_temp}
+        try:
+            weather_data = weather.get_weather(date_last_year, latitude, longitude)
+            return weather_data
+        except:
+            flash('Unable to get weather info for %s at this time. Default values assigned.' %(self.name))
+            return {'high': 75, 'low': 55}
+        
 
     def determine_destination(self, trip2, user_preferences):
         """Determine ideal destination for user based on preferences."""

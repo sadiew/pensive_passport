@@ -23,17 +23,15 @@ def gather_perferences():
     destination_1 = request.args.get('destination-1').split(', ')
     destination_2 = request.args.get('destination-2').split(', ')
 
-    departure_city = City.query.filter_by(name=departure_city[0], state=departure_city[1]).first()
+    origin_city = City.query.filter_by(name=departure_city[0], state=departure_city[1]).first()
     city1 = City.query.filter_by(name=destination_1[0], country=destination_1[1]).first()
     city2 = City.query.filter_by(name=destination_2[0], country=destination_2[1]).first()
 
-    # assert city1 is not None, "No such city"
-    cities = [city1, city2]
-    for city in cities:
-        city.get_photo()           
+    city1.get_photo() 
+    city2.get_photo()          
 
     return render_template('preference_form.html',
-                            departure_city=departure_city, 
+                            origin_city=origin_city, 
     						city1=city1, 
     						city2=city2)
 
@@ -47,30 +45,14 @@ def show_results():
                         request.form['food'],
                         request.form['weather']]
 
-    airport_1 = Airport.query.filter_by(airport_code=request.form['airport-1']).first()
-    airport_2 = Airport.query.filter_by(airport_code=request.form['airport-2']).first()
+    trip1 = Trip(origin, request.form['airport-1'], depart_date, return_date)
+    trip2 = Trip(origin, request.form['airport-2'], depart_date, return_date)
 
-    trip1 = Trip(airport_1.city.name, airport_1.city.country, origin, airport_1.airport_code, depart_date, return_date)
-    trip2 = Trip(airport_2.city.name, airport_2.city.country, origin, airport_2.airport_code, depart_date, return_date)
-
-    #wow-factor
     trip1.wow_factor = int(request.form['wow-factor-1'])
     trip2.wow_factor = int(request.form['wow-factor-2'])
-
-    #cost of living
-    trip1.cost_of_living = airport_1.city.col_index
-    trip2.cost_of_living = airport_2.city.col_index
-
-    #weather
-    trip1.weather = trip1.get_weather_data(airport_1.latitude, airport_1.longitude)      
-    trip2.weather = trip2.get_weather_data(airport_2.latitude, airport_2.longitude)
-
-    #food
-    trip1.food = db.session.query(db.func.count(Restaurant.restaurant_id), 
-                                db.func.sum(Restaurant.stars)).filter_by(city_id=airport_1.city_id).one()   
-
-    trip2.food = db.session.query(db.func.count(Restaurant.restaurant_id), 
-                                db.func.sum(Restaurant.stars)).filter_by(city_id=airport_2.city_id).one()
+   
+    trip1.get_city_data()
+    trip2.get_city_data()
 
     winner = trip1.determine_destination(trip2, user_preferences)   
     
@@ -97,7 +79,6 @@ def get_us_cities():
 
 @app.route('/get-restaurants', methods=['POST'])
 def get_restaurants():
-    print "I GOT HERE."
     city = request.form.get('city')
     country = request.form.get('country')
     restaurants = google_places.get_places(city, country, place_type ='restaurant')
@@ -105,7 +86,6 @@ def get_restaurants():
 
 @app.route('/get-museums', methods=['POST'])
 def get_museums():
-    print "I GOT HERE."
     city = request.form.get('city')
     country = request.form.get('country')
     museums = google_places.get_places(city, country, place_type ='museum')
@@ -113,7 +93,6 @@ def get_museums():
 
 @app.route('/get-parks', methods=['POST'])
 def get_parks():
-    print "I GOT HERE."
     city = request.form.get('city')
     country = request.form.get('country')
     parks = google_places.get_places(city, country, place_type ='park')
