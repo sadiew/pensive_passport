@@ -48,6 +48,7 @@
 <p>
 <button id="get-places-button">Explore {{ winner.name }} </button>
 </p>
+<div id="map-canvas"></div>
 <div class="row">
     <div class="col-xs-4">
         <div id="restaurant-info"></div>
@@ -72,6 +73,7 @@
                     };
                 }
           );
+
         $.post( "/get-museums",
             { city: '{{winner.name}}', country: '{{winner.country}}'},
             function (result) { 
@@ -81,6 +83,7 @@
                     };
                 }
           );
+
         $.post( "/get-parks",
             { city: '{{winner.name}}', country: '{{winner.country}}'},
             function (result) { 
@@ -90,6 +93,7 @@
                     };
                 }
           );
+
 
     };
 

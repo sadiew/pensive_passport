@@ -10,5 +10,6 @@ def get_places(city, country, place_type):
         keyword=place_type,
         radius=20000)
 
-	places = {place.name:place.place_id for place in query_result.places}
+	places = {place.name:[place.place_id, place.geo_location] for place in query_result.places}
+	print places
 	return places
