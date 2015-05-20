@@ -1,8 +1,8 @@
 import json, requests, os
 from requests_futures.sessions import FuturesSession
 from datetime import datetime, timedelta
-from model import City, Airport
 
+from model import Airport
 import weather, google_flights
 
 def get_external_data(trip1, trip2):
@@ -30,9 +30,13 @@ def get_external_data(trip1, trip2):
 	flight2_future = session.post(flight2_url, data=json.dumps(params_2), headers=headers)
 
 	weather1_response = weather1_future.result()
+	print('weather 1 status: {0}'.format(weather1_response.status_code))
 	flight1_response = flight1_future.result()
+	print('flight 1 status: {0}'.format(flight1_response.status_code))
 	weather2_response = weather2_future.result()
+	print('weather 2 status: {0}'.format(weather2_response.status_code))
 	flight2_response = flight2_future.result()
+	print('flight 2 status: {0}'.format(flight2_response.status_code))
 
 	trip1.flights = google_flights.process_response(flight1_response.content)
 	trip2.flights = google_flights.process_response(flight2_response.content)

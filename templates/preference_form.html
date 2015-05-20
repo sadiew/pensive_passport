@@ -1,50 +1,70 @@
 {% extends 'base.html' %}
 
+{% block extra_css %}
+
+<style type="text/css">
+.flickr-photo {
+    position: relative;
+    float: left;
+    width:  550px;
+    height: 300px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+}
+
+</style>
+
+{% endblock %}
+
 {% block body %}
 
-    <img src="{{ city1.photo }}" style="width:400px">
-    <img src="{{ city2.photo }}" style="width:400px">
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-xs-6 flickr-photo" style="background-image:url('{{ city1.photo }}');"></div>
+        <div class="col-xs-6 flickr-photo" style="background-image:url('{{ city2.photo }}');"></div>       
+    </div>
 
     <form action="/results" method="POST">
-        <h4>Select your respective airports:</h4>
-        <label>Home
-            <select name="departure-airport">
-                {% for airport in origin_city.airports %}
-                    <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
-                {% endfor %}
-            </select>
-        </label>
-        <label>{{city1.name}}
-            <select name="airport-1">
-                {% for airport in city1.airports %}
-                    <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
-                {% endfor %}
-            </select>
-        </label>
-        <label>{{city2.name}}
-            <select name="airport-2">
-                {% for airport in city2.airports %}
-                    <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
-                {% endfor %}
-            </select>
-        </label>
-        <h4>Select your travel dates:</h4> 
-            <div class="form-group">
-                <label>Departure Date</label>
-                
-                <input name="depart-date" min="2015-06-01" max="2015-12-31" type="date">
+        <div class="row">
+             <div class="col-xs-6">
+                <h4>Select your airports:</h4>
+                <div class="form-group">
+                <label>Home</label>
+                    <select name="departure-airport">
+                        {% for airport in origin_city.airports %}
+                            <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <label>{{city1.name}}</label>
+                    <select name="airport-1">
+                        {% for airport in city1.airports %}
+                            <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
+                        {% endfor %}
+                    </select>
+                <label>{{city2.name}}</label>
+                    <select name="airport-2">
+                        {% for airport in city2.airports %}
+                            <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
+                        {% endfor %}
+                    </select>
             </div>
-            <div class="form-group">
-                <label>Return Date</label>
-                <input name="return-date" min="2015-06-01" max="2015-12-31" type="date">
+            <div class="col-xs-6">
+                <h4>Select your travel dates:</h4> 
+                    <label>Departure Date</label>                    
+                    <input name="depart-date" min="2015-06-01" max="2015-12-31" type="date">
+                    <label>Return Date</label>
+                    <input name="return-date" min="2015-06-01" max="2015-12-31" type="date">
             </div>
+        </div>
         <div class="row">
             <div class="col-xs-6">
                 <h4>Indicate the importance of each factor:</h4>
                 <div class="form-group" style="width:300px">
                     <label>Cost</label>
-                    <input type="range" min="0" max="5" step="1" name="cost">
-                    
+                    <input type="range" min="0" max="5" step="1" name="cost">                    
                 </div>
                 <div class="form-group" style="width:300px">
                     <label>Quality of Food</label>
@@ -64,11 +84,12 @@
                 <div class="form-group" style="width:300px">
                     <label>{{city2.name}}</label> 
                         <input type="range" min="1" max="10" step="1" name="wow-factor-2">                   
-                    <input type="submit" value="Tell me where to go!">
                 </div>
+                <input type="submit" value="Tell me where to go!">
             </div>
         </div>
     </form>
+</div>
 
 
 {% endblock %}

@@ -103,6 +103,20 @@ class Place(db.Model):
 
         return "<Place name=%s city_id=%s>" % (self.name, self.city_id)
 
+# class Search(db.Model):
+#     __tablename__ = "searches"
+
+#     search_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+#     city_id_1 = city_id = db.Column(db.Integer, db.ForeignKey('cities.city_id'))
+#     city_id_2 = city_id = db.Column(db.Integer, db.ForeignKey('cities.city_id'))
+
+#     city = db.relationship("City",
+#                            backref=db.backref("searches", order_by=search_id))
+
+#     def __repr__(self):
+
+#         return "<Search city_1=%s city_2=%s>" % (self.city_1, self.city_2)
+
 
 class Trip(object):
     def __init__(self, origin, destination, depart_date, return_date):
