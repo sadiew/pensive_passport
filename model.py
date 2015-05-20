@@ -110,8 +110,8 @@ class Trip(object):
         self.destination = destination
         self.depart_date = depart_date
         self.return_date = return_date
-        self.weather = self.get_weather_data()
-        self.flights = self.get_flight_data()
+        # self.weather = self.get_weather_data()
+        # self.flights = self.get_flight_data()
         self.get_city_data()
 
     def __repr__(self):

@@ -3,6 +3,7 @@ from flask import Flask, request, render_template, redirect, jsonify, session, f
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
 import flickr, google_places
+from external_apis import get_external_data
 
 
 app = Flask(__name__)
@@ -50,6 +51,8 @@ def show_results():
 
     trip1.wow_factor = int(request.form['wow-factor-1'])
     trip2.wow_factor = int(request.form['wow-factor-2'])
+
+    trip1, trip2 = get_external_data(trip1, trip2)
 
     winner = trip1.determine_destination(trip2, user_preferences)   
     

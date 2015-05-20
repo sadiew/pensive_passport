@@ -9,11 +9,10 @@ def get_flickr_photos(city):
     print city.name+','+city.country
     photos = flickr.photos_search(
                                 tags=city.name+','+city.country,
-                                #text=city.name,
                                 tag_mode=all,
                                 has_geo='true',  
                                 radius='20',
-                                sort='interestingness-desc', 
+                                sort='relevance', 
                                 geo_context=2, 
                                 per_page=2)[0]
 

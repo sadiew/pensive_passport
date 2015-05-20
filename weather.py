@@ -11,3 +11,14 @@ def get_weather(date, latitude, longitude):
 	high_temp = python_dict['data']['weather'][0]['maxtempF']
 	low_temp = python_dict['data']['weather'][0]['mintempF']
 	return {'high': high_temp, 'low': low_temp}
+
+def get_url(date, latitude, longitude):
+	api_key = os.environ['WEATHER_KEY']
+	return WEATHER_URL+'%s&q=%s,%s&cc=no&date=%s&format=json' %(api_key, latitude, longitude, date)
+
+def process_response(response):
+    python_dict = json.loads(response)
+
+    high_temp = python_dict['data']['weather'][0]['maxtempF']
+    low_temp = python_dict['data']['weather'][0]['mintempF']
+    return {'high': high_temp, 'low': low_temp}
