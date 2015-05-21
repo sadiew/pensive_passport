@@ -19,8 +19,6 @@
 
 {% block body %}
 
-<div class="container-fluid">
-
     <div class="row">
         <div class="col-xs-6 flickr-photo" style="background-image:url('{{ city1.photo }}');"></div>
         <div class="col-xs-6 flickr-photo" style="background-image:url('{{ city2.photo }}');"></div>       
@@ -29,30 +27,28 @@
     <form action="/results" method="POST">
         <div class="row">
              <div class="col-xs-6">
-                <h4>Select your airports:</h4>
-                <div class="form-group">
+                <h4>Airports</h4>
                 <label>Home</label>
-                    <select name="departure-airport">
+                    <select name="departure-airport" class="form-control" style="width:200px">
                         {% for airport in origin_city.airports %}
                             <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
                         {% endfor %}
                     </select>
-                </div>
                 <label>{{city1.name}}</label>
-                    <select name="airport-1">
+                    <select name="airport-1" class="form-control" style="width:200px">
                         {% for airport in city1.airports %}
                             <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
                         {% endfor %}
                     </select>
                 <label>{{city2.name}}</label>
-                    <select name="airport-2">
+                    <select name="airport-2" class="form-control" style="width:200px">
                         {% for airport in city2.airports %}
                             <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
                         {% endfor %}
                     </select>
             </div>
             <div class="col-xs-6">
-                <h4>Select your travel dates:</h4> 
+                <h4>Travel Dates</h4> 
                     <label>Departure Date</label>                    
                     <input name="depart-date" min="2015-06-01" max="2015-12-31" type="date">
                     <label>Return Date</label>
@@ -61,7 +57,7 @@
         </div>
         <div class="row">
             <div class="col-xs-6">
-                <h4>Indicate the importance of each factor:</h4>
+                <h4>Importance</h4>
                 <div class="form-group" style="width:300px">
                     <label>Cost</label>
                     <input type="range" min="0" max="5" step="1" name="cost">                    
@@ -76,7 +72,7 @@
                 </div>
             </div>
             <div class="col-xs-6">
-                <h4>Indicate a "wow factor" for each place:</h4>
+                <h4>Wow Factor</h4>
                 <div class="form-group" style="width:300px">
                     <label>{{city1.name}}</label>
                         <input type="range" min="1" max="10" step="1"  name="wow-factor-1">
@@ -89,7 +85,6 @@
             </div>
         </div>
     </form>
-</div>
 
 
 {% endblock %}

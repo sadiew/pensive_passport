@@ -52,7 +52,17 @@ def show_results():
     trip1.wow_factor = int(request.form['wow-factor-1'])
     trip2.wow_factor = int(request.form['wow-factor-2'])
 
-    trip1, trip2 = get_external_data(trip1, trip2)
+    #trip1, trip2 = get_external_data(trip1, trip2)
+    trip1.flights = {'total_fare': 1000, 
+            'to_data': (2, 10), 
+            'from_data': (2, 15)}
+    trip2.flights = {'total_fare': 1000, 
+            'to_data': (2, 10), 
+            'from_data': (2, 15)}
+
+    trip1.weather = {'high': 75, 'low': 55}
+
+    trip2.weather = {'high': 75, 'low': 55}
 
     winner = trip1.determine_destination(trip2, user_preferences)   
     

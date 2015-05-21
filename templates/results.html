@@ -1,54 +1,56 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<h3>And the winner is....</h3>
 <h1>{{ winner.name }}, {{winner.country}}</h1>
-<div></div>
-<div></div>
-<table border="1">
-    <thead>
-        <tr>
-            <th colspan="3">The Underlying Data</th>
-        </tr> 
-        <tr>
-            <th>Variable</th>
-            <th>{{ trip1.name }}</th>
-            <th>{{ trip2.name }}</th>
-        </tr>
-    </thead>   
-    <tbody>
-        <tr>
-            <td>Flight</td>
-            <td>${{ '%.0f' %trip1.flights['total_fare'] }}</td>
-            <td>${{ '%.0f' %trip2.flights['total_fare'] }}</td>
-        </tr>
-        <tr>
-            <td>Weather</td>
-            <td>{{ trip1.weather['low'] }} - {{ trip1.weather['high'] }} F</td>
-            <td>{{ trip2.weather['low'] }} - {{ trip2.weather['high'] }} F</td>
-        </tr>
-        <tr>
-            <td>Food</td>
-            <td>{{ trip1.food[0] }} rest. / {{ trip1.food[1] }} *</td>
-            <td>{{ trip2.food[0] }} rest. / {{ trip2.food[1] }} *</td>
-        </tr>
-        <tr>
-            <td>Cost of Living</td>
-            <td>{{ trip1.cost_of_living }}</td>
-            <td>{{ trip2.cost_of_living }}</td>
-        </tr>    
-        <tr>
-            <td>Wow Factor</td>
-            <td>{{ trip1.wow_factor }}</td>
-            <td>{{ trip2.wow_factor }}</td>
-        </tr>    
-    </tbody>
-</table>
 
-<p>
-<button id="get-places-button">Explore {{ winner.name }} </button>
-</p>
-<div id="map-canvas"></div>
+<div class="row">
+    <div class="col-xs-6">
+    <table border="1">
+        <thead>
+            <tr>
+                <th colspan="3">The Underlying Data</th>
+            </tr> 
+            <tr>
+                <th>Variable</th>
+                <th>{{ trip1.name }}</th>
+                <th>{{ trip2.name }}</th>
+            </tr>
+        </thead>   
+        <tbody>
+            <tr>
+                <td>Flight</td>
+                <td>${{ '%.0f' %trip1.flights['total_fare'] }}</td>
+                <td>${{ '%.0f' %trip2.flights['total_fare'] }}</td>
+            </tr>
+            <tr>
+                <td>Weather</td>
+                <td>{{ trip1.weather['low'] }} - {{ trip1.weather['high'] }} F</td>
+                <td>{{ trip2.weather['low'] }} - {{ trip2.weather['high'] }} F</td>
+            </tr>
+            <tr>
+                <td>Food</td>
+                <td>{{ trip1.food[0] }} rest. / {{ trip1.food[1] }} <img style="width:20px; height:20px" src="/static/images/michelinstar.jpg"></td>
+                <td>{{ trip2.food[0] }} rest. / {{ trip2.food[1] }} <img style="width:20px; height:20px" src="/static/images/michelinstar.jpg"></td>
+            </tr>
+            <tr>
+                <td>Cost of Living</td>
+                <td>{{ trip1.cost_of_living }}</td>
+                <td>{{ trip2.cost_of_living }}</td>
+            </tr>    
+            <tr>
+                <td>Wow Factor</td>
+                <td>{{ trip1.wow_factor }}</td>
+                <td>{{ trip2.wow_factor }}</td>
+            </tr>    
+        </tbody>
+    </table>
+
+    <div>
+    <button id="get-places-button">Explore {{ winner.name }} </button>
+    </div>
+    </div>
+    <div class="col-xs-6" id="map-canvas" style="width:500px; height:200px"></div>
+</div>
 <div class="row">
     <div class="col-xs-4">
         <div id="restaurant-info"></div>
@@ -60,43 +62,91 @@
         <div id="park-info"></div>
     </div>
 </div>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 
 <script>
+
+    var geocoder;
+    var map;
+    var winning_city = '{{winner.name}}' + ', ' + '{{winner.country}}';
+
+    function initialize(location) {
+      geocoder = new google.maps.Geocoder();
+      geocoder.geocode( { 'address': location}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          map.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+          });
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      });
+      
+      var mapOptions = {
+        zoom: 12,
+
+      }
+      map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    }
+
+    function getMap() {
+      initialize(winning_city);
+    }
+
+    function createMarker(place) {
+        place.style.color= "black";
+      var latLon = (place.getAttribute("data-lat-lon")).split(", ");
+      var lat = latLon[0];
+      var lon = latLon[1];
+
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(lat, lon),
+        map: map
+        });
+
+    }
     
     function getPlaces(evt) {
+        
         $.post( "/get-restaurants",
             { city: '{{winner.name}}', country: '{{winner.country}}'},
             function (result) {
                 $('#restaurant-info').append("<h3>Restaurants</h3>");
                 for (item in result) {
-                    $('#restaurant-info').append("<p><a href=" + result[item] + ">" + item + "</a></p>");
+                    var latLon = result[item].lat + ', ' + result[item].lng;                    
+                    $('#restaurant-info').append("<p style='color:blue' onclick='createMarker(this)' data-lat-lon='" + latLon + "'>" + item + "</p>");
                     };
                 }
-          );
+        );
 
         $.post( "/get-museums",
             { city: '{{winner.name}}', country: '{{winner.country}}'},
             function (result) { 
             $('#museum-info').append("<h3>Museums</h3>");
                 for (item in result) {
-                    $('#museum-info').append("<p><a href=" + result[item] + ">" + item + "</a></p>");
-                    };
-                }
-          );
+                    var latLon = result[item].lat + ', ' + result[item].lng
+                    $('#museum-info').append("<p style='color:blue' onclick='createMarker(this)' data-lat-lon='" + latLon + "'>" + item + "</p>");
+                };
+            }
+        );
 
         $.post( "/get-parks",
             { city: '{{winner.name}}', country: '{{winner.country}}'},
             function (result) { 
             $('#park-info').append("<h3>Parks</h3>");
                 for (item in result) {
-                    $('#park-info').append("<p><a href=" + result[item] + ">" + item + "</a></p>");
-                    };
-                }
-          );
+                    var latLon = result[item].lat + ', ' + result[item].lng
+                    $('#park-info').append("<p style='color:blue' onclick='createMarker(this)' data-lat-lon='" + latLon + "'>" + item + "</p>");
+                };
+            }
+        );
 
 
     };
 
+    google.maps.event.addDomListener(window, 'load', getMap);
     $('#get-places-button').on('click', getPlaces);
 </script>
 
