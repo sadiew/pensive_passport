@@ -1,0 +1,31 @@
+.flickr-photo {
+    position: relative;
+    float: left;
+    width:  550px;
+    height: 300px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+}
+
+.airport-dropdown {
+	width:200px;
+}
+
+.importance-slider {
+	width:300px;
+}
+
+.wow-slider {
+	width:300px;
+}
+
+img.weather-radio {
+	width:30px;
+	height:30px; 
+}
+
+img.michelin-star {
+	width:20px;
+	height:20px;
+}

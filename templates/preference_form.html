@@ -1,22 +1,5 @@
 {% extends 'base.html' %}
 
-{% block extra_css %}
-
-<style type="text/css">
-.flickr-photo {
-    position: relative;
-    float: left;
-    width:  550px;
-    height: 300px;
-    background-position: 50% 50%;
-    background-repeat:   no-repeat;
-    background-size:     cover;
-}
-
-</style>
-
-{% endblock %}
-
 {% block body %}
 
     <div class="row">
@@ -29,19 +12,19 @@
              <div class="col-xs-6">
                 <h4>Airports</h4>
                 <label>Home</label>
-                    <select name="departure-airport" class="form-control" style="width:200px">
+                    <select name="departure-airport" class="form-control airport-dropdown">
                         {% for airport in origin_city.airports %}
                             <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
                         {% endfor %}
                     </select>
                 <label>{{city1.name}}</label>
-                    <select name="airport-1" class="form-control" style="width:200px">
+                    <select name="airport-1" class="form-control airport-dropdown">
                         {% for airport in city1.airports %}
                             <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
                         {% endfor %}
                     </select>
                 <label>{{city2.name}}</label>
-                    <select name="airport-2" class="form-control" style="width:200px">
+                    <select name="airport-2" class="form-control airport-dropdown">
                         {% for airport in city2.airports %}
                             <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
                         {% endfor %}
@@ -53,31 +36,41 @@
                     <input name="depart-date" min="2015-06-01" max="2015-12-31" type="date">
                     <label>Return Date</label>
                     <input name="return-date" min="2015-06-01" max="2015-12-31" type="date">
+                <h4>Ideal Temperature</h4>
+                <div class="radio">
+                    <label><input type="radio" name="ideal-temp" value="50"><img class="weather-radio" src="/static/images/snowflake.png"></label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" name="ideal-temp" value="70"><img class="weather-radio" src="/static/images/sun_cloud.png"></label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" name="ideal-temp" value="90"><img class="weather-radio" src="/static/images/sun.png"></label>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-6">
                 <h4>Importance</h4>
-                <div class="form-group" style="width:300px">
-                    <label>Cost</label>
-                    <input type="range" min="0" max="5" step="1" name="cost">                    
+                <div class="form-group importance-slider">
+                    <label>Cost</label><span id="cost-range"></span>                    
+                    <input type="range" min="0" max="5" step="1" name="cost" oninput="showCostVal(this.value)" onchange="showCostVal(this.value)">
                 </div>
-                <div class="form-group" style="width:300px">
-                    <label>Quality of Food</label>
-                    <input type="range" min="0" max="5" step="1" name="food">
+                <div class="form-group importance-slider">
+                    <label>Quality of Food</label><span id="food-range"></span> 
+                    <input type="range" min="0" max="5" step="1" name="food" oninput="showFoodVal(this.value)" onchange="showFoodVal(this.value)">
                 </div>
-                   <div class="form-group" style="width:300px">
-                    <label>Weather</label>
-                    <input type="range" min="0" max="5" step="1" name="weather">
+                   <div class="form-group importance-slider">
+                    <label>Weather</label><span id="weather-range"></span> 
+                    <input type="range" min="0" max="5" step="1" name="weather" oninput="showWeatherVal(this.value)" onchange="showWeatherVal(this.value)">
                 </div>
             </div>
             <div class="col-xs-6">
                 <h4>Wow Factor</h4>
-                <div class="form-group" style="width:300px">
+                <div class="form-group wow-slider">
                     <label>{{city1.name}}</label>
                         <input type="range" min="1" max="10" step="1"  name="wow-factor-1">
                 </div>
-                <div class="form-group" style="width:300px">
+                <div class="form-group wow-slider">
                     <label>{{city2.name}}</label> 
                         <input type="range" min="1" max="10" step="1" name="wow-factor-2">                   
                 </div>
@@ -85,6 +78,19 @@
             </div>
         </div>
     </form>
+
+    <script type="text/javascript">
+    function showCostVal(newVal){
+      $("#cost-range").text(": " + newVal + "/5");
+    }
+
+    function showFoodVal(newVal){
+      $("#food-range").text(": " + newVal + "/5");
+    }
+
+    function showWeatherVal(newVal){
+      $("#weather-range").text(": " + newVal + "/5");
+    }
 
 
 {% endblock %}

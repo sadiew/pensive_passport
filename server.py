@@ -45,6 +45,8 @@ def show_results():
     user_preferences = [request.form['cost'],
                         request.form['food'],
                         request.form['weather']]
+    ideal_temp = request.form['ideal-temp']
+    print "Ideal temp: ", ideal_temp
 
     trip1 = Trip(origin, request.form['airport-1'], depart_date, return_date)
     trip2 = Trip(origin, request.form['airport-2'], depart_date, return_date)
@@ -52,19 +54,19 @@ def show_results():
     trip1.wow_factor = int(request.form['wow-factor-1'])
     trip2.wow_factor = int(request.form['wow-factor-2'])
 
-    #trip1, trip2 = get_external_data(trip1, trip2)
-    trip1.flights = {'total_fare': 1000, 
-            'to_data': (2, 10), 
-            'from_data': (2, 15)}
-    trip2.flights = {'total_fare': 1000, 
-            'to_data': (2, 10), 
-            'from_data': (2, 15)}
+    trip1, trip2 = get_external_data(trip1, trip2)
+    # trip1.flights = {'total_fare': 1000, 
+    #         'to_data': (2, 10), 
+    #         'from_data': (2, 15)}
+    # trip2.flights = {'total_fare': 1000, 
+    #         'to_data': (2, 10), 
+    #         'from_data': (2, 15)}
 
-    trip1.weather = {'high': 75, 'low': 55}
+    # trip1.weather = {'high': 75, 'low': 55}
 
-    trip2.weather = {'high': 75, 'low': 55}
+    # trip2.weather = {'high': 75, 'low': 55}
 
-    winner = trip1.determine_destination(trip2, user_preferences)   
+    winner = trip1.determine_destination(trip2, user_preferences, ideal_temp)   
     
     return render_template("results.html",
                             trip1=trip1, 

@@ -168,7 +168,7 @@ class Trip(object):
             return {'high': 75, 'low': 55}
         
 
-    def determine_destination(self, trip2, user_preferences):
+    def determine_destination(self, trip2, user_preferences, ideal_temp):
         """Determine ideal destination for user based on preferences."""
         
         #unpack user weightings
@@ -183,9 +183,9 @@ class Trip(object):
         col_delta = (self.cost_of_living - trip2.cost_of_living)/self.cost_of_living
 
         #weather delta --> neg is better
-        IDEAL_TEMP = 70
-        trip1_abs_delta = abs(int(self.weather['high']) - IDEAL_TEMP)
-        trip2_abs_delta = abs(int(trip2.weather['high']) - IDEAL_TEMP)
+        IDEAL_TEMP = int(ideal_temp)
+        trip1_abs_delta = abs((int(self.weather['high'])+int(self.weather['low']))/2 - IDEAL_TEMP)
+        trip2_abs_delta = abs((int(trip2.weather['high'])+int(trip2.weather['low']))/2 - IDEAL_TEMP)
         weather_delta = (trip1_abs_delta - trip2_abs_delta)/trip1_abs_delta
 
         #food_delta --> pos is better
