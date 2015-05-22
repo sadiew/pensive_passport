@@ -8,7 +8,7 @@
 </div>
 <p></p>
 <div class="row"> 
-    <div><button id="get-places-button" class="btn btn-primary">Explore</button></div>
+    <div><button id="get-places-button" class="btn btn-primary">City Highlights</button></div>
 </div>
 <div class="row">
     <div class="col-md-4">
@@ -28,7 +28,6 @@
     var geocoder;
     var map;
     var winning_city = '{{city}}' + ', ' + '{{country}}';
-    console.log(winning_city);
 
     function initialize(location) {
       geocoder = new google.maps.Geocoder();

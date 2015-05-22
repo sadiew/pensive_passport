@@ -62,16 +62,16 @@
         <div class="col-md-6">
             <h4>Importance</h4>
             <div class="form-group importance-slider">
-                <label>Cost</label><span id="cost-range"></span>                    
-                <input type="range" min="0" max="5" step="1" name="cost">
+                <label>Cost</label>                   
+                <input type="range" min="0" max="5" step="1" name="cost" id="cost-weight">
             </div>
             <div class="form-group importance-slider">
-                <label>Quality of Food</label><span id="food-range"></span> 
-                <input type="range" min="0" max="5" step="1" name="food">
+                <label>Quality of Food</label>
+                <input type="range" min="0" max="5" step="1" name="food" id="food-weight">
             </div>
                <div class="form-group importance-slider">
-                <label>Weather</label><span id="weather-range"></span> 
-                <input type="range" min="0" max="5" step="1" name="weather">
+                <label>Weather</label>
+                <input type="range" min="0" max="5" step="1" name="weather" id="weather-weight">
             </div>
         </div>
         <div class="col-md-6">
@@ -128,22 +128,16 @@
         </tr>    
     </tbody>
 </table>
-
-<form action="/results" id="final-decision-form">
-        <div class="radio">
-        <label><input type="radio" name="winning-city" value="{{city1.name}}, {{city1.country}}" required>{{city1.name}}</label>
-        </div>
-        <div class="radio">
-        <label><input type="radio" name="winning-city" value="{{city2.name}}, {{city2.country}}" required>{{city2.name}}</label>
-        </div>
-        <input type="submit" class="btn btn-primary" id="explore-button" value="Explore!">
-
-</form>
+<p></p>
+<div class="row"> 
+    <div><button id="pp-choice" class="btn btn-primary">Explore </button></div>
+</div>
 
 <script type="text/javascript">
     $(document).ready(function(){
         $('#results-table').hide();
         $('#final-decision-form').hide();
+        $("#pp-choice").hide();
 
         setInitialPhotos();
         for (i = 1; i <= 5; i++) {
@@ -168,27 +162,34 @@
             setTimeout(function() {
                 $('#photo-1').attr("style","background-image:url('" + url1 + "');")},
                 3000);
-    }          
+    }
 
-
-    function getData(evt){    
-        evt.preventDefault();
+    function prepDom() {
         $("#gather-data-button").hide();
         $("#travel-dates").hide();
         $("#airports").hide();
         $("#ideal-temp").hide();
         $('#results-table').show();
-        $('#final-decision-form').show()
+        $('#final-decision-form').show();
+        $("#pp-choice").show();
+
+    }
+
+    function getStaticData(cityInfo1, cityInfo2) {
         $("#wow-1").append($("#wow-input-1").val());
         $("#wow-2").append($("#wow-input-2").val());
+        cityInfo1.wow = $("#wow-input-1").val()
+        cityInfo2.wow = $("#wow-input-2").val()
 
-        var dataPoints = 0;
 
         var url1 = '/get-city1-data?airport-1='+ $("#airport-1").val();
         $.get(url1, function (result) {
             $('#food-1').prepend(result.food.stars);
             $('#col-1').append(result.costOfLiving);
-            dataPoints ++;
+            cityInfo1.city = result.city
+            cityInfo1.country = result.country
+            cityInfo1.food = parseInt(result.food.stars);
+            cityInfo1.costOfLiving = parseInt(result.costOfLiving);
             }
         );
 
@@ -196,46 +197,135 @@
         $.get(url2, function (result) {
             $('#food-2').prepend(result.food.stars);
             $('#col-2').append(result.costOfLiving);
-            dataPoints ++;
-            }
-        );
-
-        $.post("/get-first-flight",
-            {depart_date: $("#depart-date").val(), return_date: $("#return-date").val(), origin: $("#departure-airport").val(), destination: $("#airport-1").val()},
-            function (result) {
-            console.log(result); 
-            $('#flight-1').append("$" + result.airfare);
-            dataPoints ++;
-            }
-        );
-
-        $.post("/get-second-flight",
-            {depart_date: $("#depart-date").val(), return_date: $("#return-date").val(), origin: $("#departure-airport").val(), destination: $("#airport-2").val()},
-            function (result) {
-            console.log(result); 
-            $('#flight-2').append(result.airfare);
-            dataPoints ++;
-            }
-        );
-
-        $.post("/get-first-weather",
-            {depart_date: $("#depart-date").val(), destination: $("#airport-1").val()},
-            function (result) {
-            $('#weather-1').append(result.low + " - " + result.high + " F");
-            dataPoints ++;
-            }
-        );
-
-        $.post("/get-second-weather",
-            {depart_date: $("#depart-date").val(), destination: $("#airport-2").val()},
-            function (result) {
-            $('#weather-2').append(result.low + " - " + result.high + " F");
-            dataPoints ++;
+            cityInfo2.city = result.city
+            cityInfo2.country = result.country
+            cityInfo2.food = parseInt(result.food.stars);
+            cityInfo2.costOfLiving = parseInt(result.costOfLiving);
             }
         );
     }
 
+    function determineDestination(cityInfo1, cityInfo2) {
+
+        var idealTemp = $("input:radio[name=ideal-temp]:checked").val();
+
+        var costWeight = parseInt($("#cost-weight").val())
+        var foodWeight = parseInt($("#food-weight").val())
+        var weatherWeight = parseInt($("#weather-weight").val())
+        var totalWeight = costWeight + foodWeight + weatherWeight
+
+        var flightDelta = (cityInfo1.airfare - cityInfo2.airfare)/(cityInfo1.airfare)
+        var colDelta = (cityInfo1.costOfLiving - cityInfo2.costOfLiving)/(cityInfo1.costOfLiving)
+
+        var weatherDeltaCity1 = cityInfo1.weather - idealTemp
+        var weatherDeltaCity2 = cityInfo2.weather - idealTemp
+        var weatherDelta = (weatherDeltaCity1 - weatherDeltaCity2)/weatherDeltaCity1
+
+        var wowDelta = (cityInfo1.wow - cityInfo2.wow)/cityInfo1.wow
+
+        try {
+            var starDelta = (cityInfo1.food - cityInfo2.food)/cityInfo1.food
+        }
+        catch(err) {
+            var starDelta = 0
+        }
+
+        var dataDelta = (foodWeight/totalWeight)*starDelta -
+                        (costWeight*0.5/totalWeight)*colDelta -
+                        (costWeight*0.5/totalWeight)*flightDelta - 
+                        (weatherWeight/totalWeight)*weatherDelta
+        if (dataDelta > 0 && wowDelta >=0) {
+            $("#pp-choice").append(cityInfo1.city);
+            $("#pp-choice").data("city", cityInfo1.city);
+            $("#pp-choice").data("country", cityInfo1.country);
+        }
+
+        else if (dataDelta < 0 && wowDelta <= 0) {
+            $("#pp-choice").append(cityInfo2.city);
+            $("#pp-choice").data("city", cityInfo2.city);
+            $("#pp-choice").data("country", cityInfo2.country);
+        }
+
+        else if (dataDelta > 0 && wowDelta < 0) {
+            if(dataDelta > Math.abs(wowDelta)) {$("#pp-choice").append(cityInfo1.city);}
+            else {$("#pp-choice").append(cityInfo2.city);}
+        }
+
+        else if (dataDelta < 0 && wowDelta > 0) {
+            if(wowDelta > Math.abs(dataDelta)) {$("#pp-choice").append(cityInfo1.city);}
+            else {$("#pp-choice").append(cityInfo2.city);}
+        }
+
+        else {var trips = [cityInfo1.city, cityInfo2.city]
+            var choice = trips[Math.floor(Math.random()*trips.length)];
+            $("#pp-choice").append(choice);
+        }
+
+    }          
+
+
+    function getData(evt){    
+        evt.preventDefault();
+        prepDom();
+        
+        var apiResponses = 0;
+        var cityInfo1 = {}
+        var cityInfo2 = {}
+
+        
+        getStaticData(cityInfo1, cityInfo2);
+
+        $.post("/get-flight1",
+            {depart_date: $("#depart-date").val(), return_date: $("#return-date").val(), origin: $("#departure-airport").val(), destination: $("#airport-1").val()},
+            function (result) {
+                $('#flight-1').append("$" + result.airfare);
+                cityInfo1.airfare = result.airfare
+                apiResponses ++;
+                if (apiResponses ===4) { determineDestination(cityInfo1, cityInfo2) };
+            }
+        );
+
+        $.post("/get-flight2",
+            {depart_date: $("#depart-date").val(), return_date: $("#return-date").val(), origin: $("#departure-airport").val(), destination: $("#airport-2").val()},
+            function (result) {
+                $('#flight-2').append("$" + result.airfare);
+                apiResponses ++;
+                cityInfo2.airfare = result.airfare
+                if (apiResponses ===4) { determineDestination(cityInfo1, cityInfo2) };
+            }
+        );
+
+        $.post("/get-weather1",
+            {depart_date: $("#depart-date").val(), destination: $("#airport-1").val()},
+            function (result) {
+                $('#weather-1').append(result.low + " - " + result.high + " F");
+                apiResponses ++;
+                cityInfo1.weather = (parseInt(result.low) + parseInt(result.high))/2;
+                if (apiResponses ===4) { determineDestination(cityInfo1, cityInfo2) };
+            }
+        );
+
+        $.post("/get-weather2",
+            {depart_date: $("#depart-date").val(), destination: $("#airport-2").val()},
+            function (result) {
+                $('#weather-2').append(result.low + " - " + result.high + " F");
+                apiResponses ++;
+                cityInfo2.weather = (parseInt(result.low) + parseInt(result.high))/2;
+                if (apiResponses ===4) { determineDestination(cityInfo1, cityInfo2) };
+            }
+        );
+    }
+
+    function exploreCity(evt) {
+        var city = $(this).data("city");
+        var country = $(this).data("country");
+
+        window.location = "http://localhost:5000/results?city=" + city + '&country=' + country;
+
+    }
+
     $("#preference-form").on("submit", getData);
+    $("#pp-choice").on("click", exploreCity);
 
 </script>
 

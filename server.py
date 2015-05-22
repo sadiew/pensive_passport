@@ -1,4 +1,4 @@
-from model import City, Airport, CityImage, Restaurant, Trip, connect_to_db, db
+from model import City, Airport, Restaurant, connect_to_db, db
 from flask import Flask, request, render_template, redirect, jsonify, session, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
@@ -32,8 +32,8 @@ def gather_perferences():
     city1 = City.query.filter_by(name=destination_1[0], country=destination_1[1]).first()
     city2 = City.query.filter_by(name=destination_2[0], country=destination_2[1]).first()
 
-    city1.get_photo() 
-    city2.get_photo()         
+    city1.get_photo()
+    city2.get_photo()
 
     return render_template('preference_form.html',
                             origin_city=origin_city, 
@@ -43,7 +43,7 @@ def gather_perferences():
 @app.route('/results')
 def show_results():
     """Display map of city that user chose along with accompanying attractions."""
-    city, country = request.args['winning-city'].split(', ') 
+    city, country = request.args['city'], request.args['country']
     
     return render_template("results.html",
                             city=city,
@@ -87,7 +87,7 @@ def get_parks():
     parks = google_places.get_places(city, country, place_type ='park')
     return jsonify(parks)
 
-@app.route('/get-first-flight', methods=['POST'])
+@app.route('/get-flight1', methods=['POST'])
 def get_first_flight():
     depart_date = request.form['depart_date']
     return_date = request.form['return_date']
@@ -96,9 +96,9 @@ def get_first_flight():
 
     # airfare = get_flights(origin, destination, depart_date, return_date)
     # return jsonify(airfare)
-    #return {'airfare': 1000}
+    return jsonify({'airfare': 1000})
 
-@app.route('/get-second-flight', methods=['POST'])
+@app.route('/get-flight2', methods=['POST'])
 def get_second_flight():
     depart_date = request.form['depart_date']
     return_date = request.form['return_date']
@@ -107,9 +107,9 @@ def get_second_flight():
 
     # airfare = get_flights(origin, destination, depart_date, return_date)
     # return jsonify(airfare)
-    #return {'airfare': 1000}
+    return jsonify({'airfare': 1000})
 
-@app.route('/get-first-weather', methods=['POST'])
+@app.route('/get-weather1', methods=['POST'])
 def get_first_weather():
     depart_date = request.form['depart_date']
     destination = request.form['destination']
@@ -123,7 +123,7 @@ def get_first_weather():
     weather = get_weather(date_last_year, latitude, longitude)
     return jsonify(weather)
 
-@app.route('/get-second-weather', methods=['POST'])
+@app.route('/get-weather2', methods=['POST'])
 def get_second_weather():
     depart_date = request.form['depart_date']
     destination = request.form['destination']
@@ -162,7 +162,7 @@ def fetch_city_data(airport_code):
     food = db.session.query(db.func.count(Restaurant.restaurant_id), 
                             db.func.sum(Restaurant.stars)).filter_by(city_id=city_id).one()
 
-    city_stats = {'name': name,
+    city_stats = {'city': name,
                   'country': country,
                   'costOfLiving': cost_of_living,
                   'food': {'restarants': food[0], 'stars': food[1]}}

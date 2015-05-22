@@ -102,70 +102,7 @@ class Place(db.Model):
 
     def __repr__(self):
 
-        return "<Place name=%s city_id=%s>" % (self.name, self.city_id)
-
-class Trip(object):
-    def __init__(self, origin, destination, depart_date, return_date):
-        self.origin = origin
-        self.destination = destination
-        self.depart_date = depart_date
-        self.return_date = return_date
-        self.get_city_data()
-
-    def __repr__(self):
-        return "<Trip origin=%s, destination=%s-%s>" % (self.origin, self.name, self.destination)
-
-    def determine_destination(self, trip2, user_preferences, ideal_temp):
-        """Determine ideal destination for user based on preferences."""
-        
-        #unpack user weightings
-        cost_weight, food_weight, weather_weight = user_preferences
-        cost_weight, food_weight, weather_weight = float(cost_weight), float(food_weight), float(weather_weight)
-        total_weight = cost_weight + food_weight + weather_weight
-        
-        #flight cost delta --> neg is better
-        flight_delta = (self.flights['total_fare'] - trip2.flights['total_fare'])/self.flights['total_fare']
-
-        #cost of living delta --> neg is better
-        col_delta = (self.cost_of_living - trip2.cost_of_living)/self.cost_of_living
-
-        #weather delta --> neg is better
-        IDEAL_TEMP = int(ideal_temp)
-        trip1_abs_delta = abs((int(self.weather['high'])+int(self.weather['low']))/2 - IDEAL_TEMP)
-        trip2_abs_delta = abs((int(trip2.weather['high'])+int(trip2.weather['low']))/2 - IDEAL_TEMP)
-        weather_delta = (trip1_abs_delta - trip2_abs_delta)/trip1_abs_delta
-
-        #food_delta --> pos is better
-        try:
-            michelin_star_delta = (self.food[1] - trip2.food[1])/self.food[1]
-        except:
-            michelin_star_delta = 0
-
-        #wow_factor_delta
-        wow_factor_delta = (self.wow_factor - trip2.wow_factor)/self.wow_factor
-        
-        final_score = ((food_weight/total_weight)*michelin_star_delta -
-                        (cost_weight*0.5/total_weight)*col_delta -
-                        (cost_weight*0.5/total_weight)*flight_delta - 
-                        (weather_weight/total_weight)*weather_delta)
-
-        #calculate "scores"
-        if final_score > 0 and wow_factor_delta >= 0:
-            return self
-        elif final_score < 0 and wow_factor_delta <= 0:
-            return trip2
-        elif final_score > 0 and wow_factor_delta < 0:
-            if final_score > abs(wow_factor_delta):
-                return self
-            else:
-                return trip2
-        elif final_score < 0 and wow_factor_delta > 0:
-            if wow_factor_delta > abs(final_score):
-                return self
-            else:
-                return trip2
-        else:
-            return random.choice([self, trip2])    
+        return "<Place name=%s city_id=%s>" % (self.name, self.city_id)  
 
 # Helper functions
 def connect_to_db(app):
