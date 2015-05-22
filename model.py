@@ -24,19 +24,20 @@ class City(db.Model):
 
     def get_photo(self):
         """Check to see if photo for city is cached in DB; if not, call Flickr API for new photo."""
-        if self.city_images:
-            image_url = self.city_images[0].image_url
-            print "Image was in DB."
+
+        if len(self.city_images) >= 5:           
+            self.photos = [image.image_url for image in self.city_images]
         else:
             flickr_images = flickr.get_flickr_photos(self)
             if flickr_images:
-                image = CityImage(city_id=self.city_id, image_url=flickr_images[0])
-                image_url = image.image_url
-                db.session.add(image)
+                for image_url in flickr_images:
+                    image = CityImage(city_id=self.city_id, image_url=image_url)
+                    db.session.add(image)
                 db.session.commit()
+                self.photos = flickr_images
             else:
                 image_url = DEFAULT_IMAGE_URL
-        self.photo = image_url
+                self.photos = [image_url]
 
 
 class CityImage(db.Model):
@@ -103,29 +104,12 @@ class Place(db.Model):
 
         return "<Place name=%s city_id=%s>" % (self.name, self.city_id)
 
-# class Search(db.Model):
-#     __tablename__ = "searches"
-
-#     search_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-#     city_id_1 = city_id = db.Column(db.Integer, db.ForeignKey('cities.city_id'))
-#     city_id_2 = city_id = db.Column(db.Integer, db.ForeignKey('cities.city_id'))
-
-#     city = db.relationship("City",
-#                            backref=db.backref("searches", order_by=search_id))
-
-#     def __repr__(self):
-
-#         return "<Search city_1=%s city_2=%s>" % (self.city_1, self.city_2)
-
-
 class Trip(object):
     def __init__(self, origin, destination, depart_date, return_date):
         self.origin = origin
         self.destination = destination
         self.depart_date = depart_date
         self.return_date = return_date
-        # self.weather = self.get_weather_data()
-        # self.flights = self.get_flight_data()
         self.get_city_data()
 
     def __repr__(self):

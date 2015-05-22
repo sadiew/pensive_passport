@@ -14,7 +14,7 @@ def get_flickr_photos(city):
                                 radius='20',
                                 sort='relevance', 
                                 geo_context=2, 
-                                per_page=2)[0]
+                                per_page=5)[0]
 
     url_list = []
     for photo in photos:

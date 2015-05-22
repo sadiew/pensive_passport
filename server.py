@@ -3,6 +3,7 @@ from flask import Flask, request, render_template, redirect, jsonify, session, f
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
 import flickr, google_places
+from requests_futures.sessions import FuturesSession
 from external_apis import get_external_data
 
 
@@ -29,7 +30,7 @@ def gather_perferences():
     city2 = City.query.filter_by(name=destination_2[0], country=destination_2[1]).first()
 
     city1.get_photo() 
-    city2.get_photo()          
+    city2.get_photo()         
 
     return render_template('preference_form.html',
                             origin_city=origin_city, 
@@ -46,7 +47,6 @@ def show_results():
                         request.form['food'],
                         request.form['weather']]
     ideal_temp = request.form['ideal-temp']
-    print "Ideal temp: ", ideal_temp
 
     trip1 = Trip(origin, request.form['airport-1'], depart_date, return_date)
     trip2 = Trip(origin, request.form['airport-2'], depart_date, return_date)
@@ -54,17 +54,10 @@ def show_results():
     trip1.wow_factor = int(request.form['wow-factor-1'])
     trip2.wow_factor = int(request.form['wow-factor-2'])
 
-    trip1, trip2 = get_external_data(trip1, trip2)
-    # trip1.flights = {'total_fare': 1000, 
-    #         'to_data': (2, 10), 
-    #         'from_data': (2, 15)}
-    # trip2.flights = {'total_fare': 1000, 
-    #         'to_data': (2, 10), 
-    #         'from_data': (2, 15)}
+    session = FuturesSession()
 
-    # trip1.weather = {'high': 75, 'low': 55}
-
-    # trip2.weather = {'high': 75, 'low': 55}
+    trip1 = get_external_data(trip1, session)
+    trip2 = get_external_data(trip2, session)
 
     winner = trip1.determine_destination(trip2, user_preferences, ideal_temp)   
     

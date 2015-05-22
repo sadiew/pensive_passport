@@ -3,9 +3,46 @@
 {% block body %}
 
     <div class="row">
-        <div class="col-xs-6 flickr-photo" style="background-image:url('{{ city1.photo }}');"></div>
-        <div class="col-xs-6 flickr-photo" style="background-image:url('{{ city2.photo }}');"></div>       
+        {% for photo in city1.photos %}
+            <span class="photos-list-1" data-photo="{{photo}}"></span>
+        {% endfor %}
+        {% for photo in city2.photos %}
+            <span class="photos-list-2" data-photo="{{photo}}"></span>
+        {% endfor %}
+        <div id="photo-1" class="col-xs-6 flickr-photo"></div>
+        <div id="photo-2" class="col-xs-6 flickr-photo"></div>       
     </div>
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+
+            setInitialPhotos();
+            for (i = 1; i <= 5; i++) {
+              LoopPhotos(i);
+            }
+          
+            });
+
+        function setInitialPhotos() {
+            $('#photo-1').attr("style","background-image:url('{{city1.photos[0]}}');");
+            $('#photo-2').attr("style","background-image:url('{{city2.photos[0]}}');");
+        }
+
+        function LoopPhotos(i) {
+            var photos2 = $(".photos-list-2");           
+            var url2 = $(photos2[i]).data("photo");                
+                setTimeout(function() {
+                    $('#photo-2').attr("style","background-image:url('" + url2 + "');")
+                    }, 3000);          
+
+            var photos1 = $(".photos-list-1");           
+            var url1 = $(photos1[i]).data("photo");                
+                setTimeout(function() {
+                    $('#photo-1').attr("style","background-image:url('" + url1 + "');")
+                    }, 3000);
+        }          
+        
+    </script>
 
     <form action="/results" method="POST">
         <div class="row">
@@ -74,12 +111,13 @@
                     <label>{{city2.name}}</label> 
                         <input type="range" min="1" max="10" step="1" name="wow-factor-2">                   
                 </div>
-                <input type="submit" value="Tell me where to go!">
+                <input type="submit" class="btn btn-primary" value="Tell me where to go!">
             </div>
         </div>
     </form>
 
     <script type="text/javascript">
+
     function showCostVal(newVal){
       $("#cost-range").text(": " + newVal + "/5");
     }
@@ -91,6 +129,6 @@
     function showWeatherVal(newVal){
       $("#weather-range").text(": " + newVal + "/5");
     }
-
+    </script>
 
 {% endblock %}
