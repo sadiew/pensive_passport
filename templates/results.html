@@ -1,64 +1,23 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<h1>{{ winner.name }}, {{winner.country}}</h1>
+<h1>{{ city }}, {{country}}</h1>
 
-<div class="row">
-    <div class="col-xs-6">
-    <table border="1">
-        <thead>
-            <tr>
-                <th colspan="3">The Underlying Data</th>
-            </tr> 
-            <tr>
-                <th>Variable</th>
-                <th>{{ trip1.name }}</th>
-                <th>{{ trip2.name }}</th>
-            </tr>
-        </thead>   
-        <tbody>
-            <tr>
-                <td>Flight</td>
-                <td>${{ '%.0f' %trip1.flights['total_fare'] }}</td>
-                <td>${{ '%.0f' %trip2.flights['total_fare'] }}</td>
-            </tr>
-            <tr>
-                <td>Weather</td>
-                <td>{{ trip1.weather['low'] }} - {{ trip1.weather['high'] }} F</td>
-                <td>{{ trip2.weather['low'] }} - {{ trip2.weather['high'] }} F</td>
-            </tr>
-            <tr>
-                <td>Food</td>
-                <td>{{ trip1.food[0] }} rest. / {{ trip1.food[1] }} <img class="michelin-star" src="/static/images/michelinstar.jpg"></td>
-                <td>{{ trip2.food[0] }} rest. / {{ trip2.food[1] }} <img class="michelin-star" src="/static/images/michelinstar.jpg"></td>
-            </tr>
-            <tr>
-                <td>Cost of Living</td>
-                <td>{{ trip1.cost_of_living }}</td>
-                <td>{{ trip2.cost_of_living }}</td>
-            </tr>    
-            <tr>
-                <td>Wow Factor</td>
-                <td>{{ trip1.wow_factor }}</td>
-                <td>{{ trip2.wow_factor }}</td>
-            </tr>    
-        </tbody>
-    </table>
-
-    <div>
-    <button id="get-places-button" class="btn btn-primary">Explore {{ winner.name }} </button>
-    </div>
-    </div>
-    <div class="col-xs-6" id="map-canvas" style="width:500px; height:200px"></div>
+<div class="row">   
+    <div class="col-md-6" id="map-canvas" style="width:500px; height:200px"></div>
+</div>
+<p></p>
+<div class="row"> 
+    <div><button id="get-places-button" class="btn btn-primary">Explore</button></div>
 </div>
 <div class="row">
-    <div class="col-xs-4">
+    <div class="col-md-4">
         <div id="restaurant-info"></div>
     </div>
-    <div class="col-xs-4">
+    <div class="col-md-4">
         <div id="museum-info"></div>
     </div>
-    <div class="col-xs-4">
+    <div class="col-md-4">
         <div id="park-info"></div>
     </div>
 </div>
@@ -68,7 +27,8 @@
 
     var geocoder;
     var map;
-    var winning_city = '{{winner.name}}' + ', ' + '{{winner.country}}';
+    var winning_city = '{{city}}' + ', ' + '{{country}}';
+    console.log(winning_city);
 
     function initialize(location) {
       geocoder = new google.maps.Geocoder();
@@ -111,7 +71,7 @@
     function getPlaces(evt) {
         
         $.post( "/get-restaurants",
-            { city: '{{winner.name}}', country: '{{winner.country}}'},
+            { city: '{{city}}', country: '{{country}}'},
             function (result) {
                 $('#restaurant-info').append("<h3>Restaurants</h3>");
                 for (item in result) {
@@ -122,7 +82,7 @@
         );
 
         $.post( "/get-museums",
-            { city: '{{winner.name}}', country: '{{winner.country}}'},
+            { city: '{{city}}', country: '{{country}}'},
             function (result) { 
             $('#museum-info').append("<h3>Museums</h3>");
                 for (item in result) {
@@ -133,7 +93,7 @@
         );
 
         $.post( "/get-parks",
-            { city: '{{winner.name}}', country: '{{winner.country}}'},
+            { city: '{{city}}', country: '{{country}}'},
             function (result) { 
             $('#park-info').append("<h3>Parks</h3>");
                 for (item in result) {

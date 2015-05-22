@@ -115,43 +115,6 @@ class Trip(object):
     def __repr__(self):
         return "<Trip origin=%s, destination=%s-%s>" % (self.origin, self.name, self.destination)
 
-    def get_city_data(self):
-        airport = Airport.query.filter_by(airport_code=self.destination).first()
-        city_id = airport.city.city_id
-        self.name = airport.city.name
-        self.country = airport.city.country
-        self.cost_of_living = airport.city.col_index
-        self.food = db.session.query(db.func.count(Restaurant.restaurant_id), 
-                                db.func.sum(Restaurant.stars)).filter_by(city_id=city_id).one()
-
-    def get_flight_data(self):
-        """Call Google Flights API and store flight info in flights attribute."""
-
-        try:
-            flights = google_flights.get_flights(self.origin, self.destination, self.depart_date, self.return_date)
-            return flights
-
-        except:
-            flash('Unable to get flight info for %s at this time. Default values assigned.' %(self.name))
-            return {'total_fare': 1000, 
-                'to_data': (1, 10), 
-                'from_data': (1, 12)}
-
-    def get_weather_data(self):
-        """Call weather API and grab historical weather data for respective destination."""
-        date_last_year = datetime.strftime(datetime.strptime(self.depart_date, '%Y-%m-%d') - timedelta(days=365), '%Y-%m-%d')
-        airport = Airport.query.filter_by(airport_code=self.destination).first()
-        latitude = airport.latitude
-        longitude = airport.longitude
-
-        try:
-            weather_data = weather.get_weather(date_last_year, latitude, longitude)
-            return weather_data
-        except:
-            flash('Unable to get weather info for %s at this time. Default values assigned.' %(self.name))
-            return {'high': 75, 'low': 55}
-        
-
     def determine_destination(self, trip2, user_preferences, ideal_temp):
         """Determine ideal destination for user based on preferences."""
         
@@ -180,7 +143,6 @@ class Trip(object):
 
         #wow_factor_delta
         wow_factor_delta = (self.wow_factor - trip2.wow_factor)/self.wow_factor
-
         
         final_score = ((food_weight/total_weight)*michelin_star_delta -
                         (cost_weight*0.5/total_weight)*col_delta -

@@ -2,133 +2,241 @@
 
 {% block body %}
 
+<div class="row">
+    {% for photo in city1.photos %}
+        <span class="photos-list-1" data-photo="{{photo}}"></span>
+    {% endfor %}
+    {% for photo in city2.photos %}
+        <span class="photos-list-2" data-photo="{{photo}}"></span>
+    {% endfor %}
+    <div id="photo-1" class="col-md-6 flickr-photo"></div>
+    <div id="photo-2" class="col-md-6 flickr-photo"></div>       
+</div>
+
+<form id="preference-form">
     <div class="row">
-        {% for photo in city1.photos %}
-            <span class="photos-list-1" data-photo="{{photo}}"></span>
-        {% endfor %}
-        {% for photo in city2.photos %}
-            <span class="photos-list-2" data-photo="{{photo}}"></span>
-        {% endfor %}
-        <div id="photo-1" class="col-xs-6 flickr-photo"></div>
-        <div id="photo-2" class="col-xs-6 flickr-photo"></div>       
+         <div class="col-md-6" id="airports">
+            <h4>Airports</h4>
+            <label>Home</label>
+                <select id="departure-airport" name="departure-airport" class="form-control airport-dropdown">
+                    {% for airport in origin_city.airports %}
+                        <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
+                    {% endfor %}
+                </select>
+            <label>{{city1.name}}</label>
+                <select id="airport-1" name="airport-1" class="form-control airport-dropdown">
+                    {% for airport in city1.airports %}
+                        <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
+                    {% endfor %}
+                </select>
+            <label>{{city2.name}}</label>
+                <select id="airport-2" name="airport-2" class="form-control airport-dropdown">
+                    {% for airport in city2.airports %}
+                        <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
+                    {% endfor %}
+                </select>
+        </div>
+        <div class="col-md-6">
+            <div id="travel-dates">
+            <h4>Travel Dates</h4> 
+                <label>Departure Date</label>                    
+                <input id="depart-date" name="depart-date" min="2015-06-01" max="2015-12-31" type="date" required>
+                <label>Return Date</label>
+                <input id="return-date" name="return-date" min="2015-06-01" max="2015-12-31" type="date" required>
+            </div>
+            <div id="ideal-temp">
+            <h4>Ideal Temperature</h4>
+            <div class="radio">
+                <label><input type="radio" name="ideal-temp" value="50" required><img class="weather-radio" src="/static/images/snowflake.png"></label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="ideal-temp" value="70" required><img class="weather-radio" src="/static/images/sun_cloud.png"></label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="ideal-temp" value="90" required><img class="weather-radio" src="/static/images/sun.png"></label>
+            </div>
+            </div>
+        </div>
     </div>
-    <script type="text/javascript">
-
-        $(document).ready(function(){
-
-            setInitialPhotos();
-            for (i = 1; i <= 5; i++) {
-              LoopPhotos(i);
-            }
-          
-            });
-
-        function setInitialPhotos() {
-            $('#photo-1').attr("style","background-image:url('{{city1.photos[0]}}');");
-            $('#photo-2').attr("style","background-image:url('{{city2.photos[0]}}');");
-        }
-
-        function LoopPhotos(i) {
-            var photos2 = $(".photos-list-2");           
-            var url2 = $(photos2[i]).data("photo");                
-                setTimeout(function() {
-                    $('#photo-2').attr("style","background-image:url('" + url2 + "');")
-                    }, 3000);          
-
-            var photos1 = $(".photos-list-1");           
-            var url1 = $(photos1[i]).data("photo");                
-                setTimeout(function() {
-                    $('#photo-1').attr("style","background-image:url('" + url1 + "');")
-                    }, 3000);
-        }          
-        
-    </script>
-
-    <form action="/results" method="POST">
-        <div class="row">
-             <div class="col-xs-6">
-                <h4>Airports</h4>
-                <label>Home</label>
-                    <select name="departure-airport" class="form-control airport-dropdown">
-                        {% for airport in origin_city.airports %}
-                            <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
-                        {% endfor %}
-                    </select>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Importance</h4>
+            <div class="form-group importance-slider">
+                <label>Cost</label><span id="cost-range"></span>                    
+                <input type="range" min="0" max="5" step="1" name="cost">
+            </div>
+            <div class="form-group importance-slider">
+                <label>Quality of Food</label><span id="food-range"></span> 
+                <input type="range" min="0" max="5" step="1" name="food">
+            </div>
+               <div class="form-group importance-slider">
+                <label>Weather</label><span id="weather-range"></span> 
+                <input type="range" min="0" max="5" step="1" name="weather">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h4>Wow Factor</h4>
+            <div class="form-group wow-slider">
                 <label>{{city1.name}}</label>
-                    <select name="airport-1" class="form-control airport-dropdown">
-                        {% for airport in city1.airports %}
-                            <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
-                        {% endfor %}
-                    </select>
-                <label>{{city2.name}}</label>
-                    <select name="airport-2" class="form-control airport-dropdown">
-                        {% for airport in city2.airports %}
-                            <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
-                        {% endfor %}
-                    </select>
+                    <input type="range" min="1" max="10" step="1"  name="wow-factor-1" id="wow-input-1">
             </div>
-            <div class="col-xs-6">
-                <h4>Travel Dates</h4> 
-                    <label>Departure Date</label>                    
-                    <input name="depart-date" min="2015-06-01" max="2015-12-31" type="date">
-                    <label>Return Date</label>
-                    <input name="return-date" min="2015-06-01" max="2015-12-31" type="date">
-                <h4>Ideal Temperature</h4>
-                <div class="radio">
-                    <label><input type="radio" name="ideal-temp" value="50"><img class="weather-radio" src="/static/images/snowflake.png"></label>
-                </div>
-                <div class="radio">
-                    <label><input type="radio" name="ideal-temp" value="70"><img class="weather-radio" src="/static/images/sun_cloud.png"></label>
-                </div>
-                <div class="radio">
-                    <label><input type="radio" name="ideal-temp" value="90"><img class="weather-radio" src="/static/images/sun.png"></label>
-                </div>
+            <div class="form-group wow-slider">
+                <label>{{city2.name}}</label> 
+                    <input type="range" min="1" max="10" step="1" name="wow-factor-2" id="wow-input-2">                   
             </div>
+            <input type="submit" class="btn btn-primary" id="gather-data-button" value="Grab data!">
         </div>
-        <div class="row">
-            <div class="col-xs-6">
-                <h4>Importance</h4>
-                <div class="form-group importance-slider">
-                    <label>Cost</label><span id="cost-range"></span>                    
-                    <input type="range" min="0" max="5" step="1" name="cost" oninput="showCostVal(this.value)" onchange="showCostVal(this.value)">
-                </div>
-                <div class="form-group importance-slider">
-                    <label>Quality of Food</label><span id="food-range"></span> 
-                    <input type="range" min="0" max="5" step="1" name="food" oninput="showFoodVal(this.value)" onchange="showFoodVal(this.value)">
-                </div>
-                   <div class="form-group importance-slider">
-                    <label>Weather</label><span id="weather-range"></span> 
-                    <input type="range" min="0" max="5" step="1" name="weather" oninput="showWeatherVal(this.value)" onchange="showWeatherVal(this.value)">
-                </div>
-            </div>
-            <div class="col-xs-6">
-                <h4>Wow Factor</h4>
-                <div class="form-group wow-slider">
-                    <label>{{city1.name}}</label>
-                        <input type="range" min="1" max="10" step="1"  name="wow-factor-1">
-                </div>
-                <div class="form-group wow-slider">
-                    <label>{{city2.name}}</label> 
-                        <input type="range" min="1" max="10" step="1" name="wow-factor-2">                   
-                </div>
-                <input type="submit" class="btn btn-primary" value="Tell me where to go!">
-            </div>
+    </div>
+</form>
+
+<table id="results-table" border="1">
+    <thead>
+        <tr>
+            <th colspan="3">The Underlying Data</th>
+        </tr> 
+        <tr>
+            <th>Variable</th>
+            <th>{{city1.name}}</th>
+            <th>{{city2.name}}</th>
+        </tr>
+    </thead>   
+    <tbody>
+        <tr>
+            <td>Flight Cost</td>
+            <td id="flight-1"></td>
+            <td id="flight-2"></td>
+        </tr>
+        <tr>
+            <td>Weather</td>
+            <td id="weather-1"></td>
+            <td id="weather-2"></td>
+        </tr>
+        <tr>
+            <td>Food</td>
+            <td id="food-1"><img class="michelin-star" src="/static/images/michelinstar.jpg"></td>
+            <td id="food-2"><img class="michelin-star" src="/static/images/michelinstar.jpg"></td>
+        </tr>
+        <tr>
+            <td>Cost of Living</td>
+            <td id="col-1"></td>
+            <td id="col-2"></td>
+        </tr>    
+        <tr>
+            <td>Wow Factor</td>
+            <td id="wow-1"></td>
+            <td id="wow-2"></td>
+        </tr>    
+    </tbody>
+</table>
+
+<form action="/results" id="final-decision-form">
+        <div class="radio">
+        <label><input type="radio" name="winning-city" value="{{city1.name}}, {{city1.country}}" required>{{city1.name}}</label>
         </div>
-    </form>
+        <div class="radio">
+        <label><input type="radio" name="winning-city" value="{{city2.name}}, {{city2.country}}" required>{{city2.name}}</label>
+        </div>
+        <input type="submit" class="btn btn-primary" id="explore-button" value="Explore!">
 
-    <script type="text/javascript">
+</form>
 
-    function showCostVal(newVal){
-      $("#cost-range").text(": " + newVal + "/5");
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#results-table').hide();
+        $('#final-decision-form').hide();
+
+        setInitialPhotos();
+        for (i = 1; i <= 5; i++) {
+          LoopPhotos(i);
+        }          
+        });
+
+    function setInitialPhotos() {
+        $('#photo-1').attr("style","background-image:url('{{city1.photos[0]}}');");
+        $('#photo-2').attr("style","background-image:url('{{city2.photos[0]}}');");
     }
 
-    function showFoodVal(newVal){
-      $("#food-range").text(": " + newVal + "/5");
+    function LoopPhotos(i) {
+        var photos2 = $(".photos-list-2");           
+        var url2 = $(photos2[i]).data("photo");                
+            setTimeout(function() {
+                $('#photo-2').attr("style","background-image:url('" + url2 + "');")},
+                3000);          
+
+        var photos1 = $(".photos-list-1");           
+        var url1 = $(photos1[i]).data("photo");                
+            setTimeout(function() {
+                $('#photo-1').attr("style","background-image:url('" + url1 + "');")},
+                3000);
+    }          
+
+
+    function getData(evt){    
+        evt.preventDefault();
+        $("#gather-data-button").hide();
+        $("#travel-dates").hide();
+        $("#airports").hide();
+        $("#ideal-temp").hide();
+        $('#results-table').show();
+        $('#final-decision-form').show()
+        $("#wow-1").append($("#wow-input-1").val());
+        $("#wow-2").append($("#wow-input-2").val());
+
+        var dataPoints = 0;
+
+        var url1 = '/get-city1-data?airport-1='+ $("#airport-1").val();
+        $.get(url1, function (result) {
+            $('#food-1').prepend(result.food.stars);
+            $('#col-1').append(result.costOfLiving);
+            dataPoints ++;
+            }
+        );
+
+        var url2 = '/get-city2-data?airport-2='+ $("#airport-2").val();
+        $.get(url2, function (result) {
+            $('#food-2').prepend(result.food.stars);
+            $('#col-2').append(result.costOfLiving);
+            dataPoints ++;
+            }
+        );
+
+        $.post("/get-first-flight",
+            {depart_date: $("#depart-date").val(), return_date: $("#return-date").val(), origin: $("#departure-airport").val(), destination: $("#airport-1").val()},
+            function (result) {
+            console.log(result); 
+            $('#flight-1').append("$" + result.airfare);
+            dataPoints ++;
+            }
+        );
+
+        $.post("/get-second-flight",
+            {depart_date: $("#depart-date").val(), return_date: $("#return-date").val(), origin: $("#departure-airport").val(), destination: $("#airport-2").val()},
+            function (result) {
+            console.log(result); 
+            $('#flight-2').append(result.airfare);
+            dataPoints ++;
+            }
+        );
+
+        $.post("/get-first-weather",
+            {depart_date: $("#depart-date").val(), destination: $("#airport-1").val()},
+            function (result) {
+            $('#weather-1').append(result.low + " - " + result.high + " F");
+            dataPoints ++;
+            }
+        );
+
+        $.post("/get-second-weather",
+            {depart_date: $("#depart-date").val(), destination: $("#airport-2").val()},
+            function (result) {
+            $('#weather-2').append(result.low + " - " + result.high + " F");
+            dataPoints ++;
+            }
+        );
     }
 
-    function showWeatherVal(newVal){
-      $("#weather-range").text(": " + newVal + "/5");
-    }
-    </script>
+    $("#preference-form").on("submit", getData);
+
+</script>
 
 {% endblock %}
