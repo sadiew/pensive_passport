@@ -3,12 +3,6 @@
 {% block body %}
 
 <div class="row">
-    {% for photo in city1.photos %}
-        <span class="photos-list-1" data-photo="{{photo}}"></span>
-    {% endfor %}
-    {% for photo in city2.photos %}
-        <span class="photos-list-2" data-photo="{{photo}}"></span>
-    {% endfor %}
     <div id="photo-1" class="col-md-6 flickr-photo"></div>
     <div id="photo-2" class="col-md-6 flickr-photo"></div>       
 </div>
@@ -145,9 +139,7 @@
         $("#pp-choice").hide();
 
         setInitialPhotos();
-        for (i = 1; i <= 5; i++) {
-          LoopPhotos(i);
-        }          
+         
         });
 
     function setInitialPhotos() {
@@ -155,19 +147,7 @@
         $('#photo-2').attr("style","background-image:url('{{city2.photos[0]}}');");
     }
 
-    function LoopPhotos(i) {
-        var photos2 = $(".photos-list-2");           
-        var url2 = $(photos2[i]).data("photo");                
-            setTimeout(function() {
-                $('#photo-2').attr("style","background-image:url('" + url2 + "');")},
-                3000);          
 
-        var photos1 = $(".photos-list-1");           
-        var url1 = $(photos1[i]).data("photo");                
-            setTimeout(function() {
-                $('#photo-1').attr("style","background-image:url('" + url1 + "');")},
-                3000);
-    }
 
     function prepDom() {
         $("#gather-data-button").hide();
@@ -212,25 +192,26 @@
                         (costWeight*0.5/totalWeight)*colDelta -
                         (costWeight*0.5/totalWeight)*flightDelta - 
                         (weatherWeight/totalWeight)*weatherDelta
+
+        var winningCity = {}
         
         if (dataDelta + wowDelta > 0) {
-            $("#pp-choice").append(cityInfo1.city);
-            $("#pp-choice").data("city", cityInfo1.city);
-            $("#pp-choice").data("country", cityInfo1.country);
+            winningCity = CityInfo1;
         }
 
         else if (dataDelta + wowDelta < 0) {
-            $("#pp-choice").append(cityInfo2.city);
-            $("#pp-choice").data("city", cityInfo2.city);
-            $("#pp-choice").data("country", cityInfo2.country);
+            winningCity = CityInfo2;
         }
 
         else {var trips = [cityInfo1.city, cityInfo2.city]
-            var choice = trips[Math.floor(Math.random()*trips.length)];
-            $("#pp-choice").append(choice);
-            $("#pp-choice").data("city", choice.city);
-            $("#pp-choice").data("country", choice.country);
+            winningCity = trips[Math.floor(Math.random()*trips.length)];
         }
+
+        $("#pp-choice").html('Explore ' + cityInfo1.city);
+        $("#pp-choice").data("city", cityInfo1.city);
+        $("#pp-choice").data("country", cityInfo1.country);
+        console.log($("#pp-choice").html());
+        console.log($("#pp-choice").data("city"));
 
     }          
 
