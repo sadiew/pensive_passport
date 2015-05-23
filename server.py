@@ -3,11 +3,9 @@ from flask import Flask, request, render_template, redirect, jsonify, session, f
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
 from datetime import datetime, timedelta
-import flickr, google_places
+from google_places import get_places
 from google_flights import get_flights
 from weather import get_weather
-from requests_futures.sessions import FuturesSession
-from external_apis import get_external_data
 
 
 app = Flask(__name__)
@@ -32,8 +30,8 @@ def gather_perferences():
     city1 = City.query.filter_by(name=destination_1[0], country=destination_1[1]).first()
     city2 = City.query.filter_by(name=destination_2[0], country=destination_2[1]).first()
 
-    city1.get_photo()
-    city2.get_photo()
+    city1.get_photos()
+    city2.get_photos()
 
     return render_template('preference_form.html',
                             origin_city=origin_city, 
@@ -70,21 +68,21 @@ def get_restaurants():
     city = request.form.get('city')
     country = request.form.get('country')
     
-    restaurants = google_places.get_places(city, country, place_type ='restaurant')
+    restaurants = get_places(city, country, place_type ='restaurant')
     return jsonify(restaurants)
 
 @app.route('/get-museums', methods=['POST'])
 def get_museums():
     city = request.form.get('city')
     country = request.form.get('country')
-    museums = google_places.get_places(city, country, place_type ='museum')
+    museums = get_places(city, country, place_type ='museum')
     return jsonify(museums)
 
 @app.route('/get-parks', methods=['POST'])
 def get_parks():
     city = request.form.get('city')
     country = request.form.get('country')
-    parks = google_places.get_places(city, country, place_type ='park')
+    parks = get_places(city, country, place_type ='park')
     return jsonify(parks)
 
 @app.route('/get-flight1', methods=['POST'])

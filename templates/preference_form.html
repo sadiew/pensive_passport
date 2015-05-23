@@ -58,20 +58,59 @@
             </div>
         </div>
     </div>
+    <table id="results-table" class = "table table-striped">
+    <thead>
+        <tr>
+            <th colspan="3" style="text-align:center; font-size:24px;">The Data</th>
+        </tr> 
+        <tr>
+            <th>Component</th>
+            <th>{{city1.name}}</th>
+            <th>{{city2.name}}</th>
+        </tr>
+    </thead>   
+    <tbody>
+        <tr>
+            <td>Flight Cost</td>
+            <td id="flight-1"></td>
+            <td id="flight-2"></td>
+        </tr>
+        <tr>
+            <td>Weather</td>
+            <td id="weather-1"></td>
+            <td id="weather-2"></td>
+        </tr>
+        <tr>
+            <td>Cost of Living</td>
+            <td id="col-1"></td>
+            <td id="col-2"></td>
+        </tr>
+        <tr>
+            <td>Food</td>
+            <td id="food-1"><img class="michelin-star" src="/static/images/michelinstar.jpg"></td>
+            <td id="food-2"><img class="michelin-star" src="/static/images/michelinstar.jpg"></td>
+        </tr>    
+        <tr>
+            <td>Wow Factor</td>
+            <td id="wow-1"></td>
+            <td id="wow-2"></td>
+        </tr>    
+    </tbody>
+    </table>
     <div class="row">
         <div class="col-md-6">
             <h4>Importance</h4>
             <div class="form-group importance-slider">
                 <label>Cost</label>                   
-                <input type="range" min="0" max="5" step="1" name="cost" id="cost-weight">
+                <input type="range" min="0" max="5" step="1" name="cost" id="cost-weight" class="preference-slider">
             </div>
             <div class="form-group importance-slider">
                 <label>Quality of Food</label>
-                <input type="range" min="0" max="5" step="1" name="food" id="food-weight">
+                <input type="range" min="0" max="5" step="1" name="food" id="food-weight" class="preference-slider">
             </div>
                <div class="form-group importance-slider">
                 <label>Weather</label>
-                <input type="range" min="0" max="5" step="1" name="weather" id="weather-weight">
+                <input type="range" min="0" max="5" step="1" name="weather" id="weather-weight" class="preference-slider">
             </div>
         </div>
         <div class="col-md-6">
@@ -89,51 +128,17 @@
     </div>
 </form>
 
-<table id="results-table" border="1">
-    <thead>
-        <tr>
-            <th colspan="3">The Underlying Data</th>
-        </tr> 
-        <tr>
-            <th>Variable</th>
-            <th>{{city1.name}}</th>
-            <th>{{city2.name}}</th>
-        </tr>
-    </thead>   
-    <tbody>
-        <tr>
-            <td>Flight Cost</td>
-            <td id="flight-1"></td>
-            <td id="flight-2"></td>
-        </tr>
-        <tr>
-            <td>Weather</td>
-            <td id="weather-1"></td>
-            <td id="weather-2"></td>
-        </tr>
-        <tr>
-            <td>Food</td>
-            <td id="food-1"><img class="michelin-star" src="/static/images/michelinstar.jpg"></td>
-            <td id="food-2"><img class="michelin-star" src="/static/images/michelinstar.jpg"></td>
-        </tr>
-        <tr>
-            <td>Cost of Living</td>
-            <td id="col-1"></td>
-            <td id="col-2"></td>
-        </tr>    
-        <tr>
-            <td>Wow Factor</td>
-            <td id="wow-1"></td>
-            <td id="wow-2"></td>
-        </tr>    
-    </tbody>
-</table>
+
 <p></p>
 <div class="row"> 
     <div><button id="pp-choice" class="btn btn-primary">Explore </button></div>
 </div>
 
 <script type="text/javascript">
+    var cityInfo1 = {};
+    var cityInfo2 = {};
+    var cities = [cityInfo1, cityInfo2];
+
     $(document).ready(function(){
         $('#results-table').hide();
         $('#final-decision-form').hide();
@@ -172,40 +177,13 @@
         $('#results-table').show();
         $('#final-decision-form').show();
         $("#pp-choice").show();
+        $(".flickr-photo").hide();
 
     }
 
-    function getStaticData(cityInfo1, cityInfo2) {
-        $("#wow-1").append($("#wow-input-1").val());
-        $("#wow-2").append($("#wow-input-2").val());
-        cityInfo1.wow = $("#wow-input-1").val()
-        cityInfo2.wow = $("#wow-input-2").val()
-
-
-        var url1 = '/get-city1-data?airport-1='+ $("#airport-1").val();
-        $.get(url1, function (result) {
-            $('#food-1').prepend(result.food.stars);
-            $('#col-1').append(result.costOfLiving);
-            cityInfo1.city = result.city
-            cityInfo1.country = result.country
-            cityInfo1.food = parseInt(result.food.stars);
-            cityInfo1.costOfLiving = parseInt(result.costOfLiving);
-            }
-        );
-
-        var url2 = '/get-city2-data?airport-2='+ $("#airport-2").val();
-        $.get(url2, function (result) {
-            $('#food-2').prepend(result.food.stars);
-            $('#col-2').append(result.costOfLiving);
-            cityInfo2.city = result.city
-            cityInfo2.country = result.country
-            cityInfo2.food = parseInt(result.food.stars);
-            cityInfo2.costOfLiving = parseInt(result.costOfLiving);
-            }
-        );
-    }
-
-    function determineDestination(cityInfo1, cityInfo2) {
+    function determineDestination(cities) {
+        var cityInfo1 = cities[0];
+        var cityInfo2 = cities[1];
 
         var idealTemp = $("input:radio[name=ideal-temp]:checked").val();
 
@@ -234,87 +212,78 @@
                         (costWeight*0.5/totalWeight)*colDelta -
                         (costWeight*0.5/totalWeight)*flightDelta - 
                         (weatherWeight/totalWeight)*weatherDelta
-        if (dataDelta > 0 && wowDelta >=0) {
+        
+        if (dataDelta + wowDelta > 0) {
             $("#pp-choice").append(cityInfo1.city);
             $("#pp-choice").data("city", cityInfo1.city);
             $("#pp-choice").data("country", cityInfo1.country);
         }
 
-        else if (dataDelta < 0 && wowDelta <= 0) {
+        else if (dataDelta + wowDelta < 0) {
             $("#pp-choice").append(cityInfo2.city);
             $("#pp-choice").data("city", cityInfo2.city);
             $("#pp-choice").data("country", cityInfo2.country);
         }
 
-        else if (dataDelta > 0 && wowDelta < 0) {
-            if(dataDelta > Math.abs(wowDelta)) {$("#pp-choice").append(cityInfo1.city);}
-            else {$("#pp-choice").append(cityInfo2.city);}
-        }
-
-        else if (dataDelta < 0 && wowDelta > 0) {
-            if(wowDelta > Math.abs(dataDelta)) {$("#pp-choice").append(cityInfo1.city);}
-            else {$("#pp-choice").append(cityInfo2.city);}
-        }
-
         else {var trips = [cityInfo1.city, cityInfo2.city]
             var choice = trips[Math.floor(Math.random()*trips.length)];
             $("#pp-choice").append(choice);
+            $("#pp-choice").data("city", choice.city);
+            $("#pp-choice").data("country", choice.country);
         }
 
     }          
 
-
-    function getData(evt){    
+    function getData(evt){   
         evt.preventDefault();
         prepDom();
         
         var apiResponses = 0;
-        var cityInfo1 = {}
-        var cityInfo2 = {}
 
+        for (i=1; i < cities.length + 1; i++) {loopCities(i)}
         
-        getStaticData(cityInfo1, cityInfo2);
+        function loopCities(i) {
+            var cityInfo = cities[i-1];
+            $("#wow-"+i).append($("#wow-input-"+i).val());
+            cityInfo.wow = $("#wow-input-"+i).val()
 
-        $.post("/get-flight1",
-            {depart_date: $("#depart-date").val(), return_date: $("#return-date").val(), origin: $("#departure-airport").val(), destination: $("#airport-1").val()},
-            function (result) {
-                $('#flight-1').append("$" + result.airfare);
-                cityInfo1.airfare = result.airfare
-                apiResponses ++;
-                if (apiResponses ===4) { determineDestination(cityInfo1, cityInfo2) };
-            }
-        );
+            var url = '/get-city' + i + '-data?airport-'+i+'='+ $("#airport-"+i).val();
+            $.get(url, function (result) {
+                $('#food-'+i).prepend(result.food.stars);
+                $('#col-'+i).append(result.costOfLiving);
+                cityInfo.city = result.city
+                cityInfo.country = result.country
+                cityInfo.food = parseInt(result.food.stars);
+                cityInfo.costOfLiving = parseInt(result.costOfLiving);
+                }
+            );
+                        
+            $.post("/get-flight" + i,
+                {depart_date: $("#depart-date").val(), return_date: $("#return-date").val(), origin: $("#departure-airport").val(), destination: $("#airport-"+i).val()},
+                function (result) {
+                    $('#flight-'+i).append("$" + result.airfare);
+                    cityInfo.airfare = result.airfare;
+                    apiResponses ++;
+                    if (apiResponses===4) {determineDestination(cities)};
+                }
+            );
 
-        $.post("/get-flight2",
-            {depart_date: $("#depart-date").val(), return_date: $("#return-date").val(), origin: $("#departure-airport").val(), destination: $("#airport-2").val()},
-            function (result) {
-                $('#flight-2').append("$" + result.airfare);
-                apiResponses ++;
-                cityInfo2.airfare = result.airfare
-                if (apiResponses ===4) { determineDestination(cityInfo1, cityInfo2) };
-            }
-        );
+            $.post("/get-weather" + i,
+                {depart_date: $("#depart-date").val(), destination: $("#airport-"+i).val()},
+                function (result) {
+                    $('#weather-'+i).append(result.low + " - " + result.high + " F");
+                    cityInfo.weather = (parseInt(result.low) + parseInt(result.high))/2;
+                    apiResponses ++;
+                    if (apiResponses===4) {determineDestination(cities)};
+                }
+            );
+        }
 
-        $.post("/get-weather1",
-            {depart_date: $("#depart-date").val(), destination: $("#airport-1").val()},
-            function (result) {
-                $('#weather-1').append(result.low + " - " + result.high + " F");
-                apiResponses ++;
-                cityInfo1.weather = (parseInt(result.low) + parseInt(result.high))/2;
-                if (apiResponses ===4) { determineDestination(cityInfo1, cityInfo2) };
-            }
-        );
-
-        $.post("/get-weather2",
-            {depart_date: $("#depart-date").val(), destination: $("#airport-2").val()},
-            function (result) {
-                $('#weather-2').append(result.low + " - " + result.high + " F");
-                apiResponses ++;
-                cityInfo2.weather = (parseInt(result.low) + parseInt(result.high))/2;
-                if (apiResponses ===4) { determineDestination(cityInfo1, cityInfo2) };
-            }
-        );
     }
+
+    function reCalculate() {
+        determineDestination(cities);
+        }        
 
     function exploreCity(evt) {
         var city = $(this).data("city");
@@ -326,6 +295,7 @@
 
     $("#preference-form").on("submit", getData);
     $("#pp-choice").on("click", exploreCity);
+    $(".preference-slider").on("change", reCalculate)
 
 </script>
 

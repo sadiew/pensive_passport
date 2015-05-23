@@ -2,7 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 import json, requests, os, psycopg2, random
 from datetime import datetime, timedelta
-import flickr, google_flights, weather
+import flickr
 
 DEFAULT_IMAGE_URL = 'http://www.posterparty.com/images/photography-paris-france-famous-sights-collage-poster-GB0404.jpg'
 
@@ -22,7 +22,7 @@ class City(db.Model):
     def __repr__(self):
         return "<City city_id=%s country=%s>" % (self.name, self.country)
 
-    def get_photo(self):
+    def get_photos(self):
         """Check to see if photo for city is cached in DB; if not, call Flickr API for new photo."""
 
         if len(self.city_images) >= 5:           
