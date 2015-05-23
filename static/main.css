@@ -29,3 +29,16 @@ img.michelin-star {
 	width:20px;
 	height:20px;
 }
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  width: 50%;
+  height:5%;
+  margin: auto;
+}
+
+.flickr-image {
+  width: auto;
+  height: 225px;
+  max-height: 225px;
+}

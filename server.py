@@ -33,10 +33,14 @@ def gather_perferences():
     city1.get_photos()
     city2.get_photos()
 
+    max_photos = min(len(city1.photos), len(city2.photos))
+    print "Max photos: ", max_photos
+
     return render_template('preference_form.html',
                             origin_city=origin_city, 
     						city1=city1, 
-    						city2=city2)
+    						city2=city2,
+                            max_photos=max_photos)
 
 @app.route('/results')
 def show_results():
