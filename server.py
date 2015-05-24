@@ -105,11 +105,13 @@ def get_first_flight():
     origin = request.form['origin']
     destination = request.form['destination']
 
-    try:
-        airfare = get_flights(origin, destination, depart_date, return_date)
-    except:
-        flash("Flight info unavailable. Default values assigned.")
-        airfare = {'airfare': 1000}
+    # try:
+    #     airfare = get_flights(origin, destination, depart_date, return_date)
+    #     print airfare
+    # except:
+    #     flash("Flight info unavailable. Default values assigned.")
+    #     airfare = {'airfare': 1000}
+    airfare = {'airfare': 1500}
     return jsonify(airfare)
 
 
@@ -120,11 +122,13 @@ def get_second_flight():
     origin = request.form['origin']
     destination = request.form['destination']
 
-    try:
-        airfare = get_flights(origin, destination, depart_date, return_date)
-    except:
-        flash("Flight info unavailable. Default values assigned.")
-        airfare = {'airfare': 1000}
+    # try:
+    #     airfare = get_flights(origin, destination, depart_date, return_date)
+    #     print airfare
+    # except:
+    #     flash("Flight info unavailable. Default value assigned.")
+    #     airfare = {'airfare': 1000}
+    airfare = {'airfare': 1000}
     return jsonify(airfare)
 
 
@@ -180,13 +184,15 @@ def store_trips():
     trip2 = json.loads(request.form['trip2'])
     trips = [trip1, trip2]
     print trip1
+    print session['username']
 
     for trip in trips:
         trip = Trip(city_id=trip['city_id'],
                 avg_temp=trip['weather'], 
                 wow_factor=trip['wow'],
                 michelin_stars=trip['food'],
-                airfare=trip['airfare'])
+                airfare=trip['airfare'],
+                user_id=session['username'])
         db.session.add(trip)
         session.setdefault('cities_searched', []).append(trip.city_id)
     db.session.commit()
@@ -209,6 +215,7 @@ def handle_login():
     else:
         if user and (user.password == request.form['password']):
             session['username'] = user.user_id
+            print session
             flash("Login successful!")
             return redirect('/')
         else:
@@ -241,17 +248,23 @@ def handle_registration():
 def get_similar_trips():
     
     city_id = request.args['city_id']
-    query = """SELECT DISTINCT trips.city_id
+    query = """SELECT DISTINCT trips.city_id, cities.name, cities.country, COUNT(trips.city_id)
             FROM trips
-            WHERE user_id IN 
-            (SELECT DISTINCT users.user_id 
-            FROM users 
-            JOIN trips on users.user_id = trips.user_id
-            WHERE city_id =%s)""" %(city_id)
+            JOIN cities on trips.city_id = cities.city_id
+            WHERE trips.city_id <> %s and user_id IN 
+            (SELECT DISTINCT user_id 
+            FROM trips
+            WHERE city_id =%s)
+            GROUP BY 1,2,3
+            ORDER BY COUNT(trips.city_id) DESC""" %(city_id, city_id)
     
-    result = call_sql(query)
-    print result
-    return 'hi'
+    
+    results = call_sql(query)
+    top_five = results[:5]
+
+    similar_cities = {city[0]:'%s, %s' %(city[1], city[2]) for city in top_five}
+
+    return jsonify(similar_cities)
     
 
 #helper functions
@@ -281,8 +294,6 @@ def call_sql(query):
         print "\nCan't connect to the database!"
         print e
         print '\n'
-
-
 
 if __name__ == "__main__":
     app.debug = True

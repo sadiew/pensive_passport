@@ -6,7 +6,7 @@
 
       <ol class="carousel-indicators">
         <li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
-        {% for i in range(1, max_photos+1) %}
+        {% for i in range(1, max_photos) %}
             <li data-target="#myCarousel1" data-slide-to="{{i}}"></li>
         {% endfor %}
       </ol>
@@ -14,7 +14,7 @@
         <div class="item active">
           <img class="flickr-image" src="{{city1.photos[0]}}">
         </div>
-        {% for photo in city1.photos[1:max_photos+1] %}
+        {% for photo in city1.photos[1:max_photos] %}
         <div class="item">
           <img class="flickr-image" src="{{photo}}">
         </div>
@@ -34,7 +34,7 @@
 
       <ol class="carousel-indicators">
         <li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
-        {% for i in range(1, max_photos+1) %}
+        {% for i in range(1, max_photos) %}
             <li data-target="#myCarousel2" data-slide-to="{{i}}"></li>
         {% endfor %}
       </ol>
@@ -42,7 +42,7 @@
         <div class="item active">
           <img class="flickr-image" src="{{city2.photos[0]}}">
         </div>
-        {% for photo in city2.photos[1:max_photos+1] %}
+        {% for photo in city2.photos[1:max_photos] %}
         <div class="item">
           <img class="flickr-image" src="{{photo}}">
         </div>
@@ -90,52 +90,7 @@
             </div>
         </div>
     </div>
-    <div class="row rcorners" id="general-pref">
-        <h2>General Preferences</h2>
-        <div class="col-md-6">
-            <label>Home Airport</label>
-                <select id="departure-airport" name="departure-airport" class="form-control airport-dropdown">
-                    {% for airport in origin_city.airports %}
-                        <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
-                    {% endfor %}
-                </select>
-            <div class="form-group importance-slider">
-                <label>Cost</label>                   
-                <input type="range" min="0" max="5" step="1" name="cost" id="cost-weight">
-            </div>
-            <div class="form-group importance-slider">
-                <label>Quality of Food</label>
-                <input type="range" min="0" max="5" step="1" name="food" id="food-weight">
-            </div>
-               <div class="form-group importance-slider">
-                <label>Weather</label>
-                <input type="range" min="0" max="5" step="1" name="weather" id="weather-weight">
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div id="travel-dates"> 
-                <label>Departure Date</label>                    
-                <input id="depart-date" name="depart-date" min="2015-06-01" max="2015-12-31" type="date" required>
-                <label>Return Date</label>
-                <input id="return-date" name="return-date" min="2015-06-01" max="2015-12-31" type="date" required>
-            </div>
 
-            <label>Ideal Temperature</label>
-            <div class="radio">
-                <label><input type="radio" name="ideal-temp" value="50" required><img class="weather-radio" src="/static/images/snowflake.png"></label>
-            </div>
-            <div class="radio">
-                <label><input type="radio" name="ideal-temp" value="70" required><img class="weather-radio" src="/static/images/sun_cloud.png"></label>
-            </div>
-            <div class="radio">
-                <label><input type="radio" name="ideal-temp" value="90" required><img class="weather-radio" src="/static/images/sun.png"></label>
-            </div>
-            <input type="submit" class="btn btn-primary" id="gather-data-button" value="Grab data!">
-        </div>
-
-        </div>
-
-    </div>
     <div class='container'>
     <table id="results-table" class = "table table-striped">
     <thead>
@@ -144,43 +99,91 @@
         </tr> 
         <tr>
             <th>Component</th>
-            <th>{{city1.name}}</th>
-            <th>{{city2.name}}</th>
+            <th class="data-element">{{city1.name}}</th>
+            <th class="data-element">{{city2.name}}</th>
         </tr>
     </thead>   
     <tbody>
         <tr>
-            <td>Flight Cost</td>
-            <td id="flight-1"></td>
-            <td id="flight-2"></td>
+            <td>Airfare</td>
+            <td id="flight-1" class="data-element"></td>
+            <td id="flight-2" class="data-element"></td>
         </tr>
         <tr>
             <td>Weather</td>
-            <td id="weather-1"></td>
-            <td id="weather-2"></td>
+            <td id="weather-1" class="data-element"></td>
+            <td id="weather-2" class="data-element"></td>
         </tr>
         <tr>
             <td>Cost of Living</td>
-            <td id="col-1"></td>
-            <td id="col-2"></td>
+            <td id="col-1" class="data-element"></td>
+            <td id="col-2" class="data-element"></td>
         </tr>
         <tr>
             <td>Food</td>
-            <td id="food-1"><img class="michelin-star" src="/static/images/michelinstar.jpg"></td>
-            <td id="food-2"><img class="michelin-star" src="/static/images/michelinstar.jpg"></td>
+            <td id="food-1" class="data-element"></td>
+            <td id="food-2" class="data-element"></td>
         </tr>    
         <tr>
             <td>Wow Factor</td>
-            <td id="wow-1"></td>
-            <td id="wow-2"></td>
+            <td id="wow-1" class="data-element"></td>
+            <td id="wow-2" class="data-element"></td>
         </tr>    
     </tbody>
     </table>
+    </div>
+
+    <div class="row rcorners" id="general-pref">
+        <h2 style="text-align:center">Travel Preferences</h2>
+        <div class="col-md-6">
+            <div id="departure-airport" >
+            <label>Home Airport</label>
+                <select name="departure-airport" class="form-control airport-dropdown">
+                    {% for airport in origin_city.airports %}
+                        <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div id="component-weights">
+            <div class="form-group importance-slider">
+                <label>Cost</label>                   
+                <input type="range" min="0" max="5" step="1" name="cost" id="cost-weight">
+            </div>
+            <div class="form-group importance-slider">
+                <label>Quality of Food</label>
+                <input type="range" min="0" max="5" step="1" name="food" id="food-weight">
+            </div>
+            <div class="form-group importance-slider">
+                <label>Weather</label>
+                <input type="range" min="0" max="5" step="1" name="weather" id="weather-weight">
+            </div>
+            </div>             
+        </div>
+        <div id="algo-result">
+            <p><span id="recalculation_text"></span><span id="pp-choice-text"></span></p>
+            <div><button id="pp-choice" class="btn btn-primary">Explore </button></div>
+        </div>
+        <div class="col-md-6">
+            <div id="travel-dates"> 
+                <label>Departure Date</label>                    
+                <input id="depart-date" name="depart-date" min="2015-06-01" max="2015-12-31" type="date" required>
+                <label>Return Date</label>
+                <input id="return-date" name="return-date" min="2015-06-01" max="2015-12-31" type="date" required>
+            </div>
+            <div id="temp-selectors" style="margin-top: 30px;">
+                <label>Ideal Temperature</label>
+                <label class="radio-inline"><input type="radio" name="ideal-temp" value="50" required><img class="weather-radio" src="/static/images/snowflake.png"></label>
+                <label class="radio-inline"><input type="radio" name="ideal-temp" value="70" required><img class="weather-radio" src="/static/images/sun_cloud.png"></label>
+                <label class="radio-inline"><input type="radio" name="ideal-temp" value="90" required><img class="weather-radio" src="/static/images/sun.png"></label>
+            </div>
+            <input type="submit" class="btn btn-primary" id="gather-data-button" value="Grab data!" style="display:block; margin:50px auto;">
+        </div>
+
+        </div>
+
+    </div>
     <p></p>
-    <div class="row"> 
-        <div><button id="pp-choice" class="btn btn-primary">Explore </button></div>
-    </div>
-    </div>
+
 
 </form>
 
@@ -194,7 +197,8 @@
     $(document).ready(function(){
         $('#results-table').hide();
         $('#final-decision-form').hide();
-        $("#pp-choice").hide();
+        $("#algo-result").hide();
+        $("#component-weights").hide();
         });
 
     function setInitialPhotos() {
@@ -207,46 +211,53 @@
     function prepDom() {
         $("#gather-data-button").hide();
         $("#city-specific-pref").hide();
-        $("#general-pref").hide();
+        $("#travel-dates").hide();
+        $("#departure-airport").hide();
+        $("#temp-selectors").hide();
         $('#results-table').show();
         $('#final-decision-form').show();
+        $('#component-weights').show()
         $(".photo-carousel").hide();
 
     }
 
     function determineDestination(cities) {
-        console.log("I GOT HERE.");
         var cityInfo1 = cities[0];
         var cityInfo2 = cities[1];
 
         var idealTemp = $("input:radio[name=ideal-temp]:checked").val();
 
-        var costWeight = parseInt($("#cost-weight").val())
-        var foodWeight = parseInt($("#food-weight").val())
-        var weatherWeight = parseInt($("#weather-weight").val())
-        var totalWeight = costWeight + foodWeight + weatherWeight
+        var costWeight = parseInt($("#cost-weight").val());
+        var foodWeight = parseInt($("#food-weight").val());
+        var weatherWeight = parseInt($("#weather-weight").val());
+        var totalWeight = costWeight + foodWeight + weatherWeight;
 
-        var flightDelta = (cityInfo1.airfare - cityInfo2.airfare)/(cityInfo1.airfare)
-        var colDelta = (cityInfo1.costOfLiving - cityInfo2.costOfLiving)/(cityInfo1.costOfLiving)
+        var flightDelta = (cityInfo1.airfare - cityInfo2.airfare)/(cityInfo1.airfare);
+        var colDelta = (cityInfo1.costOfLiving - cityInfo2.costOfLiving)/(cityInfo1.costOfLiving);
 
-        var weatherDeltaCity1 = cityInfo1.weather - idealTemp
-        var weatherDeltaCity2 = cityInfo2.weather - idealTemp
-        var weatherDelta = (weatherDeltaCity1 - weatherDeltaCity2)/weatherDeltaCity1
+        var weatherDeltaCity1 = cityInfo1.weather - idealTemp;
+        var weatherDeltaCity2 = cityInfo2.weather - idealTemp;
+        var weatherDelta = (weatherDeltaCity1 - weatherDeltaCity2)/weatherDeltaCity1;
 
-        var wowDelta = (cityInfo1.wow - cityInfo2.wow)/cityInfo1.wow
+        var wowDelta = (cityInfo1.wow - cityInfo2.wow)/cityInfo1.wow;
 
 
-        try {
-            var starDelta = (cityInfo1.food - cityInfo2.food)/cityInfo1.food
+        if (cityInfo1.food > 0) {
+            var starDelta = (cityInfo1.food - cityInfo2.food)/cityInfo1.food;
         }
-        catch(err) {
-            var starDelta = 0
+        else if (cityInfo2.food > 0) {
+            var starDelta = -1;
+        }
+
+        else {
+            var starDelta = 0;
         }
 
         var dataDelta = (foodWeight/totalWeight)*starDelta -
                         (costWeight*0.5/totalWeight)*colDelta -
                         (costWeight*0.5/totalWeight)*flightDelta - 
                         (weatherWeight/totalWeight)*weatherDelta
+        console.log(starDelta);
         
         if (dataDelta + wowDelta > 0) {
             var winningCity = cityInfo1;
@@ -262,11 +273,31 @@
             var winningCity = trips[Math.floor(Math.random()*trips.length)];
         }
 
+        if (flightDelta > 0) { $("#flight-2").attr("style", "background-color:#66CDAA")}
+        else {$("#flight-1").attr("style", "background-color:#66CDAA")}
+
+        if (weatherDelta > 0) { $("#weather-2").attr("style", "background-color:#66CDAA")}
+        else {$("#weather-1").attr("style", "background-color:#66CDAA")}
+
+        if (flightDelta > 0) { $("#flight-2").attr("style", "background-color:#66CDAA")}
+        else {$("#flight-1").attr("style", "background-color:#66CDAA")}
+
+        if (starDelta > 0) { $("#food-1").attr("style", "background-color:#66CDAA")}
+        else {$("#food-2").attr("style", "background-color:#66CDAA")}
+
+        if (colDelta > 0) { $("#col-2").attr("style", "background-color:#66CDAA")}
+        else {$("#col-1").attr("style", "background-color:#66CDAA")}
+
+        if (wowDelta > 0) { $("#wow-1").attr("style", "background-color:#66CDAA")}
+        else {$("#wow-2").attr("style", "background-color:#66CDAA")}
+
         $("#pp-choice").html('Explore ' + winningCity.city);
+        $("#pp-choice-text").html("Pensive Passport's algorithm has selected: " + winningCity.city)
         $("#pp-choice").data("city", winningCity.city);
         $("#pp-choice").data("country", winningCity.country);
         $("#pp-choice").data("city_id", winningCity.city_id);
-        $("#pp-choice").show();
+        console.log(winningCity.city);
+        $("#algo-result").show();
 
     }          
 
@@ -284,14 +315,16 @@
             cityInfo.wow = $("#wow-input-"+i).val()
 
             var url = '/get-city' + i + '-data?airport-'+i+'='+ $("#airport-"+i).val();
-            $.get(url, function (result) {
-                $('#food-'+i).prepend(result.food.stars);
-                $('#col-'+i).html(result.costOfLiving);
-                cityInfo.city = result.city
-                cityInfo.city_id = result.city_id
-                cityInfo.country = result.country
+            $.get(url, function (result) {                
+                cityInfo.city = result.city;
+                cityInfo.city_id = result.city_id;
+                cityInfo.country = result.country;
                 cityInfo.food = parseInt(result.food.stars);
+                cityInfo.food = getNum(cityInfo.food);
                 cityInfo.costOfLiving = parseInt(result.costOfLiving);
+                $('#food-'+i).html(cityInfo.food + ' ' + "<img class='michelin-star' src='/static/images/michelinstar.jpg'>");
+                $('#col-'+i).html(cityInfo.costOfLiving);
+                
                 }
             );
                         
@@ -325,6 +358,7 @@
     }
 
     function reCalculate() {
+        $("#recalculation_text").html("After recalculation, ");
         determineDestination(cities);
         }        
 
@@ -337,8 +371,17 @@
 
     }
 
+    function getNum(val)
+        {
+           if (isNaN(val)) 
+             return 0;
+           else
+             return val;
+        }
+
     $("#preference-form").on("submit", getData);
     $("#pp-choice").on("click", exploreCity);
+    $(".importance-slider").on("change", reCalculate);
 
 </script>
 

@@ -34,6 +34,7 @@ def get_flights(origin, destination, depart_date, return_date):
     data = response.json()
 
     first_option = data['trips']['tripOption'][0]
+    print first_option
 
     raw_fare = first_option['saleTotal'][3:]
     total_fare = round(float(raw_fare), 0)

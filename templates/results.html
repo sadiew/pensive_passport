@@ -4,26 +4,26 @@
 <h1>{{ city }}, {{country}}</h1>
 
 <div class="row">   
-    <div class="col-md-6" id="map-canvas" style="width:500px; height:200px">
-    </div>
-    <div class="col-md-6">
-    <div class="row">
-      <div class="col-md-4">
-          <div id="restaurant-info"></div>
-      </div>
-      <div class="col-md-4">
-          <div id="museum-info"></div>
-      </div>
-      <div class="col-md-4">
-          <div id="park-info"></div>
-      </div>
-    </div>
-    </div>
+  <div class="col-md-6" id="map-canvas" style="width:500px; height:200px"></div>
+  <div class="col-md-6" id="similar-trips"></div>
 </div>
-<p></p>
-<div class="row"> 
-    <div><button id="get-places-button" class="btn btn-primary">City Highlights</button></div>
+<div class="row">
+  <button id="get-places-button" class="btn btn-primary">City Highlights</button>
 </div>
+<div class="row">
+  <div class="col-md-4">
+      <div id="restaurant-info"></div>
+  </div>
+  <div class="col-md-4">
+      <div id="museum-info"></div>
+  </div>
+  <div class="col-md-4">
+      <div id="park-info"></div>
+  </div>
+</div>
+</div>
+
+
 
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 
@@ -72,6 +72,7 @@
     }
     
     function getPlaces(evt) {
+        $('#get-places-button').hide();
         
         $.post( "/get-restaurants",
             { city: '{{city}}', country: '{{country}}'},
@@ -108,9 +109,9 @@
 
         $.get( "/get-similar-trips?city_id='{{city_id}}'",
             function (result) {
-                console.log('hi'); 
+                $('#similar-trips').append("<h4>Users with similar travel interests also searched:</h4>"); 
                 for (item in result) {
-                    $('#similar-trips').append("<p><a href='#'>" + item + "</a></p>");
+                    $('#similar-trips').append("<p><a href='#'>" + result[item] + "</a></p>");
                 };
             }
         );
