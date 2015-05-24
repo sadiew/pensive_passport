@@ -72,7 +72,7 @@
             </label>
             <div class="form-group wow-slider">
                 <label>{{city1.name}}</label>
-                    <input type="range" min="1" max="10" step="1"  name="wow-factor-1" id="wow-input-1" class="preference-slider">
+                    <input type="range" min="1" max="10" step="1"  name="wow-factor-1" id="wow-input-1">
             </div>
         </div>
         <div class="col-md-2"></div>
@@ -86,7 +86,7 @@
             </label>
             <div class="form-group wow-slider">
                 <label>{{city2.name}}</label> 
-                    <input type="range" min="1" max="10" step="1" name="wow-factor-2" id="wow-input-2" class="preference-slider">                   
+                    <input type="range" min="1" max="10" step="1" name="wow-factor-2" id="wow-input-2">                   
             </div>
         </div>
     </div>
@@ -101,15 +101,15 @@
                 </select>
             <div class="form-group importance-slider">
                 <label>Cost</label>                   
-                <input type="range" min="0" max="5" step="1" name="cost" id="cost-weight" class="preference-slider">
+                <input type="range" min="0" max="5" step="1" name="cost" id="cost-weight">
             </div>
             <div class="form-group importance-slider">
                 <label>Quality of Food</label>
-                <input type="range" min="0" max="5" step="1" name="food" id="food-weight" class="preference-slider">
+                <input type="range" min="0" max="5" step="1" name="food" id="food-weight">
             </div>
                <div class="form-group importance-slider">
                 <label>Weather</label>
-                <input type="range" min="0" max="5" step="1" name="weather" id="weather-weight" class="preference-slider">
+                <input type="range" min="0" max="5" step="1" name="weather" id="weather-weight">
             </div>
         </div>
         <div class="col-md-6">
@@ -215,6 +215,7 @@
     }
 
     function determineDestination(cities) {
+        console.log("I GOT HERE.");
         var cityInfo1 = cities[0];
         var cityInfo2 = cities[1];
 
@@ -234,6 +235,7 @@
 
         var wowDelta = (cityInfo1.wow - cityInfo2.wow)/cityInfo1.wow
 
+
         try {
             var starDelta = (cityInfo1.food - cityInfo2.food)/cityInfo1.food
         }
@@ -247,13 +249,13 @@
                         (weatherWeight/totalWeight)*weatherDelta
         
         if (dataDelta + wowDelta > 0) {
-            console.log(cityInfo1);
             var winningCity = cityInfo1;
+            console.log(winningCity.city);
         }
 
         else if (dataDelta + wowDelta < 0) {
-            console.log(cityInfo2);
             var winningCity = cityInfo2;
+            console.log(winningCity.city);
         }
 
         else {var trips = [cityInfo1.city, cityInfo2.city]
@@ -263,6 +265,7 @@
         $("#pp-choice").html('Explore ' + winningCity.city);
         $("#pp-choice").data("city", winningCity.city);
         $("#pp-choice").data("country", winningCity.country);
+        $("#pp-choice").data("city_id", winningCity.city_id);
         $("#pp-choice").show();
 
     }          
@@ -285,6 +288,7 @@
                 $('#food-'+i).prepend(result.food.stars);
                 $('#col-'+i).html(result.costOfLiving);
                 cityInfo.city = result.city
+                cityInfo.city_id = result.city_id
                 cityInfo.country = result.country
                 cityInfo.food = parseInt(result.food.stars);
                 cityInfo.costOfLiving = parseInt(result.costOfLiving);
@@ -327,14 +331,14 @@
     function exploreCity(evt) {
         var city = $(this).data("city");
         var country = $(this).data("country");
+        var city_id = $(this).data("city_id");
 
-        window.location = "http://localhost:5000/results?city=" + city + '&country=' + country;
+        window.location = "http://localhost:5000/results?city=" + city + '&country=' + country + '&city_id=' + city_id;
 
     }
 
     $("#preference-form").on("submit", getData);
     $("#pp-choice").on("click", exploreCity);
-    $(".preference-slider").on("change", reCalculate)
 
 </script>
 

@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 from google_places import get_places
 from google_flights import get_flights
 from weather import get_weather
-import json
+import json, psycopg2
 
 
 app = Flask(__name__)
@@ -48,11 +48,12 @@ def gather_perferences():
 @app.route('/results')
 def show_results():
     """Display map of city that user chose along with accompanying attractions."""
-    city, country = request.args['city'], request.args['country']
+    city, country, city_id = request.args['city'], request.args['country'], request.args['city_id']
     
     return render_template("results.html",
                             city=city,
-                            country=country)
+                            country=country,
+                            city_id=city_id)
 
 
 @app.route('/intl-city-list')
@@ -104,9 +105,12 @@ def get_first_flight():
     origin = request.form['origin']
     destination = request.form['destination']
 
-    airfare = get_flights(origin, destination, depart_date, return_date)
+    try:
+        airfare = get_flights(origin, destination, depart_date, return_date)
+    except:
+        flash("Flight info unavailable. Default values assigned.")
+        airfare = {'airfare': 1000}
     return jsonify(airfare)
-    # return jsonify({'airfare': 1000})
 
 
 @app.route('/get-flight2', methods=['POST'])
@@ -116,9 +120,12 @@ def get_second_flight():
     origin = request.form['origin']
     destination = request.form['destination']
 
-    airfare = get_flights(origin, destination, depart_date, return_date)
+    try:
+        airfare = get_flights(origin, destination, depart_date, return_date)
+    except:
+        flash("Flight info unavailable. Default values assigned.")
+        airfare = {'airfare': 1000}
     return jsonify(airfare)
-    # return jsonify({'airfare': 1000})
 
 
 @app.route('/get-weather1', methods=['POST'])
@@ -172,15 +179,16 @@ def store_trips():
     trip1 = json.loads(request.form['trip1'])
     trip2 = json.loads(request.form['trip2'])
     trips = [trip1, trip2]
+    print trip1
 
     for trip in trips:
-        city = City.query.filter_by(name=trip['city'], country=trip['country']).first()
-        trip = Trip(city_id=city.city_id,
+        trip = Trip(city_id=trip['city_id'],
                 avg_temp=trip['weather'], 
                 wow_factor=trip['wow'],
                 michelin_stars=trip['food'],
                 airfare=trip['airfare'])
         db.session.add(trip)
+        session.setdefault('cities_searched', []).append(trip.city_id)
     db.session.commit()
 
     return 'success'
@@ -229,6 +237,23 @@ def handle_registration():
         flash("Passwords do not match, try again.")
         return render_template('register.html')
 
+@app.route('/get-similar-trips')
+def get_similar_trips():
+    
+    city_id = request.args['city_id']
+    query = """SELECT DISTINCT trips.city_id
+            FROM trips
+            WHERE user_id IN 
+            (SELECT DISTINCT users.user_id 
+            FROM users 
+            JOIN trips on users.user_id = trips.user_id
+            WHERE city_id =%s)""" %(city_id)
+    
+    result = call_sql(query)
+    print result
+    return 'hi'
+    
+
 #helper functions
 def fetch_city_data(airport_code):
     airport = Airport.query.filter_by(airport_code=airport_code).first()
@@ -239,12 +264,23 @@ def fetch_city_data(airport_code):
     food = db.session.query(db.func.count(Restaurant.restaurant_id), 
                             db.func.sum(Restaurant.stars)).filter_by(city_id=city_id).one()
 
-    city_stats = {'city': name,
+    city_stats = {'city_id': city_id,
+                  'city': name,
                   'country': country,
                   'costOfLiving': cost_of_living,
                   'food': {'restarants': food[0], 'stars': food[1]}}
     return city_stats
 
+def call_sql(query):
+    try:
+        conn = psycopg2.connect("dbname='pensive_passport' host='localhost' port=5432")
+        cur = conn.cursor()
+        cur.execute(query)
+        return cur.fetchall()
+    except Exception,e:
+        print "\nCan't connect to the database!"
+        print e
+        print '\n'
 
 
 
