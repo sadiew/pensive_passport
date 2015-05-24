@@ -5,22 +5,25 @@
 
 <div class="row">   
     <div class="col-md-6" id="map-canvas" style="width:500px; height:200px"></div>
+    <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-4">
+          <div id="restaurant-info"></div>
+      </div>
+      <div class="col-md-4">
+          <div id="museum-info"></div>
+      </div>
+      <div class="col-md-4">
+          <div id="park-info"></div>
+      </div>
+    </div>
+    </div>
 </div>
 <p></p>
 <div class="row"> 
     <div><button id="get-places-button" class="btn btn-primary">City Highlights</button></div>
 </div>
-<div class="row">
-    <div class="col-md-4">
-        <div id="restaurant-info"></div>
-    </div>
-    <div class="col-md-4">
-        <div id="museum-info"></div>
-    </div>
-    <div class="col-md-4">
-        <div id="park-info"></div>
-    </div>
-</div>
+
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 
 <script>
@@ -98,6 +101,14 @@
                 for (item in result) {
                     var latLon = result[item].lat + ', ' + result[item].lng
                     $('#park-info').append("<p><a href='#' onclick='createMarker(this)' data-lat-lon='" + latLon + "'>" + item + "</a></p>");
+                };
+            }
+        );
+
+        $.get( "/get-similar-trips?city='{{city}}'&country='{{country}}'",
+            function (result) { 
+                for (item in result) {
+                    $('#similar-trips').append("<p><a href='#'>" + item + "</a></p>");
                 };
             }
         );

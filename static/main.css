@@ -8,6 +8,11 @@
     background-size:     cover;
 }
 
+/*body {
+    background: url(/static/images/halftone.png);
+    font-family: 'Lobster', cursive;
+}*/
+
 .airport-dropdown {
 	width:200px;
 }
@@ -41,4 +46,25 @@ img.michelin-star {
   width: auto;
   height: 225px;
   max-height: 225px;
+}
+
+.rcorners {
+    border-radius: 25px;
+    border: 2px solid black;
+    padding: 20px; 
+
+}
+
+#general-pref {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+#city-specific-pref {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 0px;
+    margin-left: 0px;
 }

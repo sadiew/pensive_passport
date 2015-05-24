@@ -92,7 +92,7 @@ class Restaurant(db.Model):
 class Place(db.Model):
     __tablename__ = "places"
 
-    place_id = db.Column(db.Integer, primary_key=True)
+    place_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     city_id = db.Column(db.Integer, db.ForeignKey('cities.city_id'))
     place_type = db.Column(db.String(10), nullable=False)
@@ -102,7 +102,42 @@ class Place(db.Model):
 
     def __repr__(self):
 
-        return "<Place name=%s city_id=%s>" % (self.name, self.city_id)  
+        return "<Place name=%s city_id=%s>" % (self.name, self.city_id)
+class Trip(db.Model):
+    __tablename__ = "trips"
+
+    trip_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    city_id = db.Column(db.Integer, db.ForeignKey('cities.city_id'))
+    avg_temp = db.Column(db.Float)
+    michelin_stars = db.Column(db.Integer)
+    airfare = db.Column(db.Integer)
+    wow_factor = db.Column(db.Integer)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+
+    city = db.relationship("City",
+                           backref=db.backref("trips", order_by=trip_id))
+
+    user = db.relationship("User",
+                           backref=db.backref("trips", order_by=user_id))
+
+    def __repr__(self):
+        return "<Trip city_id=%s, airfare=%s>" % (self.city_id, self.airfare)
+
+class User(db.Model):
+    """User of ratings website."""
+
+    __tablename__ = "users"
+
+    user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    email = db.Column(db.String(100), nullable=True)
+    password = db.Column(db.String(64), nullable=True)
+    age = db.Column(db.Integer, nullable=True)
+    zipcode = db.Column(db.String(5), nullable=True)
+
+    def __repr__(self):
+        """Provide helpful representation when printed."""
+
+        return "<User user_id=%s email=%s>" % (self.user_id, self.email)
 
 # Helper functions
 def connect_to_db(app):
