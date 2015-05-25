@@ -1,4 +1,4 @@
-from model import City, Airport, Restaurant, Trip, User, connect_to_db, db
+from model import City, Airport, Restaurant, Place, Trip, User, connect_to_db, db
 from flask import Flask, request, render_template, redirect, jsonify, session, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
@@ -23,26 +23,31 @@ def index():
 @app.route('/preference-form')
 def gather_perferences():
     """Gather user preferences."""
+    try:
+        departure_city = request.args.get('departure-city').split(', ')
+        destination_1 = request.args.get('destination-1').split(', ')
+        destination_2 = request.args.get('destination-2').split(', ')
 
-    departure_city = request.args.get('departure-city').split(', ')
-    destination_1 = request.args.get('destination-1').split(', ')
-    destination_2 = request.args.get('destination-2').split(', ')
+        origin_city = City.query.filter_by(name=departure_city[0], state=departure_city[1]).first()
+        city1 = City.query.filter_by(name=destination_1[0], country=destination_1[1]).first()
+        city2 = City.query.filter_by(name=destination_2[0], country=destination_2[1]).first()
 
-    origin_city = City.query.filter_by(name=departure_city[0], state=departure_city[1]).first()
-    city1 = City.query.filter_by(name=destination_1[0], country=destination_1[1]).first()
-    city2 = City.query.filter_by(name=destination_2[0], country=destination_2[1]).first()
+        city1.get_photos()
+        city2.get_photos()
 
-    city1.get_photos()
-    city2.get_photos()
+        max_photos = min(len(city1.photos), len(city2.photos))
+        print "Max photos: ", max_photos
 
-    max_photos = min(len(city1.photos), len(city2.photos))
-    print "Max photos: ", max_photos
+        return render_template('preference_form.html',
+                                origin_city=origin_city, 
+                                city1=city1, 
+                                city2=city2,
+                                max_photos=max_photos)
+    except:
+        flash("Please enter a valid choice from the dropdown menu.")
+        return redirect('/')
 
-    return render_template('preference_form.html',
-                            origin_city=origin_city, 
-    						city1=city1, 
-    						city2=city2,
-                            max_photos=max_photos)
+    
 
 
 @app.route('/results')
@@ -78,7 +83,21 @@ def get_us_cities():
 def get_restaurants():
     city = request.form.get('city')
     country = request.form.get('country')
-    
+    city_id = int(request.form.get('city_id'))
+    print city_id
+
+    # places = Place.query.filter_by(city_id=city_id, place_type='restaurant').all()
+    # if places:
+    #     restaurants = {place.name:{'lat':place.lat, 'lon':place.lon} for place in places}
+    # else:
+    #     restaurants = get_places(city, country, place_type ='restaurant')
+    #     print restaurants
+    #     places = json.loads(restaurants)
+    #     for place in places:
+    #         place = Place(city_id=city_id, name=place, lat=place['lat'], lon=place['lon'], place_type='restaurant')
+    #         print place
+    #         db.session.add(place)
+    #     db.session.commit()
     restaurants = get_places(city, country, place_type ='restaurant')
     return jsonify(restaurants)
 
@@ -105,13 +124,12 @@ def get_first_flight():
     origin = request.form['origin']
     destination = request.form['destination']
 
-    # try:
-    #     airfare = get_flights(origin, destination, depart_date, return_date)
-    #     print airfare
-    # except:
-    #     flash("Flight info unavailable. Default values assigned.")
-    #     airfare = {'airfare': 1000}
-    airfare = {'airfare': 1500}
+    try:
+        airfare = get_flights(origin, destination, depart_date, return_date)
+        print airfare
+    except:
+        flash("Flight info unavailable. Default values assigned.")
+        airfare = {'airfare': 1000}
     return jsonify(airfare)
 
 
@@ -122,13 +140,12 @@ def get_second_flight():
     origin = request.form['origin']
     destination = request.form['destination']
 
-    # try:
-    #     airfare = get_flights(origin, destination, depart_date, return_date)
-    #     print airfare
-    # except:
-    #     flash("Flight info unavailable. Default value assigned.")
-    #     airfare = {'airfare': 1000}
-    airfare = {'airfare': 1000}
+    try:
+        airfare = get_flights(origin, destination, depart_date, return_date)
+        print airfare
+    except:
+        flash("Flight info unavailable. Default value assigned.")
+        airfare = {'airfare': 1500}
     return jsonify(airfare)
 
 
@@ -265,6 +282,22 @@ def get_similar_trips():
     similar_cities = {city[0]:'%s, %s' %(city[1], city[2]) for city in top_five}
 
     return jsonify(similar_cities)
+
+@app.route('/cities/<int:city_id>')
+def show_city(city_id):
+    city = City.query.get(city_id)
+    
+    food = db.session.query(db.func.count(Restaurant.restaurant_id), 
+                            db.func.sum(Restaurant.stars)).filter_by(city_id=city.city_id).one()
+
+    avg_wow = db.session.query(db.func.avg(Trip.wow_factor)).filter_by(city_id=city.city_id).one()
+    avg_airfare = db.session.query(db.func.avg(Trip.airfare)).filter_by(city_id=city.city_id).one()
+
+    city.food = [food[0], food[1]]
+    city.avg_wow = round(avg_wow[0],1)
+    city.avg_airfare = int(avg_airfare[0])
+
+    return render_template('city.html', city=city)
     
 
 #helper functions

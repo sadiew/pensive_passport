@@ -75,7 +75,7 @@
         $('#get-places-button').hide();
         
         $.post( "/get-restaurants",
-            { city: '{{city}}', country: '{{country}}'},
+            { city: '{{city}}', country: '{{country}}', city_id: '{{city_id}}'},
             function (result) {
                 $('#restaurant-info').append("<h3>Restaurants</h3>");
                 for (item in result) {
@@ -111,7 +111,7 @@
             function (result) {
                 $('#similar-trips').append("<h4>Users with similar travel interests also searched:</h4>"); 
                 for (item in result) {
-                    $('#similar-trips').append("<p><a href='#'>" + result[item] + "</a></p>");
+                    $('#similar-trips').append("<p><a href='/cities/" + item + "'>" + result[item] + "</a></p>");
                 };
             }
         );

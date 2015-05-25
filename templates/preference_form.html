@@ -63,13 +63,15 @@
 <form id="preference-form">
     <div class="row" id="city-specific-pref">
         <div class="col-md-5 rcorners">
-            <label>Choose airport:
-                <select id="airport-1" name="airport-1" class="form-control airport-dropdown">
-                    {% for airport in city1.airports %}
-                        <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
-                    {% endfor %}
-                </select>
-            </label>
+            <div class="form-group">
+                <label>Airport
+                    <select id="airport-1" name="airport-1" class="form-control airport-dropdown">
+                        {% for airport in city1.airports %}
+                            <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+            </div>
             <div class="form-group wow-slider">
                 <label>{{city1.name}}</label>
                     <input type="range" min="1" max="10" step="1"  name="wow-factor-1" id="wow-input-1">
@@ -77,13 +79,15 @@
         </div>
         <div class="col-md-2"></div>
         <div class="col-md-5 rcorners">
-            <label>Choose airport:
-                <select id="airport-2" name="airport-2" class="form-control airport-dropdown">
-                    {% for airport in city2.airports %}
-                        <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
-                    {% endfor %}
-                </select>
-            </label>
+            <div class="form-group">
+                <label>Airport
+                    <select id="airport-2" name="airport-2" class="form-control airport-dropdown">
+                        {% for airport in city2.airports %}
+                            <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+            </div>
             <div class="form-group wow-slider">
                 <label>{{city2.name}}</label> 
                     <input type="range" min="1" max="10" step="1" name="wow-factor-2" id="wow-input-2">                   
@@ -136,7 +140,7 @@
     <div class="row rcorners" id="general-pref">
         <h2 style="text-align:center">Travel Preferences</h2>
         <div class="col-md-6">
-            <div id="departure-airport" >
+            <div id="departure-airport" class="form-group">
             <label>Home Airport</label>
                 <select name="departure-airport" class="form-control airport-dropdown">
                     {% for airport in origin_city.airports %}
@@ -144,47 +148,45 @@
                     {% endfor %}
                 </select>
             </div>
-            <div id="component-weights">
-            <div class="form-group importance-slider">
-                <label>Cost</label>                   
-                <input type="range" min="0" max="5" step="1" name="cost" id="cost-weight">
-            </div>
-            <div class="form-group importance-slider">
-                <label>Quality of Food</label>
-                <input type="range" min="0" max="5" step="1" name="food" id="food-weight">
-            </div>
-            <div class="form-group importance-slider">
-                <label>Weather</label>
-                <input type="range" min="0" max="5" step="1" name="weather" id="weather-weight">
-            </div>
-            </div>             
-        </div>
-        <div id="algo-result">
-            <p><span id="recalculation_text"></span><span id="pp-choice-text"></span></p>
-            <div><button id="pp-choice" class="btn btn-primary">Explore </button></div>
-        </div>
-        <div class="col-md-6">
-            <div id="travel-dates"> 
-                <label>Departure Date</label>                    
-                <input id="depart-date" name="depart-date" min="2015-06-01" max="2015-12-31" type="date" required>
-                <label>Return Date</label>
-                <input id="return-date" name="return-date" min="2015-06-01" max="2015-12-31" type="date" required>
-            </div>
-            <div id="temp-selectors" style="margin-top: 30px;">
+            <div id="temp-selectors" style="margin-top: 50px;">
                 <label>Ideal Temperature</label>
                 <label class="radio-inline"><input type="radio" name="ideal-temp" value="50" required><img class="weather-radio" src="/static/images/snowflake.png"></label>
                 <label class="radio-inline"><input type="radio" name="ideal-temp" value="70" required><img class="weather-radio" src="/static/images/sun_cloud.png"></label>
                 <label class="radio-inline"><input type="radio" name="ideal-temp" value="90" required><img class="weather-radio" src="/static/images/sun.png"></label>
             </div>
+                         
+        </div>
+
+        <div class="col-md-6">
+            <div id="travel-dates" class="form-group"> 
+                <label>Departure Date</label>                    
+                <input id="depart-date" class="form-control" name="depart-date" min="2015-06-01" max="2015-12-31" type="date" required>
+                <label>Return Date</label>
+                <input id="return-date" class="form-control" name="return-date" min="2015-06-01" max="2015-12-31" type="date" required>
+            </div>
+        </div>
+        <div class="row" id="component-weights">
+            <div class="form-group importance-slider col-md-4">
+                <label>Cost</label>                   
+                <input type="range" min="0" max="5" step="1" name="cost" id="cost-weight">
+            </div>
+            <div class="form-group importance-slider col-md-4">
+                <label>Quality of Food</label>
+                <input type="range" min="0" max="5" step="1" name="food" id="food-weight">
+            </div>
+            <div class="form-group importance-slider col-md-4">
+                <label>Weather</label>
+                <input type="range" min="0" max="5" step="1" name="weather" id="weather-weight">
+            </div>           
+        </div>
+         <div id="algo-result">
+            <p><span id="recalculation_text"></span><span id="pp-choice-text"></span></p>
+            <div><button id="pp-choice" class="btn btn-primary">Explore </button></div>
+        </div>
+        <div>
             <input type="submit" class="btn btn-primary" id="gather-data-button" value="Grab data!" style="display:block; margin:50px auto;">
         </div>
-
         </div>
-
-    </div>
-    <p></p>
-
-
 </form>
 
 
@@ -257,7 +259,6 @@
                         (costWeight*0.5/totalWeight)*colDelta -
                         (costWeight*0.5/totalWeight)*flightDelta - 
                         (weatherWeight/totalWeight)*weatherDelta
-        console.log(starDelta);
         
         if (dataDelta + wowDelta > 0) {
             var winningCity = cityInfo1;
@@ -269,34 +270,32 @@
             console.log(winningCity.city);
         }
 
-        else {var trips = [cityInfo1.city, cityInfo2.city]
+        else {var trips = [cityInfo1.city, cityInfo2.city];
             var winningCity = trips[Math.floor(Math.random()*trips.length)];
         }
 
-        if (flightDelta > 0) { $("#flight-2").attr("style", "background-color:#66CDAA")}
-        else {$("#flight-1").attr("style", "background-color:#66CDAA")}
+        if (flightDelta > 0) { $("#flight-2").attr("style", "color:#66CDAA")}
+        else if (flightDelta < 0) {$("#flight-1").attr("style", "color:#66CDAA")}
 
-        if (weatherDelta > 0) { $("#weather-2").attr("style", "background-color:#66CDAA")}
-        else {$("#weather-1").attr("style", "background-color:#66CDAA")}
+        if (weatherDelta > 0) { $("#weather-2").attr("style", "color:#66CDAA")}
+        else if (weatherDelta < 0) {$("#weather-1").attr("style", "color:#66CDAA")}
 
-        if (flightDelta > 0) { $("#flight-2").attr("style", "background-color:#66CDAA")}
-        else {$("#flight-1").attr("style", "background-color:#66CDAA")}
+        if (starDelta > 0) { $("#food-1").attr("style", "color:#66CDAA")}
+        else if (starDelta < 0) {$("#food-2").attr("style", "color:#66CDAA")}
 
-        if (starDelta > 0) { $("#food-1").attr("style", "background-color:#66CDAA")}
-        else {$("#food-2").attr("style", "background-color:#66CDAA")}
+        if (colDelta > 0) { $("#col-2").attr("style", "color:#66CDAA")}
+        else if (colDelta < 0) {$("#col-1").attr("style", "color:#66CDAA")}
 
-        if (colDelta > 0) { $("#col-2").attr("style", "background-color:#66CDAA")}
-        else {$("#col-1").attr("style", "background-color:#66CDAA")}
-
-        if (wowDelta > 0) { $("#wow-1").attr("style", "background-color:#66CDAA")}
-        else {$("#wow-2").attr("style", "background-color:#66CDAA")}
+        if (wowDelta > 0) { $("#wow-1").attr("style", "color:#66CDAA")}
+        else if (wowDelta < 0) {$("#wow-2").attr("style", "color:#66CDAA")}
 
         $("#pp-choice").html('Explore ' + winningCity.city);
-        $("#pp-choice-text").html("Pensive Passport's algorithm has selected: " + winningCity.city)
+        $("#pp-choice-text").html("Pensive Passport's algorithm has selected: " + winningCity.city);
         $("#pp-choice").data("city", winningCity.city);
         $("#pp-choice").data("country", winningCity.country);
         $("#pp-choice").data("city_id", winningCity.city_id);
-        console.log(winningCity.city);
+        console.log(dataDelta);
+        console.log(wowDelta);
         $("#algo-result").show();
 
     }          

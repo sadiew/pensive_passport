@@ -95,6 +95,8 @@ class Place(db.Model):
     place_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     city_id = db.Column(db.Integer, db.ForeignKey('cities.city_id'))
+    lat = db.Column(db.Float)
+    lon = db.Column(db.Float)
     place_type = db.Column(db.String(10), nullable=False)
 
     city = db.relationship("City",
@@ -103,6 +105,7 @@ class Place(db.Model):
     def __repr__(self):
 
         return "<Place name=%s city_id=%s>" % (self.name, self.city_id)
+        
 class Trip(db.Model):
     __tablename__ = "trips"
 

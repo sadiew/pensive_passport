@@ -15,6 +15,7 @@
 
 .airport-dropdown {
 	width:200px;
+  display:inline-block;
 }
 
 .importance-slider {
@@ -43,9 +44,10 @@ img.michelin-star {
 }
 
 .flickr-image {
-  width: auto;
+  width: 50%;
   height: 225px;
   max-height: 225px;
+  overflow: hidden;
 }
 
 .rcorners {
@@ -56,7 +58,7 @@ img.michelin-star {
 }
 
 #general-pref {
-    margin-top: 50px;
+    margin-top: 10px;
     margin-bottom: 50px;
     margin-right: 0px;
     margin-left: 0px;
@@ -71,4 +73,16 @@ img.michelin-star {
 
 .data-element{
    text-align: center;   
+}
+
+label > input{ /* HIDE RADIO */
+  visibility: hidden; /* Makes input not-clickable */
+  position: absolute; /* Remove input from document flow */
+}
+label > input + img{ /* IMAGE STYLES */
+  cursor:pointer;
+  border:2px solid transparent;
+}
+label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+  border:2px solid #f00;
 }

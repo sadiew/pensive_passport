@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+<div class='container'>
+<table id="results-table" class = "table table-striped">
+<thead>
+    <tr>
+        <th colspan="2" style="text-align:center; font-size:24px;">{{city.name}} Stats</th>
+    </tr> 
+</thead>   
+<tbody>
+    <tr>
+        <td>Average Airfare</td>
+        <td class="data-element">${{city.avg_airfare}}</td>
+    </tr>
+    <tr>
+        <td>Cost of Living</td>
+        <td class="data-element">{{city.col_index}}</td>
+    </tr>
+    <tr>
+        <td>Food</td>
+        <td class="data-element">{{city.food[0]}} Michelin Restaurants ({{city.food[1]}} stars)</td>
+    </tr>    
+    <tr>
+        <td>Wow Factor</td>
+        <td class="data-element">{{city.avg_wow}}</td>
+    </tr>    
+</tbody>
+</table>
+</div>
+
+{% endblock %}
