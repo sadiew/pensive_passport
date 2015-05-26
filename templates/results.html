@@ -59,7 +59,7 @@
     }
 
     function createMarker(place) {
-        place.style.color= "black";
+      place.style.color= "black";
       var latLon = (place.getAttribute("data-lat-lon")).split(", ");
       var lat = latLon[0];
       var lon = latLon[1];
@@ -70,6 +70,14 @@
         });
 
     }
+
+    function onRestaurantClick(place, evt) {
+      evt.preventDefault();
+      console.log($(place).next('.description'));
+      $(place).next('.description').removeClass('hidden');
+      createMarker(place);
+      /*Add AJAX call to google places for website. Add an <a> tag for link to website.*/
+    }
     
     function getPlaces(evt) {
         $('#get-places-button').hide();
@@ -78,10 +86,14 @@
             { city: '{{city}}', country: '{{country}}', city_id: '{{city_id}}'},
             function (result) {
                 $('#restaurant-info').append("<h3>Restaurants</h3>");
+                var i=0;
                 for (item in result) {
-                    var latLon = result[item].lat + ', ' + result[item].lon;
-                    console.log(result[item]);                    
-                    $('#restaurant-info').append("<p><a href='#' onclick='createMarker(this)' data-lat-lon='" + latLon + "'>" + item + "</a></p>");
+                    var latLon = result[item].lat + ', ' + result[item].lon;                
+                    $('#restaurant-info').append("<div id='restaurant-" + i + "' class='restaurant'>" +
+                                                    "<a href='#' onclick='onRestaurantClick(this, event)' data-lat-lon='" + latLon + "'>" + item + "</a>" +
+                                                    "<div class='description hidden'>Restaurant Test!</div>" +
+                                                  "</div>");
+                    i++;
                     };
                 }
         );

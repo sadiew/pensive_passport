@@ -8,10 +8,9 @@
     background-size:     cover;
 }
 
-/*body {
-    background: url(/static/images/halftone.png);
-    font-family: 'Lobster', cursive;
-}*/
+body {
+    background-color: #5D5D5D;
+}
 .city-header {
   text-align: center;
 }
@@ -54,7 +53,7 @@ img.michelin-star {
 
 .rcorners {
     border-radius: 25px;
-    border: 2px solid black;
+    border: 2px solid #42B872;
     padding: 20px; 
 
 }
