@@ -1,6 +1,7 @@
 import json, requests, os
 
 def get_flights(origin, destination, depart_date, return_date):
+    print 'origin: ', origin, ';destination: ', destination
     api_key = os.environ['GOOGLE_KEY']
     url = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=" + api_key
     headers = {'content-type': 'application/json'}
@@ -31,10 +32,11 @@ def get_flights(origin, destination, depart_date, return_date):
     }
 
     response = requests.post(url, data=json.dumps(params), headers=headers)
+
     data = response.json()
+    print data
 
     first_option = data['trips']['tripOption'][0]
-    print first_option
 
     raw_fare = first_option['saleTotal'][3:]
     total_fare = round(float(raw_fare), 0)

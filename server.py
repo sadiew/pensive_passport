@@ -36,7 +36,6 @@ def gather_perferences():
         city2.get_photos()
 
         max_photos = min(len(city1.photos), len(city2.photos))
-        print "Max photos: ", max_photos
 
         return render_template('preference_form.html',
                                 origin_city=origin_city, 
@@ -48,8 +47,6 @@ def gather_perferences():
         return redirect('/')
 
     
-
-
 @app.route('/results')
 def show_results():
     """Display map of city that user chose along with accompanying attractions."""
@@ -84,21 +81,9 @@ def get_restaurants():
     city = request.form.get('city')
     country = request.form.get('country')
     city_id = int(request.form.get('city_id'))
-    print city_id
 
-    # places = Place.query.filter_by(city_id=city_id, place_type='restaurant').all()
-    # if places:
-    #     restaurants = {place.name:{'lat':place.lat, 'lon':place.lon} for place in places}
-    # else:
-    #     restaurants = get_places(city, country, place_type ='restaurant')
-    #     print restaurants
-    #     places = json.loads(restaurants)
-    #     for place in places:
-    #         place = Place(city_id=city_id, name=place, lat=place['lat'], lon=place['lon'], place_type='restaurant')
-    #         print place
-    #         db.session.add(place)
-    #     db.session.commit()
-    restaurants = get_places(city, country, place_type ='restaurant')
+    restaurants = add_places(city_id, city, country, place_type ='restaurant')
+    
     return jsonify(restaurants)
 
 
@@ -106,14 +91,21 @@ def get_restaurants():
 def get_museums():
     city = request.form.get('city')
     country = request.form.get('country')
-    museums = get_places(city, country, place_type ='museum')
+    city_id = int(request.form.get('city_id'))
+
+    museums = add_places(city_id, city, country, place_type ='museum')
+    
     return jsonify(museums)
+
 
 @app.route('/get-parks', methods=['POST'])
 def get_parks():
     city = request.form.get('city')
     country = request.form.get('country')
-    parks = get_places(city, country, place_type ='park')
+    city_id = int(request.form.get('city_id'))
+
+    parks = add_places(city_id, city, country, place_type ='park')
+    
     return jsonify(parks)
 
 
@@ -130,6 +122,7 @@ def get_first_flight():
     except:
         flash("Flight info unavailable. Default values assigned.")
         airfare = {'airfare': 1000}
+
     return jsonify(airfare)
 
 
@@ -200,8 +193,6 @@ def store_trips():
     trip1 = json.loads(request.form['trip1'])
     trip2 = json.loads(request.form['trip2'])
     trips = [trip1, trip2]
-    print trip1
-    print session['username']
 
     for trip in trips:
         trip = Trip(city_id=trip['city_id'],
@@ -215,11 +206,13 @@ def store_trips():
     db.session.commit()
 
     return 'success'
+
 @app.route('/login')
 def login():
     """Login form"""
 
     return render_template('login_form.html')
+
 
 @app.route('/login-submission', methods=['POST'])
 def handle_login():
@@ -232,12 +225,12 @@ def handle_login():
     else:
         if user and (user.password == request.form['password']):
             session['username'] = user.user_id
-            print session
             flash("Login successful!")
             return redirect('/')
         else:
             flash("Invalid login.")
             return render_template('login_form.html')
+
 
 @app.route('/registration-submission', methods=['POST'])
 def handle_registration():
@@ -256,10 +249,12 @@ def handle_registration():
         db.session.add(user)
         db.session.commit()
 
+        flash("Thank you for registering!")
         return redirect('/')
     else:
         flash("Passwords do not match, try again.")
         return render_template('register.html')
+
 
 @app.route('/get-similar-trips')
 def get_similar_trips():
@@ -327,6 +322,24 @@ def call_sql(query):
         print "\nCan't connect to the database!"
         print e
         print '\n'
+
+def add_places(city_id, city, country, place_type):
+    places = Place.query.filter_by(city_id=city_id, place_type=place_type).all()
+
+    if places:
+        places = {place.name:{'lat':place.lat, 'lon':place.lon} for place in places}
+    else:
+        places = get_places(city, country, place_type)
+        for place in places:
+            place = Place(city_id=city_id, 
+                          name=place, 
+                          lat=places[place]['lat'], 
+                          lon=places[place]['lng'], 
+                          place_type=place_type)
+            db.session.add(place)
+        db.session.commit()
+    return places
+
 
 if __name__ == "__main__":
     app.debug = True

@@ -86,7 +86,7 @@
         );
 
         $.post( "/get-museums",
-            { city: '{{city}}', country: '{{country}}'},
+            { city: '{{city}}', country: '{{country}}', city_id: '{{city_id}}'},
             function (result) { 
             $('#museum-info').append("<h3>Museums</h3>");
                 for (item in result) {
@@ -97,7 +97,7 @@
         );
 
         $.post( "/get-parks",
-            { city: '{{city}}', country: '{{country}}'},
+            { city: '{{city}}', country: '{{country}}', city_id: '{{city_id}}'},
             function (result) { 
             $('#park-info').append("<h3>Parks</h3>");
                 for (item in result) {

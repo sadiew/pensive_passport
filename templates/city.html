@@ -30,5 +30,17 @@
 </tbody>
 </table>
 </div>
+<div>
+	<button id="re-search" class="btn btn-primary">New Search</button>
+</div>
+<script type="text/javascript">
+	function reSearch(evt) {
+
+	    window.location = "http://localhost:5000";
+
+	}
+	$("#re-search").on("click", reSearch);
+</script>
+
 
 {% endblock %}
