@@ -116,13 +116,13 @@ def get_first_flight():
     origin = request.form['origin']
     destination = request.form['destination']
 
-    try:
-        airfare = get_flights(origin, destination, depart_date, return_date)
-        print airfare
-    except:
-        flash("Flight info unavailable. Default values assigned.")
-        airfare = {'airfare': 1000}
-
+    # try:
+    #     airfare = get_flights(origin, destination, depart_date, return_date)
+    #     print airfare
+    # except:
+    #     flash("Flight info unavailable. Default values assigned.")
+    #     airfare = {'airfare': 1000}
+    airfare = {'airfare': 1000}
     return jsonify(airfare)
 
 
@@ -133,12 +133,13 @@ def get_second_flight():
     origin = request.form['origin']
     destination = request.form['destination']
 
-    try:
-        airfare = get_flights(origin, destination, depart_date, return_date)
-        print airfare
-    except:
-        flash("Flight info unavailable. Default value assigned.")
-        airfare = {'airfare': 1500}
+    # try:
+    #     airfare = get_flights(origin, destination, depart_date, return_date)
+    #     print airfare
+    # except:
+    #     flash("Flight info unavailable. Default value assigned.")
+    #     airfare = {'airfare': 1500}
+    airfare = {'airfare': 1000}
     return jsonify(airfare)
 
 

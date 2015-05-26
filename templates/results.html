@@ -79,7 +79,8 @@
             function (result) {
                 $('#restaurant-info').append("<h3>Restaurants</h3>");
                 for (item in result) {
-                    var latLon = result[item].lat + ', ' + result[item].lng;                    
+                    var latLon = result[item].lat + ', ' + result[item].lon;
+                    console.log(result[item]);                    
                     $('#restaurant-info').append("<p><a href='#' onclick='createMarker(this)' data-lat-lon='" + latLon + "'>" + item + "</a></p>");
                     };
                 }
@@ -90,7 +91,7 @@
             function (result) { 
             $('#museum-info').append("<h3>Museums</h3>");
                 for (item in result) {
-                    var latLon = result[item].lat + ', ' + result[item].lng
+                    var latLon = result[item].lat + ', ' + result[item].lon;
                     $('#museum-info').append("<p><a href='#' onclick='createMarker(this)' data-lat-lon='" + latLon + "'>" + item + "</a></p>");
                 };
             }
@@ -101,7 +102,7 @@
             function (result) { 
             $('#park-info').append("<h3>Parks</h3>");
                 for (item in result) {
-                    var latLon = result[item].lat + ', ' + result[item].lng
+                    var latLon = result[item].lat + ', ' + result[item].lon;
                     $('#park-info').append("<p><a href='#' onclick='createMarker(this)' data-lat-lon='" + latLon + "'>" + item + "</a></p>");
                 };
             }

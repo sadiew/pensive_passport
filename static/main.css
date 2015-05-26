@@ -40,8 +40,9 @@ img.michelin-star {
 }
 
 .carousel-inner > .item > img{
-       width:100%;
+       width:auto;
        height:360px;
+       margin:0 auto;
      }
 
 .flickr-image {

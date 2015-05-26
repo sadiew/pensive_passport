@@ -72,8 +72,8 @@
     <div class="row" id="city-specific-pref">
         <div class="col-md-5 rcorners">
             <div class="form-group inner-div">
-                    <select id="airport-1" name="airport-1" class="form-control">
-                        <option>Select a {{city1.name}} Airport</option>
+                    <select id="airport-1" name="airport-1" class="form-control" >
+                        <option disabled selected>Select a {{city1.name}} Airport</option>
                         {% for airport in city1.airports %}
                             <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
                         {% endfor %}
@@ -88,7 +88,7 @@
         <div class="col-md-5 rcorners">
             <div class="form-group inner-div">
                     <select id="airport-2" name="airport-2" class="form-control">
-                        <option>Select a {{city2.name}} Airport</option>
+                        <option disabled selected>Select a {{city2.name}} Airport</option>
                         {% for airport in city2.airports %}
                             <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
                         {% endfor %}
@@ -270,7 +270,7 @@
                         (costWeight*0.5/totalWeight)*flightDelta - 
                         (weatherWeight/totalWeight)*weatherDelta
         
-        if (dataDelta + wowDelta > 0) {
+{#/*        if (dataDelta + wowDelta > 0) {
             var winningCity = cityInfo1;
             console.log(winningCity.city);
         }
@@ -278,12 +278,18 @@
         else if (dataDelta + wowDelta < 0) {
             var winningCity = cityInfo2;
             console.log(winningCity.city);
-        }
+        }*/ #}
 
-        else {var trips = [cityInfo1.city, cityInfo2.city];
+        var trips = [cityInfo1, cityInfo2];
+        console.log(trips);
+        var winningCity = trips[Math.floor(Math.random()*trips.length)];
+        console.log(Math.floor(Math.random()*trips.length));
+
+{#        /*else {
             console.log(trips);
+            console.log(Math.floor(Math.random()*trips.length));
             var winningCity = trips[Math.floor(Math.random()*trips.length)];
-        }
+        }*/ #}
 
         if (flightDelta > 0) { $("#flight-2").attr("style", "color:#66CDAA")}
         else if (flightDelta < 0) {$("#flight-1").attr("style", "color:#66CDAA")}

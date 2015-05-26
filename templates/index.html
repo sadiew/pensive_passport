@@ -3,43 +3,45 @@
 
 {% block body %}
 
-<div class="row rcorners" style="margin:100px 100px">
-    <div class="form-group inner-div">
+<div class="rcorners" style="margin:100px 100px">
+    
     <form action="/preference-form" id="destination-form">
-        <div class="row">
-            <div class="typeahead-container">
-                <div class="typeahead-field" style="width:15%">        
+        <div class="row form-group inner-div">
+            <div class="typeahead-container col-md-4">
+                <div class="typeahead-field">        
                     <span class="typeahead-query">
                         <label>Departure City</label>
-                            <input id="typeahead-departure-city" type="search" name="departure-city" class="form-group" autocomplete="off" required>
+                            <input id="typeahead-departure-city" placeholder="San Francisco, CA" type="search" name="departure-city" class="form-control" autocomplete="off" required>
                     </span>             
                 </div>
             </div>
-        </div>
-        <div class="row"> 
-            <div class="typeahead-container">
-                <div class="typeahead-field" style="width:15%">         
-                    <span class="typeahead-query">
-                        <label>Destination #1</label>
-                            <input id="typeahead-city1" type="search" name="destination-1" class="form-group" autocomplete="off" required>
-                    </span>            
-                </div>
-            </div>
-            <div class="typeahead-container">
-                <div class="typeahead-field" style="width:15%">
 
+            <div class="typeahead-container col-md-4">
+                <div class="typeahead-field">         
                     <span class="typeahead-query">
-                        <label>Destination #2</label>
-                            <input id="typeahead-city2" type="search" name="destination-2" class="form-group" autocomplete="off" required>
+                        <label>Destination 1</label>
+                            <input id="typeahead-city1" type="search" name="destination-1" class="form-control" autocomplete="off" required>
                     </span>            
                 </div>
-            </div>                
-            <div>
-                <input type="submit" class="btn btn-primary" value="Decide!">
+            </div>
+            <div class="typeahead-container col-md-4">
+                <div class="typeahead-field">
+                    <span class="typeahead-query">
+                        <label>Destination 2</label>
+                            <input id="typeahead-city2" type="search" name="destination-2" class="form-control" autocomplete="off" required>
+                    </span>            
+                </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <input type="submit" class="btn btn-primary" value="Decide!" style="margin:0 auto;">
+            </div>
+            <div class="col-md-4"></div>
+        </div>                        
     </form>
-    </div>
+    
 </div>       
 
 
