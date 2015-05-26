@@ -15,21 +15,18 @@
 .city-header {
   text-align: center;
 }
-.airport-dropdown {
+.home-airport-dropdown {
 	width:200px;
   display:inline-block;
+  margin:0 auto;
 }
 
 .travel-dates {
   width:300px;
 }
 
-.importance-slider {
-	width:300px;
-}
-
-.wow-slider {
-	width:300px;
+.inner-div {
+  margin: 10px auto;
 }
 
 img.weather-radio {

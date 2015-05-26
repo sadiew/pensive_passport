@@ -25,7 +25,7 @@ class City(db.Model):
     def get_photos(self):
         """Check to see if photo for city is cached in DB; if not, call Flickr API for new photo."""
 
-        if len(self.city_images) >= 5:           
+        if len(self.city_images) >= 3:           
             self.photos = [image.image_url for image in self.city_images]
         else:
             flickr_images = flickr.get_flickr_photos(self)
@@ -105,7 +105,7 @@ class Place(db.Model):
     def __repr__(self):
 
         return "<Place name=%s city_id=%s>" % (self.name, self.city_id)
-        
+
 class Trip(db.Model):
     __tablename__ = "trips"
 
