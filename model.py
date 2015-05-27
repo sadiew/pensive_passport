@@ -93,6 +93,7 @@ class Place(db.Model):
     __tablename__ = "places"
 
     place_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    google_place_id = db.Column(db.String(50), primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     city_id = db.Column(db.Integer, db.ForeignKey('cities.city_id'))
     lat = db.Column(db.Float)

@@ -270,26 +270,18 @@
                         (costWeight*0.5/totalWeight)*flightDelta - 
                         (weatherWeight/totalWeight)*weatherDelta
         
-{#/*        if (dataDelta + wowDelta > 0) {
+        if (dataDelta + wowDelta > 0) {
             var winningCity = cityInfo1;
-            console.log(winningCity.city);
         }
 
         else if (dataDelta + wowDelta < 0) {
             var winningCity = cityInfo2;
-            console.log(winningCity.city);
-        }*/ #}
+        }
 
-        var trips = [cityInfo1, cityInfo2];
-        console.log(trips);
-        var winningCity = trips[Math.floor(Math.random()*trips.length)];
-        console.log(Math.floor(Math.random()*trips.length));
-
-{#        /*else {
-            console.log(trips);
-            console.log(Math.floor(Math.random()*trips.length));
+       else { 
+            var trips = [cityInfo1, cityInfo2];
             var winningCity = trips[Math.floor(Math.random()*trips.length)];
-        }*/ #}
+        }
 
         if (flightDelta > 0) { $("#flight-2").attr("style", "color:#66CDAA")}
         else if (flightDelta < 0) {$("#flight-1").attr("style", "color:#66CDAA")}

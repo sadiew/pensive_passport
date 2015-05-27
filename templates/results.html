@@ -3,31 +3,41 @@
 {% block body %}
 <h1>{{ city }}, {{country}}</h1>
 
-<div class="row">   
-  <div class="col-md-6" id="map-canvas" style="width:500px; height:200px"></div>
-  <div class="col-md-6" id="similar-trips"></div>
+<div class="row" style="margin:20px auto;">   
+  <div id="map-canvas" style="width:auto; height:200px"></div>
+  
 </div>
-<div class="row">
-  <button id="get-places-button" class="btn btn-primary">City Highlights</button>
+<div class="row" style="text-align:center">
+  <div class="col-md-4 rcorners">
+      <div id="restaurant-info">
+        <h3>Restaurants</h3>
+      </div>
+  </div>
+  <div class="col-md-4 rcorners">
+      <div id="museum-info">
+        <h3>Museums</h3>
+      </div>
+  </div>
+  <div class="col-md-4 rcorners">
+      <div id="park-info">
+        <h3>Parks</h3>
+      </div>
+  </div>
 </div>
-<div class="row">
-  <div class="col-md-4">
-      <div id="restaurant-info"></div>
-  </div>
-  <div class="col-md-4">
-      <div id="museum-info"></div>
-  </div>
-  <div class="col-md-4">
-      <div id="park-info"></div>
-  </div>
+<div>
+  <div id="similar-trips"></div>
 </div>
 </div>
 
 
 
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
 
 <script>
+
+    $(document).ready(function(){
+      getPlaces();
+        });
 
     var geocoder;
     var map;
@@ -52,6 +62,7 @@
 
       }
       map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+      console.log(map);
     }
 
     function getMap() {
@@ -71,27 +82,51 @@
 
     }
 
-    function onRestaurantClick(place, evt) {
+    function onPlaceClick(place, evt) {
       evt.preventDefault();
-      console.log($(place).next('.description'));
       $(place).next('.description').removeClass('hidden');
       createMarker(place);
+      getPlaceDetails(place);
+      
+      
       /*Add AJAX call to google places for website. Add an <a> tag for link to website.*/
     }
+
+    function getPlaceDetails(place) {
+      var request = {
+        placeId: $(place).data("google-place-id")
+      };
+
+      service = new google.maps.places.PlacesService(map);
+      service.getDetails(request, callback)
+
+      function callback(placeObject, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+        console.log(placeObject.url);
+        placeWebsite = placeObject.website;
+        placeRating = placeObject.rating;
+        console.log(placeRating);
+        $(place).next('.description').html("<p>Average Rating: " + placeRating + "</p><a href='" + placeWebsite + "'>Website</a>");
+      }
+        
+      }
+    }
     
-    function getPlaces(evt) {
+    function getPlaces() {
         $('#get-places-button').hide();
         
         $.post( "/get-restaurants",
             { city: '{{city}}', country: '{{country}}', city_id: '{{city_id}}'},
             function (result) {
-                $('#restaurant-info').append("<h3>Restaurants</h3>");
+                
                 var i=0;
                 for (item in result) {
-                    var latLon = result[item].lat + ', ' + result[item].lon;                
+                    var latLon = result[item].lat + ', ' + result[item].lon;
+                    var googlePlaceId = result[item].google_place_id;
+                
                     $('#restaurant-info').append("<div id='restaurant-" + i + "' class='restaurant'>" +
-                                                    "<a href='#' onclick='onRestaurantClick(this, event)' data-lat-lon='" + latLon + "'>" + item + "</a>" +
-                                                    "<div class='description hidden'>Restaurant Test!</div>" +
+                                                    "<a href='#' onclick='onPlaceClick(this, event)' data-lat-lon='" + latLon + "' data-google-place-id='" + googlePlaceId + "'>" + item + "</a>" +
+                                                    "<div class='description hidden'>Place Test!</div>" +
                                                   "</div>");
                     i++;
                     };
@@ -101,10 +136,16 @@
         $.post( "/get-museums",
             { city: '{{city}}', country: '{{country}}', city_id: '{{city_id}}'},
             function (result) { 
-            $('#museum-info').append("<h3>Museums</h3>");
+            var i=0;
                 for (item in result) {
-                    var latLon = result[item].lat + ', ' + result[item].lon;
-                    $('#museum-info').append("<p><a href='#' onclick='createMarker(this)' data-lat-lon='" + latLon + "'>" + item + "</a></p>");
+                    var latLon = result[item].lat + ', ' + result[item].lon;    
+                    var googlePlaceId = result[item].google_place_id;
+
+                    $('#museum-info').append("<div id='museum-" + i + "' class='museum'>" +
+                                                    "<a href='#' onclick='onPlaceClick(this, event)' data-lat-lon='" + latLon + "' data-google-place-id='" + googlePlaceId + "'>" + item + "</a>" +
+                                                    "<div class='description hidden'>Place Test!</div>" +
+                                                  "</div>");
+                    i++;
                 };
             }
         );
@@ -112,10 +153,16 @@
         $.post( "/get-parks",
             { city: '{{city}}', country: '{{country}}', city_id: '{{city_id}}'},
             function (result) { 
-            $('#park-info').append("<h3>Parks</h3>");
+            var i=0;
                 for (item in result) {
                     var latLon = result[item].lat + ', ' + result[item].lon;
-                    $('#park-info').append("<p><a href='#' onclick='createMarker(this)' data-lat-lon='" + latLon + "'>" + item + "</a></p>");
+                    var googlePlaceId = result[item].google_place_id;
+
+                    $('#park-info').append("<div id='park-" + i + "' class='park'>" +
+                                                    "<a href='#' onclick='onPlaceClick(this, event)' data-lat-lon='" + latLon + "' data-google-place-id='" + googlePlaceId + "'>" + item + "</a>" +
+                                                    "<div class='description hidden'>Place Test!</div>" +
+                                                  "</div>");
+                    i++;
                 };
             }
         );
@@ -132,8 +179,28 @@
 
     };
 
+    function addPlaceByType(type) {
+      $.post( "/get-" + type + 's',
+            { city: '{{city}}', country: '{{country}}', city_id: '{{city_id}}'},
+            function (result) {
+                $('#'+type+'-info').append("<h3>Restaurants</h3>");
+                var i=0;
+                for (item in result) {
+                    var latLon = result[item].lat + ', ' + result[item].lon;
+                    var googlePlaceId = result[item].google_place_id;
+                
+                    $('#restaurant-info').append("<div id='restaurant-" + i + "' class='restaurant'>" +
+                                                    "<a href='#' onclick='onPlaceClick(this, event)' data-lat-lon='" + latLon + "' data-google-place-id='" + googlePlaceId + "'>" + item + "</a>" +
+                                                    "<div class='description hidden'>Place Test!</div>" +
+                                                  "</div>");
+                    i++;
+                    };
+                }
+        );
+
+    }
+
     google.maps.event.addDomListener(window, 'load', getMap);
-    $('#get-places-button').on('click', getPlaces);
 </script>
 
 {% endblock %}

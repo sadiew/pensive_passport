@@ -328,11 +328,12 @@ def add_places(city_id, city, country, place_type):
     places = Place.query.filter_by(city_id=city_id, place_type=place_type).all()
 
     if places:
-        places = {place.name:{'lat':place.lat, 'lon':place.lon} for place in places}
+        places = {place.name:{'lat':place.lat, 'lon':place.lon, 'google_place_id':place.google_place_id} for place in places}
     else:
         places = get_places(city, country, place_type)
         for place in places:
-            place = Place(city_id=city_id, 
+            place = Place(google_place_id=places[place]['google_place_id'],
+                          city_id=city_id, 
                           name=place, 
                           lat=places[place]['lat'], 
                           lon=places[place]['lng'], 
