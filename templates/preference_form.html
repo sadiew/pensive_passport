@@ -3,10 +3,10 @@
 {% block body %}
 <div class="row">
     <div class="col-md-6 city-header">
-        <h2>{{city1.name}}</h2>
+        <h2><strong>{{city1.name}}</strong></h2>
     </div>
     <div class="col-md-6 city-header">
-        <h2>{{city2.name}}</h2>
+        <h2><strong>{{city2.name}}</strong></h2>
     </div>
 </div>
 <div class="row photo-carousel">
@@ -72,7 +72,7 @@
     <div class="row" id="city-specific-pref">
         <div class="col-md-5 rcorners">
             <div class="form-group inner-div">
-                    <select id="airport-1" name="airport-1" class="form-control" >
+                    <select id="airport-1" name="airport-1" class="form-control">
                         <option disabled selected>Select a {{city1.name}} Airport</option>
                         {% for airport in city1.airports %}
                             <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
@@ -80,7 +80,7 @@
                     </select>                
             </div>
             <div class="form-group wow-slider inner-div">
-                <label>Wow! Factor</label>
+                <label class="secondary-color">Wow! Factor</label>
                     <input type="range" min="1" max="10" step="1"  name="wow-factor-1" id="wow-input-1">
             </div>
         </div>
@@ -95,7 +95,7 @@
                     </select>                
             </div>
             <div class="form-group wow-slider inner-div">
-                <label>Wow! Factor</label> 
+                <label class="secondary-color">Wow! Factor</label> 
                     <input type="range" min="1" max="10" step="1" name="wow-factor-2" id="wow-input-2">                   
             </div>
         </div>
@@ -144,10 +144,10 @@
     </div>
 
     <div class="row rcorners" id="general-pref">
-        <h2 style="text-align:center">Travel Preferences</h2>
+        <h2 style="text-align:center" class="secondary-color">Travel Preferences</h2>
         <div class="col-md-6">
             <div id="departure-dropdown" class="form-group">
-            <label>Home Airport</label>
+            <label class="secondary-color">Home Airport</label>
                 <select id="departure-airport" name="departure-airport" class="form-control home-airport-dropdown">
                     {% for airport in origin_city.airports %}
                         <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
@@ -155,7 +155,7 @@
                 </select>
             </div>
             <div id="temp-selectors" style="margin-top: 50px;">
-                <label>Ideal Temperature</label>
+                <label class="secondary-color">Ideal Temperature</label>
                 <label class="radio-inline weather-radio"><input type="radio" name="ideal-temp" value="50" required><img class="weather-radio" src="/static/images/snowflake.png"></label>
                 <label class="radio-inline"><input type="radio" name="ideal-temp" value="70" required><img class="weather-radio" src="/static/images/sun_cloud.png"></label>
                 <label class="radio-inline"><input type="radio" name="ideal-temp" value="90" required><img class="weather-radio" src="/static/images/sun.png"></label>
@@ -165,9 +165,9 @@
 
         <div class="col-md-6">
             <div id="travel-dates" class="form-group"> 
-                <label>Departure Date</label>                    
+                <label class="secondary-color">Departure Date</label>                    
                 <input id="depart-date" class="form-control travel-dates" name="depart-date" min="2015-06-01" max="2015-12-31" type="date" required>
-                <label>Return Date</label>
+                <label class="secondary-color">Return Date</label>
                 <input id="return-date" class="form-control travel-dates" name="return-date" min="2015-06-01" max="2015-12-31" type="date" required>
             </div>
         </div>
@@ -177,23 +177,23 @@
         </div>
         </div>
         <div class="row rcorners" id="component-weights">
-            <h3>Adjust your preferences to see the algorithm recalculate your destination:</h3>
+            <div id="algo-result" style="font-size:24px">
+                <div><span id="recalculation_text"></span><span id="pp-choice-text"></span></div>
+                <div><button id="pp-choice" class="btn btn-primary">Explore </button></div>
+            </div>
+            <h5>Adjust your preferences to see the algorithm recalculate your destination:</h5>
             <div class="form-group importance-slider col-md-4">
-                <label>Cost</label>                   
+                <label class="secondary-color">Cost</label>                   
                 <input type="range" min="0" max="5" step="1" name="cost" id="cost-weight">
             </div>
             <div class="form-group importance-slider col-md-4">
-                <label>Quality of Food</label>
+                <label class="secondary-color">Quality of Food</label>
                 <input type="range" min="0" max="5" step="1" name="food" id="food-weight">
             </div>
             <div class="form-group importance-slider col-md-4">
-                <label>Weather</label>
+                <label class="secondary-color">Weather</label>
                 <input type="range" min="0" max="5" step="1" name="weather" id="weather-weight">
             </div>                   
-            <div id="algo-result">
-                <p><span id="recalculation_text"></span><span id="pp-choice-text"></span></p>
-                <div><button id="pp-choice" class="btn btn-primary">Explore </button></div>
-            </div>
         </div>
 </form>
 
@@ -303,8 +303,6 @@
         $("#pp-choice").data("city", winningCity.city);
         $("#pp-choice").data("country", winningCity.country);
         $("#pp-choice").data("city_id", winningCity.city_id);
-        console.log(dataDelta);
-        console.log(wowDelta);
         $("#algo-result").show();
 
     }          

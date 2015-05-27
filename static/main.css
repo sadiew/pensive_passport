@@ -9,10 +9,26 @@
 }
 
 body {
-    background-color: #5D5D5D;
+    background-color: #212930;
+    font-family: 'Nixie One', cursive;
 }
-.city-header {
+
+textarea{
+    background-color:gray;
+}
+
+.secondary-color {
+  color: #98C872;
+}
+
+.city-header{
   text-align: center;
+  color:#42B872;
+}
+
+.place-header {
+  text-align: center;
+  color:#98C872;
 }
 .home-airport-dropdown {
 	width:200px;

@@ -1,26 +1,26 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<h1>{{ city }}, {{country}}</h1>
+<h1 class="city-header"><strong>{{ city }}, {{country}}</strong></h1>
 
 <div class="row" style="margin:20px auto;">   
-  <div id="map-canvas" style="width:auto; height:200px"></div>
+  <div id="map-canvas" class="rcorners" style="width:auto; height:200px"></div>
   
 </div>
 <div class="row" style="text-align:center">
-  <div class="col-md-4 rcorners">
+  <div class="col-md-4">
       <div id="restaurant-info">
-        <h3>Restaurants</h3>
+        <h3 class="place-header"><strong>Restaurants</strong></h3>
       </div>
   </div>
-  <div class="col-md-4 rcorners">
+  <div class="col-md-4">
       <div id="museum-info">
-        <h3>Museums</h3>
+        <h3 class="place-header"><strong>Museums</strong></h3>
       </div>
   </div>
-  <div class="col-md-4 rcorners">
+  <div class="col-md-4">
       <div id="park-info">
-        <h3>Parks</h3>
+        <h3 class="place-header"><strong>Parks</strong></h3>
       </div>
   </div>
 </div>
@@ -62,34 +62,17 @@
 
       }
       map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-      console.log(map);
     }
 
     function getMap() {
       initialize(winning_city);
     }
 
-    function createMarker(place) {
-      place.style.color= "black";
-      var latLon = (place.getAttribute("data-lat-lon")).split(", ");
-      var lat = latLon[0];
-      var lon = latLon[1];
-
-      var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(lat, lon),
-        map: map
-        });
-
-    }
-
     function onPlaceClick(place, evt) {
       evt.preventDefault();
+      $(place).parent().addClass('rcorners');
       $(place).next('.description').removeClass('hidden');
-      createMarker(place);
       getPlaceDetails(place);
-      
-      
-      /*Add AJAX call to google places for website. Add an <a> tag for link to website.*/
     }
 
     function getPlaceDetails(place) {
@@ -97,14 +80,26 @@
         placeId: $(place).data("google-place-id")
       };
 
+      var infowindow = new google.maps.InfoWindow();
+
       service = new google.maps.places.PlacesService(map);
       service.getDetails(request, callback)
 
       function callback(placeObject, status) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
+
+          var marker = new google.maps.Marker({
+          map: map,
+          position: placeObject.geometry.location
+          });
+          google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent(placeObject.name);
+            infowindow.open(map, this);
+          });
         
-        placeWebsite = placeObject.website;
-        placeRating = placeObject.rating;
+        var placeWebsite = placeObject.website;
+        var placeRating = placeObject.rating || 'Unrated';
+
         $(place).next('.description').html("<p>Average Rating: " + placeRating + "</p><a href='" + placeWebsite + "'>Website</a>");
       }
         
@@ -119,14 +114,12 @@
 
         $.get( "/get-similar-trips?city_id='{{city_id}}'",
             function (result) {
-                $('#similar-trips').append("<h4>Users with similar travel interests also searched:</h4>"); 
+                $('#similar-trips').append("<h4 class='secondary-color'>Users with similar travel interests also searched:</h4>"); 
                 for (item in result) {
                     $('#similar-trips').append("<p><a href='/cities/" + item + "'>" + result[item] + "</a></p>");
                 };
             }
         );
-
-
     };
 
     function addPlaceByType(type) {
@@ -139,8 +132,8 @@
                     var googlePlaceId = result[item].google_place_id;
                 
                     $('#' + type + '-info').append("<div id='" + type + "'-" + i + "' class='" + type + "'>" +
-                                                    "<a href='#' onclick='onPlaceClick(this, event)' data-lat-lon='" + latLon + "' data-google-place-id='" + googlePlaceId + "'>" + item + "</a>" +
-                                                    "<div class='description hidden'>Place Test!</div>" +
+                                                    "<a href='#' onclick='onPlaceClick(this, event)' data-google-place-id='" + googlePlaceId + "'>" + item + "</a>" +
+                                                    "<div class='description hidden'></div>" +
                                                   "</div>");
                     i++;
                     };

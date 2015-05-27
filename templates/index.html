@@ -3,15 +3,25 @@
 
 {% block body %}
 
-<div class="rcorners" style="margin:100px 100px">
+<div id="explore" style="text-align:center;">
+    <img src="/static/images/pp-logo.png" style="width:auto; height:400px;">
+    <form action=''>
+        <input type="submit" value="Explore" class="btn btn-default" style="width:310px; margin:10px;">
+    </form>
+</div>
+
+
+
+<div class="rcorners" id="destination-form" style="margin:100px 100px">
     
-    <form action="/preference-form" id="destination-form">
+    <form action="/preference-form" style="background-color:transparent;">
         <div class="row form-group inner-div">
             <div class="typeahead-container col-md-4">
                 <div class="typeahead-field">        
                     <span class="typeahead-query">
-                        <label>Departure City</label>
+                        <label>Departure City
                             <input id="typeahead-departure-city" placeholder="San Francisco, CA" type="search" name="departure-city" class="form-control" autocomplete="off" required>
+                        </label>
                     </span>             
                 </div>
             </div>
@@ -19,16 +29,18 @@
             <div class="typeahead-container col-md-4">
                 <div class="typeahead-field">         
                     <span class="typeahead-query">
-                        <label>Destination 1</label>
+                        <label>Destination 1
                             <input id="typeahead-city1" placeholder="Paris, France" type="search" name="destination-1" class="form-control" autocomplete="off" required>
+                        </label>
                     </span>            
                 </div>
             </div>
             <div class="typeahead-container col-md-4">
                 <div class="typeahead-field">
                     <span class="typeahead-query">
-                        <label>Destination 2</label>
+                        <label>Destination 2
                             <input id="typeahead-city2" placeholder="Rome, Italy" type="search" name="destination-2" class="form-control" autocomplete="off" required>
+                            </label>
                     </span>            
                 </div>
             </div>
@@ -46,6 +58,7 @@
 {% block extra_js %}
 <script >
     $(document).ready(function(){
+        $('#destination-form').hide();
 
         $.getJSON('/intl-city-list', function(result) {
             $('#typeahead-city1').typeahead({
@@ -71,6 +84,13 @@
         });
 
     });
+
+    function showForm(evt) {
+        evt.preventDefault();
+        $('#destination-form').show();
+        $('#explore').hide();
+      }
+    $('#explore').on('submit', showForm);
 
 </script>
 {% endblock %}
