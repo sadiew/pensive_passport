@@ -102,10 +102,9 @@
 
       function callback(placeObject, status) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-        console.log(placeObject.url);
+        
         placeWebsite = placeObject.website;
         placeRating = placeObject.rating;
-        console.log(placeRating);
         $(place).next('.description').html("<p>Average Rating: " + placeRating + "</p><a href='" + placeWebsite + "'>Website</a>");
       }
         
@@ -113,59 +112,10 @@
     }
     
     function getPlaces() {
-        $('#get-places-button').hide();
-        
-        $.post( "/get-restaurants",
-            { city: '{{city}}', country: '{{country}}', city_id: '{{city_id}}'},
-            function (result) {
-                
-                var i=0;
-                for (item in result) {
-                    var latLon = result[item].lat + ', ' + result[item].lon;
-                    var googlePlaceId = result[item].google_place_id;
-                
-                    $('#restaurant-info').append("<div id='restaurant-" + i + "' class='restaurant'>" +
-                                                    "<a href='#' onclick='onPlaceClick(this, event)' data-lat-lon='" + latLon + "' data-google-place-id='" + googlePlaceId + "'>" + item + "</a>" +
-                                                    "<div class='description hidden'>Place Test!</div>" +
-                                                  "</div>");
-                    i++;
-                    };
-                }
-        );
-
-        $.post( "/get-museums",
-            { city: '{{city}}', country: '{{country}}', city_id: '{{city_id}}'},
-            function (result) { 
-            var i=0;
-                for (item in result) {
-                    var latLon = result[item].lat + ', ' + result[item].lon;    
-                    var googlePlaceId = result[item].google_place_id;
-
-                    $('#museum-info').append("<div id='museum-" + i + "' class='museum'>" +
-                                                    "<a href='#' onclick='onPlaceClick(this, event)' data-lat-lon='" + latLon + "' data-google-place-id='" + googlePlaceId + "'>" + item + "</a>" +
-                                                    "<div class='description hidden'>Place Test!</div>" +
-                                                  "</div>");
-                    i++;
-                };
-            }
-        );
-
-        $.post( "/get-parks",
-            { city: '{{city}}', country: '{{country}}', city_id: '{{city_id}}'},
-            function (result) { 
-            var i=0;
-                for (item in result) {
-                    var latLon = result[item].lat + ', ' + result[item].lon;
-                    var googlePlaceId = result[item].google_place_id;
-
-                    $('#park-info').append("<div id='park-" + i + "' class='park'>" +
-                                                    "<a href='#' onclick='onPlaceClick(this, event)' data-lat-lon='" + latLon + "' data-google-place-id='" + googlePlaceId + "'>" + item + "</a>" +
-                                                    "<div class='description hidden'>Place Test!</div>" +
-                                                  "</div>");
-                    i++;
-                };
-            }
-        );
+        $('#get-places-button').hide();        
+        addPlaceByType('restaurant');
+        addPlaceByType('museum');
+        addPlaceByType('park');
 
         $.get( "/get-similar-trips?city_id='{{city_id}}'",
             function (result) {
@@ -183,13 +133,12 @@
       $.post( "/get-" + type + 's',
             { city: '{{city}}', country: '{{country}}', city_id: '{{city_id}}'},
             function (result) {
-                $('#'+type+'-info').append("<h3>Restaurants</h3>");
                 var i=0;
                 for (item in result) {
                     var latLon = result[item].lat + ', ' + result[item].lon;
                     var googlePlaceId = result[item].google_place_id;
                 
-                    $('#restaurant-info').append("<div id='restaurant-" + i + "' class='restaurant'>" +
+                    $('#' + type + '-info').append("<div id='" + type + "'-" + i + "' class='" + type + "'>" +
                                                     "<a href='#' onclick='onPlaceClick(this, event)' data-lat-lon='" + latLon + "' data-google-place-id='" + googlePlaceId + "'>" + item + "</a>" +
                                                     "<div class='description hidden'>Place Test!</div>" +
                                                   "</div>");
