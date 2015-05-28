@@ -1,5 +1,10 @@
 body {
   font-family: 'Nixie One', cursive;
+  /*background-color:#212930;*/
+}
+
+a {
+  color:#212930;
 }
 
 label {
@@ -12,6 +17,14 @@ label {
   width: 60%;
   margin: 0 auto;
   margin-bottom: 10px;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align:center;
 }
 
 div.navbar-header img {
@@ -40,7 +53,6 @@ div.navbar-header img {
 }
 .home-airport-dropdown {
 	width:300px;
-  display:inline-block;
   margin:0 auto;
 }
 
@@ -110,5 +122,5 @@ label.weather-radio > input + img{ /* IMAGE STYLES */
   border:2px solid transparent;
 }
 label.weather-radio > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
-  border:2px solid #f00;
+  border:2px solid #212930;
 }

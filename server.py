@@ -17,12 +17,14 @@ app.jinja_env.undefined = StrictUndefined
 @app.route('/')
 def index():
     """Show index page."""
+
     return render_template("index.html")
 
 
 @app.route('/preference-form')
 def gather_perferences():
     """Gather user preferences."""
+
     try:
         departure_city = request.args.get('departure-city').split(', ')
         destination_1 = request.args.get('destination-1').split(', ')
@@ -50,6 +52,7 @@ def gather_perferences():
 @app.route('/results')
 def show_results():
     """Display map of city that user chose along with accompanying attractions."""
+
     city, country, city_id = request.args['city'], request.args['country'], request.args['city_id']
     
     return render_template("results.html",
@@ -61,6 +64,7 @@ def show_results():
 @app.route('/intl-city-list')
 def get_cities():
     """Get list of cities for typeahead pre-population."""
+
     cities = db.session.query(City.name, City.country).filter(City.country!="United States").all()
     cities_list = [city + ', ' + country for city, country in cities]
 
@@ -70,6 +74,7 @@ def get_cities():
 @app.route('/us-city-list')
 def get_us_cities():
     """Get list of cities for typeahead pre-population."""
+
     us_cities = db.session.query(City.name, City.state).filter(City.country=="United States", City.state!="").all()
     us_cities_list = [city + ', ' + state for city, state in us_cities]
 
@@ -78,6 +83,8 @@ def get_us_cities():
 
 @app.route('/get-restaurants', methods=['POST'])
 def get_restaurants():
+    """Grab restaurants from DB if cached, otherwise call Google Places API."""
+
     city_id = int(request.form.get('city_id'))
     city_center = tuple(request.form.get('city_lat_lon').split(","))
 
@@ -88,6 +95,8 @@ def get_restaurants():
 
 @app.route('/get-museums', methods=['POST'])
 def get_museums():
+    """Grab museums from DB if cached, otherwise call Google Places API."""
+
     city = request.form.get('city')
     country = request.form.get('country')
     city_id = int(request.form.get('city_id'))
@@ -100,6 +109,8 @@ def get_museums():
 
 @app.route('/get-parks', methods=['POST'])
 def get_parks():
+    """Grab parks from DB if cached, otherwise call Google Places API."""
+
     city = request.form.get('city')
     country = request.form.get('country')
     city_id = int(request.form.get('city_id'))
@@ -112,30 +123,36 @@ def get_parks():
 
 @app.route('/get-flight1', methods=['POST'])
 def get_first_flight():
+    """Grab cost of airfare from Google flights for first city."""
+
     depart_date = request.form['depart_date']
     return_date = request.form['return_date']
     origin = request.form['origin']
     destination = request.form['destination']
 
-    #airfare = process_flights(origin, destination, depart_date, return_date)
-    airfare = {'airfare': 1000}
+    airfare = process_flights(origin, destination, depart_date, return_date)
+    #airfare = {'airfare': 1000}
     return jsonify(airfare)
 
 
 @app.route('/get-flight2', methods=['POST'])
 def get_second_flight():
+    """Grab cost of airfare from Google flights for second city."""
+
     depart_date = request.form['depart_date']
     return_date = request.form['return_date']
     origin = request.form['origin']
     destination = request.form['destination']
 
-    #airfare = process_flights(origin, destination, depart_date, return_date)
-    airfare = {'airfare': 1000}
+    airfare = process_flights(origin, destination, depart_date, return_date)
+    #airfare = {'airfare': 1000}
     return jsonify(airfare)
 
 
 @app.route('/get-weather1', methods=['POST'])
 def get_first_weather():
+    """Grab weather data from World Weather Online for first city."""
+
     depart_date = request.form['depart_date']
     destination = request.form['destination']
 
@@ -145,6 +162,8 @@ def get_first_weather():
 
 @app.route('/get-weather2', methods=['POST'])
 def get_second_weather():
+    """Grab weather data from World Weather Online for second city."""
+
     depart_date = request.form['depart_date']
     destination = request.form['destination']
 
@@ -154,6 +173,9 @@ def get_second_weather():
 
 @app.route('/get-city1-data', methods=['GET'])
 def get_city1_data():
+    """Grab city specific data (city, country, cost of living, Michelin star restaurants) 
+    from DB for first city."""
+
     airport_code = request.args['airport-1']
     city_stats = fetch_city_data(airport_code)
 
@@ -162,6 +184,9 @@ def get_city1_data():
 
 @app.route('/get-city2-data', methods=['GET'])
 def get_city2_data():
+    """Grab city specific data (city, country, cost of living, Michelin star restaurants) 
+    from DB for second city."""
+
     airport_code = request.args['airport-2']
     city_stats = fetch_city_data(airport_code)
 
@@ -170,6 +195,8 @@ def get_city2_data():
 
 @app.route('/store-trips', methods=['POST'])
 def store_trips():
+    """Add each trip search to the DB."""
+
     trip1 = json.loads(request.form['trip1'])
     trip2 = json.loads(request.form['trip2'])
     trips = [trip1, trip2]
@@ -238,28 +265,34 @@ def handle_registration():
 
 @app.route('/get-similar-trips')
 def get_similar_trips():
+    """Searches the DB for destinations searched by others who searched the same original cities."""
     
     city_id = request.args['city_id']
+    user_id = session['username']
+
     query = """SELECT DISTINCT trips.city_id, cities.name, cities.country, COUNT(trips.city_id)
             FROM trips
             JOIN cities on trips.city_id = cities.city_id
-            WHERE trips.city_id <> %s and user_id IN 
+            WHERE trips.city_id <> %s and user_id <> %s and user_id IN 
             (SELECT DISTINCT user_id 
             FROM trips
             WHERE city_id =%s)
             GROUP BY 1,2,3
-            ORDER BY COUNT(trips.city_id) DESC""" %(city_id, city_id)
+            ORDER BY COUNT(trips.city_id) DESC""" %(city_id, user_id, city_id)
     
     
     results = call_sql(query)
-    top_five = results[:4]
+    top_four = results[:4]
 
-    similar_cities = {city[0]:'%s, %s' %(city[1], city[2]) for city in top_five}
+    similar_cities = {city[0]:'%s, %s' %(city[1], city[2]) for city in top_four}
 
     return jsonify(similar_cities)
 
 @app.route('/cities/<int:city_id>')
 def show_city(city_id):
+    """Grab data to present a quick city snapshot, including Michelin star data, 
+    average wow score, and average airfare."""
+
     city = City.query.get(city_id)
     
     food = db.session.query(db.func.count(Restaurant.restaurant_id), 
@@ -277,6 +310,8 @@ def show_city(city_id):
 
 #helper functions
 def process_flights(origin, destination, depart_date, return_date):
+    """Attempt to call Google flights API, but return default values if unavailable."""
+
     try:
         airfare = get_flights(origin, destination, depart_date, return_date)
     except:
@@ -286,6 +321,8 @@ def process_flights(origin, destination, depart_date, return_date):
     return airfare
 
 def process_weather(depart_date, destination):
+    """Attempt to call World Weather Online API, but return default values if unavailable."""
+
     date_last_year = datetime.strftime(datetime.strptime(depart_date, '%Y-%m-%d') - 
                         timedelta(days=365), '%Y-%m-%d')
     airport = Airport.query.filter_by(airport_code=destination).first()
@@ -300,6 +337,8 @@ def process_weather(depart_date, destination):
 
 
 def fetch_city_data(airport_code):
+    """Fetch city specific data from DB for trip comparison."""
+
     airport = Airport.query.filter_by(airport_code=airport_code).first()
     city_id = airport.city.city_id
     name = airport.city.name
@@ -316,6 +355,8 @@ def fetch_city_data(airport_code):
     return city_stats
 
 def call_sql(query):
+    """Connect to Postgres. If connection fails, return an exception."""
+
     try:
         conn = psycopg2.connect("dbname='pensive_passport' host='localhost' port=5432")
         cur = conn.cursor()
@@ -327,6 +368,11 @@ def call_sql(query):
         print '\n'
 
 def add_places(city_id, city_center, place_type):
+    """Check to see if place type for given city is already stored in DB. If so, 
+    return 5 establishments closes to city center.  If not, call Google
+    Places API to grab 20 most prominent places, and then of those, select 5 closest 
+    to city center."""
+
     places = Place.query.filter_by(city_id=city_id, place_type=place_type).all()
 
     if places:
@@ -353,6 +399,8 @@ def add_places(city_id, city_center, place_type):
     return five_closest_places
 
 def distance_from_city_center(city_center, place):
+    """Calculate the distance of a place from its respective city center."""
+
     city_lat = float(city_center[0])
     city_lon = float(city_center[1])
 
@@ -361,6 +409,9 @@ def distance_from_city_center(city_center, place):
     return round(distance_from_center, 3)
 
 def select_five_closest_prominent(places, city_center):
+    """Calculate the distance of each place from city center, then rank in ascending 
+    order by distance and take the top 5 with shortest distance."""
+
     distance_from_center = {place.name:distance_from_city_center(city_center, place) for place in places}
     closest_places = sorted(distance_from_center.items(), key=lambda x:x[1])
     closest_places_list = [place[0] for place in closest_places]

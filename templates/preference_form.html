@@ -150,10 +150,10 @@
     </div>
 
     <div class="row rcorners" id="general-pref">
-        <h2 style="text-align:center" class="secondary-color">Travel Preferences</h2>
-        <div class="col-md-6">
+        <h2 style="text-align:center" class="secondary-color"><strong>Travel Preferences</strong></h2>
+        <div class="col-md-6 align-center">
             <div id="departure-dropdown" class="form-group">
-            <label class="secondary-color">Home Airport
+            <label class="secondary-color align-left">Home Airport
                 <select id="departure-airport" name="departure-airport" class="form-control home-airport-dropdown">
                     {% for airport in origin_city.airports %}
                         <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
@@ -162,20 +162,21 @@
             </label>
             </div>
             <div id="temp-selectors" style="margin-top: 50px;">
-                <label class="secondary-color">Ideal Temperature</label>
+                <label class="secondary-color">Ideal Temperature
                 <label class="radio-inline weather-radio"><input type="radio" name="ideal-temp" value="50" required><img class="weather-radio" src="/static/images/snowflake.png"></label>
                 <label class="radio-inline weather-radio"><input type="radio" name="ideal-temp" value="70" required><img class="weather-radio" src="/static/images/sun_cloud.png"></label>
                 <label class="radio-inline weather-radio"><input type="radio" name="ideal-temp" value="90" required><img class="weather-radio" src="/static/images/sun.png"></label>
+                </label>
             </div>
                          
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-6 align-center">
             <div id="travel-dates" class="form-group"> 
-                <label class="secondary-color">Departure Date                   
+                <label class="secondary-color align-left">Departure Date                   
                 <input id="depart-date" class="form-control travel-dates" name="depart-date" min="2015-06-01" max="2015-12-31" type="date" required>
                 </label> 
-                <label class="secondary-color">Return Date
+                <label class="secondary-color align-left">Return Date
                 <input id="return-date" class="form-control travel-dates" name="return-date" min="2015-06-01" max="2015-12-31" type="date" required>
                 </label>
             </div>

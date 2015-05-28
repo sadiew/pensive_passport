@@ -6,6 +6,7 @@ def get_flickr_photos(city):
     api_secret = os.environ['FLICKR_SECRET']
     flickr = flickrapi.FlickrAPI(api_key, api_secret, cache=True)
     
+    #photos is of the element type, where the first item is the list of photos 
     photos = flickr.photos_search(
                                 tags=city.name+','+city.country,
                                 text=city.name,
