@@ -10,8 +10,6 @@
     </form>
 </div>
 
-
-
 <div class="rcorners" id="destination-form" style="margin:100px 100px">
     
     <form action="/preference-form" style="background-color:transparent;">
@@ -20,7 +18,7 @@
                 <div class="typeahead-field">        
                     <span class="typeahead-query">
                         <label>Departure City
-                            <input id="typeahead-departure-city" placeholder="San Francisco, CA" type="search" name="departure-city" class="form-control" autocomplete="off" required>
+                            <input id="typeahead-departure-city" placeholder="US City, State" type="search" name="departure-city" class="form-control" autocomplete="off" required>
                         </label>
                     </span>             
                 </div>
@@ -30,7 +28,7 @@
                 <div class="typeahead-field">         
                     <span class="typeahead-query">
                         <label>Destination 1
-                            <input id="typeahead-city1" placeholder="Paris, France" type="search" name="destination-1" class="form-control" autocomplete="off" required>
+                            <input id="typeahead-city1" placeholder="City, Country" type="search" name="destination-1" class="form-control" autocomplete="off" required>
                         </label>
                     </span>            
                 </div>
@@ -39,7 +37,7 @@
                 <div class="typeahead-field">
                     <span class="typeahead-query">
                         <label>Destination 2
-                            <input id="typeahead-city2" placeholder="Rome, Italy" type="search" name="destination-2" class="form-control" autocomplete="off" required>
+                            <input id="typeahead-city2" placeholder="City, Country" type="search" name="destination-2" class="form-control" autocomplete="off" required>
                             </label>
                     </span>            
                 </div>
@@ -73,7 +71,6 @@
             });
 
         });
-
         $.getJSON('/us-city-list', function(result) {
                 $('#typeahead-departure-city').typeahead({
                     source: {
@@ -82,7 +79,6 @@
                 });
 
         });
-
     });
 
     function showForm(evt) {

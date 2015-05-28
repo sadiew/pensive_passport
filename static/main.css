@@ -1,24 +1,20 @@
-.flickr-photo {
-    position: relative;
-    float: left;
-    width:  550px;
-    height: 300px;
-    background-position: 50% 50%;
-    background-repeat:   no-repeat;
-    background-size:     cover;
-}
-
 body {
-    background-color: #212930;
     font-family: 'Nixie One', cursive;
 }
 
-textarea{
-    background-color:gray;
+div.navbar-header img {
+    width: 30px;
+    float: left;
+    margin-top: 7px;
+    margin-right: 7px;
 }
 
 .secondary-color {
   color: #98C872;
+}
+
+.primary-color {
+  color: #42B872;
 }
 
 .city-header{
@@ -90,4 +86,16 @@ img.michelin-star {
 
 .data-element{
    text-align: center;   
+}
+
+label.weather-radio > input{ /* HIDE RADIO */
+  visibility: hidden; /* Makes input not-clickable */
+  position: absolute; /* Remove input from document flow */
+}
+label.weather-radio > input + img{ /* IMAGE STYLES */
+  cursor:pointer;
+  border:2px solid transparent;
+}
+label.weather-radio > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+  border:2px solid #f00;
 }

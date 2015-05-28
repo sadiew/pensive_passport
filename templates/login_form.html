@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<form action="/login-submission" class="form-group" method="POST">
+<form action="/login-submission" class="form-group secondary-color" method="POST">
     <div class="row">
         <label>Username:
             <input class="form-control" type="text" name="username">
@@ -12,7 +12,7 @@
             <input class="form-control" type="password" name="password">
         </label>
     </div>
-    <input type="submit" value="Sign in" id="login-button">
+    <input type="submit" value="Sign in" class="btn btn-default" id="login-button">
 </form>
 
 {% endblock %}
