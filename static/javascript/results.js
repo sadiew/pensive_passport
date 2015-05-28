@@ -28,13 +28,11 @@ var geocoder;
     }
 
     function getMap() {
-      initialize(winning_city);
+      initialize(winningCity);
     }
 
     function onPlaceClick(place, evt) {
       evt.preventDefault();
-      $(place).parent().addClass('rcorners');
-      $(place).next('.description').removeClass('hidden');
       getPlaceDetails(place);
     }
 
@@ -63,7 +61,11 @@ var geocoder;
         var placeWebsite = placeObject.website;
         var placeRating = placeObject.rating || 'Unrated';
 
-        $(place).next('.description').html("<p>Average Rating: " + placeRating + "</p><a href='" + placeWebsite + "'>Website</a>");
+        var $description = $(place).next();
+        console.log($description); 
+        $description.find(".rating").html(placeRating);
+        $description.find(".website").attr("href", placeWebsite);
+        
       }
         
       }
@@ -75,7 +77,7 @@ var geocoder;
         addPlaceByType('museum');
         addPlaceByType('park');
 
-        $.get( "/get-similar-trips?city_id=" + city_id,
+        $.get( "/get-similar-trips?city_id=" + cityId,
             function (result) {
                 $('#similar-trips').append("<h4 class='secondary-color'>Users with similar travel interests also searched:</h4>"); 
                 for (item in result) {
@@ -88,15 +90,20 @@ var geocoder;
     function addPlaceByType(type) {
       console.log(cityLatLon);
       $.post( "/get-" + type + 's',
-            { city: city, country: country, city_id: city_id, city_lat_lon: cityLatLon},
+            {city_id: cityId, city_lat_lon: cityLatLon},
             function (result) {
                 var i=0;
                 for (item in result) {
                     var googlePlaceId = result[item]
                 
-                    $('#' + type + '-info').append("<div id='" + type + "'-" + i + "' class='" + type + "'>" +
-                                                    "<a href='#' onclick='onPlaceClick(this, event)' data-google-place-id='" + googlePlaceId + "'>" + item + "</a>" +
-                                                    "<div class='description hidden'></div>" +
+                    $('#' + type + '-info').append("<div class='" + type + "'>" +
+                                                    "<a data-target='#" + type + "-" + i + "' data-toggle='collapse' href='#' onclick='onPlaceClick(this, event)' data-google-place-id='" + googlePlaceId + "'>" + item + "</a>" +
+                                                    "<div id='" + type + "-" + i + "' class='collapse'>" +
+                                                      "<div class='description'>" +
+                                                        "<div>Average Rating: <span class='rating'></span> </div>" + 
+                                                        "<a href='#' class='website'>Website</a>" +
+                                                      "</div>" +
+                                                    "</div>" +
                                                   "</div>");
                     i++;
                     };

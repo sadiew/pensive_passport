@@ -7,7 +7,7 @@
   <div id="map-canvas" class="rcorners" style="width:auto; height:200px"></div>
   
 </div>
-<div class="row" style="text-align:center">
+<div class="row rcorners" style="text-align:center">
   <div class="col-md-4">
       <div id="restaurant-info">
         <h3 class="place-header"><strong>Restaurants</strong></h3>
@@ -25,16 +25,14 @@
   </div>
 </div>
 <div>
-  <div class="row" id="similar-trips">
+  <div class="row rcorners" id="similar-trips">
   </div>
 </div>
 </div>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
 <script>
-  var winning_city = '{{city}}' + ', ' + '{{country}}';
-  var city = '{{city}}'
-  var country = '{{country}}'
-  var city_id = '{{city_id}}'
+  var winningCity = '{{city}}' + ', ' + '{{country}}';
+  var cityId = '{{city_id}}'
 </script>
 <script type="text/javascript" src="/static/javascript/results.js">
 </script>

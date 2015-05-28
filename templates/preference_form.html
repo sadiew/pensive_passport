@@ -153,12 +153,13 @@
         <h2 style="text-align:center" class="secondary-color">Travel Preferences</h2>
         <div class="col-md-6">
             <div id="departure-dropdown" class="form-group">
-            <label class="secondary-color">Home Airport</label>
+            <label class="secondary-color">Home Airport
                 <select id="departure-airport" name="departure-airport" class="form-control home-airport-dropdown">
                     {% for airport in origin_city.airports %}
                         <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
                     {% endfor %}
                 </select>
+            </label>
             </div>
             <div id="temp-selectors" style="margin-top: 50px;">
                 <label class="secondary-color">Ideal Temperature</label>
@@ -171,21 +172,23 @@
 
         <div class="col-md-6">
             <div id="travel-dates" class="form-group"> 
-                <label class="secondary-color">Departure Date</label>                    
+                <label class="secondary-color">Departure Date                   
                 <input id="depart-date" class="form-control travel-dates" name="depart-date" min="2015-06-01" max="2015-12-31" type="date" required>
-                <label class="secondary-color">Return Date</label>
+                </label> 
+                <label class="secondary-color">Return Date
                 <input id="return-date" class="form-control travel-dates" name="return-date" min="2015-06-01" max="2015-12-31" type="date" required>
+                </label>
             </div>
         </div>
 
         <div>
-            <input type="submit" class="btn btn-primary" id="gather-data-button" value="Grab data!" style="display:block; float:right;">
+            <input type="submit" class="btn btn-default" id="gather-data-button" value="Grab data!" style="display:block; float:right;">
         </div>
         </div>
         <div class="row rcorners" id="component-weights">
             <div id="algo-result" style="font-size:24px">
-                <div><span id="recalculation_text"></span><span id="pp-choice-text"></span></div>
-                <div><button id="pp-choice" class="btn btn-primary">Explore </button></div>
+                <div><span id="pp-choice-text"></span><span style="margin:0 10px;"><button id="pp-choice" class="btn btn-default">Explore </button></span></div>
+                
             </div>
             <h5>Adjust your preferences to see the algorithm recalculate your destination:</h5>
             <div class="form-group importance-slider col-md-4">

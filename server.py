@@ -78,12 +78,10 @@ def get_us_cities():
 
 @app.route('/get-restaurants', methods=['POST'])
 def get_restaurants():
-    city = request.form.get('city')
-    country = request.form.get('country')
     city_id = int(request.form.get('city_id'))
     city_center = tuple(request.form.get('city_lat_lon').split(","))
 
-    restaurants = add_places(city_id, city_center, city, country, place_type ='restaurant')
+    restaurants = add_places(city_id, city_center, place_type ='restaurant')
     
     return jsonify(restaurants)
 
@@ -95,7 +93,7 @@ def get_museums():
     city_id = int(request.form.get('city_id'))
     city_center = tuple(request.form.get('city_lat_lon').split(","))
 
-    museums = add_places(city_id, city_center, city, country, place_type ='museum')
+    museums = add_places(city_id, city_center, place_type ='museum')
     
     return jsonify(museums)
 
@@ -107,7 +105,7 @@ def get_parks():
     city_id = int(request.form.get('city_id'))
     city_center = tuple(request.form.get('city_lat_lon').split(","))
 
-    parks = add_places(city_id, city_center, city, country, place_type ='park')
+    parks = add_places(city_id, city_center, place_type ='park')
     
     return jsonify(parks)
 
@@ -328,25 +326,16 @@ def call_sql(query):
         print e
         print '\n'
 
-def add_places(city_id, city_center, city, country, place_type):
+def add_places(city_id, city_center, place_type):
     places = Place.query.filter_by(city_id=city_id, place_type=place_type).all()
 
     if places:
         five_closest_places = select_five_closest_prominent(places, city_center)
-        return five_closest_places
 
     else:
-        # places = get_places(city, country, place_type)
-        # for place in places:
-        #     place = Place(google_place_id=places[place]['google_place_id'],
-        #                   city_id=city_id, 
-        #                   name=place, 
-        #                   lat=places[place]['lat'], 
-        #                   lon=places[place]['lng'], 
-        #                   place_type=place_type)
-        #     db.session.add(place)
-        # db.session.commit()
-
+        city_object = City.query.get(city_id)
+        city = city_object.name
+        country = city_object.country
         places = get_places(city, country, place_type)
         for place in places:
             place = Place(google_place_id=places[place]['google_place_id'],
@@ -360,7 +349,8 @@ def add_places(city_id, city_center, city, country, place_type):
 
         places = Place.query.filter_by(city_id=city_id, place_type=place_type).all()
         five_closest_places = select_five_closest_prominent(places, city_center)
-        return five_closest_places
+    
+    return five_closest_places
 
 def distance_from_city_center(city_center, place):
     city_lat = float(city_center[0])
@@ -372,11 +362,10 @@ def distance_from_city_center(city_center, place):
 
 def select_five_closest_prominent(places, city_center):
     distance_from_center = {place.name:distance_from_city_center(city_center, place) for place in places}
-    print distance_from_center
     closest_places = sorted(distance_from_center.items(), key=lambda x:x[1])
-    closest_places = [place[0] for place in closest_places]
+    closest_places_list = [place[0] for place in closest_places]
 
-    five_closest_places = {place.name:place.google_place_id for place in places if place.name in closest_places[:5]}
+    five_closest_places = {place.name:place.google_place_id for place in places if place.name in closest_places_list[:5]}
     return five_closest_places
 
 

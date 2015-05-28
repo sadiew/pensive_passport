@@ -1,5 +1,17 @@
 body {
-    font-family: 'Nixie One', cursive;
+  font-family: 'Nixie One', cursive;
+}
+
+label {
+  font-family: 'Nixie One', cursive;
+}
+
+.description {
+  /*padding-bottom: 20px;*/
+  border-bottom: 1px solid lightgray;
+  width: 60%;
+  margin: 0 auto;
+  margin-bottom: 10px;
 }
 
 div.navbar-header img {
@@ -27,7 +39,7 @@ div.navbar-header img {
   color:#98C872;
 }
 .home-airport-dropdown {
-	width:200px;
+	width:300px;
   display:inline-block;
   margin:0 auto;
 }
@@ -67,6 +79,7 @@ img.michelin-star {
     border-radius: 25px;
     border: 2px solid #42B872;
     padding: 20px;
+    margin:5px auto;
 
 }
 
