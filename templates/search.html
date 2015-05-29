@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<div class="rcorners" id="destination-form" style="margin:100px 100px">
+    
+    <form action="/preference-form" style="background-color:transparent;">
+        <div class="row form-group inner-div">
+            <div class="typeahead-container col-md-4 align-center">
+                <div class="typeahead-field">        
+                    <span class="typeahead-query">
+                        <label class="align-left">Departure City
+                            <input id="typeahead-departure-city" placeholder="US City, State" type="search" name="departure-city" class="form-control" autocomplete="off" required>
+                        </label>
+                    </span>             
+                </div>
+            </div>
+
+            <div class="typeahead-container col-md-4 align-center">
+                <div class="typeahead-field">         
+                    <span class="typeahead-query">
+                        <label class="align-left">Destination 1
+                            <input id="typeahead-city1" placeholder="City, Country" type="search" name="destination-1" class="form-control" autocomplete="off" required>
+                        </label>
+                    </span>            
+                </div>
+            </div>
+            <div class="typeahead-container col-md-4 align-center" style="text-align:center;">
+                <div class="typeahead-field">
+                    <span class="typeahead-query">
+                        <label class="align-left">Destination 2
+                            <input id="typeahead-city2" placeholder="City, Country" type="search" name="destination-2" class="form-control" autocomplete="off" required>
+                            </label>
+                    </span>            
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12"  style="text-align:center;">
+                <input type="submit" class="btn btn-default" value="Decide!">
+            </div>
+        </div>                        
+    </form>
+    
+</div>       
+
+
+{% block extra_js %}
+<script >
+    $(document).ready(function(){
+
+        $.getJSON('/intl-city-list', function(result) {
+            $('#typeahead-city1').typeahead({
+                source: {
+                    data: result.cities
+                }       
+            });
+            $('#typeahead-city2').typeahead({
+                source: {
+                    data: result.cities
+                }       
+            });
+
+        });
+        $.getJSON('/us-city-list', function(result) {
+                $('#typeahead-departure-city').typeahead({
+                    source: {
+                        data: result.us_cities
+                    }       
+                });
+
+        });
+    });
+
+</script>
+{% endblock %}
+{% endblock %}

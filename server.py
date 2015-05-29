@@ -18,8 +18,13 @@ app.jinja_env.undefined = StrictUndefined
 def index():
     """Show index page."""
 
-    return render_template("index.html")
+    return render_template("homepage.html")
 
+@app.route('/search')
+def search():
+    """Show index page."""
+
+    return render_template("search.html")
 
 @app.route('/preference-form')
 def gather_perferences():
