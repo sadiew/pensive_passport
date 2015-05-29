@@ -12,8 +12,7 @@ label {
 }
 
 .description {
-  /*padding-bottom: 20px;*/
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid #BA996B;
   width: 60%;
   margin: 0 auto;
   margin-bottom: 10px;
@@ -34,12 +33,17 @@ div.navbar-header img {
     margin-right: 7px;
 }
 
+.primary-color {
+  color: #42B872;
+}
+
+
 .secondary-color {
   color: #98C872;
 }
 
-.primary-color {
-  color: #42B872;
+.tertiary-color {
+  color: #BA996B;
 }
 
 .city-header{

@@ -3,35 +3,35 @@
 
 {% block body %}
 
-<div class='container'>
-<table id="results-table" class = "table table-hover">
-<thead>
-    <tr>
-        <th colspan="2" style="text-align:center; font-size:24px;">{{city.name}} Stats</th>
-    </tr> 
-</thead>   
-<tbody>
-    <tr>
-        <td>Average Airfare</td>
-        <td class="data-element">${{city.avg_airfare}}</td>
-    </tr>
-    <tr>
-        <td>Cost of Living</td>
-        <td class="data-element">{{city.col_index}}</td>
-    </tr>
-    <tr>
-        <td>Food</td>
-        <td class="data-element">{{city.food[0]}} Michelin Restaurants ({{city.food[1]}} stars)</td>
-    </tr>    
-    <tr>
-        <td>Wow Factor</td>
-        <td class="data-element">{{city.avg_wow}}</td>
-    </tr>    
-</tbody>
-</table>
+<div class="row" style="width:50%; margin:0 auto">
+	<table id="results-table" class = "table table-hover">
+	<thead>
+	    <tr>
+	        <th colspan="2" style="text-align:center; font-size:24px;">{{city.name}}: Quick Stats</th>
+	    </tr> 
+	</thead>   
+	<tbody>
+	    <tr>
+	        <td>Average Airfare</td>
+	        <td class="data-element">${{city.avg_airfare}}</td>
+	    </tr>
+	    <tr>
+	        <td>Cost of Living</td>
+	        <td class="data-element">{{city.col_index}}</td>
+	    </tr>
+	    <tr>
+	        <td>Food</td>
+	        <td class="data-element">{{city.food[0]}} Michelin Restaurants ({{city.food[1]}} stars)</td>
+	    </tr>    
+	    <tr>
+	        <td>Wow Factor</td>
+	        <td class="data-element">{{city.avg_wow}}</td>
+	    </tr>    
+	</tbody>
+	</table>
 </div>
-<div>
-	<button id="re-search" class="btn btn-primary">New Search</button>
+<div class="align-center">
+	<button id="re-search" class="btn btn-default">New Search</button>
 </div>
 <script type="text/javascript">
 	function reSearch(evt) {

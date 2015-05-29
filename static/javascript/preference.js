@@ -169,7 +169,7 @@ var cityInfo1 = {};
             $("#pp-choice-text").html("After recalculation, Pensive Passport <strong>still</strong> chooses " + winningCity.city + "!");
         }
 
-        else {$("#pp-choice-text").html("After recalculation, Pensive Passport has now selected " + winningCity.city + "!");
+        else {$("#pp-choice-text").html("After recalculation, Pensive Passport now selects <span style='color:red'>" + winningCity.city + "</span>!");
         } 
         }        
 

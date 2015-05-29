@@ -59,12 +59,18 @@ var geocoder;
           });
         
         var placeWebsite = placeObject.website;
+        var placeUrl = placeObject.url;
         var placeRating = placeObject.rating || 'Unrated';
+
+        if (placeWebsite) {
+          var website = placeWebsite}
+        else {
+          var website = placeUrl}
 
         var $description = $(place).next();
         console.log($description); 
         $description.find(".rating").html(placeRating);
-        $description.find(".website").attr("href", placeWebsite);
+        $description.find(".website").attr("href", website);
         
       }
         
@@ -79,9 +85,9 @@ var geocoder;
 
         $.get( "/get-similar-trips?city_id=" + cityId,
             function (result) {
-                $('#similar-trips').append("<h4 class='secondary-color'>Users with similar travel interests also searched:</h4>"); 
+                $('#similar-trips').append("<h4 class='secondary-color align-center'>Featured Recommendations</h4>"); 
                 for (item in result) {
-                    $('#similar-trips').append("<div class='col-md-3'><a href='/cities/" + item + "'>" + result[item] + "</a></div>");
+                    $('#similar-trips').append("<div class='col-md-3 align-center'><a href='/cities/" + item + "'>" + result[item] + "</a></div>");
                 };
             }
         );

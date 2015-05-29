@@ -333,9 +333,10 @@ def process_weather(depart_date, destination):
 
     date_last_year = datetime.strftime(datetime.strptime(depart_date, '%Y-%m-%d') - 
                         timedelta(days=365), '%Y-%m-%d')
+    
     airport = Airport.query.filter_by(airport_code=destination).first()
-    latitude = airport.latitude
-    longitude = airport.longitude
+    latitude, longitude = airport.latitude, airport.longitude
+
     try:
         weather = get_weather(date_last_year, latitude, longitude)
     except:
@@ -384,13 +385,13 @@ def add_places(city_id, city_center, place_type):
     places = Place.query.filter_by(city_id=city_id, place_type=place_type).all()
 
     if places:
-        five_closest_places = select_five_closest_prominent(places, city_center)
+        ten_closest_places = select_ten_closest_prominent(places, city_center)
 
     else:
         city_object = City.query.get(city_id)
-        city = city_object.name
-        country = city_object.country
+        city, country = city_object.name, city_object.country
         places = get_places(city, country, place_type)
+
         for place in places:
             place = Place(google_place_id=places[place]['google_place_id'],
                           city_id=city_id, 
@@ -402,9 +403,9 @@ def add_places(city_id, city_center, place_type):
         db.session.commit()
 
         places = Place.query.filter_by(city_id=city_id, place_type=place_type).all()
-        five_closest_places = select_five_closest_prominent(places, city_center)
+        ten_closest_places = select_ten_closest_prominent(places, city_center)
     
-    return five_closest_places
+    return ten_closest_places
 
 def distance_from_city_center(city_center, place):
     """Calculate the distance of a place from its respective city center."""
@@ -416,7 +417,7 @@ def distance_from_city_center(city_center, place):
 
     return round(distance_from_center, 3)
 
-def select_five_closest_prominent(places, city_center):
+def select_ten_closest_prominent(places, city_center):
     """Calculate the distance of each place from city center, then rank in ascending 
     order by distance and take the top 5 with shortest distance."""
 
@@ -424,8 +425,8 @@ def select_five_closest_prominent(places, city_center):
     closest_places = sorted(distance_from_center.items(), key=lambda x:x[1])
     closest_places_list = [place[0] for place in closest_places]
 
-    five_closest_places = {place.name:place.google_place_id for place in places if place.name in closest_places_list[:5]}
-    return five_closest_places
+    ten_closest_places = {place.name:place.google_place_id for place in places if place.name in closest_places_list[:10]}
+    return ten_closest_places
 
 
 
