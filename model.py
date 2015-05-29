@@ -112,17 +112,17 @@ class Trip(db.Model):
 
     trip_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     city_id = db.Column(db.Integer, db.ForeignKey('cities.city_id'))
+    search_id = db.Column(db.Integer, db.ForeignKey('searches.search_id'))
     avg_temp = db.Column(db.Float)
     michelin_stars = db.Column(db.Integer)
     airfare = db.Column(db.Integer)
     wow_factor = db.Column(db.Integer)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
 
     city = db.relationship("City",
                            backref=db.backref("trips", order_by=trip_id))
 
-    user = db.relationship("User",
-                           backref=db.backref("trips", order_by=user_id))
+    search = db.relationship("Search",
+                           backref=db.backref("trips", order_by=search_id))
 
     def __repr__(self):
         return "<Trip city_id=%s, airfare=%s>" % (self.city_id, self.airfare)
@@ -133,15 +133,26 @@ class User(db.Model):
     __tablename__ = "users"
 
     user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    email = db.Column(db.String(100), nullable=True)
-    password = db.Column(db.String(64), nullable=True)
-    age = db.Column(db.Integer, nullable=True)
-    zipcode = db.Column(db.String(5), nullable=True)
+    email = db.Column(db.String(100))
+    password = db.Column(db.String(64))
+    age = db.Column(db.Integer)
+    zipcode = db.Column(db.String(5))
 
     def __repr__(self):
         """Provide helpful representation when printed."""
 
         return "<User user_id=%s email=%s>" % (self.user_id, self.email)
+
+class Search(db.Model):
+
+    __tablename__ = "searches"
+
+    search_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+
+    user = db.relationship("User",
+                           backref=db.backref("searches", order_by=user_id))
+
 
 # Helper functions
 def connect_to_db(app):

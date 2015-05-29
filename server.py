@@ -1,4 +1,4 @@
-from model import City, Airport, Restaurant, Place, Trip, User, connect_to_db, db
+from model import City, Airport, Restaurant, Place, Trip, User, Search, connect_to_db, db
 from flask import Flask, request, render_template, redirect, jsonify, session, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
@@ -197,19 +197,25 @@ def get_city2_data():
 def store_trips():
     """Add each trip search to the DB."""
 
+    search = Search(user_id=session['username'])
+    db.session.add(search)
+    db.session.commit()
+
     trip1 = json.loads(request.form['trip1'])
     trip2 = json.loads(request.form['trip2'])
     trips = [trip1, trip2]
 
     for trip in trips:
         trip = Trip(city_id=trip['city_id'],
+                search_id=search.search_id,
                 avg_temp=trip['weather'], 
                 wow_factor=trip['wow'],
                 michelin_stars=trip['food'],
-                airfare=trip['airfare'],
-                user_id=session['username'])
+                airfare=trip['airfare'])
+        
         db.session.add(trip)
         session.setdefault('cities_searched', []).append(trip.city_id)
+     
     db.session.commit()
 
     return 'success'
@@ -273,12 +279,14 @@ def get_similar_trips():
     query = """SELECT DISTINCT trips.city_id, cities.name, cities.country, COUNT(trips.city_id)
             FROM trips
             JOIN cities on trips.city_id = cities.city_id
-            WHERE trips.city_id <> %s and user_id <> %s and user_id IN 
+            JOIN searches on trips.search_id = searches.search_id
+            WHERE trips.city_id <> %s and user_id IN 
             (SELECT DISTINCT user_id 
-            FROM trips
+            FROM searches
+            JOIN trips on searches.search_id = trips.search_id
             WHERE city_id =%s)
             GROUP BY 1,2,3
-            ORDER BY COUNT(trips.city_id) DESC""" %(city_id, user_id, city_id)
+            ORDER BY COUNT(trips.city_id) DESC""" %(city_id, city_id)
     
     
     results = call_sql(query)

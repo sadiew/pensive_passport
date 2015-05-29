@@ -317,3 +317,14 @@ restaurant_id	name	city_id	stars
 316	Frederic Simonin	1417	1
 317	Jacques Faussat - La Braisiere	1417	1
 318	Rech	1417	1
+319	Mathias Dahlgren-Matsalen	3218	2
+320	Frantzen	3218	2
+321	Oaxen Krog	3218	2
+322	Mathias Dahlgren-Matbaren	3218	1
+323	Gastrologik	3218	1
+324	Esperanto	3218	1
+325	Ekstedt	3218	1
+326	Operakallaren	3218	1
+327	Volt	3218	1
+328	Trattoria Battibecco	1977	1
+329	Da Vittorio	1976	3
