@@ -138,7 +138,6 @@ var cityInfo1 = {};
                     $('#flight-'+i).html("$" + result.airfare);
                     cityInfo.airfare = result.airfare;
                     apiResponses ++;
-                    console.log('Get flight:' + apiResponses);
                     if (apiResponses===4) {
                         $.post('/store-trips',
                             {'trip1':JSON.stringify(cities[0]), 'trip2':JSON.stringify(cities[1])}, function(result) {});
@@ -152,7 +151,6 @@ var cityInfo1 = {};
                     $('#weather-'+i).html(result.low + " - " + result.high + " F");
                     cityInfo.weather = (parseInt(result.low) + parseInt(result.high))/2;
                     apiResponses ++;
-                    console.log('Get weather:' + apiResponses);
                     if (apiResponses===4) {
                         $.post('/store-trips',
                             {'trip1':JSON.stringify(cities[0]), 'trip2':JSON.stringify(cities[1])}, function(result) {});

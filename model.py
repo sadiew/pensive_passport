@@ -1,12 +1,12 @@
 from flask_sqlalchemy import SQLAlchemy
 
-import json, requests, os, psycopg2, random
-from datetime import datetime, timedelta
+#import psycopg2
 import flickr
 
 DEFAULT_IMAGE_URL = 'http://www.posterparty.com/images/photography-paris-france-famous-sights-collage-poster-GB0404.jpg'
 
 db = SQLAlchemy()
+
 
 class City(db.Model):
     """Destination city."""
@@ -25,7 +25,7 @@ class City(db.Model):
     def get_photos(self):
         """Check to see if photo for city is cached in DB; if not, call Flickr API for new photo."""
 
-        if len(self.city_images) >= 3:           
+        if len(self.city_images) >= 3:
             self.photos = [image.image_url for image in self.city_images]
         else:
             flickr_images = flickr.get_flickr_photos(self)
@@ -66,11 +66,11 @@ class Airport(db.Model):
 
     city = db.relationship("City",
                            backref=db.backref("airports", order_by=airport_id))
-    
 
     def __repr__(self):
 
         return "<Airport airport_code=%s name=%s>" % (self.airport_code, self.name)
+
 
 class Restaurant(db.Model):
     """Michelin star restuarant"""
@@ -88,6 +88,7 @@ class Restaurant(db.Model):
     def __repr__(self):
 
         return "<Restaurant name=%s city_id=%s>" % (self.name, self.city_id)
+
 
 class Place(db.Model):
     __tablename__ = "places"
@@ -107,6 +108,7 @@ class Place(db.Model):
 
         return "<Place name=%s city_id=%s>" % (self.name, self.city_id)
 
+
 class Trip(db.Model):
     __tablename__ = "trips"
 
@@ -119,13 +121,14 @@ class Trip(db.Model):
     wow_factor = db.Column(db.Integer)
 
     city = db.relationship("City",
-                           backref=db.backref("trips", order_by=trip_id))
+                        backref=db.backref("trips", order_by=trip_id))
 
     search = db.relationship("Search",
-                           backref=db.backref("trips", order_by=search_id))
+                        backref=db.backref("trips", order_by=search_id))
 
     def __repr__(self):
         return "<Trip city_id=%s, airfare=%s>" % (self.city_id, self.airfare)
+
 
 class User(db.Model):
     """User of ratings website."""
@@ -143,6 +146,7 @@ class User(db.Model):
 
         return "<User user_id=%s email=%s>" % (self.user_id, self.email)
 
+
 class Search(db.Model):
 
     __tablename__ = "searches"
@@ -153,12 +157,14 @@ class Search(db.Model):
     user = db.relationship("User",
                            backref=db.backref("searches", order_by=user_id))
 
+
 class WikipediaPage(db.Model):
 
     __tablename__ = "wikipedia_pages"
 
     city_id = db.Column(db.Integer, db.ForeignKey('cities.city_id'), primary_key=True)
     content = db.Column(db.Text)
+
 
 class Similarity(db.Model):
 
@@ -169,11 +175,12 @@ class Similarity(db.Model):
     city_id_2 = db.Column(db.Integer, db.ForeignKey('cities.city_id'))
     similarity = db.Column(db.Float)
 
+
 def connect_to_db(app):
     """Connect the database to our Flask app."""
 
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/pensive_passport'
-    #app.config['SQLALCHEMY_ECHO'] = True
+    # app.config['SQLALCHEMY_ECHO'] = True
     db.app = app
     db.init_app(app)
 
