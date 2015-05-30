@@ -103,11 +103,13 @@ var geocoder;
                     var googlePlaceId = result[item]
                 
                     $('#' + type + '-info').append("<div class='" + type + "'>" +
-                                                    "<a data-target='#" + type + "-" + i + "' data-toggle='collapse' href='#' onclick='onPlaceClick(this, event)' data-google-place-id='" + googlePlaceId + "'>" + item + "</a>" +
+                                                    "<a data-target='#" + type + "-" + i + "' data-toggle='collapse'" +
+                                                    "href='#' onclick='onPlaceClick(this, event)' data-google-place-id='" 
+                                                    + googlePlaceId + "'>" + item + "</a>" +
                                                     "<div id='" + type + "-" + i + "' class='collapse'>" +
                                                       "<div class='description'>" +
                                                         "<div>Average Rating: <span class='rating'></span> </div>" + 
-                                                        "<a href='#' class='website'>Website</a>" +
+                                                        "<a href='#' target='_blank' class='website'>Website</a>" +
                                                       "</div>" +
                                                     "</div>" +
                                                   "</div>");

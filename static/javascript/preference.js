@@ -97,7 +97,7 @@ var cityInfo1 = {};
         else if (wowDelta < 0) {$("#wow-2").attr("style", "color:#66CDAA")}
 
         $("#pp-choice").html('Explore ' + winningCity.city);
-        $("#pp-choice-text").html("Pensive Passport's algorithm has selected: " + winningCity.city);
+        $("#pp-choice-text").html("Pensive Passport's algorithm has selected: <span class='tertiary-color'><strong>" + winningCity.city + "</strong></span>");
         $("#pp-choice").data("city", winningCity.city);
         $("#pp-choice").data("country", winningCity.country);
         $("#pp-choice").data("city_id", winningCity.city_id);
@@ -176,11 +176,9 @@ var cityInfo1 = {};
         }        
 
     function exploreCity(evt) {
-        var city = $(this).data("city");
-        var country = $(this).data("country");
         var city_id = $(this).data("city_id");
 
-        window.location = "http://localhost:5000/results?city=" + city + '&country=' + country + '&city_id=' + city_id;
+        window.location = "http://localhost:5000/results?city_id=" + city_id;
 
     }
 

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<h1 class="city-header"><strong>{{ city }}, {{country}}</strong></h1>
+<h1 class="city-header"><strong>{{ city.name }}, {{ city.country }}</strong></h1>
 
 <div class="row" style="margin:20px auto;">   
   <div id="map-canvas" class="rcorners" style="width:auto; height:200px"></div>
@@ -31,8 +31,8 @@
 </div>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
 <script>
-  var winningCity = '{{city}}' + ', ' + '{{country}}';
-  var cityId = '{{city_id}}'
+  var winningCity = '{{ city.name }}' + ', ' + '{{ city.country }}';
+  var cityId = '{{ city.city_id }}'
 </script>
 <script type="text/javascript" src="/static/javascript/results.js">
 </script>
