@@ -19,10 +19,12 @@
 	        <td>Cost of Living</td>
 	        <td class="data-element">{{city.col_index}}</td>
 	    </tr>
+	    {% if city.food[0] > 0 %}
 	    <tr>
 	        <td>Food</td>
 	        <td class="data-element">{{city.food[0]}} Michelin Restaurants ({{city.food[1]}} stars)</td>
-	    </tr>    
+	    </tr>
+	    {% endif %}    
 	    <tr>
 	        <td>Wow Factor</td>
 	        <td class="data-element">{{city.avg_wow}}</td>

@@ -97,7 +97,9 @@ var cityInfo1 = {};
         else if (wowDelta < 0) {$("#wow-2").attr("style", "color:#66CDAA")}
 
         $("#pp-choice").html('Explore ' + winningCity.city);
-        $("#pp-choice-text").html("Pensive Passport's algorithm has selected: <span class='tertiary-color'><strong>" + winningCity.city + "</strong></span>");
+        $("#pp-choice-text").html("Pensive Passport's algorithm has selected: " + 
+                                    "<span class='tertiary-color'>" + 
+                                    "<strong>" + winningCity.city + "</strong></span>");
         $("#pp-choice").data("city", winningCity.city);
         $("#pp-choice").data("country", winningCity.country);
         $("#pp-choice").data("city_id", winningCity.city_id);
@@ -126,34 +128,43 @@ var cityInfo1 = {};
                 cityInfo.food = parseInt(result.food.stars);
                 cityInfo.food = getNum(cityInfo.food);
                 cityInfo.costOfLiving = parseInt(result.costOfLiving);
-                $('#food-'+i).html(cityInfo.food + ' ' + "<img class='michelin-star' src='/static/images/michelinstar.jpg'>");
+                $('#food-'+i).html(cityInfo.food + ' ' + 
+                                    "<img class='michelin-star' src='/static/images/michelinstar.jpg'>");
                 $('#col-'+i).html(cityInfo.costOfLiving);
                 
                 }
             );
                         
             $.post("/get-flight" + i,
-                {depart_date: $("#depart-date").val(), return_date: $("#return-date").val(), origin: $("#departure-airport").val(), destination: $("#airport-"+i).val()},
+                {depart_date: $("#depart-date").val(), 
+                return_date: $("#return-date").val(), 
+                origin: $("#departure-airport").val(), 
+                destination: $("#airport-"+i).val()},
                 function (result) {
                     $('#flight-'+i).html("$" + result.airfare);
                     cityInfo.airfare = result.airfare;
                     apiResponses ++;
                     if (apiResponses===4) {
                         $.post('/store-trips',
-                            {'trip1':JSON.stringify(cities[0]), 'trip2':JSON.stringify(cities[1])}, function(result) {});
+                            {'trip1':JSON.stringify(cities[0]), 
+                            'trip2':JSON.stringify(cities[1])}, 
+                            function(result) {});
                         determineDestination(cities)};
                 }
             );
 
             $.post("/get-weather" + i,
-                {depart_date: $("#depart-date").val(), destination: $("#airport-"+i).val()},
+                {depart_date: $("#depart-date").val(), 
+                destination: $("#airport-"+i).val()},
                 function (result) {
                     $('#weather-'+i).html(result.low + " - " + result.high + " F");
                     cityInfo.weather = (parseInt(result.low) + parseInt(result.high))/2;
                     apiResponses ++;
                     if (apiResponses===4) {
                         $.post('/store-trips',
-                            {'trip1':JSON.stringify(cities[0]), 'trip2':JSON.stringify(cities[1])}, function(result) {});
+                            {'trip1':JSON.stringify(cities[0]),
+                            'trip2':JSON.stringify(cities[1])},
+                            function(result) {});
                         determineDestination(cities)};
                 }
             );
@@ -166,10 +177,12 @@ var cityInfo1 = {};
         
         determineDestination(cities);
         if (previousCity === winningCity.city) {
-            $("#pp-choice-text").html("After recalculation, Pensive Passport <strong>still</strong> chooses " + winningCity.city + "!");
+            $("#pp-choice-text").html("After recalculation, Pensive Passport " + 
+                                        "<strong>still</strong> chooses " + winningCity.city + "!");
         }
 
-        else {$("#pp-choice-text").html("After recalculation, Pensive Passport now selects <span style='color:red'>" + winningCity.city + "</span>!");
+        else {$("#pp-choice-text").html("After recalculation, Pensive Passport now selects " + 
+                                        "<span style='color:red'>" + winningCity.city + "</span>!");
         } 
         }        
 
