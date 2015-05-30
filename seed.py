@@ -53,7 +53,6 @@ def load_restaurants():
             db.session.add(restaurant)
         db.session.commit()
 
-
 if __name__ == "__main__":
     connect_to_db(app)
     load_cities()

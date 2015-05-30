@@ -25,18 +25,43 @@
 		  font-family: 'Nixie One', cursive;
 		  background-color:#212930;
 		}
+
+		#logo-styling {
+			width:auto; 
+			height:400px; 
+			margin: 0 auto; 
+			padding-top: 50px;
+		}
+
+		#explore-button {
+			width:310px; 
+			margin:10px;
+		}
+
+
 	</style>
   
 </head>
 
 <body>
 
-<div id="explore" style="text-align:center;">
-    <img src="/static/images/pp-logo.png" style="width:auto; height:400px; margin: 0 auto; padding-top: 50px;">
-    <form action='/search'>
-        <input type="submit" value="Explore" class="btn btn-default" style="width:310px; margin:10px;">
-    </form>
-</div>
+	<div class="container" style="margin:10px auto;">
+
+		  <!-- Show flashed messages -->
+		  {% with messages = get_flashed_messages() %}
+		      {% for message in messages %}
+		          <div class="alert alert-warning">{{ message }}</div>
+		      {% endfor %}
+		  {% endwith %}
+
+	</div>
+
+	<div id="explore" style="text-align:center;">
+	    <img src="/static/images/pp-logo.png" id="logo-styling">
+	    <form action='/search'>
+	        <input type="submit" value="Explore" class="btn btn-default" id="explore-button">
+	    </form>
+	</div>
 
 </body>
 </html>

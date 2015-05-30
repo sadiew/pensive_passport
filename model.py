@@ -153,8 +153,22 @@ class Search(db.Model):
     user = db.relationship("User",
                            backref=db.backref("searches", order_by=user_id))
 
+class WikipediaPage(db.Model):
 
-# Helper functions
+    __tablename__ = "wikipedia_pages"
+
+    city_id = db.Column(db.Integer, db.ForeignKey('cities.city_id'), primary_key=True)
+    content = db.Column(db.Text)
+
+class Similarity(db.Model):
+
+    __tablename__ = "similarities"
+
+    combo_id = db.Column(db.String(10), primary_key=True)
+    city_id_1 = db.Column(db.Integer, db.ForeignKey('cities.city_id'))
+    city_id_2 = db.Column(db.Integer, db.ForeignKey('cities.city_id'))
+    similarity = db.Column(db.Float)
+
 def connect_to_db(app):
     """Connect the database to our Flask app."""
 

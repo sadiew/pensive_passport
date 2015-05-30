@@ -41,7 +41,11 @@
 	                        Trip Search
 	                    </a>
 	                </li>
-	                <li><a href="/login">Log In</a></li>
+	                {% if 'username' in session %}
+	                	<li><a href="/logout">Log Out</a></li>
+	                {% else %}
+	                	<li><a href="/login">Log In</a></li>
+	                {% endif %}
 	            </ul>
 	        </div>
 

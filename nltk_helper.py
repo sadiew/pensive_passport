@@ -1,13 +1,18 @@
 import wikipedia
-from nltk import word_tokenize, pos_tag, FreqDist
 from nltk.tokenize import RegexpTokenizer
 from nltk.stem.porter import PorterStemmer
 from sklearn.feature_extraction.text import TfidfVectorizer
 
+from model import City, WikipediaPage, Similarity, connect_to_db, db
+from server import app
+import psycopg2
+
+connect_to_db(app)
+
 def create_stems(tokens):
 	stemmer = PorterStemmer()
 	stemmed_tokens = [stemmer.stem(token) for token in tokens]
-	
+
 	return stemmed_tokens
 
 def generate_stemmed_tokens(page_content):
@@ -26,13 +31,39 @@ def cosine_similarity(city1_content, city2_content):
 	tfidf = vectorizer.fit_transform([city1_content, city2_content])
 	return ((tfidf * tfidf.T).A)[0,1]
 
-cities = ['Paris', 'Rome', 'Stockholm', 'Copenhagen', 'London', 'Istanbul', 'Budapest', 'Florence']
-city_combos = []
-city_content = {city:wikipedia.page(city).content for city in cities}
 
-for i in range(len(cities)):
-	for j in range(i+1,len(cities)):
-		city_combos.append((cities[i], cities[j]))
+def add_wiki_pages_to_db(city_ids):
 
-cos_similarities = {combo[0]+'/'+combo[1]:cosine_similarity(city_content[combo[0]],city_content[combo[1]]) for combo in city_combos}
-print cos_similarities
+	cities = [City.query.get(city_id) for city_id in city_ids]
+
+	for city in cities:
+		content = wikipedia.page(city.name).content
+		wiki_page = WikipediaPage(city_id=city.city_id, content=content)
+		db.session.add(wiki_page)
+
+	db.session.commit()
+
+
+def add_similarities_to_db(city_ids):
+
+	combo_ids = ['%s-%s' %(city_ids[i], city_ids[j]) for i in range(len(city_ids)) 
+													 for j in range(i+1,len(city_ids))]
+	for combo_id in combo_ids:
+		id1, id2 = combo_id.split("-")
+
+		page1 = WikipediaPage.query.filter_by(city_id=id1).one()
+		page2 = WikipediaPage.query.filter_by(city_id=id2).one()
+
+		similarity_score = cosine_similarity(page1.content,page2.content)
+
+		similarity = Similarity(combo_id=combo_id, city_id_1=id1, city_id_2=id2, similarity=similarity_score)
+		db.session.add(similarity)
+
+	db.session.commit()
+
+city_ids = sorted([1417, 2012, 3218, 1195, 675, 3358, 1705, 3796])
+add_wiki_pages_to_db(city_ids)
+add_similarities_to_db(city_ids)
+
+
+

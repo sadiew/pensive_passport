@@ -18,7 +18,7 @@ app.jinja_env.undefined = StrictUndefined
 def index():
     """Show index page."""
 
-    return render_template("homepage.html")
+    return render_template("homepage.html", session=session)
 
 @app.route('/search')
 def search():
@@ -48,7 +48,8 @@ def gather_perferences():
                                 origin_city=origin_city, 
                                 city1=city1, 
                                 city2=city2,
-                                max_photos=max_photos)
+                                max_photos=max_photos, 
+                                session=session)
     except:
         flash("Please enter a valid choice from the dropdown menu.")
         return redirect('/')
@@ -63,7 +64,8 @@ def show_results():
     return render_template("results.html",
                             city=city,
                             country=country,
-                            city_id=city_id)
+                            city_id=city_id, 
+                            session=session)
 
 
 @app.route('/intl-city-list')
@@ -135,8 +137,8 @@ def get_first_flight():
     origin = request.form['origin']
     destination = request.form['destination']
 
-    airfare = process_flights(origin, destination, depart_date, return_date)
-    #airfare = {'airfare': 1000}
+    #airfare = process_flights(origin, destination, depart_date, return_date)
+    airfare = {'airfare': 1000}
     return jsonify(airfare)
 
 
@@ -149,8 +151,8 @@ def get_second_flight():
     origin = request.form['origin']
     destination = request.form['destination']
 
-    airfare = process_flights(origin, destination, depart_date, return_date)
-    #airfare = {'airfare': 1000}
+    #airfare = process_flights(origin, destination, depart_date, return_date)
+    airfare = {'airfare': 1500}
     return jsonify(airfare)
 
 
@@ -210,6 +212,8 @@ def store_trips():
     trip2 = json.loads(request.form['trip2'])
     trips = [trip1, trip2]
 
+    print search.search_id
+
     for trip in trips:
         trip = Trip(city_id=trip['city_id'],
                 search_id=search.search_id,
@@ -217,9 +221,9 @@ def store_trips():
                 wow_factor=trip['wow'],
                 michelin_stars=trip['food'],
                 airfare=trip['airfare'])
+        print search.search_id
         
         db.session.add(trip)
-        session.setdefault('cities_searched', []).append(trip.city_id)
      
     db.session.commit()
 
@@ -229,7 +233,15 @@ def store_trips():
 def login():
     """Login form"""
 
-    return render_template('login_form.html')
+    return render_template('login_form.html', session=session)
+
+@app.route('/logout')
+def logout():
+    """Logged out - return to homepage"""
+    del session['username']
+    flash("You have been successfully logged out. Please return soon!")
+
+    return redirect('/')
 
 
 @app.route('/login-submission', methods=['POST'])
@@ -244,10 +256,10 @@ def handle_login():
         if user and (user.password == request.form['password']):
             session['username'] = user.user_id
             flash("Login successful!")
-            return redirect('/')
+            return redirect('/search')
         else:
             flash("Invalid login.")
-            return render_template('login_form.html')
+            return redirect("/login")
 
 
 @app.route('/registration-submission', methods=['POST'])
@@ -268,10 +280,10 @@ def handle_registration():
         db.session.commit()
 
         flash("Thank you for registering!")
-        return redirect('/')
+        return redirect('/search')
     else:
         flash("Passwords do not match, try again.")
-        return render_template('register.html')
+        return render_template('register.html', session=session)
 
 
 @app.route('/get-similar-trips')
@@ -279,27 +291,62 @@ def get_similar_trips():
     """Searches the DB for destinations searched by others who searched the same original cities."""
     
     city_id = request.args['city_id']
-    user_id = session['username']
+
+    if 'username' in session:
+        user_id = session['username']
+    else:
+        user_id = 0
 
     query = """SELECT DISTINCT trips.city_id, cities.name, cities.country, COUNT(trips.city_id)
             FROM trips
             JOIN cities on trips.city_id = cities.city_id
             JOIN searches on trips.search_id = searches.search_id
-            WHERE trips.city_id <> %s and user_id IN 
-            (SELECT DISTINCT user_id 
-            FROM searches
-            JOIN trips on searches.search_id = trips.search_id
-            WHERE city_id =%s)
+            WHERE user_id IN 
+                (SELECT DISTINCT user_id 
+                FROM searches
+                JOIN trips on searches.search_id = trips.search_id
+                WHERE city_id =%s) 
+            AND trips.city_id NOT IN 
+                (SELECT DISTINCT city_id 
+                FROM trips 
+                JOIN searches on trips.search_id=searches.search_id
+                WHERE searches.user_id=%s)
             GROUP BY 1,2,3
-            ORDER BY COUNT(trips.city_id) DESC""" %(city_id, city_id)
-    
-    
+            ORDER BY COUNT(trips.city_id) DESC
+            LIMIT 4""" %(city_id, user_id)
+
+    print query
+        
     results = call_sql(query)
-    top_four = results[:4]
 
-    similar_cities = {city[0]:'%s, %s' %(city[1], city[2]) for city in top_four}
+    user_similar_cities = {result[0]:'%s, %s' %(result[1], result[2]) for result in results}
 
-    return jsonify(similar_cities)
+    return jsonify(user_similar_cities)
+
+@app.route('/get-nltk-trips')
+def get_nltk_trips():
+
+    query="""SELECT city_id_1, city_id_2 
+             FROM similarities 
+             WHERE city_id_1=%s OR city_id_2=%s 
+             ORDER BY similarity 
+             DESC LIMIT 4;""" %(city_id, city_id)
+
+    results = call_sql(query)
+    if results:
+        similar_cities = []
+        for result in results:
+            if result[0]==city_id:
+                city = City.query.get(result[1])
+                similar_cities.append(city)
+            else:
+                city = City.query.get(result[0])
+                similar_cities.append(city)
+        
+        nltk_similar_cities = {city.city_id:'%s, %s' %(city.name, city.country) for city in similar_cities}
+
+    return jsonify(nltk_similar_cities)
+
 
 @app.route('/cities/<int:city_id>')
 def show_city(city_id):
@@ -318,7 +365,7 @@ def show_city(city_id):
     city.avg_wow = round(avg_wow[0],1)
     city.avg_airfare = int(avg_airfare[0])
 
-    return render_template('city.html', city=city)
+    return render_template('city.html', city=city, session=session)
     
 
 #helper functions
@@ -413,7 +460,8 @@ def add_places(city_id, city_center, place_type):
     return ten_closest_places
 
 def distance_from_city_center(city_center, place):
-    """Calculate the distance of a place from its respective city center."""
+    """Calculate the distance of a place from its respective city center given as a tuple
+    of lat at index 0 and lon at index 1."""
 
     city_lat = float(city_center[0])
     city_lon = float(city_center[1])
