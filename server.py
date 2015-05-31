@@ -2,8 +2,8 @@ from model import City, Airport, Restaurant, Place, Trip, User, Search, connect_
 from flask import Flask, request, render_template, redirect, jsonify, session, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
-from google_places import get_places
 from google_flights import process_flights
+from new_places import get_places
 from weather import process_weather
 import json
 import psycopg2
@@ -270,8 +270,6 @@ def get_restaurants():
     city_id = int(request.form['city_id'])
     city_center = request.form['city_lat_lon']
 
-    #restaurants = get_places(city_id, city_center, place_type='restaurant')
-
     restaurants = add_places(city_id, city_center, place_type='restaurant')
 
     return jsonify(restaurants)
@@ -283,6 +281,7 @@ def get_museums():
 
     city_id = int(request.form['city_id'])
     city_center = request.form['city_lat_lon']
+
 
     museums = add_places(city_id, city_center, place_type='museum')
     return jsonify(museums)
@@ -408,25 +407,12 @@ def add_places(city_id, city_center, place_type):
         ten_closest = select_ten_closest(places, city_center)
 
     else:
-        city_object = City.query.get(city_id)
-        city, country = city_object.name, city_object.country
-        places = get_places(city, country, place_type)
-
-        for place in places:
-            place = Place(google_place_id=places[place]['google_place_id'],
-                          city_id=city_id,
-                          name=place,
-                          lat=places[place]['lat'],
-                          lon=places[place]['lng'],
-                          place_type=place_type)
-            db.session.add(place)
-        db.session.commit()
-
-        places = Place.query.filter_by(city_id=city_id, 
-                                       place_type=place_type).all()
+        places = get_places(city_id, city_center, place_type)
         ten_closest = select_ten_closest(places, city_center)
 
     return ten_closest
+
+
 
 
 def distance_from_city_center(city_center, place):

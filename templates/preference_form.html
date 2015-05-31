@@ -78,12 +78,13 @@
     <div class="row" id="city-specific-pref">
         <div class="col-md-5 rcorners">
             <div class="form-group inner-div">
+                <label class="secondary-color">Select a {{city1.name}} Airport:
                     <select id="airport-1" name="airport-1" class="form-control">
-                        <option disabled selected>Select a {{city1.name}} Airport</option>
                         {% for airport in city1.airports %}
                             <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
                         {% endfor %}
-                    </select>                
+                    </select>
+                </label>                
             </div>
             <div class="form-group wow-slider inner-div">
                 <label class="secondary-color">Choose your <span class="tertiary-color">WOW!</span> factor:</label>
@@ -93,12 +94,13 @@
         <div class="col-md-2"></div>
         <div class="col-md-5 rcorners">
             <div class="form-group inner-div">
+                <label class="secondary-color">Select a {{city2.name}} Airport:
                     <select id="airport-2" name="airport-2" class="form-control">
-                        <option disabled selected>Select a {{city2.name}} Airport</option>
                         {% for airport in city2.airports %}
                             <option value="{{airport.airport_code}}">{{airport.name}} - {{airport.airport_code}}</option>
                         {% endfor %}
-                    </select>                
+                    </select> 
+                </label>               
             </div>
             <div class="form-group wow-slider inner-div">
                 <label class="secondary-color">Choose your <span class="tertiary-color">WOW!</span> factor:</label> 
