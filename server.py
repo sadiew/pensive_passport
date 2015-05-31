@@ -35,13 +35,16 @@ def gather_perferences():
     """Gather user preferences."""
 
     try:
-        departure_city, departure_country = request.args.get('departure-city').split(', ')
-        dest_1_city, dest_1_country = request.args.get('destination-1').split(', ')
-        dest_2_city, dest_2_country = request.args.get('destination-2').split(', ')
+        departure_city, departure_country = request.args['depart-city'].split(', ')
+        dest_1_city, dest_1_country = request.args['dest-1'].split(', ')
+        dest_2_city, dest_2_country = request.args['dest-2'].split(', ')
 
-        origin_city = City.query.filter_by(name=departure_city, state=departure_country).first()
-        city1 = City.query.filter_by(name=dest_1_city, country=dest_1_country).first()
-        city2 = City.query.filter_by(name=dest_2_city, country=dest_2_country).first()
+        origin_city = City.query.filter_by(name=departure_city,
+                                           state=departure_country).first()
+        city1 = City.query.filter_by(name=dest_1_city,
+                                     country=dest_1_country).first()
+        city2 = City.query.filter_by(name=dest_2_city,
+                                     country=dest_2_country).first()
 
         city1.get_photos()
         city2.get_photos()
@@ -64,60 +67,105 @@ def show_results():
 
     return render_template("results.html", city=city, session=session)
 
+@app.route('/login')
+def login():
+    """Login form"""
+
+    return render_template('login_form.html', session=session)
+
+
+@app.route('/logout')
+def logout():
+    """Log user out - return to homepage"""
+
+    del session['username']
+    flash("You have been successfully logged out. Please return soon!")
+
+    return redirect('/')
+
+
+@app.route('/login-submission', methods=['POST'])
+def handle_login():
+    """Handles the login form and adds the user to the session."""
+
+    user = User.query.filter_by(email=request.form['username']).first()
+
+    if not user:
+        return render_template('register.html')
+    else:
+        if user and (user.password == request.form['password']):
+            session['username'] = user.user_id
+            flash("Login successful!")
+            return redirect('/search')
+        else:
+            flash("Invalid login.")
+            return redirect("/login")
+
+
+@app.route('/registration-submission', methods=['POST'])
+def handle_registration():
+    """Handles the registration form and adds the user to DB and session."""
+
+    username = request.form['username']
+    password = request.form['password']
+    reenter_password = request.form['reenter_password']
+    age = request.form['age']
+    zipcode = request.form['zipcode']
+
+    if password == reenter_password:
+        user = User(email=username, password=password, age=age, zipcode=zipcode)
+        session['username'] = user.user_id
+
+        db.session.add(user)
+        db.session.commit()
+
+        flash("Thank you for registering!")
+        return redirect('/search')
+    else:
+        flash("Passwords do not match, try again.")
+        return render_template('register.html', session=session)
+
+
+@app.route('/cities/<int:city_id>')
+def show_city(city_id):
+    """Grab data to present a quick city snapshot, including Michelin star data,
+    average wow score, and average airfare."""
+
+    city = City.query.get(city_id)
+    food = db.session.query(db.func.count(Restaurant.restaurant_id),
+                            db.func.sum(Restaurant.stars)).filter_by(city_id=city.city_id).one()
+
+    avg_wow = db.session.query(db.func.avg(Trip.wow_factor)).filter_by(city_id=city.city_id).one()
+    avg_airfare = db.session.query(db.func.avg(Trip.airfare)).filter_by(city_id=city.city_id).one()
+
+    city.food = [food[0], food[1]]
+    city.avg_wow = round(avg_wow[0], 1)
+    city.avg_airfare = int(avg_airfare[0])
+
+    return render_template('city.html', city=city, session=session)
+
 
 @app.route('/intl-city-list')
 def get_cities():
     """Get list of cities for typeahead pre-population."""
 
-    cities = db.session.query(City.name, City.country).filter(City.country != "United States").all()
-    cities_list = [city + ', ' + country for city, country in cities]
+    intl_cities = db.session.query(City.name,
+                                   City.country).filter(City.country != "United States").all()
+    intl_cities_list = [city + ', ' + country for city, country in intl_cities]
 
-    return jsonify({'cities': cities_list})
+    return jsonify({'cities': intl_cities_list})
 
 
 @app.route('/us-city-list')
 def get_us_cities():
     """Get list of cities for typeahead pre-population."""
 
-    us_cities = db.session.query(City.name, City.state).filter(City.country == "United States", City.state != "").all()
+    us_cities = db.session.query(City.name, 
+                                 City.state).filter(City.country == "United States", 
+                                                    City.state != "").all()
     us_cities_list = [city + ', ' + state for city, state in us_cities]
 
     return jsonify({'us_cities': us_cities_list})
-
-
-@app.route('/get-restaurants', methods=['POST'])
-def get_restaurants():
-    """Grab restaurants from DB if cached, otherwise call Google Places API."""
-
-    city_id = int(request.form.get('city_id'))
-    city_center = tuple(request.form.get('city_lat_lon').split(","))
-
-    restaurants = add_places(city_id, city_center, place_type='restaurant')
-
-    return jsonify(restaurants)
-
-
-@app.route('/get-museums', methods=['POST'])
-def get_museums():
-    """Grab museums from DB if cached, otherwise call Google Places API."""
-
-    city_id = int(request.form.get('city_id'))
-    city_center = tuple(request.form.get('city_lat_lon').split(","))
-
-    museums = add_places(city_id, city_center, place_type='museum')
-    return jsonify(museums)
-
-
-@app.route('/get-parks', methods=['POST'])
-def get_parks():
-    """Grab parks from DB if cached, otherwise call Google Places API."""
-
-    city_id = int(request.form.get('city_id'))
-    city_center = tuple(request.form.get('city_lat_lon').split(","))
-
-    parks = add_places(city_id, city_center, place_type='park')
-
-    return jsonify(parks)
 
 
 @app.route('/get-flight1', methods=['POST'])
@@ -216,65 +264,39 @@ def store_trips():
 
     return 'success'
 
+@app.route('/get-restaurants', methods=['POST'])
+def get_restaurants():
+    """Grab restaurants from DB if cached, otherwise call Google Places API."""
 
-@app.route('/login')
-def login():
-    """Login form"""
+    city_id = int(request.form['city_id'])
+    city_center = tuple(request.form['city_lat_lon'].split(","))
 
-    return render_template('login_form.html', session=session)
+    restaurants = add_places(city_id, city_center, place_type='restaurant')
 
-
-@app.route('/logout')
-def logout():
-    """Log user out - return to homepage"""
-
-    del session['username']
-    flash("You have been successfully logged out. Please return soon!")
-
-    return redirect('/')
+    return jsonify(restaurants)
 
 
-@app.route('/login-submission', methods=['POST'])
-def handle_login():
-    """Handles the login form and adds the user to the session."""
+@app.route('/get-museums', methods=['POST'])
+def get_museums():
+    """Grab museums from DB if cached, otherwise call Google Places API."""
 
-    user = User.query.filter_by(email=request.form['username']).first()
+    city_id = int(request.form['city_id'])
+    city_center = tuple(request.form['city_lat_lon'].split(","))
 
-    if not user:
-        return render_template('register.html')
-    else:
-        if user and (user.password == request.form['password']):
-            session['username'] = user.user_id
-            flash("Login successful!")
-            return redirect('/search')
-        else:
-            flash("Invalid login.")
-            return redirect("/login")
+    museums = add_places(city_id, city_center, place_type='museum')
+    return jsonify(museums)
 
 
-@app.route('/registration-submission', methods=['POST'])
-def handle_registration():
-    """Handles the registration form and adds the user to DB and session."""
+@app.route('/get-parks', methods=['POST'])
+def get_parks():
+    """Grab parks from DB if cached, otherwise call Google Places API."""
 
-    username = request.form['username']
-    password = request.form['password']
-    reenter_password = request.form['reenter_password']
-    age = request.form['age']
-    zipcode = request.form['zipcode']
+    city_id = int(request.form['city_id'])
+    city_center = tuple(request.form['city_lat_lon'].split(","))
 
-    if password == reenter_password:
-        user = User(email=username, password=password, age=age, zipcode=zipcode)
-        session['username'] = user.user_id
+    parks = add_places(city_id, city_center, place_type='park')
 
-        db.session.add(user)
-        db.session.commit()
-
-        flash("Thank you for registering!")
-        return redirect('/search')
-    else:
-        flash("Passwords do not match, try again.")
-        return render_template('register.html', session=session)
-
+    return jsonify(parks)
 
 @app.route('/get-similar-trips')
 def get_similar_trips():
@@ -334,25 +356,7 @@ def get_nltk_trips():
         nltk_similar_cities = {city.city_id: '%s, %s' % (city.name, city.country) for city in similar_cities}
 
     return jsonify(nltk_similar_cities)
-
-
-@app.route('/cities/<int:city_id>')
-def show_city(city_id):
-    """Grab data to present a quick city snapshot, including Michelin star data,
-    average wow score, and average airfare."""
-
-    city = City.query.get(city_id)
-    food = db.session.query(db.func.count(Restaurant.restaurant_id),
-                            db.func.sum(Restaurant.stars)).filter_by(city_id=city.city_id).one()
-
-    avg_wow = db.session.query(db.func.avg(Trip.wow_factor)).filter_by(city_id=city.city_id).one()
-    avg_airfare = db.session.query(db.func.avg(Trip.airfare)).filter_by(city_id=city.city_id).one()
-
-    city.food = [food[0], food[1]]
-    city.avg_wow = round(avg_wow[0], 1)
-    city.avg_airfare = int(avg_airfare[0])
-
-    return render_template('city.html', city=city, session=session)
+    
 
 # helper functions
 
@@ -425,7 +429,8 @@ def add_places(city_id, city_center, place_type):
     Places API to grab 20 most prominent places, and then of those, select 5 closest
     to city center."""
 
-    places = Place.query.filter_by(city_id=city_id, place_type=place_type).all()
+    places = Place.query.filter_by(city_id=city_id, 
+                                   place_type=place_type).all()
 
     if places:
         ten_closest_places = select_ten_closest_prominent(places, city_center)
@@ -445,7 +450,8 @@ def add_places(city_id, city_center, place_type):
             db.session.add(place)
         db.session.commit()
 
-        places = Place.query.filter_by(city_id=city_id, place_type=place_type).all()
+        places = Place.query.filter_by(city_id=city_id, 
+                                       place_type=place_type).all()
         ten_closest_places = select_ten_closest_prominent(places, city_center)
 
     return ten_closest_places

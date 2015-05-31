@@ -27,8 +27,10 @@ var geocoder;
       map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     }
 
-    function getMap() {
+    function getMapAndPlaces() {
+
       initialize(winningCity);
+            $('#loading').hide();
     }
 
     function onPlaceClick(place, evt) {
@@ -63,9 +65,11 @@ var geocoder;
         var placeRating = placeObject.rating || 'Unrated';
 
         if (placeWebsite) {
-          var website = placeWebsite}
+          var website = placeWebsite
+        }
         else {
-          var website = placeUrl}
+          var website = placeUrl
+        }
 
         var $description = $(place).next();
         console.log($description); 
@@ -122,4 +126,4 @@ var geocoder;
 
     }
 
-    google.maps.event.addDomListener(window, 'load', getMap);
+    google.maps.event.addDomListener(window, 'load', getMapAndPlaces);
