@@ -2,10 +2,9 @@ from model import City, Airport, Restaurant, Place, Trip, User, Search, connect_
 from flask import Flask, request, render_template, redirect, jsonify, session, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
-from datetime import datetime, timedelta
 from google_places import get_places
-from google_flights import get_flights
-from weather import get_weather
+from google_flights import process_flights
+from weather import process_weather
 import json
 import psycopg2
 
@@ -269,7 +268,9 @@ def get_restaurants():
     """Grab restaurants from DB if cached, otherwise call Google Places API."""
 
     city_id = int(request.form['city_id'])
-    city_center = tuple(request.form['city_lat_lon'].split(","))
+    city_center = request.form['city_lat_lon']
+
+    #restaurants = get_places(city_id, city_center, place_type='restaurant')
 
     restaurants = add_places(city_id, city_center, place_type='restaurant')
 
@@ -281,7 +282,7 @@ def get_museums():
     """Grab museums from DB if cached, otherwise call Google Places API."""
 
     city_id = int(request.form['city_id'])
-    city_center = tuple(request.form['city_lat_lon'].split(","))
+    city_center = request.form['city_lat_lon']
 
     museums = add_places(city_id, city_center, place_type='museum')
     return jsonify(museums)
@@ -292,7 +293,7 @@ def get_parks():
     """Grab parks from DB if cached, otherwise call Google Places API."""
 
     city_id = int(request.form['city_id'])
-    city_center = tuple(request.form['city_lat_lon'].split(","))
+    city_center = request.form['city_lat_lon']
 
     parks = add_places(city_id, city_center, place_type='park')
 
@@ -356,38 +357,9 @@ def get_nltk_trips():
         nltk_similar_cities = {city.city_id: '%s, %s' % (city.name, city.country) for city in similar_cities}
 
     return jsonify(nltk_similar_cities)
-    
+
 
 # helper functions
-
-
-def process_flights(origin, destination, depart_date, return_date):
-    """Attempt to call Google flights API, but return default values
-    if unavailable."""
-
-    try:
-        airfare = get_flights(origin, destination, depart_date, return_date)
-    except:
-        flash("Flight info unavailable. Default values assigned.")
-        airfare = {'airfare': 1000}
-
-    return airfare
-
-
-def process_weather(depart_date, destination):
-    """Attempt to call World Weather Online API,but return default
-    values if unavailable."""
-
-    date_last_year = datetime.strftime(datetime.strptime(depart_date, '%Y-%m-%d') - timedelta(days=365), '%Y-%m-%d')
-    airport = Airport.query.filter_by(airport_code=destination).first()
-    latitude, longitude = airport.latitude, airport.longitude
-
-    try:
-        weather = get_weather(date_last_year, latitude, longitude)
-    except:
-        flash("Weather info unavailable. Default values assinged.")
-        weather = {'high': 80, 'low': 50}
-    return weather
 
 
 def fetch_city_data(airport_code):
@@ -433,7 +405,7 @@ def add_places(city_id, city_center, place_type):
                                    place_type=place_type).all()
 
     if places:
-        ten_closest_places = select_ten_closest_prominent(places, city_center)
+        ten_closest = select_ten_closest(places, city_center)
 
     else:
         city_object = City.query.get(city_id)
@@ -452,33 +424,34 @@ def add_places(city_id, city_center, place_type):
 
         places = Place.query.filter_by(city_id=city_id, 
                                        place_type=place_type).all()
-        ten_closest_places = select_ten_closest_prominent(places, city_center)
+        ten_closest = select_ten_closest(places, city_center)
 
-    return ten_closest_places
+    return ten_closest
 
 
 def distance_from_city_center(city_center, place):
-    """Calculate the distance of a place from its respective city center given as a tuple
+    """Calculate the distance of a place from its respective city center, given as a tuple
     of lat at index 0 and lon at index 1."""
 
+    city_center = tuple(city_center.split(","))
     city_lat = float(city_center[0])
     city_lon = float(city_center[1])
 
-    distance_from_center = abs(place.lat-city_lat) + abs(place.lon-city_lon)
+    distance = abs(place.lat-city_lat) + abs(place.lon-city_lon)
 
-    return round(distance_from_center, 3)
+    return round(distance, 3)
 
 
-def select_ten_closest_prominent(places, city_center):
-    """Calculate the distance of each place from city center, then rank in ascending
-    order by distance and take the top 5 with shortest distance."""
+def select_ten_closest(places, city_center):
+    """Rank places in ascending order by distance and take the
+    10 with shortest distance."""
 
-    distance_from_center = {place.name: distance_from_city_center(city_center, place) for place in places}
-    closest_places = sorted(distance_from_center.items(), key=lambda x: x[1])
+    distance = {place.name: distance_from_city_center(city_center, place) for place in places}
+    closest_places = sorted(distance.items(), key=lambda x: x[1])
     closest_places_list = [place[0] for place in closest_places]
 
-    ten_closest_places = {place.name: place.google_place_id for place in places if place.name in closest_places_list[:10]}
-    return ten_closest_places
+    ten_closest = {place.name: place.google_place_id for place in places if place.name in closest_places_list[:10]}
+    return ten_closest
 
 
 if __name__ == "__main__":

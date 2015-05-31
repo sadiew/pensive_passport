@@ -3,7 +3,7 @@ import requests
 import os
 
 
-def get_flights(origin, destination, depart_date, return_date):
+def call_flights_api(origin, destination, depart_date, return_date):
     api_key = os.environ['GOOGLE_KEY']
     url = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=" + api_key
     headers = {'content-type': 'application/json'}
@@ -43,3 +43,14 @@ def get_flights(origin, destination, depart_date, return_date):
     total_fare = round(float(raw_fare), 0)
 
     return {'airfare': total_fare}
+
+def process_flights(origin, destination, depart_date, return_date):
+    """Attempt to call Google flights API, but return default values
+    if unavailable."""
+
+    try:
+        airfare = call_flights_api(origin, destination, depart_date, return_date)
+    except:
+        airfare = {'airfare': 1241}
+
+    return airfare
