@@ -157,7 +157,7 @@ def get_cities():
                                    City.country).filter(City.country != "United States").all()
     intl_cities_list = [city + ', ' + country for city, country in intl_cities]
 
-    return jsonify({'cities': intl_cities_list})
+    return jsonify({'intlCities': intl_cities_list})
 
 
 @app.route('/us-city-list')
@@ -169,7 +169,7 @@ def get_us_cities():
                                                     City.state != "").all()
     us_cities_list = [city + ', ' + state for city, state in us_cities]
 
-    return jsonify({'us_cities': us_cities_list})
+    return jsonify({'usCities': us_cities_list})
 
 
 @app.route('/get-flight1', methods=['POST'])
@@ -259,7 +259,7 @@ def store_trips():
     trips = [trip1, trip2]
 
     for trip in trips:
-        trip = Trip(city_id=trip['city_id'],
+        trip = Trip(city_id=trip['cityId'],
                     search_id=search.search_id,
                     avg_temp=trip['weather'],
                     wow_factor=trip['wow'],
@@ -322,6 +322,9 @@ def get_similar_trips():
     
     if num_matches == 4:
         return jsonify(user_similar_cities)
+    elif num_matches > 0:
+        nltk_similar_cities = get_nl_similar_trips(city_id, 4 - num_matches)
+        return jsonify(user_similar_cities.update(nltk_similar_cities))
     else:
         nltk_similar_cities = get_nl_similar_trips(city_id, 4 - num_matches)
         return jsonify(nltk_similar_cities)
@@ -337,7 +340,7 @@ def fetch_city_data(airport_code):
 
     food = db.session.query(db.func.sum(Restaurant.stars)).filter_by(city_id=airport.city.city_id).one()
 
-    city_stats = {'city_id': airport.city.city_id,
+    city_stats = {'cityId': airport.city.city_id,
                   'city': airport.city.name,
                   'country': airport.city.country,
                   'costOfLiving': airport.city.col_index,

@@ -102,7 +102,7 @@ var cityInfo1 = {};
                                     "<strong>" + winningCity.city + "</strong></span>");
         $("#pp-choice").data("city", winningCity.city);
         $("#pp-choice").data("country", winningCity.country);
-        $("#pp-choice").data("city_id", winningCity.city_id);
+        $("#pp-choice").data("cityId", winningCity.cityId);
         $("#algo-result").show();
 
     }          
@@ -123,7 +123,7 @@ var cityInfo1 = {};
             var url = '/get-city' + i + '-data?airport-'+i+'='+ $("#airport-"+i).val();
             $.get(url, function (result) {                
                 cityInfo.city = result.city;
-                cityInfo.city_id = result.city_id;
+                cityInfo.cityId = result.cityId;
                 cityInfo.country = result.country;
                 cityInfo.food = parseInt(result.food);
                 cityInfo.food = getNum(cityInfo.food);
@@ -187,9 +187,9 @@ var cityInfo1 = {};
         }        
 
     function exploreCity(evt) {
-        var city_id = $(this).data("city_id");
+        var cityId = $(this).data("cityId");
 
-        window.location = "http://localhost:5000/results?city_id=" + city_id;
+        window.location = "http://localhost:5000/results?city_id=" + cityId;
 
     }
 
