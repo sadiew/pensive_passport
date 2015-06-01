@@ -100,7 +100,7 @@ def handle_login():
         if user and (user.password == request.form['password']):
             session['username'] = user.user_id
             flash("Login successful!")
-            return redirect('/search')
+            return redirect('/user/' + str(user.user_id))
         else:
             flash("Invalid login.")
             return redirect("/login")
