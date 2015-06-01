@@ -92,7 +92,7 @@ var geocoder;
                 $('#similar-trips').append("<h4 class='secondary-color align-center'>Featured Recommendations</h4>"); 
                 for (item in result) {
                     $('#similar-trips').append("<div class='col-md-3 align-center'>" + 
-                                                  "<a href='/cities/" + item + "'>" + result[item] + "</a>"+
+                                                  "<a href='/city/" + item + "'>" + result[item] + "</a>"+
                                                   "</div>");
                 };
             }

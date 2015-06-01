@@ -46,7 +46,7 @@ class CityImage(db.Model):
 
     image_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     city_id = db.Column(db.Integer, db.ForeignKey('cities.city_id'))
-    image_url = db.Column(db.Text)
+    image_url = db.Column(db.Text, unique=True)
 
     city = db.relationship("City",
                            backref=db.backref("city_images", order_by=image_id))

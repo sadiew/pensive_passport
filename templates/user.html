@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<h2 class="align-left primary-color">Previous Searches</h2>
+<div class="row">
+	<ol>
+		{% for search in searches %}
+			<li>{{search[0]}} vs. {{search[1]}}</li>
+		{% endfor %}
+	</ol>
+	
+</div>
+<div class="align-left">
+	<button id="new-search" class="btn btn-default">New Search</button>
+</div>
+<script type="text/javascript">
+	function reSearch(evt) {
+
+	    window.location = "http://localhost:5000/search";
+
+	}
+	$("#new-search").on("click", reSearch);
+</script>
+
+
+{% endblock %}

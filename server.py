@@ -130,8 +130,8 @@ def handle_registration():
         return render_template('register.html', session=session)
 
 
-@app.route('/cities/<int:city_id>')
-def show_city(city_id):
+@app.route('/city/<int:city_id>')
+def show_city_details(city_id):
     """Grab data to present a quick city snapshot, including Michelin star data,
     average wow score, and average airfare."""
 
@@ -147,6 +147,20 @@ def show_city(city_id):
     city.avg_airfare = int(avg_airfare[0])
 
     return render_template('city.html', city=city, session=session)
+
+@app.route('/user/<int:user_id>')
+def show_user_details(user_id):
+
+    user = User.query.get(user_id)
+
+    searches = [sorted([search.trips[0].city.name, search.trips[1].city.name]) for search in user.searches]
+    unique_searches = []
+
+    for search in searches:
+        if search not in unique_searches:
+            unique_searches.append(search)
+
+    return render_template("user.html", searches=unique_searches, session=session)
 
 
 @app.route('/intl-city-list')
