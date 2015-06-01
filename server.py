@@ -59,7 +59,7 @@ def gather_perferences():
                                 session=session)
     except:
         flash("Please enter a valid choice from the dropdown menu.")
-        return redirect('/')
+        return redirect('/search')
 
 
 @app.route('/results')
@@ -195,8 +195,8 @@ def get_first_flight():
     origin = request.form['origin']
     destination = request.form['destination']
 
-    airfare = process_flights(origin, destination, depart_date, return_date)
-    #airfare = {'airfare': 1272}
+    #airfare = process_flights(origin, destination, depart_date, return_date)
+    airfare = {'airfare': 1272}
     return jsonify(airfare)
 
 
@@ -209,8 +209,8 @@ def get_second_flight():
     origin = request.form['origin']
     destination = request.form['destination']
 
-    airfare = process_flights(origin, destination, depart_date, return_date)
-    #airfare = {'airfare': 1753}
+    #airfare = process_flights(origin, destination, depart_date, return_date)
+    airfare = {'airfare': 1753}
     return jsonify(airfare)
 
 

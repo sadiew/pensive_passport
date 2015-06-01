@@ -163,7 +163,7 @@
                 </select>
             </label>
             </div>
-            <div id="temp-selectors" style="margin-top: 50px;">
+            <div id="temp-selectors" class=" form-group">
                 <label class="secondary-color">Ideal Temperature
                 <label class="radio-inline weather-radio"><input type="radio" name="ideal-temp" value="50" required><img class="weather-radio" src="/static/images/snowflake.png"></label>
                 <label class="radio-inline weather-radio"><input type="radio" name="ideal-temp" value="70" required><img class="weather-radio" src="/static/images/sun_cloud.png"></label>
@@ -188,6 +188,7 @@
             <input type="submit" class="btn btn-default" id="gather-data-button" value="Grab data!" style="display:block; float:right;">
         </div>
         </div>
+        <div class="loader" style="display: none"></div>
         <div class="row rcorners" id="component-weights">
             <div id="algo-result" style="font-size:24px">
                 <div><span id="pp-choice-text"></span><span style="margin:0 10px;"><button id="pp-choice" class="btn btn-default">Explore </button></span></div>

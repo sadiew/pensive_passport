@@ -61,7 +61,7 @@ def add_similarities_to_db(city_ids):
 	db.session.commit()
 
 # connect_to_db(app)
-# city_ids = sorted([1417, 2012, 3218, 1195, 675, 3358, 1705])
+# city_ids = sorted([1417, 2012, 3218, 1195, 3358, 1705])
 # add_wiki_pages_to_db(city_ids)
 # add_similarities_to_db(city_ids)
 

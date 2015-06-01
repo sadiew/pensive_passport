@@ -9,6 +9,8 @@ var cityInfo1 = {};
         $('#final-decision-form').hide();
         $("#algo-result").hide();
         $("#component-weights").hide();
+        $(".loader").hide()
+
 
         $("#preference-form").on("submit", getData);
         $("#pp-choice").on("click", exploreCity);
@@ -187,6 +189,7 @@ var cityInfo1 = {};
         }        
 
     function exploreCity(evt) {
+        $(".loader").fadeIn("slow");
         var cityId = $(this).data("cityId");
 
         window.location = "http://localhost:5000/results?city_id=" + cityId;
