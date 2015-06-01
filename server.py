@@ -208,6 +208,7 @@ def get_first_weather():
     destination = request.form['destination']
 
     weather = process_weather(depart_date, destination)
+
     return jsonify(weather)
 
 
@@ -219,6 +220,7 @@ def get_second_weather():
     destination = request.form['destination']
 
     weather = process_weather(depart_date, destination)
+
     return jsonify(weather)
 
 
@@ -321,8 +323,7 @@ def get_similar_trips():
     if num_matches == 4:
         return jsonify(user_similar_cities)
     else:
-        num_needed = 4 - num_matches
-        nltk_similar_cities = get_nl_similar_trips(city_id)
+        nltk_similar_cities = get_nl_similar_trips(city_id, 4 - num_matches)
         return jsonify(nltk_similar_cities)
 
 
@@ -333,16 +334,13 @@ def fetch_city_data(airport_code):
     """Fetch city specific data from DB for trip comparison."""
 
     airport = Airport.query.filter_by(airport_code=airport_code).first()
-    city_id = airport.city.city_id
-    name = airport.city.name
-    country = airport.city.country
-    cost_of_living = airport.city.col_index
-    food = db.session.query(db.func.sum(Restaurant.stars)).filter_by(city_id=city_id).one()
 
-    city_stats = {'city_id': city_id,
-                  'city': name,
-                  'country': country,
-                  'costOfLiving': cost_of_living,
+    food = db.session.query(db.func.sum(Restaurant.stars)).filter_by(city_id=airport.city.city_id).one()
+
+    city_stats = {'city_id': airport.city.city_id,
+                  'city': airport.city.name,
+                  'country': airport.city.country,
+                  'costOfLiving': airport.city.col_index,
                   'food': food[0]}
     
     return city_stats
@@ -384,8 +382,7 @@ def select_ten_closest(places, city_center):
     closest_places = sorted(distance.items(), key=lambda x: x[1])
     closest_places_list = [place[0] for place in closest_places]
 
-    ten_closest = {place.name: place.google_place_id for place in places if place.name in closest_places_list[:10]}
-    return ten_closest
+    return {place.name: place.google_place_id for place in places if place.name in closest_places_list[:10]}
 
 
 if __name__ == "__main__":
