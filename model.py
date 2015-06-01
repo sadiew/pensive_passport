@@ -14,7 +14,7 @@ class City(db.Model):
     __tablename__ = "cities"
 
     city_id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64), nullable=False)
+    name = db.Column(db.String(64), nullable=False, index=True)
     state = db.Column(db.String(64))
     country = db.Column(db.String(64), nullable=False)
     col_index = db.Column(db.Integer)
@@ -25,7 +25,7 @@ class City(db.Model):
     def get_photos(self):
         """Check to see if photo for city is cached in DB; if not, call Flickr API for new photo."""
 
-        if len(self.city_images) >= 3:
+        if self.city_images:
             self.photos = [image.image_url for image in self.city_images]
         else:
             flickr_images = flickr.get_flickr_photos(self)
@@ -58,7 +58,7 @@ class Airport(db.Model):
     __tablename__ = "airports"
 
     airport_id = db.Column(db.Integer, primary_key=True)
-    airport_code = db.Column(db.String(10), nullable=False)
+    airport_code = db.Column(db.String(10), nullable=False, index=True)
     name = db.Column(db.String(64), nullable=False)
     city_id = db.Column(db.Integer, db.ForeignKey('cities.city_id'))
     latitude = db.Column(db.Float, nullable=False)

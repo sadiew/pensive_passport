@@ -18,7 +18,7 @@ def call_places_api(city_center, place_type):
 		}
 
 	response = requests.post(url, params=params, headers=headers)
-	print response
+
 	data = response.json()
 	return data
 

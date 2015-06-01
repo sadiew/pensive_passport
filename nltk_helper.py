@@ -7,7 +7,6 @@ from model import City, WikipediaPage, Similarity, connect_to_db, db
 from server import app
 import psycopg2
 
-connect_to_db(app)
 
 def create_stems(tokens):
 	stemmer = PorterStemmer()
@@ -61,9 +60,10 @@ def add_similarities_to_db(city_ids):
 
 	db.session.commit()
 
-city_ids = sorted([1417, 2012, 3218, 1195, 675, 3358, 1705, 3796])
-add_wiki_pages_to_db(city_ids)
-add_similarities_to_db(city_ids)
+# connect_to_db(app)
+# city_ids = sorted([1417, 2012, 3218, 1195, 675, 3358, 1705, 3796])
+# add_wiki_pages_to_db(city_ids)
+# add_similarities_to_db(city_ids)
 
 
 

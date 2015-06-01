@@ -125,7 +125,7 @@ var cityInfo1 = {};
                 cityInfo.city = result.city;
                 cityInfo.city_id = result.city_id;
                 cityInfo.country = result.country;
-                cityInfo.food = parseInt(result.food.stars);
+                cityInfo.food = parseInt(result.food);
                 cityInfo.food = getNum(cityInfo.food);
                 cityInfo.costOfLiving = parseInt(result.costOfLiving);
                 $('#food-'+i).html(cityInfo.food + ' ' + 

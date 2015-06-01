@@ -5,6 +5,7 @@ from jinja2 import StrictUndefined
 from google_flights import process_flights
 from new_places import get_places
 from weather import process_weather
+from similar_trips import get_user_similar_trips, get_nl_similar_trips
 import json
 import psycopg2
 
@@ -50,8 +51,12 @@ def gather_perferences():
 
         max_photos = min(len(city1.photos), len(city2.photos))
 
-        return render_template('preference_form.html', origin_city=origin_city, city1=city1,
-                                city2=city2, max_photos=max_photos, session=session)
+        return render_template('preference_form.html',
+                                origin_city=origin_city,
+                                city1=city1,
+                                city2=city2,
+                                max_photos=max_photos,
+                                session=session)
     except:
         flash("Please enter a valid choice from the dropdown menu.")
         return redirect('/')
@@ -282,8 +287,8 @@ def get_museums():
     city_id = int(request.form['city_id'])
     city_center = request.form['city_lat_lon']
 
-
     museums = add_places(city_id, city_center, place_type='museum')
+
     return jsonify(museums)
 
 
@@ -300,7 +305,8 @@ def get_parks():
 
 @app.route('/get-similar-trips')
 def get_similar_trips():
-    """Searches the DB for destinations searched by others who searched the same original cities."""
+    """Query the DB for destinations searched by other users who searched
+    the same 'winning' city."""
 
     city_id = request.args['city_id']
 
@@ -309,53 +315,15 @@ def get_similar_trips():
     else:
         user_id = 0
 
-    query = """SELECT DISTINCT trips.city_id, cities.name, cities.country, COUNT(trips.city_id)
-            FROM trips
-            JOIN cities on trips.city_id = cities.city_id
-            JOIN searches on trips.search_id = searches.search_id
-            WHERE user_id IN
-                (SELECT DISTINCT user_id
-                FROM searches
-                JOIN trips on searches.search_id = trips.search_id
-                WHERE city_id =%s)
-            AND trips.city_id NOT IN
-                (SELECT DISTINCT city_id
-                FROM trips
-                JOIN searches on trips.search_id=searches.search_id
-                WHERE searches.user_id=%s)
-            GROUP BY 1,2,3
-            ORDER BY COUNT(trips.city_id) DESC
-            LIMIT 4""" % (city_id, user_id)
-
-    results = call_sql(query)
-    user_similar_cities = {result[0]: '%s, %s' % (result[1], result[2]) for result in results}
-
-    return jsonify(user_similar_cities)
-
-
-@app.route('/get-nltk-trips')
-def get_nltk_trips():
-    city_id = request.args['city_id']
-
-    query = """SELECT city_id_1, city_id_2
-             FROM similarities
-             WHERE city_id_1 = %s OR city_id_2 = %s
-             ORDER BY similarity
-             DESC LIMIT 4;""" % (city_id, city_id)
-
-    results = call_sql(query)
-    if results:
-        similar_cities = []
-        for result in results:
-            if result[0] == city_id:
-                city = City.query.get(result[1])
-                similar_cities.append(city)
-            else:
-                city = City.query.get(result[0])
-                similar_cities.append(city)
-        nltk_similar_cities = {city.city_id: '%s, %s' % (city.name, city.country) for city in similar_cities}
-
-    return jsonify(nltk_similar_cities)
+    user_similar_cities = get_user_similar_trips(city_id, user_id)
+    num_matches = len(user_similar_cities)
+    
+    if num_matches == 4:
+        return jsonify(user_similar_cities)
+    else:
+        num_needed = 4 - num_matches
+        nltk_similar_cities = get_nl_similar_trips(city_id)
+        return jsonify(nltk_similar_cities)
 
 
 # helper functions
@@ -369,34 +337,20 @@ def fetch_city_data(airport_code):
     name = airport.city.name
     country = airport.city.country
     cost_of_living = airport.city.col_index
-    food = db.session.query(db.func.count(Restaurant.restaurant_id),
-                            db.func.sum(Restaurant.stars)).filter_by(city_id=city_id).one()
+    food = db.session.query(db.func.sum(Restaurant.stars)).filter_by(city_id=city_id).one()
 
     city_stats = {'city_id': city_id,
                   'city': name,
                   'country': country,
                   'costOfLiving': cost_of_living,
-                  'food': {'restarants': food[0], 'stars': food[1]}}
+                  'food': food[0]}
+    
     return city_stats
-
-
-def call_sql(query):
-    """Connect to Postgres. If connection fails, return an exception."""
-
-    try:
-        conn = psycopg2.connect("dbname='pensive_passport' host='localhost' port=5432")
-        cur = conn.cursor()
-        cur.execute(query)
-        return cur.fetchall()
-    except Exception, e:
-        print "\nCan't connect to the database!"
-        print e
-        print '\n'
 
 
 def add_places(city_id, city_center, place_type):
     """Check to see if place type for given city is already stored in DB. If so,
-    return 5 establishments closes to city center.  If not, call Google
+    return 5 establishments closest to city center.  If not, call Google
     Places API to grab 20 most prominent places, and then of those, select 5 closest
     to city center."""
 
@@ -404,26 +358,20 @@ def add_places(city_id, city_center, place_type):
                                    place_type=place_type).all()
 
     if places:
-        ten_closest = select_ten_closest(places, city_center)
+        return select_ten_closest(places, city_center)
 
     else:
         places = get_places(city_id, city_center, place_type)
-        ten_closest = select_ten_closest(places, city_center)
-
-    return ten_closest
-
-
+        return select_ten_closest(places, city_center)
 
 
 def distance_from_city_center(city_center, place):
-    """Calculate the distance of a place from its respective city center, given as a tuple
-    of lat at index 0 and lon at index 1."""
+    """Calculate the distance of a place from its respective city center, given as a string
+    'lat, lon'."""
 
-    city_center = tuple(city_center.split(","))
-    city_lat = float(city_center[0])
-    city_lon = float(city_center[1])
+    lat, lon = (float(x) for x in city_center.split(","))
 
-    distance = abs(place.lat-city_lat) + abs(place.lon-city_lon)
+    distance = abs(place.lat-lat) + abs(place.lon-lon)
 
     return round(distance, 3)
 
