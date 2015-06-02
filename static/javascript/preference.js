@@ -11,7 +11,6 @@ var cityInfo1 = {};
         $("#component-weights").hide();
         $(".loader").hide()
 
-
         $("#preference-form").on("submit", getData);
         $("#pp-choice").on("click", exploreCity);
         $(".importance-slider").on("change", reCalculate);

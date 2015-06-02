@@ -13,7 +13,7 @@ def get_flickr_photos(city):
                 text=city.name,
                 has_geo=1,
                 sort='relevance',
-                accuracy=11,
+                accuracy=6,
                 per_page=5)[0]
 
     url_list = []
