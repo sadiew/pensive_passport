@@ -1,10 +1,8 @@
 from flask_sqlalchemy import SQLAlchemy
 from pygeocoder import Geocoder
-
-#import psycopg2
 import flickr
 
-DEFAULT_IMAGE_URL = 'http://www.posterparty.com/images/photography-paris-france-famous-sights-collage-poster-GB0404.jpg'
+DEFAULT_IMAGE_URL = '/static/images/default_image.jpg'
 
 db = SQLAlchemy()
 
@@ -28,7 +26,8 @@ class City(db.Model):
         self.lat, self.lon = results[0].coordinates
 
     def get_photos(self):
-        """Check to see if photo for city is cached in DB; if not, call Flickr API for new photo."""
+        """Check to see if photo for city is cached in DB; if not,
+        call Flickr API for new photo."""
 
         if self.city_images:
             self.photos = [image.image_url for image in self.city_images]
@@ -37,7 +36,8 @@ class City(db.Model):
             flickr_images = flickr.get_flickr_photos(self)
             if flickr_images:
                 for image_url in flickr_images:
-                    image = CityImage(city_id=self.city_id, image_url=image_url)
+                    image = CityImage(city_id=self.city_id,
+                                      image_url=image_url)
                     db.session.add(image)
                 db.session.commit()
                 self.photos = flickr_images
@@ -55,7 +55,8 @@ class CityImage(db.Model):
     image_url = db.Column(db.Text, unique=True)
 
     city = db.relationship("City",
-                           backref=db.backref("city_images", order_by=image_id))
+                           backref=db.backref("city_images",
+                           order_by=image_id))
 
 
 class Airport(db.Model):
@@ -71,11 +72,13 @@ class Airport(db.Model):
     longitude = db.Column(db.Float, nullable=False)
 
     city = db.relationship("City",
-                           backref=db.backref("airports", order_by=airport_id))
+                           backref=db.backref("airports",
+                           order_by=airport_id))
 
     def __repr__(self):
 
-        return "<Airport airport_code=%s name=%s>" % (self.airport_code, self.name)
+        return "<Airport airport_code=%s name=%s>" % (self.airport_code,
+                                                      self.name)
 
 
 class Restaurant(db.Model):
@@ -89,7 +92,8 @@ class Restaurant(db.Model):
     stars = db.Column(db.Integer, nullable=False)
 
     city = db.relationship("City",
-                           backref=db.backref("restaurants", order_by=restaurant_id))
+                           backref=db.backref("restaurants",
+                           order_by=restaurant_id))
 
     def __repr__(self):
 
@@ -127,10 +131,10 @@ class Trip(db.Model):
     wow_factor = db.Column(db.Integer)
 
     city = db.relationship("City",
-                        backref=db.backref("trips", order_by=trip_id))
+                            backref=db.backref("trips", order_by=trip_id))
 
     search = db.relationship("Search",
-                        backref=db.backref("trips", order_by=search_id))
+                              backref=db.backref("trips", order_by=search_id))
 
     def __repr__(self):
         return "<Trip city_id=%s, airfare=%s>" % (self.city_id, self.airfare)
@@ -168,7 +172,9 @@ class WikipediaPage(db.Model):
 
     __tablename__ = "wikipedia_pages"
 
-    city_id = db.Column(db.Integer, db.ForeignKey('cities.city_id'), primary_key=True)
+    city_id = db.Column(db.Integer,
+                        db.ForeignKey('cities.city_id'),
+                        primary_key=True)
     content = db.Column(db.Text)
 
 

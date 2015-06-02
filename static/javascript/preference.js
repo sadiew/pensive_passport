@@ -99,7 +99,7 @@ var cityInfo1 = {};
 
         $("#pp-choice").html('Explore ' + winningCity.city);
         $("#pp-choice-text").html("Pensive Passport's algorithm has selected: " + 
-                                    "<span class='tertiary-color'>" + 
+                                    "<span style='color:red;'>" + 
                                     "<strong>" + winningCity.city + "</strong></span>");
         $("#pp-choice").data("city", winningCity.city);
         $("#pp-choice").data("country", winningCity.country);

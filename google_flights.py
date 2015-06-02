@@ -44,6 +44,7 @@ def call_flights_api(origin, destination, depart_date, return_date):
 
     return {'airfare': total_fare}
 
+
 def process_flights(origin, destination, depart_date, return_date):
     """Attempt to call Google flights API, but return default values
     if unavailable."""

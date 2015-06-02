@@ -9,12 +9,12 @@ def get_flickr_photos(city):
 
     # photos is of the element type, where the first item is the list of photos
     photos = flickr.photos_search(
-                tags=city.name,
-                text=city.name,
-                has_geo=1,
-                sort='relevance',
-                accuracy=6,
-                per_page=5)[0]
+            tags=city.name,
+            text=city.name,
+            has_geo=1,
+            sort='relevance',
+            accuracy=6,
+            per_page=5)[0]
 
     url_list = []
     for photo in photos:

@@ -1,5 +1,7 @@
-from model import City, Airport, Restaurant, Place, Trip, User, Search, connect_to_db, db
-from flask import Flask, request, render_template, redirect, jsonify, session, flash
+from model import City, Airport, Restaurant, Place, Trip, User, Search
+from model import connect_to_db, db
+from flask import Flask, request, render_template, redirect, jsonify
+from flask import session, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
 from google_flights import process_flights
@@ -7,7 +9,6 @@ from new_places import get_places
 from weather import process_weather
 from similar_trips import get_user_similar_trips, get_nl_similar_trips
 import json
-import psycopg2
 
 
 app = Flask(__name__)
@@ -35,12 +36,12 @@ def gather_perferences():
     """Gather user preferences."""
 
     try:
-        departure_city, departure_country = request.args['depart-city'].split(', ')
+        depart_city, depart_country = request.args['depart-city'].split(', ')
         dest_1_city, dest_1_country = request.args['dest-1'].split(', ')
         dest_2_city, dest_2_country = request.args['dest-2'].split(', ')
 
-        origin_city = City.query.filter_by(name=departure_city,
-                                           state=departure_country).first()
+        origin_city = City.query.filter_by(name=depart_city,
+                                           state=depart_country).first()
         city1 = City.query.filter_by(name=dest_1_city,
                                      country=dest_1_country).first()
         city2 = City.query.filter_by(name=dest_2_city,
@@ -64,12 +65,14 @@ def gather_perferences():
 
 @app.route('/results')
 def show_results():
-    """Display map of city that user chose along with accompanying attractions."""
+    """Display map of city that user chose along with
+    accompanying attractions."""
 
     city_id = request.args['city_id']
     city = City.query.get(city_id)
 
     return render_template("results.html", city=city, session=session)
+
 
 @app.route('/login')
 def login():
@@ -117,7 +120,10 @@ def handle_registration():
     zipcode = request.form['zipcode']
 
     if password == reenter_password:
-        user = User(email=username, password=password, age=age, zipcode=zipcode)
+        user = User(email=username,
+                    password=password,
+                    age=age,
+                    zipcode=zipcode)
         session['username'] = user.user_id
 
         db.session.add(user)
@@ -148,19 +154,23 @@ def show_city_details(city_id):
 
     return render_template('city.html', city=city, session=session)
 
+
 @app.route('/user/<int:user_id>')
 def show_user_details(user_id):
 
     user = User.query.get(user_id)
 
-    searches = [sorted([search.trips[0].city.name, search.trips[1].city.name]) for search in user.searches]
+    searches = [sorted([search.trips[0].city.name, search.trips[1].city.name])
+                for search in user.searches]
     unique_searches = []
 
     for search in searches:
         if search not in unique_searches:
             unique_searches.append(search)
 
-    return render_template("user.html", searches=unique_searches, session=session)
+    return render_template("user.html",
+                            searches=unique_searches,
+                            session=session)
 
 
 @app.route('/intl-city-list')
@@ -168,8 +178,9 @@ def get_cities():
     """Get list of cities for typeahead pre-population."""
 
     intl_cities = db.session.query(City.name,
-                                   City.country).filter(City.country != "United States").all()
-    intl_cities_list = [city + ', ' + country for city, country in intl_cities]
+                    City.country).filter(City.country != "United States").all()
+    intl_cities_list = [city + ', ' + country
+                        for city, country in intl_cities]
 
     return jsonify({'intlCities': intl_cities_list})
 
@@ -178,8 +189,8 @@ def get_cities():
 def get_us_cities():
     """Get list of cities for typeahead pre-population."""
 
-    us_cities = db.session.query(City.name, 
-                                 City.state).filter(City.country == "United States", 
+    us_cities = db.session.query(City.name,
+                City.state).filter(City.country == "United States",
                                                     City.state != "").all()
     us_cities_list = [city + ', ' + state for city, state in us_cities]
 
@@ -195,7 +206,7 @@ def get_first_flight():
     origin = request.form['origin']
     destination = request.form['destination']
 
-    #airfare = process_flights(origin, destination, depart_date, return_date)
+    # airfare = process_flights(origin, destination, depart_date, return_date)
     airfare = {'airfare': 1272}
     return jsonify(airfare)
 
@@ -209,7 +220,7 @@ def get_second_flight():
     origin = request.form['origin']
     destination = request.form['destination']
 
-    #airfare = process_flights(origin, destination, depart_date, return_date)
+    # airfare = process_flights(origin, destination, depart_date, return_date)
     airfare = {'airfare': 1753}
     return jsonify(airfare)
 
@@ -240,8 +251,7 @@ def get_second_weather():
 
 @app.route('/get-city1-data', methods=['GET'])
 def get_city1_data():
-    """Grab city specific data (city, country, cost of living, Michelin star restaurants)
-    from DB for first city."""
+    """Grab city specific data from DB for first city."""
 
     airport_code = request.args['airport-1']
     city_stats = fetch_city_data(airport_code)
@@ -251,8 +261,7 @@ def get_city1_data():
 
 @app.route('/get-city2-data', methods=['GET'])
 def get_city2_data():
-    """Grab city specific data (city, country, cost of living, Michelin star restaurants)
-    from DB for second city."""
+    """Grab city specific data from DB for second city."""
 
     airport_code = request.args['airport-2']
     city_stats = fetch_city_data(airport_code)
@@ -283,6 +292,7 @@ def store_trips():
     db.session.commit()
 
     return 'success'
+
 
 @app.route('/get-restaurants', methods=['POST'])
 def get_restaurants():
@@ -319,6 +329,7 @@ def get_parks():
 
     return jsonify(parks)
 
+
 @app.route('/get-similar-trips')
 def get_similar_trips():
     """Query the DB for destinations searched by other users who searched
@@ -333,7 +344,7 @@ def get_similar_trips():
 
     user_similar_cities = get_user_similar_trips(city_id, user_id)
     num_matches = len(user_similar_cities)
-    
+
     if num_matches == 4:
         return jsonify(user_similar_cities)
     elif num_matches > 0:
@@ -359,17 +370,15 @@ def fetch_city_data(airport_code):
                   'country': airport.city.country,
                   'costOfLiving': airport.city.col_index,
                   'food': food[0]}
-    
+
     return city_stats
 
 
 def add_places(city_id, city_center, place_type):
-    """Check to see if place type for given city is already stored in DB. If so,
-    return 5 establishments closest to city center.  If not, call Google
-    Places API to grab 20 most prominent places, and then of those, select 5 closest
-    to city center."""
+    """First check for place type in DB. If not there, call Google
+    Places API. Finally, select 5 places closest to city center."""
 
-    places = Place.query.filter_by(city_id=city_id, 
+    places = Place.query.filter_by(city_id=city_id,
                                    place_type=place_type).all()
 
     if places:
@@ -381,8 +390,8 @@ def add_places(city_id, city_center, place_type):
 
 
 def distance_from_city_center(city_center, place):
-    """Calculate the distance of a place from its respective city center, given as a string
-    'lat, lon'."""
+    """Calculate the distance of a place from its respective city center,
+    given as a string 'lat, lon'."""
 
     lat, lon = (float(x) for x in city_center.split(","))
 
@@ -395,11 +404,14 @@ def select_ten_closest(places, city_center):
     """Rank places in ascending order by distance and take the
     10 with shortest distance."""
 
-    distance = {place.name: distance_from_city_center(city_center, place) for place in places}
+    distance = {place.name: distance_from_city_center(city_center, place)
+                for place in places}
     closest_places = sorted(distance.items(), key=lambda x: x[1])
     closest_places_list = [place[0] for place in closest_places]
 
-    return {place.name: place.google_place_id for place in places if place.name in closest_places_list[:10]}
+    return {place.name: place.google_place_id
+            for place in places
+            if place.name in closest_places_list[:10]}
 
 
 if __name__ == "__main__":
@@ -407,6 +419,6 @@ if __name__ == "__main__":
     app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
     connect_to_db(app)
-    # DebugToolbarExtension(app)
+    DebugToolbarExtension(app)
 
     app.run()
