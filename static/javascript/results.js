@@ -101,8 +101,8 @@ var geocoder;
 
     function addPlaceByType(type) {
       console.log(cityLatLon);
-      $.post( "/get-" + type + 's',
-            {city_id: cityId, city_lat_lon: cityLatLon},
+      $.post( "/get-places",
+            {city_id: cityId, city_lat_lon: cityLatLon, place_type: type},
             function (result) {
                 var i=0;
                 for (item in result) {

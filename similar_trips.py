@@ -10,18 +10,25 @@ def get_user_similar_trips(city_id, user_id):
     """Query the DB for destinations searched by other users who searched
     the same 'winning' city."""
 
-    query = """SELECT DISTINCT trips.city_id,
-            cities.name,
-            cities.country,
-            COUNT(trips.city_id)
+    # XXX: use SQLA, even if it has to be raw
+
+    # SELECT ALL cities
+    #   WHERE this user has ...
+
+    # prob worth looking into http://www.postgresql.org/docs/9.1/static/queries-with.html
+
+    query = """SELECT trips.city_id,
+                    cities.name,
+                    cities.country,
+                    COUNT(trips.city_id)
             FROM trips
-            JOIN cities on trips.city_id = cities.city_id
-            JOIN searches on trips.search_id = searches.search_id
-            WHERE user_id IN
-                (SELECT DISTINCT user_id
+                JOIN cities on trips.city_id = cities.city_id
+                JOIN searches on trips.search_id = searches.search_id
+            WHERE searches.user_id IN
+                (SELECT user_id
                 FROM searches
                 JOIN trips on searches.search_id = trips.search_id
-                WHERE city_id =%s)
+                WHERE city_id = %s)
             AND trips.city_id NOT IN
                 (SELECT DISTINCT city_id
                 FROM trips
@@ -105,6 +112,10 @@ def check_for_nl_similarities(city_id, num_needed):
     if results:
         similar_cities = []
         for result in results:
+            # city_looking_for = result[1] if result[0] == int(city_id) else result[0]
+            # "Ternary operator"
+            # city = City.query.get(city_looking_for)
+
             if result[0] == int(city_id):
                 city = City.query.get(result[1])
             else:

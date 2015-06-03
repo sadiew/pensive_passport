@@ -3,6 +3,14 @@ import server
 
 class AppIntegrationTestCase(unittest.TestCase):
 
+    def valid_route(self, route, html_snippet, data={}):
+    	result = self.app.get(route)
+
+    	self.assertEqual(result.status_code, 200)
+        self.assertIn('text/html', result.headers['Content-Type'])
+        self.assertIn(html_snippet, result.data)
+
+
     def setUp(self):
         self.app = server.app.test_client()
 
@@ -17,13 +25,6 @@ class AppIntegrationTestCase(unittest.TestCase):
 
     def test_preference_form(self):
     	self.valid_route('/preference-form', '<form id="preference-form">')
-
-    def valid_route(self, route, html_snippet):
-    	result = self.app.get(route)
-
-    	self.assertEqual(result.status_code, 200)
-        self.assertIn('text/html', result.headers['Content-Type'])
-        self.assertIn(html_snippet, result.data)
 
 
 

@@ -20,7 +20,7 @@
 
       <ol class="carousel-indicators">
         <li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
-        {% for i in range(1, max_photos) %}
+        {% for i in range(1, nphotos) %}
             <li data-target="#myCarousel1" data-slide-to="{{i}}"></li>
         {% endfor %}
       </ol>
@@ -28,7 +28,7 @@
         <div class="item active">
           <img class="flickr-image" src="{{city1.photos[0]}}">
         </div>
-        {% for photo in city1.photos[1:max_photos] %}
+        {% for photo in city1.photos[1:nphotos] %}
         <div class="item">
           <img class="flickr-image" src="{{photo}}">
         </div>
@@ -48,7 +48,7 @@
 
       <ol class="carousel-indicators">
         <li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
-        {% for i in range(1, max_photos) %}
+        {% for i in range(1, nphotos) %}
             <li data-target="#myCarousel2" data-slide-to="{{i}}"></li>
         {% endfor %}
       </ol>
@@ -56,7 +56,7 @@
         <div class="item active">
           <img class="flickr-image" src="{{city2.photos[0]}}">
         </div>
-        {% for photo in city2.photos[1:max_photos] %}
+        {% for photo in city2.photos[1:nphotos] %}
         <div class="item">
           <img class="flickr-image" src="{{photo}}">
         </div>
@@ -197,15 +197,15 @@
             <h5>Adjust your preferences to see the algorithm recalculate your destination:</h5>
             <div class="form-group importance-slider col-md-4">
                 <label class="secondary-color">Cost</label>                   
-                <input type="range" min="0" max="5" step="1" name="cost" id="cost-weight">
+                <input type="range" min="0" max="5" step="0" name="cost" id="cost-weight">
             </div>
             <div class="form-group importance-slider col-md-4">
                 <label class="secondary-color">Quality of Food</label>
-                <input type="range" min="0" max="5" step="1" name="food" id="food-weight">
+                <input type="range" min="0" max="5" step="0" name="food" id="food-weight">
             </div>
             <div class="form-group importance-slider col-md-4">
                 <label class="secondary-color">Weather</label>
-                <input type="range" min="0" max="5" step="1" name="weather" id="weather-weight">
+                <input type="range" min="0" max="5" step="0" name="weather" id="weather-weight">
             </div>                   
         </div>
 </form>
