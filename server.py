@@ -10,7 +10,7 @@ from model import connect_to_db, db
 
 
 from google_flights import process_flights
-from new_places import call_places_api
+from places import call_places_api
 from weather import process_weather
 from similar_trips import get_user_similar_trips, get_nl_similar_trips
 
@@ -32,7 +32,7 @@ app.jinja_env.undefined = StrictUndefined
 
 @app.route('/')
 def index():
-    """Show index page."""
+    """Show home page."""
 
     return render_template("homepage.html", session=session)
 
@@ -112,19 +112,19 @@ def handle_login():
 
     if not user:
         return render_template('register.html')
+
+    if user.password == request.form['password']:
+        session['username'] = user.user_id
+        flash("Login successful!")
+        return redirect('/user/' + str(user.user_id))
     else:
-        if user and (user.password == request.form['password']):
-            session['username'] = user.user_id
-            flash("Login successful!")
-            return redirect('/user/' + str(user.user_id))
-        else:
-            flash("Invalid login.")
-            return redirect("/login")
+        flash("Invalid login.")
+        return redirect("/login")
 
 
 @app.route('/registration-submission', methods=['POST'])
 def handle_registration():
-    """Handles the registration and adds user to DB and session."""
+    """Handles registration and adds user to DB and session."""
 
     username = request.form['username']
     password = request.form['password']
@@ -151,7 +151,7 @@ def handle_registration():
 
 @app.route('/city/<int:city_id>')
 def show_city_details(city_id):
-    """Grab data to present a quick city snapshot."""
+    """Grab data to present quick city snapshot."""
 
     city = City.query.get(city_id)
     restaurants, stars = db.session \
@@ -177,6 +177,7 @@ def show_city_details(city_id):
 
 @app.route('/user/<int:user_id>')
 def show_user_details(user_id):
+    """Show past searches for logged-in user."""
 
     user = User.query.get(user_id)
 
@@ -192,7 +193,7 @@ def show_user_details(user_id):
 
 @app.route('/intl-city-list')
 def get_cities():
-    """Get list of cities for typeahead pre-population."""
+    """Get list of intl cities for typeahead pre-population."""
 
     intl_cities = db.session.query(
                     City.name,
@@ -205,7 +206,7 @@ def get_cities():
 
 @app.route('/us-city-list')
 def get_us_cities():
-    """Get list of cities for typeahead pre-population."""
+    """Get list of US cities for typeahead pre-population."""
 
     us_cities = db.session.query(City.name,
                 City.state).filter(City.country == "United States",
@@ -217,7 +218,7 @@ def get_us_cities():
 
 @app.route('/get-flight', methods=['POST'])
 def get_first_flight():
-    """Grab cost of airfare from Google flights for first city."""
+    """Grab cost of airfare from Google flights."""
 
     depart_date = request.form['depart_date']
     return_date = request.form['return_date']
@@ -231,7 +232,7 @@ def get_first_flight():
 
 @app.route('/get-weather', methods=['POST'])
 def get_first_weather():
-    """Grab weather data from World Weather Online for first city."""
+    """Grab weather data from World Weather Online."""
 
     depart_date = request.form['depart_date']
     destination = request.form['destination']
@@ -243,7 +244,7 @@ def get_first_weather():
 
 @app.route('/get-city-data', methods=['GET'])
 def get_city_data():
-    """Grab city specific data from DB for first city."""
+    """Grab city specific data from DB."""
 
     airport_code = request.args['airport']
     city_stats = fetch_city_data(airport_code)
@@ -278,7 +279,7 @@ def store_trips():
 
 @app.route('/get-places', methods=['POST'])
 def get_places():
-    """Grab museums from DB if cached, otherwise call Google Places API."""
+    """Grab places from DB if cached, otherwise call Google Places API."""
 
     city_id = int(request.form['city_id'])
     city_center = request.form['city_lat_lon']
@@ -291,8 +292,7 @@ def get_places():
 
 @app.route('/get-similar-trips')
 def get_similar_trips():
-    """Query the DB for destinations searched by other users who searched
-    the same 'winning' city."""
+    """Make recommendations to user for other destinations."""
 
     city_id = request.args['city_id']
     user_id = session.get('username', 0)
@@ -345,6 +345,7 @@ def process_places(city_id, city_center, place_type):
     return select_ten_closest(places, city_center)
 
 def add_places_to_db(city_id, data, place_type):
+    """Add places gather from Google Places to DB."""
 
     for result in data['results']:
         place = Place(google_place_id=result['place_id'],
@@ -358,6 +359,7 @@ def add_places_to_db(city_id, data, place_type):
 
 
 def get_google_places(city_id, city_center, place_type):
+    """Get places from Google Places, add to DB, return places."""
 
     data = call_places_api(city_center, place_type)
     add_places_to_db(city_id, data, place_type)
@@ -376,8 +378,7 @@ def distance_from_city_center(city_center, place):
 
 
 def select_ten_closest(places, city_center):
-    """Rank places in ascending order by distance and take the
-    10 with shortest distance."""
+    """Rank places in asc. order by distance and take top 10."""
 
     distance = {place.name: distance_from_city_center(city_center, place)
                 for place in places}

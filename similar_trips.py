@@ -38,7 +38,8 @@ def get_user_similar_trips(city_id, user_id):
             ORDER BY COUNT(trips.city_id) DESC
             LIMIT 4""" % (city_id, user_id)
 
-    results = call_sql(query)
+
+    results = db.engine.execute(query)
     user_similar_cities = {result[0]: '%s, %s' % (result[1], result[2])
                             for result in results}
 
@@ -73,9 +74,9 @@ def add_wiki_page_to_db(city_id):
 
 def add_similarities_to_db(city_id):
 
-    results = call_sql("""SELECT city_id
-                        FROM wikipedia_pages
-                        WHERE city_id <> %s""" % (city_id))
+    results = db.engine.execute("""SELECT city_id
+                                FROM wikipedia_pages
+                                WHERE city_id <> %s""" % (city_id))
 
     city_ids = [result[0] for result in results]
 
@@ -107,20 +108,13 @@ def check_for_nl_similarities(city_id, num_needed):
              ORDER BY similarity DESC
              LIMIT %s;""" % (city_id, city_id, num_needed)
 
-    results = call_sql(query)
+    results = db.engine.execute(query)
 
     if results:
         similar_cities = []
         for result in results:
-            # city_looking_for = result[1] if result[0] == int(city_id) else result[0]
-            # "Ternary operator"
-            # city = City.query.get(city_looking_for)
-
-            if result[0] == int(city_id):
-                city = City.query.get(result[1])
-            else:
-                city = City.query.get(result[0])
-
+            city_looking_for = result[1] if result[0] == int(city_id) else result[0]            
+            city = City.query.get(city_looking_for)
             similar_cities.append(city)
 
         nltk_similar_cities = {city.city_id: '%s, %s'
@@ -130,20 +124,6 @@ def check_for_nl_similarities(city_id, num_needed):
         return nltk_similar_cities
     else:
         return None
-
-
-def call_sql(query):
-    """Connect to Postgres. If connection fails, return an exception."""
-
-    try:
-        conn = psycopg2.connect("dbname='pensive_passport' host='localhost' port=5432")
-        cur = conn.cursor()
-        cur.execute(query)
-        return cur.fetchall()
-    except Exception, e:
-        print "\nCan't connect to the database!"
-        print e
-        print '\n'
 
 
 def create_stems(tokens):
