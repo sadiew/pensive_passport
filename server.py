@@ -39,7 +39,7 @@ def index():
 
 @app.route('/search')
 def search():
-    """Show index page."""
+    """Show search page."""
 
     return render_template("search.html")
 
@@ -268,7 +268,7 @@ def store_trips():
                     search_id=search.search_id,
                     avg_temp=trip['weather'],
                     wow_factor=trip['wow'],
-                    michelin_stars=trip['food'],
+                    michelin_stars=trip['stars'],
                     airfare=trip['airfare'])
         db.session.add(trip)
     db.session.commit()
@@ -328,7 +328,7 @@ def fetch_city_data(airport_code):
                   'city': airport.city.name,
                   'country': airport.city.country,
                   'costOfLiving': airport.city.col_index,
-                  'food': michelin_stars}
+                  'stars': michelin_stars}
 
     return city_stats
 
