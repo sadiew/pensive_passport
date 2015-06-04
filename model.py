@@ -1,6 +1,6 @@
-from flask_sqlalchemy import SQLAlchemy
-from pygeocoder import Geocoder
 import flickr
+
+from flask_sqlalchemy import SQLAlchemy
 
 DEFAULT_IMAGE_URL = '/static/images/default_image.jpg'
 
@@ -21,10 +21,6 @@ class City(db.Model):
     def __repr__(self):
         return "<City city_id=%s country=%s>" % (self.name, self.country)
 
-    def get_geo_coordinates(self):
-        results = Geocoder.geocode(self.name + ", " + self.country)
-        self.lat, self.lon = results[0].coordinates
-
     def get_photos(self):
         """Check to see if photo for city is cached in DB; if not,
         call Flickr API for new photo."""
@@ -32,7 +28,6 @@ class City(db.Model):
         if self.city_images:
             self.photos = [image.image_url for image in self.city_images]
         else:
-            self.get_geo_coordinates()
             flickr_images = flickr.get_flickr_photos(self)
             if flickr_images:
                 for image_url in flickr_images:

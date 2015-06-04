@@ -157,18 +157,18 @@ def show_city_details(city_id):
 
     city = City.query.get(city_id)
     restaurants, stars = db.session \
-                        .query(db.func.count(Restaurant.restaurant_id),
-                                db.func.sum(Restaurant.stars)) \
-                        .filter_by(city_id=city.city_id).one()
+        .query(db.func.count(Restaurant.restaurant_id),
+               db.func.sum(Restaurant.stars)) \
+        .filter_by(city_id=city.city_id).one()
 
     avg_wow = db.session \
-            .query(db.func.avg(Trip.wow_factor)) \
-            .filter_by(city_id=city.city_id) \
-            .scalar()
+        .query(db.func.avg(Trip.wow_factor)) \
+        .filter_by(city_id=city.city_id) \
+        .scalar()
 
     avg_airfare = db.session \
-                .query(db.func.avg(Trip.airfare)) \
-                .filter_by(city_id=city.city_id).scalar()
+        .query(db.func.avg(Trip.airfare)) \
+        .filter_by(city_id=city.city_id).scalar()
 
     city.food = [restaurants, stars]
     city.avg_wow = round(avg_wow, 1)
@@ -189,17 +189,15 @@ def show_user_details(user_id):
 
     unique_searches = set(searches)
 
-    return render_template("user.html",
-                            searches=unique_searches)
+    return render_template("user.html", searches=unique_searches)
 
 
 @app.route('/intl-city-list')
 def get_cities():
     """Get list of intl cities for typeahead pre-population."""
 
-    intl_cities = db.session.query(
-                    City.name,
-                    City.country).filter(City.country != "United States").all()
+    intl_cities = db.session.query(City.name, City.country) \
+        .filter(City.country != "United States").all()
 
     intl_cities_list = [city + ', ' + country
                         for city, country in intl_cities]
@@ -211,9 +209,8 @@ def get_cities():
 def get_us_cities():
     """Get list of US cities for typeahead pre-population."""
 
-    us_cities = db.session.query(City.name,
-                City.state).filter(City.country == "United States",
-                                                    City.state != "").all()
+    us_cities = db.session.query(City.name, City.state) \
+        .filter(City.country == "United States", City.state != "").all()
 
     us_cities_list = [city + ', ' + state for city, state in us_cities]
 
@@ -345,7 +342,9 @@ def process_places(city_id, city_center, place_type):
                                    place_type=place_type).all()
 
     if not places:
-        places = get_google_places(city_id, city_center, place_type)
+        data = call_places_api(city_center, place_type)
+        add_places_to_db(city_id, data, place_type)
+        places = Place.query.filter_by(city_id=city_id, place_type=place_type).all()
 
     return select_ten_closest(places, city_center)
 
@@ -361,16 +360,6 @@ def add_places_to_db(city_id, data, place_type):
                       place_type=place_type)
         db.session.add(place)
     db.session.commit()
-
-
-def get_google_places(city_id, city_center, place_type):
-    """Get places from Google Places, add to DB, return places."""
-
-    # data = place_service.process_response(city_center, place_type)
-    data = call_places_api(city_center, place_type)
-    add_places_to_db(city_id, data, place_type)
-    places = Place.query.filter_by(city_id=city_id, place_type=place_type).all()
-    return places
 
 
 def distance_from_city_center(city_center, place):

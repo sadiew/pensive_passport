@@ -15,6 +15,7 @@ class AppIntegrationTestCase(unittest.TestCase):
 
     def do_post(self, route, data={}, test_function=None):
         result = self.app.post(route, data)
+
         self.assertEqual(result.status_code, 200)
         self.assertIn('text/html', result.headers['Content-Type'])
 
@@ -34,14 +35,9 @@ class AppIntegrationTestCase(unittest.TestCase):
     def test_login(self):
         self.do_get('/login', '<label>Username:')
 
-    def test_preference_form(self):
-        self.do_post('/preference-form',
-                        data={'depart-date': '2015-06-15',
-                              'return-date': '2015-06-30',
-                              'ideal-temp': 70,
-                              'departure-airport': 'SFO'})
+    def test_login_submission(self):
+        self.do_post('/login-submission', data={'username': 'sewilhelm@gmail.com', 'password': 'remi'})
 
-        self.do_get('/preference-form', '<form id="preference-form">')
 
 
 
