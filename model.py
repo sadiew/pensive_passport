@@ -50,8 +50,7 @@ class CityImage(db.Model):
     image_url = db.Column(db.Text, unique=True)
 
     city = db.relationship("City",
-                           backref=db.backref("city_images",
-                           order_by=image_id))
+                           backref=db.backref("city_images", order_by=image_id))
 
 
 class Airport(db.Model):
@@ -67,8 +66,7 @@ class Airport(db.Model):
     longitude = db.Column(db.Float, nullable=False)
 
     city = db.relationship("City",
-                           backref=db.backref("airports",
-                           order_by=airport_id))
+                           backref=db.backref("airports", order_by=airport_id))
 
     def __repr__(self):
 
@@ -87,8 +85,7 @@ class Restaurant(db.Model):
     stars = db.Column(db.Integer, nullable=False)
 
     city = db.relationship("City",
-                           backref=db.backref("restaurants",
-                           order_by=restaurant_id))
+                           backref=db.backref("restaurants", order_by=restaurant_id))
 
     def __repr__(self):
 
@@ -126,10 +123,10 @@ class Trip(db.Model):
     wow_factor = db.Column(db.Integer)
 
     city = db.relationship("City",
-                            backref=db.backref("trips", order_by=trip_id))
+                           backref=db.backref("trips", order_by=trip_id))
 
     search = db.relationship("Search",
-                              backref=db.backref("trips", order_by=search_id))
+                             backref=db.backref("trips", order_by=search_id))
 
     def __repr__(self):
         return "<Trip city_id=%s, airfare=%s>" % (self.city_id, self.airfare)

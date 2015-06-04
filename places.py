@@ -1,6 +1,5 @@
 import requests
 import os
-from model import Place, connect_to_db, db
 
 
 def call_places_api(city_center, place_type):
@@ -20,4 +19,3 @@ def call_places_api(city_center, place_type):
 
     data = response.json()
     return data
-

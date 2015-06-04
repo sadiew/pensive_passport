@@ -1,4 +1,4 @@
-import json, os
+import json
 
 
 from flask import Flask, request, render_template, redirect, jsonify
@@ -25,10 +25,11 @@ app.secret_key = "ABC"
 app.jinja_env.undefined = StrictUndefined
 
 start_date = datetime.strftime(date.today() + timedelta(days=14), '%Y-%m-%d')
-end_date = datetime.strftime(date.today()  + timedelta(days=28), '%Y-%m-%d')
+end_date = datetime.strftime(date.today() + timedelta(days=28), '%Y-%m-%d')
 
 flight_service = FlightService()
 place_service = PlaceService()
+
 
 @app.route('/')
 def index():
@@ -70,13 +71,12 @@ def gather_perferences():
     nphotos = min(len(city1.photos), len(city2.photos))
 
     return render_template('preference_form.html',
-                            origin_city=origin_city,
-                            city1=city1,
-                            city2=city2,
-                            nphotos=nphotos,
-                            start_date=start_date,
-                            end_date=end_date)
-
+                           origin_city=origin_city,
+                           city1=city1,
+                           city2=city2,
+                           nphotos=nphotos,
+                           start_date=start_date,
+                           end_date=end_date)
 
 
 @app.route('/results')
@@ -227,8 +227,7 @@ def get_flight():
     destination = request.form['destination']
 
     airfare = process_flights(origin, destination, depart_date, return_date)
-    # airfare = flight_service.process_response(origin, destination, depart_date, return_date)
-    # airfare = {'airfare': 1272}
+
     return jsonify(airfare)
 
 
@@ -323,8 +322,8 @@ def fetch_city_data(airport_code):
     airport = Airport.query.filter_by(airport_code=airport_code).first()
 
     michelin_stars = db.session \
-            .query(db.func.sum(Restaurant.stars)) \
-            .filter_by(city_id=airport.city.city_id).scalar()
+        .query(db.func.sum(Restaurant.stars)) \
+        .filter_by(city_id=airport.city.city_id).scalar()
 
     city_stats = {'cityId': airport.city.city_id,
                   'city': airport.city.name,
@@ -347,6 +346,7 @@ def process_places(city_id, city_center, place_type):
         places = Place.query.filter_by(city_id=city_id, place_type=place_type).all()
 
     return select_ten_closest(places, city_center)
+
 
 def add_places_to_db(city_id, data, place_type):
     """Add places gather from Google Places to DB."""
