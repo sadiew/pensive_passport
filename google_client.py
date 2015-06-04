@@ -75,7 +75,7 @@ class FlightService(GoogleService):
 
 class PlaceService(GoogleService):
     def __init__(self):
-        url = url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=" + self.api_key
+        url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=" + self.api_key
 
         super(PlaceService, self).__init__(url)
 

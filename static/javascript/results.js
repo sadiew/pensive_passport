@@ -4,7 +4,7 @@ var cityLatLon;
 
 function initialize(location) {
   var mapOptions = {
-    zoom: 12,
+    zoom: 13,
   };
 
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -82,11 +82,11 @@ function getPlaces() {
   $.get('/get-similar-trips?city_id=' + cityId,
       function (result) {
         $('#similar-trips').append('<h4 class="secondary-color align-center">Featured Recommendations</h4>');
-        for (item in result) {
+        for (var item in result) {
           $('#similar-trips').append("<div class='col-md-3 align-center'>" +
                                        "<a href='/city/" + item + "' target='_blank'>" + result[item] + "</a>"+
                                      "</div>");
-        };
+        }
       }
   );
 }
@@ -102,8 +102,8 @@ function addPlaceByType(type) {
               $('#' + type + '-info').append(
                 "<div class='" + type + "'>" +
                   "<a data-target='#" + type + "-" + i + "' data-toggle='collapse'" +
-                  "href='#' onclick='onPlaceClick(this, event)' data-google-place-id='"
-                  + googlePlaceId + "'>" + item + "</a>" +
+                  "href='#' onclick='onPlaceClick(this, event)' data-google-place-id='" +
+                  googlePlaceId + "'>" + item + "</a>" +
                   "<div id='" + type + "-" + i + "' class='collapse'>" +
                     "<div class='description'>" +
                       "<div>Average Rating: <span class='rating'></span> </div>" +
@@ -112,7 +112,7 @@ function addPlaceByType(type) {
                   "</div>" +
                 "</div>");
               i++;
-            };
+            }
          });
 }
 

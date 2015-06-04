@@ -23,9 +23,9 @@ function determineDestination(cities) {
     var c1 = cities[0];
     var c2 = cities[1];
 
-    var costWeight = parseInt($("#cost-weight").val());
-    var foodWeight = parseInt($("#food-weight").val());
-    var weatherWeight = parseInt($("#weather-weight").val());
+    var costWeight = parseInt($("#cost-weight").val(), 10);
+    var foodWeight = parseInt($("#food-weight").val(), 10);
+    var weatherWeight = parseInt($("#weather-weight").val(), 10);
     var totalWeight = costWeight + foodWeight + weatherWeight;
 
     weatherDelta = calcWeatherDelta(c1, c2);
@@ -160,8 +160,8 @@ function getCityData(evt) {
             cityInfo.city = result.city;
             cityInfo.cityId = result.cityId;
             cityInfo.country = result.country;
-            cityInfo.stars = getNum(parseInt(result.stars));
-            cityInfo.costOfLiving = parseInt(result.costOfLiving);
+            cityInfo.stars = getNum(parseInt(result.stars, 10));
+            cityInfo.costOfLiving = parseInt(result.costOfLiving, 10);
             $('#food-'+i).html(cityInfo.stars + ' ' +
                                 "<img class='michelin-star' src='/static/images/michelinstar.jpg'>");
             $('#col-'+i).html(cityInfo.costOfLiving);
@@ -189,7 +189,7 @@ function getCityData(evt) {
             destination: $("#airport-"+i).val()},
             function (result) {
                 $('#weather-'+i).html(result.low + " - " + result.high + " F");
-                cityInfo.weather = (parseInt(result.low) + parseInt(result.high))/2;
+                cityInfo.weather = (parseInt(result.low, 10) + parseInt(result.high, 10))/2;
                 apiResponses ++;
                 if (apiResponses===4) {    // all calls have completed
                     storeTrips(cities);
