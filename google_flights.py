@@ -55,3 +55,4 @@ def process_flights(origin, destination, depart_date, return_date):
         airfare = {'airfare': 1241}
 
     return airfare
+

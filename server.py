@@ -1,14 +1,16 @@
-import json
+import json, os
+
 
 from flask import Flask, request, render_template, redirect, jsonify
 from flask import session, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
+from datetime import datetime, date, timedelta
 
 from model import City, Airport, Restaurant, Place, Trip, User, Search
 from model import connect_to_db, db
 
-
+from google_client import FlightService, PlaceService
 from google_flights import process_flights
 from places import call_places_api
 from weather import process_weather
@@ -22,13 +24,11 @@ app.secret_key = "ABC"
 # WHY OH WHY?
 app.jinja_env.undefined = StrictUndefined
 
+start_date = datetime.strftime(date.today() + timedelta(days=14), '%Y-%m-%d')
+end_date = datetime.strftime(date.today()  + timedelta(days=28), '%Y-%m-%d')
 
-# gplaces = GooglePlaces(api_key=os.environ['GOOGLE_KEY'])
-# ...
-
-
-##############################################################################
-# FIXME -- LOGIN/LOGOUT ROUTES
+flight_service = FlightService()
+place_service = PlaceService()
 
 @app.route('/')
 def index():
@@ -44,7 +44,7 @@ def search():
     return render_template("search.html")
 
 
-@app.route('/preference-form')
+@app.route('/preference-form', methods=['GET', 'POST'])
 def gather_perferences():
     """Gather user preferences."""
 
@@ -73,8 +73,10 @@ def gather_perferences():
                             origin_city=origin_city,
                             city1=city1,
                             city2=city2,
-                            nphotos=nphotos)
-    
+                            nphotos=nphotos,
+                            start_date=start_date,
+                            end_date=end_date)
+
 
 
 @app.route('/results')
@@ -198,6 +200,7 @@ def get_cities():
     intl_cities = db.session.query(
                     City.name,
                     City.country).filter(City.country != "United States").all()
+
     intl_cities_list = [city + ', ' + country
                         for city, country in intl_cities]
 
@@ -211,13 +214,14 @@ def get_us_cities():
     us_cities = db.session.query(City.name,
                 City.state).filter(City.country == "United States",
                                                     City.state != "").all()
+
     us_cities_list = [city + ', ' + state for city, state in us_cities]
 
     return jsonify({'usCities': us_cities_list})
 
 
 @app.route('/get-flight', methods=['POST'])
-def get_first_flight():
+def get_flight():
     """Grab cost of airfare from Google flights."""
 
     depart_date = request.form['depart_date']
@@ -225,13 +229,14 @@ def get_first_flight():
     origin = request.form['origin']
     destination = request.form['destination']
 
-    # airfare = process_flights(origin, destination, depart_date, return_date)  FIXME
-    airfare = {'airfare': 1272}
+    airfare = process_flights(origin, destination, depart_date, return_date)
+    # airfare = flight_service.process_response(origin, destination, depart_date, return_date)
+    # airfare = {'airfare': 1272}
     return jsonify(airfare)
 
 
 @app.route('/get-weather', methods=['POST'])
-def get_first_weather():
+def get_weather():
     """Grab weather data from World Weather Online."""
 
     depart_date = request.form['depart_date']
@@ -361,6 +366,7 @@ def add_places_to_db(city_id, data, place_type):
 def get_google_places(city_id, city_center, place_type):
     """Get places from Google Places, add to DB, return places."""
 
+    # data = place_service.process_response(city_center, place_type)
     data = call_places_api(city_center, place_type)
     add_places_to_db(city_id, data, place_type)
     places = Place.query.filter_by(city_id=city_id, place_type=place_type).all()

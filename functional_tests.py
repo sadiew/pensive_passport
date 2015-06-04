@@ -3,31 +3,48 @@ import server
 
 class AppIntegrationTestCase(unittest.TestCase):
 
-    def valid_route(self, route, html_snippet, data={}):
-    	result = self.app.get(route)
+    def do_get(self, route, html_snippet, test_function=None):
+        result = self.app.get(route)
 
-    	self.assertEqual(result.status_code, 200)
+        self.assertEqual(result.status_code, 200)
         self.assertIn('text/html', result.headers['Content-Type'])
         self.assertIn(html_snippet, result.data)
+
+        if test_function:
+            self.assertTrue(test_function(result))
+
+    def do_post(self, route, data={}, test_function=None):
+        result = self.app.post(route, data)
+        self.assertEqual(result.status_code, 200)
+        self.assertIn('text/html', result.headers['Content-Type'])
+
+        if test_function:
+            self.assertTrue(test_function(result))
 
 
     def setUp(self):
         self.app = server.app.test_client()
 
     def test_home(self):
-    	self.valid_route('/', '<img src="/static/images/pp-logo.png" id="logo-styling">')
+        self.do_get('/', '<img src="/static/images/pp-logo.png" id="logo-styling">')
 
     def test_search(self):
-    	self.valid_route('/search', '<form action="/preference-form">')
+        self.do_get('/search', '<form action="/preference-form">')
 
     def test_login(self):
-    	self.valid_route('/login', '<label>Username:')
+        self.do_get('/login', '<label>Username:')
 
     def test_preference_form(self):
-    	self.valid_route('/preference-form', '<form id="preference-form">')
+        self.do_post('/preference-form',
+                        data={'depart-date': '2015-06-15',
+                              'return-date': '2015-06-30',
+                              'ideal-temp': 70,
+                              'departure-airport': 'SFO'})
+
+        self.do_get('/preference-form', '<form id="preference-form">')
 
 
 
 
 if __name__ == "__main__":
-	unittest.main()
+    unittest.main()
