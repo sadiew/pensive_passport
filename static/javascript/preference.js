@@ -114,7 +114,7 @@ function compareDeltas(dataDelta, wowDelta) {
 function showWinner(winningCity) {
     $("#pp-choice").html('Explore ' + winningCity.city);
     $("#pp-choice-text").html("Pensive Passport's algorithm has selected: " +
-                                "<span style='color:red;'>" +
+                                "<span class='tertiary-color'>" +
                                 "<strong>" + winningCity.city + "</strong></span>");
 
     $("#pp-choice").data("cityId", winningCity.cityId);
@@ -163,7 +163,7 @@ function getCityData(evt) {
             cityInfo.stars = getNum(parseInt(result.stars, 10));
             cityInfo.costOfLiving = parseInt(result.costOfLiving, 10);
             $('#food-'+i).html(cityInfo.stars + ' ' +
-                                "<img class='michelin-star' src='/static/images/michelinstar.jpg'>");
+                                "<img class='michelin-star' src='/static/images/michelinstar.png'>");
             $('#col-'+i).html(cityInfo.costOfLiving);
 
             }
@@ -211,7 +211,7 @@ function reCalculateDestination() {
     }
 
     else {$("#pp-choice-text").html("After recalculation, Pensive Passport now selects " +
-                                    "<span style='color:red'>" + winningCity.city + "</span>!");
+                                    "<span class='tertiary-color'>" + winningCity.city + "</span>!");
     }
     }
 

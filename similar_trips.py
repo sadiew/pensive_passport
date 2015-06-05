@@ -10,13 +10,6 @@ def get_user_similar_trips(city_id, user_id):
     """Query the DB for destinations searched by other users who searched
     the same 'winning' city."""
 
-    # XXX: use SQLA, even if it has to be raw
-
-    # SELECT ALL cities
-    #   WHERE this user has ...
-
-    # prob worth looking into http://www.postgresql.org/docs/9.1/static/queries-with.html
-
     query = """SELECT trips.city_id,
                     cities.name,
                     cities.country,
@@ -47,6 +40,7 @@ def get_user_similar_trips(city_id, user_id):
 
 
 def get_nl_similar_trips(city_id, num_needed):
+    """Look for cities with similar Wikipedia pages using cosine similarity."""
 
     similarities = check_for_nl_similarities(city_id, num_needed)
 
@@ -113,7 +107,7 @@ def check_for_nl_similarities(city_id, num_needed):
     if results:
         similar_cities = []
         for result in results:
-            city_looking_for = result[1] if result[0] == int(city_id) else result[0]            
+            city_looking_for = result[1] if result[0] == int(city_id) else result[0]
             city = City.query.get(city_looking_for)
             similar_cities.append(city)
 

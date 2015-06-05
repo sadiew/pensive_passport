@@ -1,3 +1,5 @@
+"""Calls the Google Flights API for airfare information."""
+
 import json
 import requests
 import os

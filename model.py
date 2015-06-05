@@ -1,3 +1,5 @@
+"""Create ORM for app."""
+
 import flickr
 
 from flask_sqlalchemy import SQLAlchemy

@@ -11,6 +11,14 @@ label {
   font-family: 'Nixie One', cursive;
 }
 
+.navbar{
+  background-color:#212930;
+}
+
+.typeahead-query {
+  background-color: transparent;
+}
+
 .description {
   border-bottom: 1px solid #BA996B;
   width: 60%;
@@ -43,7 +51,7 @@ div.navbar-header img {
 }
 
 .tertiary-color {
-  color: #BA996B;
+  color: #F28705;
 }
 
 .city-header{
@@ -74,8 +82,8 @@ img.weather-radio {
 }
 
 img.michelin-star {
-	width:20px;
-	height:20px;
+	width:15px;
+	height:15px;
 }
 
 .carousel-inner > .item > img{

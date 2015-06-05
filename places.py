@@ -1,3 +1,5 @@
+"""Calls Google Places API for prominent attractions in the winning city."""
+
 import requests
 import os
 

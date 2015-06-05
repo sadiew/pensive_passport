@@ -1,3 +1,6 @@
+"""Seeds initial Wikipedia pages and cosine similarities
+for natural language processing component."""
+
 import wikipedia
 from nltk.tokenize import RegexpTokenizer
 from nltk.stem.porter import PorterStemmer

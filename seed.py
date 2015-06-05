@@ -1,3 +1,5 @@
+"""Seeds the database with city, airport, and restaurant data."""
+
 from model import City, Airport, Restaurant, connect_to_db, db
 from server import app
 import codecs

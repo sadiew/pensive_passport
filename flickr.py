@@ -1,3 +1,5 @@
+"""Calls the Flickr API for relevant destination photos."""
+
 import flickrapi
 import os
 
