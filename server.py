@@ -10,8 +10,7 @@ from datetime import datetime, date, timedelta
 from model import City, Airport, Restaurant, Place, Trip, User, Search
 from model import connect_to_db, db
 
-from google_client import FlightService, PlaceService
-from google_flights import process_flights
+from flights import process_flights
 from places import call_places_api
 from weather import process_weather
 from similar_trips import get_user_similar_trips, get_nl_similar_trips
@@ -21,14 +20,10 @@ app = Flask(__name__)
 
 app.secret_key = "ABC"
 
-# WHY OH WHY?
 app.jinja_env.undefined = StrictUndefined
 
 start_date = datetime.strftime(date.today() + timedelta(days=14), '%Y-%m-%d')
 end_date = datetime.strftime(date.today() + timedelta(days=28), '%Y-%m-%d')
-
-flight_service = FlightService()
-place_service = PlaceService()
 
 
 @app.route('/')

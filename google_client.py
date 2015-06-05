@@ -1,3 +1,9 @@
+# what to include in server.py
+# from google_client import FlightService, PlaceService
+# flight_service = FlightService()
+# place_service = PlaceService()
+
+
 import json
 import requests
 import os

@@ -2,6 +2,8 @@ import json
 import requests
 import os
 
+from random import choice
+
 
 def call_flights_api(origin, destination, depart_date, return_date):
     api_key = os.environ['GOOGLE_KEY']
@@ -52,6 +54,7 @@ def process_flights(origin, destination, depart_date, return_date):
     try:
         airfare = call_flights_api(origin, destination, depart_date, return_date)
     except:
-        airfare = {'airfare': 1241}
+        random_airfare = choice([1241, 1743, 1541])
+        airfare = {'airfare': random_airfare}
 
     return airfare

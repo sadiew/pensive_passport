@@ -4,7 +4,7 @@ var cityLatLon;
 
 function initialize(location) {
   var mapOptions = {
-    zoom: 13,
+    zoom: 12,
   };
 
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
