@@ -36,7 +36,7 @@ class AppIntegrationTestCase(unittest.TestCase):
         self.do_get('/login', '<label>Username:')
 
     def test_login_submission(self):
-        self.do_post('/login-submission', data={'username': 'sewilhelm@gmail.com', 'password': 'remi'})
+        self.do_post('/login-submission', data={'username': 'demoUser.com', 'password': 'demo'})
 
 
 
