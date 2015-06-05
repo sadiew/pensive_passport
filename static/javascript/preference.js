@@ -113,9 +113,9 @@ function compareDeltas(dataDelta, wowDelta) {
 
 function showWinner(winningCity) {
     $("#pp-choice").html('Explore ' + winningCity.city);
-    $("#pp-choice-text").html("Pensive Passport's algorithm has selected: " +
+    $("#pp-choice-text").html("Pensive Passport's algorithm has selected " +
                                 "<span class='tertiary-color'>" +
-                                "<strong>" + winningCity.city + "</strong></span>");
+                                "<strong>" + winningCity.city + "</strong></span>!");
 
     $("#pp-choice").data("cityId", winningCity.cityId);
     $("#algo-result").show();
@@ -134,6 +134,7 @@ function prepDom() {
     $(".photo-carousel").hide();
     $("#general-pref").hide();
     $(".city-header").hide();
+    $("#travel-pref-header").hide();
 
 }
 

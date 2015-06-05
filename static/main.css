@@ -51,7 +51,7 @@ div.navbar-header img {
 }
 
 .tertiary-color {
-  color: #F28705;
+  color: #499EBF;
 }
 
 .city-header{
@@ -104,6 +104,7 @@ img.michelin-star {
     border: 2px solid #42B872;
     padding: 20px;
     margin:5px auto;
+    background-color:#fff;
 
 }
 
