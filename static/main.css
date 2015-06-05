@@ -1,6 +1,6 @@
 body {
   font-family: 'Nixie One', cursive;
-/*  background: url(/static/images/crossword.png);*/
+  background: url(/static/images/crossword.png);
 }
 
 a {
@@ -70,7 +70,7 @@ div.navbar-header img {
 
 img.weather-radio {
 	width:30px;
-	height:30px; 
+	height:30px;
 }
 
 img.michelin-star {
@@ -114,7 +114,7 @@ img.michelin-star {
 }
 
 .data-element{
-   text-align: center;   
+   text-align: center;
 }
 
 label.weather-radio > input{ /* HIDE RADIO */
