@@ -1,6 +1,10 @@
 body {
-  font-family: 'Nixie One', cursive;
+  font-family: 'Lato', sans-serif;
   background: url(/static/images/crossword.png);
+}
+
+h1, h2, h3, h5, h6, th, .navbar {
+  font-family: 'Nixie One', cursive;
 }
 
 a {
@@ -8,7 +12,8 @@ a {
 }
 
 label {
-  font-family: 'Nixie One', cursive;
+  /*font-family: 'Nixie One', cursive;*/
+  font-weight: normal;
 }
 
 .navbar{
@@ -26,6 +31,10 @@ label {
   margin-bottom: 10px;
 }
 
+.align-right {
+  text-align: right;
+}
+
 .align-left {
   text-align: left;
 }
@@ -34,7 +43,7 @@ label {
   text-align:center;
 }
 
-div.navbar-header img {
+.navbar-header img {
     width: 30px;
     float: left;
     margin-top: 7px;
@@ -81,7 +90,7 @@ img.weather-radio {
 	height:30px;
 }
 
-img.michelin-star {
+.michelin-star {
 	width:15px;
 	height:15px;
 }
@@ -116,10 +125,7 @@ img.michelin-star {
 }
 
 #city-specific-pref {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    margin-right: 0;
-    margin-left: 0;
+    margin: 50px 0;
 }
 
 .data-element{
@@ -132,6 +138,10 @@ td {
 
 th {
   font-weight: 900;
+}
+
+label.weather-radio {
+  padding-left: 23px;
 }
 
 label.weather-radio > input{ /* HIDE RADIO */

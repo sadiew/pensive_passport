@@ -3,7 +3,7 @@ var c2 = {};
 var cities = [c1, c2];
 var previousCity;
 var winningCity;
-var HIGHLIGHT = "color:#66CDAA";
+var HIGHLIGHT = "color: #42B872";
 
 $(document).ready(function () {
     // hide results table and preference sliders
