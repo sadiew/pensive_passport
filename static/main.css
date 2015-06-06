@@ -111,19 +111,27 @@ img.michelin-star {
 #general-pref {
     margin-top: 10px;
     margin-bottom: 50px;
-    margin-right: 0px;
-    margin-left: 0px;
+    margin-right: 0;
+    margin-left: 0;
 }
 
 #city-specific-pref {
     margin-top: 50px;
     margin-bottom: 50px;
-    margin-right: 0px;
-    margin-left: 0px;
+    margin-right: 0;
+    margin-left: 0;
 }
 
 .data-element{
    text-align: center;
+}
+
+td {
+  font-weight: 900;
+}
+
+th {
+  font-weight: 900;
 }
 
 label.weather-radio > input{ /* HIDE RADIO */
@@ -140,8 +148,8 @@ label.weather-radio > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 
 .loader {
 position: fixed;
-left: 0px;
-top: 0px;
+left: 0;
+top: 0;
 width: 100%;
 height: 100%;
 z-index: 9999;

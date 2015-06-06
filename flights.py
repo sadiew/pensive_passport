@@ -4,7 +4,7 @@ import json
 import requests
 import os
 
-from random import choice
+from random import randrange, choice
 
 
 def call_flights_api(origin, destination, depart_date, return_date):
@@ -56,10 +56,10 @@ def process_flights(origin, destination, depart_date, return_date):
     # try:
     #     airfare = call_flights_api(origin, destination, depart_date, return_date)
     # except:
-    #     random_airfare = choice([1241, 1743, 1541])
+    #     random_airfare = choice([randrange(1000,2000) for i in range(20)])
     #     airfare = {'airfare': random_airfare}
 
-    random_airfare = choice([1241, 1743, 1541, 1352, 1891, 1023, 1457])
+    random_airfare = choice([randrange(1000,2000) for i in range(20)])
     airfare = {'airfare': random_airfare}
 
     return airfare
