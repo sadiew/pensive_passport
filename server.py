@@ -340,7 +340,8 @@ def process_places(city_id, city_center, place_type):
     if not places:
         data = call_places_api(city_center, place_type)
         add_places_to_db(city_id, data, place_type)
-        places = Place.query.filter_by(city_id=city_id, place_type=place_type).all()
+        places = Place.query \
+            .filter_by(city_id=city_id, place_type=place_type).all()
 
     return select_ten_closest(places, city_center)
 
@@ -362,7 +363,7 @@ def add_places_to_db(city_id, data, place_type):
 def distance_from_city_center(city_center, place):
     """Distance of a place from its city center 'lat, lon'."""
 
-    lat, lon = (float(x) for x in city_center.split(","))
+    lat, lon = (float(coord) for coord in city_center.split(","))
 
     distance = abs(place.lat-lat) + abs(place.lon-lon)
 

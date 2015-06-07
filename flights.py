@@ -53,13 +53,13 @@ def process_flights(origin, destination, depart_date, return_date):
     """Attempt to call Google flights API, but return default values
     if unavailable."""
 
-    # try:
-    #     airfare = call_flights_api(origin, destination, depart_date, return_date)
-    # except:
-    #     random_airfare = choice([randrange(1000,2000) for i in range(20)])
-    #     airfare = {'airfare': random_airfare}
+    try:
+        airfare = call_flights_api(origin, destination, depart_date, return_date)
+    except:
+        random_airfare = choice([randrange(1000, 2000) for i in range(20)])
+        airfare = {'airfare': random_airfare}
 
-    random_airfare = choice([randrange(1000,2000) for i in range(20)])
-    airfare = {'airfare': random_airfare}
+    # random_airfare = choice([randrange(1000, 2000) for i in range(20)])
+    # airfare = {'airfare': random_airfare}
 
     return airfare

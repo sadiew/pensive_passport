@@ -3,38 +3,36 @@ from nltk.tokenize import RegexpTokenizer
 from nltk.stem.porter import PorterStemmer
 from sklearn.feature_extraction.text import TfidfVectorizer
 import wikipedia
-import psycopg2
 
 
 def get_user_similar_trips(city_id, user_id):
     """Query the DB for destinations searched by other users who searched
     the same 'winning' city."""
 
-    query = """SELECT trips.city_id,
-                    cities.name,
-                    cities.country,
-                    COUNT(trips.city_id)
-            FROM trips
-                JOIN cities on trips.city_id = cities.city_id
-                JOIN searches on trips.search_id = searches.search_id
-            WHERE searches.user_id IN
+    query = """SELECT t.city_id,
+                    c.name,
+                    c.country,
+                    COUNT(t.city_id)
+            FROM trips AS t
+                JOIN cities AS c on t.city_id = c.city_id
+                JOIN searches AS s on t.search_id = s.search_id
+            WHERE s.user_id IN
                 (SELECT user_id
-                FROM searches
-                JOIN trips on searches.search_id = trips.search_id
-                WHERE city_id = %s)
-            AND trips.city_id NOT IN
-                (SELECT DISTINCT city_id
-                FROM trips
-                JOIN searches on trips.search_id=searches.search_id
-                WHERE searches.user_id=%s)
+                FROM searches AS s
+                JOIN trips AS t on s.search_id = t.search_id
+                WHERE t.city_id = %s)
+            AND t.city_id NOT IN
+                (SELECT city_id
+                FROM trips AS t
+                JOIN searches AS s on t.search_id = s.search_id
+                WHERE s.user_id = %s)
             GROUP BY 1,2,3
-            ORDER BY COUNT(trips.city_id) DESC
+            ORDER BY COUNT(t.city_id) DESC
             LIMIT 4""" % (city_id, user_id)
-
 
     results = db.engine.execute(query)
     user_similar_cities = {result[0]: '%s, %s' % (result[1], result[2])
-                            for result in results}
+                           for result in results}
 
     return user_similar_cities
 
@@ -75,7 +73,7 @@ def add_similarities_to_db(city_id):
     city_ids = [result[0] for result in results]
 
     combo_ids = ['%s-%s' % (city_id, city_ids[i])
-                for i in range(len(city_ids))]
+                 for i in range(len(city_ids))]
 
     for combo_id in combo_ids:
         id1, id2 = combo_id.split("-")
@@ -112,8 +110,8 @@ def check_for_nl_similarities(city_id, num_needed):
             similar_cities.append(city)
 
         nltk_similar_cities = {city.city_id: '%s, %s'
-                                % (city.name, city.country)
-                                for city in similar_cities}
+                               % (city.name, city.country)
+                               for city in similar_cities}
 
         return nltk_similar_cities
     else:
@@ -143,6 +141,6 @@ def cosine_similarity(city1_content, city2_content):
 
     # remove 'stop words' that are too common and thus uninformative
     vectorizer = TfidfVectorizer(tokenizer=generate_stemmed_tokens,
-                                stop_words='english')
+                                 stop_words='english')
     tfidf = vectorizer.fit_transform([city1_content, city2_content])
     return ((tfidf * tfidf.T).A)[0, 1]
