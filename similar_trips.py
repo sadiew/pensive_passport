@@ -66,9 +66,8 @@ def add_wiki_page_to_db(city_id):
 
 def add_similarities_to_db(city_id):
 
-    results = db.engine.execute("""SELECT city_id
-                                FROM wikipedia_pages
-                                WHERE city_id <> %s""" % (city_id))
+    results = db.session.query(WikipediaPage.city_id) \
+        .filter(WikipediaPage.city_id != city_id).all()
 
     city_ids = [result[0] for result in results]
 
