@@ -212,7 +212,7 @@ function reCalculateDestination() {
     }
 
     else {$("#pp-choice-text").html("After recalculation, Pensive Passport now selects " +
-                                    "<span class='tertiary-color'>" + winningCity.city + "</span>!");
+                                    "<span class='tertiary-color'><strong>" + winningCity.city + "</strong></span>!");
     }
     }
 
@@ -220,7 +220,7 @@ function exploreCity(evt) {
     $(".loader").fadeIn("slow");
     var cityId = $(this).data("cityId");
 
-    window.location = "/results?city_id=" + cityId;
+    window.location = "/winning-city?city_id=" + cityId;
 
 }
 

@@ -74,14 +74,14 @@ def gather_perferences():
                            end_date=end_date)
 
 
-@app.route('/results')
+@app.route('/winning-city')
 def show_results():
     """Display map of city along with attractions."""
 
     city_id = request.args['city_id']
     city = City.query.get(city_id)
 
-    return render_template("results.html", city=city)
+    return render_template("winning_city.html", city=city)
 
 
 @app.route('/login')
@@ -257,7 +257,9 @@ def store_trips():
     db.session.flush()
 
     trip1 = json.loads(request.form['trip1'])
+    print trip1['cityId']
     trip2 = json.loads(request.form['trip2'])
+    print trip2['cityId']
     trips = [trip1, trip2]
 
     for trip in trips:
