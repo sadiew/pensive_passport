@@ -51,7 +51,11 @@ Pensive Passport is a travel app that assists the indecisive traveler in making 
     * If the destination has been searched before, places are cached in DB; if not, call Google places API for relevant attractions.
   * Featured Recommendations
     * User-based: Suggest cities that other users with similar travel preferences have searched.
-    * Natural-language-based: Perform cosine similarity for winning city's Wikipedia page as compared to other Wikipedia pages stored in DB.  Return cities with cosine similarity closest to 1 (0 = no similarity, 1 = perfect similarity).
+    * Natural-language-based: Perform cosine similarity for winning city's Wikipedia page as compared to other cities' Wikipedia pages.
+      * Generate tf-idf (term frequency, inverse document frequency) vectors (multi-dimensional) for each city's Wikipedia page.
+      * For each pair of cities, determine the cosine of the angle between the two vectors.
+      * A smaller angle between two vectors means a larger value of cosine and thus greater similarity between the two texts (Wikipedia pages).
+      * Return cities with cosine similarity closest to 1 (0 = no similarity, 1 = perfect similarity).
 
 ###Set Up PP on Your Machine
 
@@ -59,7 +63,6 @@ Clone or fork this repo:
 
 ```
 https://github.com/sadiew/pensive_passport.git
-
 ```
 
 Create and activate a virtual environment inside your project directory:
@@ -74,7 +77,6 @@ Install the requirements:
 
 ```
 pip install -r requirements.txt
-
 ```
 
 Get your own secret keys for Google, Flickr, and World Weather Online and save them to a file <kbd>secrets.sh</kbd>. You should also set your own secret key for Flask. Your file should look something like this:
@@ -97,7 +99,7 @@ Run the app:
 ```
 python controller.py
 ```
-Navigate to `localhost:5000/home` to decide upon your next vacation!
+Navigate to `localhost:5000` to decide upon your next vacation!
 
 ###Deployment
 

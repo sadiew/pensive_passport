@@ -32,20 +32,20 @@
 
 	        <div class="navbar-header">
 	        	<img src="/static/images/pp-logo-notext.png">
-	            <a class="navbar-brand" href="/"><strong>Pensive Passport</strong></a>
+	            <a class="navbar-brand" href="/">Pensive Passport</a>
 	        </div>
 
 	        <div class="navbar-collapse collapse">
 	            <ul class="nav navbar-nav navbar-right">
-	                <li>
+	                <li style="font-family: 'PT Sans', sans-serif;">
 	                    <a href="/search">
-	                        <strong>Search</strong>
+	                        Search
 	                    </a>
 	                </li>
 	                {% if 'username' in session %}
-	                	<li><a href="/logout"><strong>Log Out</strong></a></li>
+	                	<li style="font-family: 'PT Sans', sans-serif;"><a href="/logout">Log Out</a></li>
 	                {% else %}
-	                	<li><a href="/login"><strong>Log In</strong></a></li>
+	                	<li style="font-family: 'PT Sans', sans-serif;"><a href="/login">Log In</a></li>
 	                {% endif %}
 	            </ul>
 	        </div>

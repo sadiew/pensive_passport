@@ -3,7 +3,14 @@ body {
   background: url(/static/images/crossword.png);
 }
 
-h1, h2, h5, h6, th{
+h1, h2, h5, h6 {
+  font-family: 'Arvo', serif;
+}
+
+th{
+  text-align:center;
+  font-size:24px;
+  font-weight:normal;
   font-family: 'Arvo', serif;
 }
 
@@ -17,6 +24,10 @@ label {
   color: #212930;
 }
 
+.search-label {
+  font-family: 'Arvo', serif;
+}
+
 .navbar{
   background-color:#212930;
   font-family: 'Nixie One', cursive;
@@ -27,7 +38,7 @@ label {
 }
 
 .description {
-  border-bottom: 1px solid #BA996B;
+  border-bottom: 1px solid #778A9A;
   width: 60%;
   margin: 0 auto;
   margin-bottom: 10px;
@@ -74,6 +85,7 @@ label {
 .place-header {
   text-align: center;
   color: #42B872;
+  font-family: 'Arvo', serif;
 }
 .home-airport-dropdown {
 	width:300px;
@@ -114,6 +126,15 @@ img.weather-radio {
 .rcorners {
     border-radius: 25px;
     border: 2px solid #42B872;
+    padding: 20px;
+    margin:5px;
+    background-color:#fff;
+
+}
+
+.map-container {
+    border-radius: 25px;
+    border: 2px solid #212930;
     padding: 20px;
     margin:5px auto;
     background-color:#fff;
@@ -163,4 +184,22 @@ width: 100%;
 height: 100%;
 z-index: 9999;
 background: url('http://bradsknutson.com/wp-content/uploads/2013/04/page-loader.gif') 50% 50% no-repeat rgb(249,249,249);
+}
+
+.carousel-control .icon-prev:before{
+    color: #000;
+}
+
+.carousel-control {
+  color: #778A9A;
+  opacity: 1;
+  text-shadow: none;
+}
+
+.carousel-control.left, .carousel-control.right {
+  background-image: none;
+  }
+
+.col-md-6 {
+  width:49%;
 }
