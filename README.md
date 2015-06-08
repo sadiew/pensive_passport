@@ -3,20 +3,10 @@
 Pensive Passport is a travel app that assists the indecisive traveler in making data-driven decisions.  Once the user has chosen travel options, PP gathers airfare, weather, cost of living, and Michelin star data.  Based on this, PP’s scoring algorithm suggests an initial destination.  The user may then adjust the relative importance of food/weather/cost, and PP’s algorithm will interactively recalculate her destination.  Once satisfied, the user can explore the “winning” city through a selection of prominent city attractions, as well as peruse PP’s additional featured recommendations.
 
 ####Technology Stack
-* Backend
-  * Python, Flask
-  * Postgres, SQLAlchemy
+* Backend: Python, Flask, SQLAlchemy, Postgres
   * Python Libaries: nltk, scikit-learn, scipy
-* Frontend
-  * JavaScript, jQuery, AJAX
-  * Bootstrap
-* APIs
-  * Flickr
-  * Google Flights
-  * Google Maps
-  * Google Places
-  * World Weather Online
-  * Wikipedia
+* Frontend: JavaScript, jQuery, AJAX, Bootstrap
+* APIs: Flickr, Google Flights, Google Maps, Google Places, World Weather Online, Wikipedia
 
 ####Control Flow
 <p align="center">
