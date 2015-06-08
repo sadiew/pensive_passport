@@ -1,19 +1,19 @@
-#PensivePassport
+#Pensive Passport
 
-PensivePassport is a travel app that assists the indecisive traveler in making data-driven decisions.  Once the user has chosen travel options, PP gathers airfare, weather, cost of living, and Michelin star data.  Based on this, PP’s scoring algorithm suggests an initial destination.  The user may then adjust the relative importance of food/weather/cost, and PP’s algorithm will interactively recalculate her destination.  Once satisfied, the user can explore the “winning” city through a selection of prominent city attractions, as well as peruse PP’s additional featured recommendations.
+Pensive Passport is a travel app that assists the indecisive traveler in making data-driven decisions.  Once the user has chosen travel options, PP gathers airfare, weather, cost of living, and Michelin star data.  Based on this, PP’s scoring algorithm suggests an initial destination.  The user may then adjust the relative importance of food/weather/cost, and PP’s algorithm will interactively recalculate her destination.  Once satisfied, the user can explore the “winning” city through a selection of prominent city attractions, as well as peruse PP’s additional featured recommendations.
 
-####Technology Stack
+###Technology Stack
 * Backend: Python, Flask, SQLAlchemy, Postgres
   * Python Libaries: nltk, scikit-learn, scipy
 * Frontend: JavaScript, jQuery, AJAX, Bootstrap
 * APIs: Flickr, Google Flights, Google Maps, Google Places, World Weather Online, Wikipedia
 
-####Control Flow
+###Control Flow
 <p align="center">
   <img align="center" src="/static/images/control-flow.png">
 </p>
 
-####Overview
+###Overview
 * Search Form
   * Search destination of interest.
   * Typeahead pre-populates from DB.
@@ -53,7 +53,7 @@ PensivePassport is a travel app that assists the indecisive traveler in making d
     * User-based: Suggest cities that other users with similar travel preferences have searched.
     * Natural-language-based: Perform cosine similarity for winning city's Wikipedia page as compared to other Wikipedia pages stored in DB.  Return cities with cosine similarity closest to 1 (0 = no similarity, 1 = perfect similarity).
 
-####Set Up PP on Your Machine
+###Set Up PP on Your Machine
 
 Clone or fork this repo:
 
@@ -87,7 +87,6 @@ export FLICKR_SECRET="YOUR_API_SECRET"
 export WEATHER_KEY="YOUR_API_KEY"
 export GOOGLE_KEY="YOUR_API_KEY"
 
-
 ```
 
 Source your secret keys:
@@ -105,6 +104,6 @@ python controller.py
 ```
 Navigate to `localhost:5000/home` to decide upon your next vacation!
 
-####Deployment
+###Deployment
 
 pensivepassport.com has been procured – deployment coming soon!
