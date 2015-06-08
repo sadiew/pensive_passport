@@ -17,11 +17,9 @@ Pensive Passport is a travel app that assists the indecisive traveler in making 
 * Search Form
   * Search destination of interest.
   * Typeahead pre-populates from DB.
-
 * Preference Form
   * Connect to DB for airport dropdown selection.
   * If city images are not already cached in DB, call Flickr API to gather relevant photos.
-
 * Data Table & Algo Results
   * Data Collection
     * Call Google Flights API to gather airfare.
@@ -42,7 +40,6 @@ Pensive Passport is a travel app that assists the indecisive traveler in making 
       <img align="center" src="/static/images/winning-city-equation.png">
     </p>
     * The user is able to adjust sliders to change the relative importance of cost, food, and weather and then the algorithm will recalculate the destination.
-
 * Winning City Details
   * Map
     * Connect to Google Maps API for map of winning city.
@@ -97,7 +94,7 @@ source secrets.sh
 Run the app:
 
 ```
-python controller.py
+python server.py
 ```
 Navigate to `localhost:5000` to decide upon your next vacation!
 
