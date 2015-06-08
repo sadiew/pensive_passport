@@ -34,7 +34,7 @@ Pensive Passport is a travel app that assists the indecisive traveler in making 
 
 * Data Table & Algo Results
 ..* Data Collection
-....* Call Google Flights API to gather airfare.
+..*..* Call Google Flights API to gather airfare.
 ....* Call World Weather Online API to gather weather data for the same travel dates in the previous year.
 ....* Query database for static data including cost-of-living and Michelin stars.
 ....* Flight, weather, and static data passed through to the frontend for the scoring algorithm.
