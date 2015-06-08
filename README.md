@@ -4,9 +4,9 @@ Pensive Passport is a travel app that assists the indecisive traveler in making 
 
 ####Technology Stack
 * Backend
-..* Python/Flask
-..* Postgres, SQLAlchemy
-..* Python Libaries: nltk, scikit-learn, scipy
+  * Python/Flask
+  * Postgres, SQLAlchemy
+  * Python Libaries: nltk, scikit-learn, scipy
 * Frontend
 ..* Javascript, jQuery, AJAX
 ..* Bootstrap
