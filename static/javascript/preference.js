@@ -114,7 +114,7 @@ function compareDeltas(dataDelta, wowDelta) {
 function showWinner(winningCity) {
     $("#pp-choice").html('Explore ' + winningCity.city);
     $("#pp-choice-text").html("Pensive Passport's algorithm has selected " +
-                                "<span class='tertiary-color'>" +
+                                "<span class='primary-color'>" +
                                 "<strong>" + winningCity.city + "</strong></span>!");
 
     $("#pp-choice").data("cityId", winningCity.cityId);

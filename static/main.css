@@ -12,7 +12,6 @@ a {
 }
 
 label {
-  /*font-family: 'Nixie One', cursive;*/
   font-weight: normal;
 }
 
@@ -56,11 +55,12 @@ label {
 
 
 .secondary-color {
-  color: #98C872;
+  color: #212930; /*dark grey*/
 }
 
 .tertiary-color {
-  color: #499EBF;
+  color: #98C872; /*light green*/
+
 }
 
 .city-header{
@@ -70,7 +70,7 @@ label {
 
 .place-header {
   text-align: center;
-  color:#98C872;
+  color: #42B872;
 }
 .home-airport-dropdown {
 	width:300px;
@@ -133,7 +133,7 @@ img.weather-radio {
 }
 
 td {
-  font-weight: 900;
+  font-weight: bold;
 }
 
 th {

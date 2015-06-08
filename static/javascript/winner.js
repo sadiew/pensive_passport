@@ -81,7 +81,7 @@ function getPlaces() {
 
   $.get('/get-similar-trips?city_id=' + cityId,
       function (result) {
-        $('#similar-trips').append('<h4 class="secondary-color align-center">Featured Recommendations</h4>');
+        $('#similar-trips').append('<h4 class="primary-color align-center">Featured Recommendations</h4>');
         for (var item in result) {
           $('#similar-trips').append("<div class='col-md-3 align-center'>" +
                                        "<a href='/city/" + item + "' target='_blank'>" + result[item] + "</a>"+
