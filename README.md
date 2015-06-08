@@ -65,11 +65,9 @@ https://github.com/sadiew/pensive_passport.git
 Create and activate a virtual environment inside your project directory:
 
 ```
-
 virtualenv env
 
 source env/bin/activate
-
 ```
 
 Install the requirements:
@@ -86,21 +84,18 @@ export FLICKR_KEY="YOUR_API_KEY"
 export FLICKR_SECRET="YOUR_API_SECRET"
 export WEATHER_KEY="YOUR_API_KEY"
 export GOOGLE_KEY="YOUR_API_KEY"
-
 ```
 
 Source your secret keys:
 
 ```
 source secrets.sh
-
 ```
 
 Run the app:
 
 ```
 python controller.py
-
 ```
 Navigate to `localhost:5000/home` to decide upon your next vacation!
 
