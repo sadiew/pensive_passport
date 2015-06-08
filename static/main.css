@@ -1,10 +1,10 @@
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: 'PT Sans', sans-serif;
   background: url(/static/images/crossword.png);
 }
 
-h1, h2, h3, h5, h6, th, .navbar {
-  font-family: 'Nixie One', cursive;
+h1, h2, h5, h6, th{
+  font-family: 'Arvo', serif;
 }
 
 a {
@@ -12,11 +12,14 @@ a {
 }
 
 label {
+  font-family: 'PT Sans', sans-serif;
   font-weight: normal;
+  color: #212930;
 }
 
 .navbar{
   background-color:#212930;
+  font-family: 'Nixie One', cursive;
 }
 
 .typeahead-query {
@@ -134,10 +137,6 @@ img.weather-radio {
 
 td {
   font-weight: bold;
-}
-
-th {
-  font-weight: 900;
 }
 
 label.weather-radio {

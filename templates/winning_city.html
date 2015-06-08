@@ -2,7 +2,7 @@
 
 {% block body %}
 
-<h1 class="city-header"><strong>{{ city.name }}, {{ city.country }}</strong></h1>
+<h1 class="city-header">{{ city.name }}, {{ city.country }}</h1>
 
 <div class="row" style="margin:0 auto;">
   <div id="map-canvas" class="rcorners" style="width:auto; height:200px"></div>
@@ -10,22 +10,22 @@
 <div class="row" style="text-align:center">
   <div class="col-md-4">
       <div id="restaurant-info">
-        <h4 class="place-header">Restaurants</h4>
+        <h3 class="place-header">Restaurants</h3>
       </div>
   </div>
   <div class="col-md-4">
       <div id="museum-info">
-        <h4 class="place-header">Museums</h4>
+        <h3 class="place-header">Museums</h3>
       </div>
   </div>
   <div class="col-md-4">
       <div id="park-info">
-        <h4 class="place-header">Parks</h4>
+        <h3 class="place-header">Parks</h3>
       </div>
   </div>
 </div>
 <div>
-  <div class="row" id="similar-trips" style="border-top: 2px solid #212930; margin:20px auto;">
+  <div class="row" id="similar-trips" style="border-top: 1px solid #212930; margin:20px auto;">
   </div>
 </div>
 </div>

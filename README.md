@@ -1,6 +1,6 @@
-#Pensive Passport
+#PensivePassport
 
-Pensive Passport is a travel app that assists the indecisive traveler in making data-driven decisions.  Once the user has chosen travel options, PP gathers airfare, weather, cost of living, and Michelin star data.  Based on this, PP’s scoring algorithm suggests an initial destination.  The user may then adjust the relative importance of food/weather/cost, and PP’s algorithm will interactively recalculate her destination.  Once satisfied, the user can explore the “winning” city through a selection of prominent city attractions, as well as peruse PP’s additional featured recommendations.
+PensivePassport is a travel app that assists the indecisive traveler in making data-driven decisions.  Once the user has chosen travel options, PP gathers airfare, weather, cost of living, and Michelin star data.  Based on this, PP’s scoring algorithm suggests an initial destination.  The user may then adjust the relative importance of food/weather/cost, and PP’s algorithm will interactively recalculate her destination.  Once satisfied, the user can explore the “winning” city through a selection of prominent city attractions, as well as peruse PP’s additional featured recommendations.
 
 ####Technology Stack
 * Backend: Python, Flask, SQLAlchemy, Postgres
@@ -52,6 +52,58 @@ Pensive Passport is a travel app that assists the indecisive traveler in making 
   * Featured Recommendations
     * User-based: Suggest cities that other users with similar travel preferences have searched.
     * Natural-language-based: Perform cosine similarity for winning city's Wikipedia page as compared to other Wikipedia pages stored in DB.  Return cities with cosine similarity closest to 1 (0 = no similarity, 1 = perfect similarity).
+
+####Set Up PP on Your Machine
+
+Clone or fork this repo:
+
+```
+https://github.com/sadiew/pensive_passport.git
+
+```
+
+Create and activate a virtual environment inside your project directory:
+
+```
+
+virtualenv env
+
+source env/bin/activate
+
+```
+
+Install the requirements:
+
+```
+pip install -r requirements.txt
+
+```
+
+Get your own secret keys for Google, Flickr, and World Weather Online and save them to a file <kbd>secrets.sh</kbd>. You should also set your own secret key for Flask. Your file should look something like this:
+
+```
+export FLICKR_KEY="YOUR_API_KEY"
+export FLICKR_SECRET="YOUR_API_SECRET"
+export WEATHER_KEY="YOUR_API_KEY"
+export GOOGLE_KEY="YOUR_API_KEY"
+
+
+```
+
+Source your secret keys:
+
+```
+source secrets.sh
+
+```
+
+Run the app:
+
+```
+python controller.py
+
+```
+Navigate to `localhost:5000/home` to decide upon your next vacation!
 
 ####Deployment
 
