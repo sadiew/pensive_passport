@@ -32,17 +32,17 @@ Pensive Passport is a travel app that assists the indecisive traveler in making 
   * Destination Decision Algorithm
     * Calculates a weighted average for the data delta between cities:
       <img align="center" src="/static/images/data-delta.png">
-    * Calculate the wow factor delta:
+    * Calculates the wow factor delta:
       <img align="center" src="/static/images/wow-delta.png">
-    * The sign (+/-) on the sum of the data delta and wow delta determines the winning city:
+    * Sign (+/-) on the sum of the data delta and wow delta determines the winning city:
       <img align="center" src="/static/images/winning-city-equation.png">
     * The user is able to adjust sliders to change the relative importance of cost, food, and weather and then the algorithm will recalculate the destination.
 * Winning City Details
-  <img align="center" src="/static/images/city-details-screenshot.png">
   * Map
     * Connect to Google Maps API for map of winning city.
+  <img align="center" src="/static/images/city-details-screenshot.png">
   * City Attractions
-    * Prominent and proximate attractions are displayed for the winning city.
+    * Prominent attractions are pulled from the Google Places API, and then filtered for those places closest to the city center (using lat, lon coordinates to calculate distance).
     * If the destination has been searched before, places are cached in DB; if not, call Google places API for relevant attractions.
   * Featured Recommendations
     * User-based: Suggest cities that other users with similar travel preferences have searched.
@@ -77,6 +77,7 @@ pip install -r requirements.txt
 Get your own secret keys for Google, Flickr, and World Weather Online and save them to a file <kbd>secrets.sh</kbd>. You should also set your own secret key for Flask. Your file should look something like this:
 
 ```
+export APP_KEY="YOUR_APP_KEY"
 export FLICKR_KEY="YOUR_API_KEY"
 export FLICKR_SECRET="YOUR_API_SECRET"
 export WEATHER_KEY="YOUR_API_KEY"

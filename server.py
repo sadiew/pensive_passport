@@ -1,4 +1,5 @@
 import json
+import os
 
 from flask import Flask, request, render_template, redirect, jsonify
 from flask import session, flash
@@ -17,12 +18,9 @@ from similar_trips import get_user_similar_trips, get_nl_similar_trips
 
 app = Flask(__name__)
 
-app.secret_key = "ABC"
+app.secret_key = os.environ['APP_KEY']
 
 app.jinja_env.undefined = StrictUndefined
-
-start_date = datetime.strftime(date.today() + timedelta(days=14), '%Y-%m-%d')
-end_date = datetime.strftime(date.today() + timedelta(days=28), '%Y-%m-%d')
 
 
 @app.route('/')
@@ -63,6 +61,8 @@ def gather_perferences():
     city2.get_photos()
 
     nphotos = min(len(city1.photos), len(city2.photos))
+    start_date = datetime.strftime(date.today() + timedelta(days=14), '%Y-%m-%d')
+    end_date = datetime.strftime(date.today() + timedelta(days=28), '%Y-%m-%d')
 
     return render_template('preference_form.html',
                            origin_city=origin_city,
@@ -256,9 +256,7 @@ def store_trips():
     db.session.flush()
 
     trip1 = json.loads(request.form['trip1'])
-    print trip1['cityId']
     trip2 = json.loads(request.form['trip2'])
-    print trip2['cityId']
     trips = [trip1, trip2]
 
     for trip in trips:

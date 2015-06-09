@@ -59,7 +59,4 @@ def process_flights(origin, destination, depart_date, return_date):
         random_airfare = choice([randrange(1000, 2000) for i in range(20)])
         airfare = {'airfare': random_airfare}
 
-    # random_airfare = choice([randrange(1000, 2000) for i in range(20)])
-    # airfare = {'airfare': random_airfare}
-
     return airfare
