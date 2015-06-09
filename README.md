@@ -90,6 +90,22 @@ Source your secret keys:
 source secrets.sh
 ```
 
+Create ORM:
+
+```
+python -i model.py
+
+db.create_all()
+```
+
+Seed data:
+
+```
+python seed.py
+
+python nltk_helper.py
+```
+
 Run the app:
 
 ```
