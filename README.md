@@ -30,13 +30,9 @@ Pensive Passport is a travel app that assists the indecisive traveler in making 
     * Calculates a weighted average for the data delta between cities:
       <img align="center" src="/static/images/data-delta.png">
     * Calculate the wow factor delta:
-    <p align="center">
       <img align="center" src="/static/images/wow-delta.png">
-    </p>
     * The sign (+/-) on the sum of the data delta and wow delta determines the winning city:
-    <p align="center">
       <img align="center" src="/static/images/winning-city-equation.png">
-    </p>
     * The user is able to adjust sliders to change the relative importance of cost, food, and weather and then the algorithm will recalculate the destination.
 * Winning City Details
   * Map
