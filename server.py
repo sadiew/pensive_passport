@@ -1,6 +1,5 @@
 import json
 
-
 from flask import Flask, request, render_template, redirect, jsonify
 from flask import session, flash
 from flask_debugtoolbar import DebugToolbarExtension
