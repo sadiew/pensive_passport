@@ -17,15 +17,18 @@ Pensive Passport is a travel app that assists the indecisive traveler in making 
 * Search Form
   * Search destination of interest.
   * Typeahead pre-populates from DB.
+  <img align="center" src="/static/images/search-screenshot.png">
 * Preference Form
   * Connect to DB for airport dropdown selection.
   * If city images are not already cached in DB, call Flickr API to gather relevant photos.
+  <img align="center" src="/static/images/pref-form-screenshot.png">
 * Data Table & Algo Results
   * Data Collection
     * Call Google Flights API to gather airfare.
     * Call World Weather Online API to gather weather data for the same travel dates in the previous year.
     * Query database for static data including cost-of-living and Michelin stars.
     * Flight, weather, and static data passed through to the frontend for the scoring algorithm.
+    <img align="center" src="/static/images/data-table-screenshot.png">
   * Destination Deciscion Algorithm
     * Calculates a weighted average for the data delta between cities:
       <img align="center" src="/static/images/data-delta.png">
@@ -35,6 +38,7 @@ Pensive Passport is a travel app that assists the indecisive traveler in making 
       <img align="center" src="/static/images/winning-city-equation.png">
     * The user is able to adjust sliders to change the relative importance of cost, food, and weather and then the algorithm will recalculate the destination.
 * Winning City Details
+  <img align="center" src="/static/images/city-details-screenshot.png">
   * Map
     * Connect to Google Maps API for map of winning city.
   * City Attractions
