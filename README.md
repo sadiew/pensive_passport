@@ -30,9 +30,9 @@ Pensive Passport is a travel app that assists the indecisive traveler in making 
     * Flight, weather, and static data passed through to the frontend for the scoring algorithm.
     <img align="center" src="/static/images/data-table-screenshot.png">
   * Destination Decision Algorithm
-    * Calculates a weighted average for the data delta between cities:
+    * Calculate a weighted average for the data delta between cities:
       <img align="center" src="/static/images/data-delta.png">
-    * Calculates the wow factor delta:
+    * Calculate the wow factor delta:
       <img align="center" src="/static/images/wow-delta.png">
     * Sign (+/-) on the sum of the data delta and wow delta determines the winning city:
       <img align="center" src="/static/images/winning-city-equation.png">
@@ -116,3 +116,9 @@ Navigate to `localhost:5000` to decide upon your next vacation!
 ###Deployment
 
 pensivepassport.com has been procured – deployment coming soon!
+
+###Looking Ahead
+
+* Add the ability to compare more than two cities at once.
+* Investigate other flight data API's.
+* Implement Yelp API for reliable ratings for city attractions.
