@@ -95,7 +95,7 @@ def check_for_nl_similarities(city_id, num_needed):
 
     query = """SELECT city_id_1, city_id_2
              FROM similarities
-             WHERE city_id_1 = %s OR city_id_2 = %s
+             WHERE (city_id_1 = %s OR city_id_2 = %s) and similarity > 0.3
              ORDER BY similarity DESC
              LIMIT %s;""" % (city_id, city_id, num_needed)
 
