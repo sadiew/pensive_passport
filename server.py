@@ -23,8 +23,6 @@ app = Flask(__name__)
 
 app.config['SECRET_KEY'] = SECRET_KEY
 
-app.secret_key = os.environ['APP_KEY']
-
 app.jinja_env.undefined = StrictUndefined
 
 
