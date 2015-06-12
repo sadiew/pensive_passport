@@ -16,7 +16,6 @@ from weather import process_weather
 from similar_trips import get_user_similar_trips, get_nl_similar_trips
 
 
-
 SECRET_KEY = os.environ.get("FLASK_SECRET_KEY", "development")
 
 
