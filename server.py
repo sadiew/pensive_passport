@@ -16,7 +16,13 @@ from weather import process_weather
 from similar_trips import get_user_similar_trips, get_nl_similar_trips
 
 
+
+SECRET_KEY = os.environ.get("FLASK_SECRET_KEY", "development")
+
+
 app = Flask(__name__)
+
+app.config['SECRET_KEY'] = SECRET_KEY
 
 app.secret_key = os.environ['APP_KEY']
 
@@ -383,8 +389,11 @@ def select_ten_closest(places, city_center):
 if __name__ == "__main__":
     app.debug = True
     app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
+    PORT = int(os.environ.get("PORT", 5000))
+    DEBUG = "NO_DEBUG" not in os.environ
 
     connect_to_db(app)
-    # DebugToolbarExtension(app)
 
-    app.run()
+    app.run(debug=DEBUG, host="0.0.0.0", port=PORT)
+
+    #app.run()
