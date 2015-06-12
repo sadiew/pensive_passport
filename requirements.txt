@@ -10,7 +10,7 @@ Jinja2==2.7.3
 MarkupSafe==0.23
 mccabe==0.3
 nltk==3.0.2
-numpy==1.9.2
+numpy==1.9.1
 oauthlib==0.7.2
 pep8==1.5.7
 psycopg2==2.6
@@ -20,7 +20,7 @@ requests-futures==0.9.5
 requests-oauthlib==0.4.2
 requests-toolbelt==0.4.0
 scikit-learn==0.16.1
-scipy==0.15.1
+scipy==0.13.3
 six==1.9.0
 SQLAlchemy==1.0.4
 Werkzeug==0.10.4

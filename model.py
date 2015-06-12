@@ -1,6 +1,7 @@
 """Create ORM for app."""
 
 import flickr
+import os
 
 from flask_sqlalchemy import SQLAlchemy
 
@@ -184,10 +185,10 @@ class Similarity(db.Model):
 
 def connect_to_db(app):
     """Connect the database to our Flask app."""
-    # DATABASE_URL = os.environ.get("DATABASE_URL",
-    #                           'postgresql://localhost/pensive_passport')
-    # app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/pensive_passport'
+    DATABASE_URL = os.environ.get("DATABASE_URL",
+                              'postgresql://localhost/pensive_passport')
+    app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
+    #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/pensive_passport'
     # app.config['SQLALCHEMY_ECHO'] = True
     db.app = app
     db.init_app(app)
