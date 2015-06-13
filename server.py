@@ -18,7 +18,6 @@ from similar_trips import get_user_similar_trips, get_nl_similar_trips
 
 SECRET_KEY = os.environ.get("FLASK_SECRET_KEY", "development")
 
-
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = SECRET_KEY
@@ -392,5 +391,3 @@ if __name__ == "__main__":
     connect_to_db(app)
 
     app.run(debug=DEBUG, host="0.0.0.0", port=PORT)
-
-    #app.run()

@@ -188,8 +188,7 @@ def connect_to_db(app):
     DATABASE_URL = os.environ.get("DATABASE_URL",
                               'postgresql://localhost/pensive_passport')
     app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
-    #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/pensive_passport'
-    # app.config['SQLALCHEMY_ECHO'] = True
+
     db.app = app
     db.init_app(app)
 
