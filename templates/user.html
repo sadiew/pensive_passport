@@ -9,7 +9,7 @@
 			<li>{{search[0]}} vs. {{search[1]}}</li>
 		{% endfor %}
 	</ol>
-	
+
 </div>
 <div class="align-left">
 	<button id="new-search" class="btn btn-default">New Search</button>
@@ -17,7 +17,7 @@
 <script type="text/javascript">
 	function reSearch(evt) {
 
-	    window.location = "http://localhost:5000/search";
+	    window.location = "/search";
 
 	}
 	$("#new-search").on("click", reSearch);

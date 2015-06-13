@@ -135,6 +135,7 @@ function prepDom() {
     $("#general-pref").hide();
     $(".city-header").hide();
     $("#travel-pref-header").hide();
+    $(".loader").fadeIn("slow");
 
 }
 
@@ -181,7 +182,8 @@ function getCityData(evt) {
                 apiResponses++;
                 if (apiResponses===4) {    // all calls have completed
                     storeTrips(cities);
-                    determineDestination(cities);}
+                    determineDestination(cities);
+                    $(".loader").hide();}
             }
         );
 
@@ -194,7 +196,8 @@ function getCityData(evt) {
                 apiResponses ++;
                 if (apiResponses===4) {    // all calls have completed
                     storeTrips(cities);
-                    determineDestination(cities);}
+                    determineDestination(cities);
+                    $(".loader").hide();}
             }
         );
     }

@@ -374,6 +374,8 @@ def select_ten_closest(places, city_center):
 
     distance = {place.name: distance_from_city_center(city_center, place)
                 for place in places}
+
+    # sort by distance from city center
     closest_places = sorted(distance.items(), key=lambda x: x[1])
     closest_places_list = [place[0] for place in closest_places]
 
