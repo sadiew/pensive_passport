@@ -253,7 +253,8 @@ def get_city_data():
 def store_trips():
     """Add each trip search to the DB."""
 
-    search = Search(user_id=session['username'])
+    user_id = session.get('username', 0)
+    search = Search(user_id=user_id)
     db.session.add(search)
     db.session.flush()
 
