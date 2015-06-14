@@ -115,7 +115,7 @@ Navigate to `localhost:5000` to decide upon your next vacation!
 
 ###Deployment
 
-pensivepassport.com has been procured – deployment coming soon!
+Visit pensivepassport.com to try it out!
 
 ###Looking Ahead
 
