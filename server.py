@@ -59,20 +59,24 @@ def gather_perferences():
     city2 = City.query.filter_by(name=dest_2_city,
                                  country=dest_2_country).first()
 
-    city1.get_photos()
-    city2.get_photos()
+    if origin_city and city1 and city2:
+        city1.get_photos()
+        city2.get_photos()
 
-    nphotos = min(len(city1.photos), len(city2.photos))
-    start_date = datetime.strftime(date.today() + timedelta(days=14), '%Y-%m-%d')
-    end_date = datetime.strftime(date.today() + timedelta(days=28), '%Y-%m-%d')
+        nphotos = min(len(city1.photos), len(city2.photos))
+        start_date = datetime.strftime(date.today() + timedelta(days=14), '%Y-%m-%d')
+        end_date = datetime.strftime(date.today() + timedelta(days=28), '%Y-%m-%d')
 
-    return render_template('preference_form.html',
-                           origin_city=origin_city,
-                           city1=city1,
-                           city2=city2,
-                           nphotos=nphotos,
-                           start_date=start_date,
-                           end_date=end_date)
+        return render_template('preference_form.html',
+                               origin_city=origin_city,
+                               city1=city1,
+                               city2=city2,
+                               nphotos=nphotos,
+                               start_date=start_date,
+                               end_date=end_date)
+    else:
+        flash("Please enter a valid choice from the dropdown menu.")
+        return redirect('/search')
 
 
 @app.route('/winning-city')
