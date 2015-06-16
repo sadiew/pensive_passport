@@ -19,9 +19,7 @@ $(document).ready(function () {
 
 });
 
-function determineDestination(cities) {
-    var c1 = cities[0];
-    var c2 = cities[1];
+function determineDestination() {
 
     var costWeight = parseInt($("#cost-weight").val(), 10);
     var foodWeight = parseInt($("#food-weight").val(), 10);
@@ -152,8 +150,6 @@ function getCityData(evt) {
     function loopCities(i) {
         var cityInfo = cities[i-1];
 
-        // wow_input = $("#wow-input-" + i);
-
         $("#wow-"+i).html($("#wow-input-"+i).val());
         cityInfo.wow = $("#wow-input-"+i).val();
 
@@ -181,8 +177,9 @@ function getCityData(evt) {
                 cityInfo.airfare = result.airfare;
                 apiResponses++;
                 if (apiResponses===4) {    // all calls have completed
-                    storeTrips(cities);
-                    determineDestination(cities);
+                    console.log(cities);
+                    storeTrips();
+                    determineDestination();
                     $(".loader").hide();}
             }
         );
@@ -195,8 +192,9 @@ function getCityData(evt) {
                 cityInfo.weather = (parseInt(result.low, 10) + parseInt(result.high, 10))/2;
                 apiResponses ++;
                 if (apiResponses===4) {    // all calls have completed
-                    storeTrips(cities);
-                    determineDestination(cities);
+                    console.log(cities);
+                    storeTrips();
+                    determineDestination();
                     $(".loader").hide();}
             }
         );
@@ -235,9 +233,9 @@ function getNum(val)
          return val;
     }
 
-function storeTrips(cities) {
+function storeTrips() {
     $.post('/store-trips',
-    {'trip1':JSON.stringify(cities[0]),
-    'trip2':JSON.stringify(cities[1])},
+    {'trip1':JSON.stringify(c1),
+    'trip2':JSON.stringify(c2)},
     function(result) {});
 }
