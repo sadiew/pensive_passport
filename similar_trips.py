@@ -126,7 +126,10 @@ def create_stems(tokens):
 
 def generate_stemmed_tokens(page_content):
     lowered = page_content.lower()
+
+    # remove punctuation using regex
     tokenizer = RegexpTokenizer(r'\w+')
+
     tokens = tokenizer.tokenize(lowered)
     stems = create_stems(tokens)
 
