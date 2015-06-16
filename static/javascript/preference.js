@@ -48,8 +48,8 @@ function determineDestination() {
 
 function calcWeatherDelta(c1, c2) {
     var idealTemp = $("input:radio[name=ideal-temp]:checked").val();
-    var weatherDeltaCity1 = c1.weather - idealTemp;
-    var weatherDeltaCity2 = c2.weather - idealTemp;
+    var weatherDeltaCity1 = Math.abs(c1.weather - idealTemp);
+    var weatherDeltaCity2 = Math.abs(c2.weather - idealTemp);
     var weatherDelta = (weatherDeltaCity1 - weatherDeltaCity2) / weatherDeltaCity1;
     if (weatherDelta > 0) { $("#weather-2").attr("style", HIGHLIGHT);}
     else if (weatherDelta < 0) {$("#weather-1").attr("style", HIGHLIGHT);}
