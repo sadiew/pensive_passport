@@ -163,6 +163,11 @@ function getCityData(evt) {
             $('#food-'+i).html(cityInfo.stars + ' ' +
                                 "<img class='michelin-star' src='/static/images/michelinstar.png'>");
             $('#col-'+i).html(cityInfo.costOfLiving);
+            apiResponses++;
+            if (apiResponses===6) {    // all calls have completed
+                storeTrips();
+                determineDestination();
+                $(".loader").hide();}
 
             }
         );
@@ -176,8 +181,7 @@ function getCityData(evt) {
                 $('#flight-'+i).html("$" + result.airfare);
                 cityInfo.airfare = result.airfare;
                 apiResponses++;
-                if (apiResponses===4) {    // all calls have completed
-                    console.log(cities);
+                if (apiResponses===6) {    // all calls have completed
                     storeTrips();
                     determineDestination();
                     $(".loader").hide();}
@@ -191,8 +195,7 @@ function getCityData(evt) {
                 $('#weather-'+i).html(result.low + " - " + result.high + " F");
                 cityInfo.weather = (parseInt(result.low, 10) + parseInt(result.high, 10))/2;
                 apiResponses ++;
-                if (apiResponses===4) {    // all calls have completed
-                    console.log(cities);
+                if (apiResponses===6) {    // all calls have completed
                     storeTrips();
                     determineDestination();
                     $(".loader").hide();}
