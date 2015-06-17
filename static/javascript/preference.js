@@ -202,7 +202,7 @@ function getCityData(evt) {
 function reCalculateDestination() {
     previousCity = winningCity.city;
 
-    determineDestination(cities);
+    determineDestination();
 
     if (previousCity === winningCity.city) {
         $("#pp-choice-text").html("After recalculation, Pensive Passport " +

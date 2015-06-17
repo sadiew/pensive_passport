@@ -66,9 +66,13 @@ function getPlaceDetails(place) {
       var placeUrl = placeObject.url;
       var placeRating = placeObject.rating || 'Unrated';
 
+      // ternary operator
       var website = placeWebsite ? placeWebsite : placeUrl;
 
+      // .next() allows me to access the next sibling of that element
       var $description = $(place).next();
+
+      // .find('#selector') allows me to access the descendents of that element
       $description.find('.rating').html(placeRating);
       $description.find('.website').attr('href', website);
     }
@@ -76,7 +80,6 @@ function getPlaceDetails(place) {
 }
 
 function getPlaces() {
-  $('#get-places-button').hide();
   addPlaceByType('restaurant');
   addPlaceByType('museum');
   addPlaceByType('park');
