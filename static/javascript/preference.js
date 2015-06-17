@@ -165,9 +165,7 @@ function getCityData(evt) {
             $('#col-'+i).html(cityInfo.costOfLiving);
             apiResponses++;
             if (apiResponses===6) {    // all calls have completed
-                storeTrips();
-                determineDestination();
-                $(".loader").hide();}
+                apiCallsCompleted();}
 
             }
         );
@@ -182,9 +180,7 @@ function getCityData(evt) {
                 cityInfo.airfare = result.airfare;
                 apiResponses++;
                 if (apiResponses===6) {    // all calls have completed
-                    storeTrips();
-                    determineDestination();
-                    $(".loader").hide();}
+                    apiCallsCompleted();}
             }
         );
 
@@ -196,9 +192,7 @@ function getCityData(evt) {
                 cityInfo.weather = (parseInt(result.low, 10) + parseInt(result.high, 10))/2;
                 apiResponses ++;
                 if (apiResponses===6) {    // all calls have completed
-                    storeTrips();
-                    determineDestination();
-                    $(".loader").hide();}
+                    apiCallsCompleted();}
             }
         );
     }
@@ -241,4 +235,10 @@ function storeTrips() {
     {'trip1':JSON.stringify(c1),
     'trip2':JSON.stringify(c2)},
     function(result) {});
+}
+
+function apiCallsCompleted() {
+    storeTrips();
+    determineDestination();
+    $(".loader").hide();
 }
