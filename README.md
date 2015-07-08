@@ -115,7 +115,7 @@ Navigate to `localhost:5000` to decide upon your next vacation!
 
 ###Deployment
 
-Visit pensivepassport.com to try it out!
+Visit <a href="http://pensivepassport.com">pensive.passport.com</a> to try it out!
 
 ###Looking Ahead
 
