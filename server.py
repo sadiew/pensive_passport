@@ -29,7 +29,7 @@ app.jinja_env.undefined = StrictUndefined
 def index():
     """Show home page."""
 
-    return render_template("homepage.html", session=session)
+    return render_template("homepage.html")
 
 
 @app.route('/search')
@@ -184,6 +184,8 @@ def show_user_details(user_id):
     user = User.query.get(user_id)
 
     # sort cities in each pair in order to remove duplicate entries
+    # searches must contain hashable type, so casting to tuple
+
     searches = [tuple(sorted([search.trips[0].city.name, search.trips[1].city.name]))
                 for search in user.searches]
 
@@ -287,7 +289,7 @@ def get_places():
     city_center = request.form['city_lat_lon']
     place_type = request.form['place_type']
 
-    places = process_places(city_id, city_center, place_type=place_type)
+    places = process_places(city_id, city_center, place_type)
 
     return jsonify(places)
 
@@ -351,7 +353,7 @@ def process_places(city_id, city_center, place_type):
 
 
 def add_places_to_db(city_id, data, place_type):
-    """Add places gather from Google Places to DB."""
+    """Add places gathered from Google Places to DB."""
 
     for result in data['results']:
         place = Place(google_place_id=result['place_id'],
@@ -380,7 +382,10 @@ def select_ten_closest(places, city_center):
     distance = {place.name: distance_from_city_center(city_center, place)
                 for place in places}
 
-    # sort by distance from city center
+    # sort by distance from city center --> distance.items() returns a
+    # tuple (place, distance), so lambda function is used to sort the tuples
+    # on the distance (index 1)
+
     closest_places = sorted(distance.items(), key=lambda x: x[1])
     closest_places_list = [place[0] for place in closest_places]
 

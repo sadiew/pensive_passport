@@ -153,7 +153,7 @@ function getCityData(evt) {
         $("#wow-"+i).html($("#wow-input-"+i).val());
         cityInfo.wow = $("#wow-input-"+i).val();
 
-        var url = '/get-city-data?airport='+ $("#airport-"+i).val();
+        var url = '/get-city-data?airport=' + $("#airport-"+i).val();
         $.get(url, function (result) {
             cityInfo.city = result.city;
             cityInfo.cityId = result.cityId;
@@ -209,7 +209,8 @@ function reCalculateDestination() {
                                     "<strong>still</strong> chooses " + winningCity.city + "!");
     }
 
-    else {$("#pp-choice-text").html("After recalculation, Pensive Passport now selects " +
+    else {
+        $("#pp-choice-text").html("After recalculation, Pensive Passport now selects " +
                                     "<span class='primary-color'><strong>" + winningCity.city + "</strong></span>!");
     }
     }
@@ -232,7 +233,7 @@ function getNum(val)
 
 function storeTrips() {
     $.post('/store-trips',
-    {'trip1':JSON.stringify(c1),
+    {'trip1':JSON.stringify(c1),   //stringify converts JS object to JSON string
     'trip2':JSON.stringify(c2)},
     function(result) {});
 }
