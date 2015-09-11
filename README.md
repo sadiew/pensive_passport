@@ -112,13 +112,3 @@ Run the app:
 python server.py
 ```
 Navigate to `localhost:5000` to decide upon your next vacation!
-
-###Deployment
-
-Visit <a href="http://pensivepassport.com">pensivepassport.com</a> to try it out!
-
-###Looking Ahead
-
-* Add the ability to compare more than two cities at once.
-* Investigate other flight data API's.
-* Implement Yelp API for reliable ratings for city attractions.
